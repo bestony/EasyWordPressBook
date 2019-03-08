@@ -1,0 +1,30 @@
+language: node_js
+
+node_js:
+  - "8"
+
+cache:
+  directories:
+    - $HOME/.npm
+
+before_install:
+  - export TZ='Asia/Shanghai'
+
+install:
+  - npm install gitbook-cli -g
+  - gitbook install
+
+script:
+  - gitbook build . ./build
+
+branches:
+  only:
+    - master
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: build
+  on:
+    branch: master
