@@ -1,7 +1,9 @@
 {
   "title": "人人都能学会的 WordPress 实战课",
   "description": "一本从零开始教你学习 WordPress ，带你从入门，到精通。",
-  "plugins": [],
+  "plugins": [
+    "theme-comscore"
+  ],
   "pluginsConfig": {},
   "links": {
         "sidebar": {
