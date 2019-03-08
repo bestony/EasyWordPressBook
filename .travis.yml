@@ -16,6 +16,7 @@ install:
 
 script:
   - gitbook build . ./build
+  - echo 'easywpbook.com' > ./build/CNAME
 
 branches:
   only:
