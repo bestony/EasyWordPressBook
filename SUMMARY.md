@@ -11,7 +11,7 @@
     - [4 WP 常用插件使用说明（二）](basic-plugin-2.md)
     - [5 WP 相关资源站点](resources.md)
     - [6 WP 站点性能优化 （一）：动静分离](optimize-1.md)
-    - [7 WP 站点性能优 化 （二）：服务器优化](optimize-2.md)
+    - [7 WP 站点性能优化 （二）：服务器优化](optimize-2.md)
     - [8 WP 站点性能优化 （三）：WordPress 缓存](optimize-3.md)
     - [9 WP 站点性能优化 （四）：程序优化](optimize-4.md)
     - [10 WP 安全固化](security.md)
