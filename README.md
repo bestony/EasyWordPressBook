@@ -1,6 +1,6 @@
 # 人人都能学会的 WordPress 实战课
 
-
+[![Build Status](https://travis-ci.com/bestony/EasyWordPressBook.svg?branch=master)](https://travis-ci.com/bestony/EasyWordPressBook)
 
 ## 电子书介绍
 
