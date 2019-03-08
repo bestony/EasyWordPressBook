@@ -2,14 +2,32 @@
   "title": "人人都能学会的 WordPress 实战课",
   "description": "一本从零开始教你学习 WordPress ，带你从入门，到精通。",
   "plugins": [
-    "theme-comscore"
+    "theme-comscore",
+    "ga",
+    "anchors",
+    "edit-link",
+    "sitemap-general",
+    "disqus"
   ],
-  "pluginsConfig": {},
-  "links": {
-        "sidebar": {
-            "作者博客": "https://www.ixiqin.com",
-            "联系作者":"mailto:xiqingongzi+easywp@gmail.com"
+  "pluginsConfig": {
+    "edit-link": {
+      "base": "https://github.com/bestony/EasyWordPressBook/edit/master",
+      "label": "参与本书贡献"
+    },
+    "sitemap-general": {
+      "prefix": "http://easywpbook.com/"
+    },
+    "ga": {
+      "token": "UA-47834775-10"
+    },
+     "disqus": {
+            "shortName": "easywpbook"
         }
+  },
+  "links": {
+    "sidebar": {
+      "作者博客": "https://www.ixiqin.com",
+      "联系作者": "mailto:xiqingongzi+easywp@gmail.com"
     }
-
+  }
 }
