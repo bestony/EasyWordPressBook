@@ -14,8 +14,6 @@ WordPress 作为世界上使用最多的 CMS （内容管理系统），成为�
 
 整个课程分为多个章节，你可以根据自己的情况，选择合适的章节阅读。
 
-如果你有兴趣，也欢迎你到 GitChat 上去[订阅达人课](https://gitbook.cn/gitchat/column/5a16601f13c02f4a35c9f8ad)支持我。
-
 ## 目录
 
 - [1 导读](intro.md)
