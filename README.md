@@ -17,6 +17,7 @@ WordPress 作为世界上使用最多的 CMS （内容管理系统），成为�
 ## 目录
 
 - [1 导读](intro.md)
+- [更新记录](changelog.md)
 * [2 WP 的部署](development-env.md)
     + [Windows 开发环境配置](deployment/windows-dev.md)
     + [macOS 开发环境配置](deployment/mac-dev.md)

@@ -1,6 +1,7 @@
 # Summary
 
 * [本书介绍](README.md)
+* [更新记录](changelog.md)
 * [1 导读](intro.md)
 * [2 WP 的部署](development-env.md)
     + [Windows 开发环境配置](deployment/windows-dev.md)
