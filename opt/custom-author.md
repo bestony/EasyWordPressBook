@@ -6,9 +6,9 @@
 
 咱们 GitChat 的丹华老师找到我，向我咨询了两个问题。
 
-> ![enter image description here](http://images.gitbook.cn/f6b52ba0-6a01-11e8-82cd-bd67f9e0d48c)
+> ![enter image description here](https://images.gitbook.cn/f6b52ba0-6a01-11e8-82cd-bd67f9e0d48c)
 
-> 丹华老师是咱们 GitChat 达人课[《区块链全景课》](http://gitbook.cn/gitchat/column/5b026d0dedd0d46379a7bc55)的撰稿人，课程写的非常好，如果你对区块链也有兴趣，不妨去看看。
+> 丹华老师是咱们 GitChat 达人课[《区块链全景课》](https://gitbook.cn/gitchat/column/5b026d0dedd0d46379a7bc55)的撰稿人，课程写的非常好，如果你对区块链也有兴趣，不妨去看看。
 
 其中一个问题，我告诉他 WordPress 官方的解决方案，已解决掉了。但是第二个问题没解决，问题如下：
 
@@ -35,7 +35,7 @@
 > **在为插件起名时，如何确定 WordPress 中没有同名的插件？**
 
 > 访问网址 [https://wordpress.org/plugins/插件名称](https://wordpress.org/plugins/%E6%8F%92%E4%BB%B6%E5%90%8D%E7%A7%B0)：
-> 
+>
 > - 如果你看到的是搜索结果，就说明该名称尚未被使用，页面的路径也会被自动导流到 [https://wordpress.org/plugins/search/custom-author/](https://wordpress.org/plugins/search/custom-author/)。
 > - 如果你看到的是插件的详情页面，则说明该名称已经被使用了。
 
@@ -45,17 +45,17 @@
 
 同时，在浏览文章时，将对应的 Post Meta 信息读取，替换掉默认的作者信息。
 
-<img src="http://images.gitbook.cn/37c09ab0-69fa-11e8-b67c-638945d35c4a"  width = "60%" /> 
+<img src="https://images.gitbook.cn/37c09ab0-69fa-11e8-b67c-638945d35c4a"  width = "60%" />
 
 此外，在替换作者信息时，也需要考虑一些边缘情况。需要考虑，如果某篇文章没有设置 Post Meta 信息的话，就需要让其显示默认的作者信息，或者设置一个默认作者信息（这个可以通过插件设置来实现，不过当前这个插件其实没有必要做这个功能，使用 WordPress 默认的用户信息也可以）。
 
 这里经过考虑，我决定在浏览文章时，加入一层判定，如果设置了 Post Meta 信息，就读取 Post Meta 信息；未设置该信息时，就显示默认的用户信息。
 
-![enter image description here](http://images.gitbook.cn/9530e7a0-69fe-11e8-b67c-638945d35c4a)
+![enter image description here](https://images.gitbook.cn/9530e7a0-69fe-11e8-b67c-638945d35c4a)
 
 在用户操作时，对用户最为友好的便是通过界面的手动输入来设置作者信息，因此，我考虑在界面中加入一个输入框，来作为作者信息输入。此处考虑到插件的特定用户是丹华老师，因此，我将这个输入框放在发布框内，方便他操作。
 
-<img src="http://images.gitbook.cn/d21ba6b0-69fd-11e8-82cd-bd67f9e0d48c"  width = "50%" />
+<img src="https://images.gitbook.cn/d21ba6b0-69fd-11e8-82cd-bd67f9e0d48c"  width = "50%" />
 
 ### 实现
 
@@ -166,14 +166,14 @@ function cus_author_the_author($author){
 
 在完成了插件的开发后，我便筹划将插件提交到官方。毕竟，通过官方审核的插件能够让更多人信任，同时，使用时体验也更好，只需要在 WordPress 后台搜索即可。
 
-![enter image description here](http://images.gitbook.cn/f2880410-69fe-11e8-a03d-6ff49ab3d470)
+![enter image description here](https://images.gitbook.cn/f2880410-69fe-11e8-a03d-6ff49ab3d470)
 
 前往 [Wordpress 网站](https://wordpress.org/plugins/developers/add/) 提交插件审核，等待一晚上的时间（由于存在时差，插件的审核总是在我们的半夜进行），就会收到审核结果了。如果审核没有通过，只需要根据审核邮件的内容进行修改。
 
-![enter image description here](http://images.gitbook.cn/1a4a1600-69ff-11e8-82cd-bd67f9e0d48c)
+![enter image description here](https://images.gitbook.cn/1a4a1600-69ff-11e8-82cd-bd67f9e0d48c)
 
 修改完成后，将修改后的插件作为附件回复给审核者，再等一个晚上就会收到审核的意见。
 
-![enter image description here](http://images.gitbook.cn/3e9b4420-69ff-11e8-82cd-bd67f9e0d48c)
+![enter image description here](https://images.gitbook.cn/3e9b4420-69ff-11e8-82cd-bd67f9e0d48c)
 
-审核通过后，就会收到 WordPress 官方的邮件，提醒你使用 SVN 管理插件，接下来就是准备插件的一些展示文件了，这部分内容可以参考一下咱们之前的达人课[ 第19课：提交你的插件到 WordPress 的官方仓库](http://gitbook.cn/gitchat/column/5a16601f13c02f4a35c9f8ad/topic/5a16633c13c02f4a35c9fa3b)。
+审核通过后，就会收到 WordPress 官方的邮件，提醒你使用 SVN 管理插件，接下来就是准备插件的一些展示文件了，这部分内容可以参考一下咱们之前的达人课[  第 19 课：提交你的插件到 WordPress 的官方仓库](https://gitbook.cn/gitchat/column/5a16601f13c02f4a35c9f8ad/topic/5a16633c13c02f4a35c9fa3b)。
