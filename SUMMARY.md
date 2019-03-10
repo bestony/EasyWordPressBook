@@ -7,6 +7,7 @@
     + [macOS 开发环境配置](deployment/mac-dev.md)
     + [cPanel 生产环境配置](deployment/cpanel-production.md)
     + [万网虚拟主机环境配置](deployment/wanwang-production.md)
+    + [宝塔 Linux 环境配置](deployment/bt-linux-production.md)
 * WordPress 使用
     - [1 WP 基本使用](basic-usage.md)
     - [2 WP 基本设置](basic-config.md)
