@@ -1,0 +1,945 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>3 使用 Polylang 插件建设一个多语言站点 · 人人都能学会的 WordPress 实战课</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="wpml.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.ixiqin.com" target="_blank" class="custom-link">作者博客</a>
+        </li>
+    
+        
+        <li>
+            <a href="mailto:xiqingongzi+easywp@gmail.com" target="_blank" class="custom-link">联系作者</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    本书介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../intro.html">
+            
+                <a href="../intro.html">
+            
+                    
+                    1 导读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../deployment.html">
+            
+                <a href="../deployment.html">
+            
+                    
+                    2 部署 WordPress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../development-env.html">
+            
+                <a href="../development-env.html">
+            
+                    
+                    3 WP 的环境配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    WordPress 使用
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../basic-usage.html">
+            
+                <a href="../basic-usage.html">
+            
+                    
+                    1 WP 基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../basic-config.html">
+            
+                <a href="../basic-config.html">
+            
+                    
+                    2 WP 基本设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../basic-plugin-1.html">
+            
+                <a href="../basic-plugin-1.html">
+            
+                    
+                    3 WP 常用插件使用说明（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../basic-plugin-2.html">
+            
+                <a href="../basic-plugin-2.html">
+            
+                    
+                    4 WP 常用插件使用说明（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../resources.html">
+            
+                <a href="../resources.html">
+            
+                    
+                    5 WP 相关资源站点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../optimize-1.html">
+            
+                <a href="../optimize-1.html">
+            
+                    
+                    6 WP 站点性能优化 （一）：动静分离
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../optimize-2.html">
+            
+                <a href="../optimize-2.html">
+            
+                    
+                    7 WP 站点性能优化 （二）：服务器优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../optimize-3.html">
+            
+                <a href="../optimize-3.html">
+            
+                    
+                    8 WP 站点性能优化 （三）：WordPress 缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../optimize-4.html">
+            
+                <a href="../optimize-4.html">
+            
+                    
+                    9 WP 站点性能优化 （四）：程序优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../security.html">
+            
+                <a href="../security.html">
+            
+                    
+                    10 WP 安全固化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    WordPress 主题
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../theme/usage.html">
+            
+                <a href="../theme/usage.html">
+            
+                    
+                    1 WP 主题使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../theme/intro.html">
+            
+                <a href="../theme/intro.html">
+            
+                    
+                    2 WP 主题开发：快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../theme/struct.html">
+            
+                <a href="../theme/struct.html">
+            
+                    
+                    3 WP 主题开发：文件结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../theme/custom-page.html">
+            
+                <a href="../theme/custom-page.html">
+            
+                    
+                    4 WP 主题开发：一些特殊的页面
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../theme/options-framework.html">
+            
+                <a href="../theme/options-framework.html">
+            
+                    
+                    5 WP 主题开发：接入 Options Framework
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../theme/tips.html">
+            
+                <a href="../theme/tips.html">
+            
+                    
+                    6 WP 主题开发：一些 WordPress 开发的小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../theme/uploads.html">
+            
+                <a href="../theme/uploads.html">
+            
+                    
+                    7 WP 主题开发：提交主题到 WordPress 官方仓库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    WordPress 插件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../plugin/usage.html">
+            
+                <a href="../plugin/usage.html">
+            
+                    
+                    1 WP 插件使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../plugin/run.html">
+            
+                <a href="../plugin/run.html">
+            
+                    
+                    2 WP 插件的运行机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../plugin/create.html">
+            
+                <a href="../plugin/create.html">
+            
+                    
+                    3 WP 插件的创建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../plugin/admin.html">
+            
+                <a href="../plugin/admin.html">
+            
+                    
+                    4 WP 插件后台设计与开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../plugin/create-widget.html">
+            
+                <a href="../plugin/create-widget.html">
+            
+                    
+                    5 开发一个 WordPress Widget
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../plugin/create-shortcode.html">
+            
+                <a href="../plugin/create-shortcode.html">
+            
+                    
+                    6 开发一个短代码插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../plugin/uploads.html">
+            
+                <a href="../plugin/uploads.html">
+            
+                    
+                    7 提交你的插件到 WordPress 官方仓库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    多语言
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="theme.html">
+            
+                <a href="theme.html">
+            
+                    
+                    1 WP 主题开发：为你的主题/插件实现国际化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="wpml.html">
+            
+                <a href="wpml.html">
+            
+                    
+                    2 使用 WPML 插件建设一个多语言站点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8.3" data-path="polylang.html">
+            
+                <a href="polylang.html">
+            
+                    
+                    3 使用 Polylang 插件建设一个多语言站点
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    实战
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../opt/wpdb.html">
+            
+                <a href="../opt/wpdb.html">
+            
+                    
+                    1 WordPress 数据库操作 WPDB 指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../opt/custom-author.html">
+            
+                <a href="../opt/custom-author.html">
+            
+                    
+                    2 动手开发插件： Custom Author 插件开发实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../opt/sendmail.html">
+            
+                <a href="../opt/sendmail.html">
+            
+                    
+                    3 轻松玩转 WP：如何使用 WordPress 的邮件发文功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    答疑
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../qa/20171130.html">
+            
+                <a href="../qa/20171130.html">
+            
+                    
+                    答疑 20171130
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../qa/20171201.html">
+            
+                <a href="../qa/20171201.html">
+            
+                    
+                    答疑 20171201
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../qa/20171206.html">
+            
+                <a href="../qa/20171206.html">
+            
+                    
+                    答疑 20171206
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../qa/20171216.html">
+            
+                <a href="../qa/20171216.html">
+            
+                    
+                    答疑 20171216
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >3 使用 Polylang 插件建设一个多语言站点</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x4F7F;&#x7528;-polylang-&#x63D2;&#x4EF6;&#x5EFA;&#x8BBE;&#x4E00;&#x4E2A;&#x591A;&#x8BED;&#x8A00;&#x7AD9;&#x70B9;"><a name="&#x4F7F;&#x7528;-polylang-&#x63D2;&#x4EF6;&#x5EFA;&#x8BBE;&#x4E00;&#x4E2A;&#x591A;&#x8BED;&#x8A00;&#x7AD9;&#x70B9;" class="plugin-anchor" href="#&#x4F7F;&#x7528;-polylang-&#x63D2;&#x4EF6;&#x5EFA;&#x8BBE;&#x4E00;&#x4E2A;&#x591A;&#x8BED;&#x8A00;&#x7AD9;&#x70B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F7F;&#x7528; Polylang &#x63D2;&#x4EF6;&#x5EFA;&#x8BBE;&#x4E00;&#x4E2A;&#x591A;&#x8BED;&#x8A00;&#x7AD9;&#x70B9;</h2>
+<p>&#x8FD9;&#x8282;&#x8BFE;&#x6765;&#x5B66;&#x4E60;&#x4F7F;&#x7528; Polylang &#x63D2;&#x4EF6;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x591A;&#x8BED;&#x8A00;&#x7AD9;&#x70B9;&#x3002;</p>
+<h3 id="&#x5B89;&#x88C5;&#x63D2;&#x4EF6;"><a name="&#x5B89;&#x88C5;&#x63D2;&#x4EF6;" class="plugin-anchor" href="#&#x5B89;&#x88C5;&#x63D2;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5B89;&#x88C5;&#x63D2;&#x4EF6;</h3>
+<p>&#x8FDB;&#x5165; WordPress &#x540E;&#x53F0;&#xFF0C;&#x5355;&#x51FB;&#x300C;&#x63D2;&#x4EF6;&#x300D;&#x2014;&#x300C;&#x5B89;&#x88C5;&#x63D2;&#x4EF6;&#x300D;&#x547D;&#x4EE4;&#xFF0C;&#x5728;&#x641C;&#x7D22;&#x6846;&#x5185;&#x8F93;&#x5165;&#x5173;&#x952E;&#x8BCD; <em>polylang</em>&#xFF0C;&#x7136;&#x540E;&#x8FDB;&#x884C;&#x641C;&#x7D22;&#xFF0C;&#x627E;&#x5230;&#x63D2;&#x4EF6;&#x540E;&#x8FDB;&#x884C;&#x5B89;&#x88C5;&#xFF0C;&#x5E76;&#x542F;&#x7528;&#x63D2;&#x4EF6;&#x3002;</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fmy4164z7xj30u40esdg7.jpg" width="60%"></p>
+<h3 id="&#x521D;&#x59CB;&#x5316;&#x63D2;&#x4EF6;"><a name="&#x521D;&#x59CB;&#x5316;&#x63D2;&#x4EF6;" class="plugin-anchor" href="#&#x521D;&#x59CB;&#x5316;&#x63D2;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x521D;&#x59CB;&#x5316;&#x63D2;&#x4EF6;</h3>
+<p>&#x542F;&#x7528;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x540E;&#x53F0;&#x4F1A;&#x591A;&#x51FA;&#x4E00;&#x4E2A;&#x300C;&#x8BED;&#x8A00;&#x300D;&#x83DC;&#x5355;&#x9879;&#xFF1A;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmy434hy3wj30me08kq2u.jpg" width="70%"></p>
+<p>&#x5355;&#x51FB;&#x300C;&#x8BED;&#x8A00;&#x300D;&#x2014;&#x300C;&#x8BED;&#x8A00;&#x300D;&#x547D;&#x4EE4;&#xFF0C;&#x6765;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x8BED;&#x8A00;&#xFF0C;&#x6211;&#x4EEC;&#x6700;&#x5E38;&#x7528;&#x7684;&#x4FBF;&#x662F;&#x4F7F;&#x7528;&#x82F1;&#x6587;&#xFF0C;&#x8FD9;&#x91CC;&#x4E5F;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x82F1;&#x6587;&#x3002;</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmy4573gabj31kw0x8jtm.jpg" width="80%"></p>
+<p>&#x6700;&#x540E;&#x6709;&#x4E2A;&#x987A;&#x5E8F;&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x4F60;&#x7684;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x8C03;&#x6574;&#xFF0C;&#x5E8F;&#x53F7;&#x8D8A;&#x5C0F;&#xFF0C;&#x6392;&#x7684;&#x8D8A;&#x9760;&#x524D;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x6DFB;&#x52A0;&#x4E24;&#x79CD;&#x8BED;&#x8A00;&#xFF0C;&#x5206;&#x522B;&#x662F;&#x82F1;&#x6587;&#x548C;&#x4E2D;&#x6587;&#xFF0C;&#x5176;&#x4E2D;&#x4E2D;&#x6587;&#x4F5C;&#x4E3A;&#x9ED8;&#x8BA4;&#x8BED;&#x8A00;&#x3002;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmy4nqiotvj30w7085t8o.jpg" alt=""></p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x8981;&#x5230;&#x524D;&#x53F0;&#x4E3A;&#x7528;&#x6237;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x5207;&#x6362;&#x8BED;&#x8A00;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; PolyLang &#x81EA;&#x5E26;&#x7684; widget &#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x5355;&#x51FB;&#x300C;&#x5916;&#x89C2;&#x300D;|&#x300C;&#x5C0F;&#x5DE5;&#x5177;&#x300D;&#x547D;&#x4EE4;&#xFF0C;&#x8FDB;&#x5165;&#x5230;&#x5C0F;&#x5DE5;&#x5177;&#x9875;&#x9762;&#xFF0C;&#x62D6;&#x62FD;&#x5176;&#x4E2D;&#x7684;&#x300C;&#x8BED;&#x8A00;&#x5207;&#x6362;&#x300D;&#x5C0F;&#x5DE5;&#x5177;&#xFF0C;&#x5230;&#x6211;&#x4EEC;&#x7684;&#x8FB9;&#x680F;&#x4E2D;&#x53BB;&#x3002;</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fmy4pezesqj309r02xa9u.jpg" alt=""></p>
+<p>&#x6DFB;&#x52A0;&#x65F6;&#xFF0C;&#x4F1A;&#x63D0;&#x793A;&#x4F60;&#x5177;&#x4F53;&#x7684;&#x6837;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x7AD9;&#x70B9;&#x98CE;&#x683C;&#x9009;&#x62E9;&#x5BF9;&#x5E94;&#x7684;&#x8BBE;&#x7F6E;&#x9879;&#xFF0C;&#x4E0D;&#x8FC7;&#xFF0C;&#x5982;&#x679C;&#x9009;&#x62E9;&#x4E86;&#x663E;&#x793A;&#x4E0B;&#x62C9;&#x83DC;&#x5355;&#xFF0C;&#x5176;&#x4ED6;&#x51E0;&#x9879;&#x5C31;&#x4F1A;&#x6D88;&#x5931;&#xFF0C;&#x4EC5;&#x4FDD;&#x7559;<em>&#x9690;&#x85CF;&#x6CA1;&#x6709;&#x7FFB;&#x8BD1;&#x7684;&#x8BED;&#x8A00;</em>&#x548C;<em>&#x5F3A;&#x5236;&#x94FE;&#x63A5;&#x5230;&#x4E3B;&#x9875;</em>&#x3002;&#x6211;&#x8FD9;&#x91CC;&#x9009;&#x62E9;&#x663E;&#x793A;&#x8BED;&#x8A00;&#x540D;&#x79F0;&#x548C;&#x56FD;&#x65D7;&#x3002;</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmy4q6q7wkj30cn09omx4.jpg" width="60%"></p>
+<p>&#x7136;&#x540E;&#x56DE;&#x5230;&#x9996;&#x9875;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6211;&#x4EEC;&#x7684;&#x5C0F;&#x5DE5;&#x5177;&#x4E86;&#x3002;</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fmy4s9onudj307p03ymwy.jpg" alt=""></p>
+<h3 id="&#x7FFB;&#x8BD1;&#x754C;&#x9762;"><a name="&#x7FFB;&#x8BD1;&#x754C;&#x9762;" class="plugin-anchor" href="#&#x7FFB;&#x8BD1;&#x754C;&#x9762;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7FFB;&#x8BD1;&#x754C;&#x9762;</h3>
+<p>&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x521B;&#x5EFA;&#x597D;&#x4E86;&#x8BED;&#x8A00;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x9700;&#x8981;&#x624B;&#x52A8;&#x4E3A;&#x6587;&#x5B57;&#x63D0;&#x4F9B;&#x7FFB;&#x8BD1;&#x4E86;&#x3002;</p>
+<p>&#x5355;&#x51FB;&#x300C;&#x8BED;&#x8A00;&#x300D;|&#x300C;&#x5B57;&#x7B26;&#x4E32;&#x7FFB;&#x8BD1;&#x300D;&#x547D;&#x4EE4;&#xFF0C;&#x5C31;&#x4F1A;&#x8FDB;&#x5165;&#x5230;&#x7FFB;&#x8BD1;&#x7684;&#x754C;&#x9762;&#x3002;&#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06; WordPress &#x7AD9;&#x70B9;&#x672C;&#x8EAB;&#x7684;&#x5B57;&#x6BB5;&#x7FFB;&#x8BD1;&#x6210;&#x5404;&#x79CD;&#x8BED;&#x8A00;&#xFF0C;&#x4ECE;&#x800C;&#x4F7F;&#x5F97;&#x7AD9;&#x70B9;&#x7684;&#x754C;&#x9762;&#x80FD;&#x591F;&#x5339;&#x914D;&#x4E0D;&#x540C;&#x8BED;&#x8A00;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmyet8zlp7j315z0c6t93.jpg" alt=""></p>
+<h3 id="&#x7FFB;&#x8BD1;&#x6587;&#x7AE0;&#x548C;&#x9875;&#x9762;"><a name="&#x7FFB;&#x8BD1;&#x6587;&#x7AE0;&#x548C;&#x9875;&#x9762;" class="plugin-anchor" href="#&#x7FFB;&#x8BD1;&#x6587;&#x7AE0;&#x548C;&#x9875;&#x9762;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7FFB;&#x8BD1;&#x6587;&#x7AE0;&#x548C;&#x9875;&#x9762;</h3>
+<p>&#x867D;&#x7136;&#x73B0;&#x5728;&#x7FFB;&#x8BD1;&#x5B8C;&#x4E86;&#x754C;&#x9762;&#xFF0C;&#x4F46;&#x662F;&#x771F;&#x6B63;&#x7684;&#x91CD;&#x5934;&#x620F;&#x6587;&#x7AE0;&#x8FD8;&#x6CA1;&#x6709;&#x7FFB;&#x8BD1;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x4EE5;&#x6587;&#x7AE0;&#x4E3A;&#x4F8B;&#xFF0C;&#x6765;&#x8BF4;&#x660E;&#x8FD9;&#x90E8;&#x5206;&#x4E3B;&#x8981;&#x5185;&#x5BB9;&#x7684;&#x7FFB;&#x8BD1;&#x3002;</p>
+<p>Polylang &#x5C06;&#x7AD9;&#x70B9;&#x5185;&#x5BB9;&#x6839;&#x636E;&#x8BED;&#x8A00;&#x7684;&#x4E0D;&#x540C;&#xFF0C;&#x5212;&#x5206;&#x4E86;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x4F53;&#x7CFB;&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x8FD9;&#x91CC;&#x662F;&#x4E2D;&#x6587;&#x548C;&#x82F1;&#x6587;&#xFF0C;&#x6211;&#x7684;&#x6587;&#x7AE0;&#x3001;&#x76EE;&#x5F55;&#x3001;&#x6807;&#x7B7E;&#xFF0C;&#x4E24;&#x79CD;&#x8BED;&#x8A00;&#x5404;&#x81EA;&#x6709;&#x4E00;&#x5957;&#xFF0C;&#x4E92;&#x4E0D;&#x5E72;&#x6270;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x5728;&#x4F7F;&#x7528;&#x65F6;&#x4E5F;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x4E24;&#x4E2A;&#x8BED;&#x8A00;&#x7248;&#x672C;&#x7684;&#x76EE;&#x5F55;&#x3001;&#x6807;&#x7B7E;&#x7684;&#x5EFA;&#x7ACB;&#x3002;</p>
+<p>&#x76EE;&#x5F55;&#x548C;&#x6807;&#x7B7E;&#x7684;&#x5EFA;&#x7ACB;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x5355;&#x51FB;&#x300C;&#x6587;&#x7AE0;&#x300D;|&#x300C;&#x5206;&#x7C7B;&#x76EE;&#x5F55;&#x300D;&#x547D;&#x4EE4;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x5165;&#x5230;&#x76EE;&#x5F55;&#x7684;&#x9875;&#x9762;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x9875;&#x9762;&#xFF0C;&#x8FDB;&#x884C;&#x76EE;&#x5F55;&#x7684;&#x521B;&#x5EFA;&#x3002;</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmyf5rrw25j30h90k7dg4.jpg" width="60%"></p>
+<p>&#x76EE;&#x5F55;&#x521B;&#x5EFA;&#x7684;&#x5176;&#x4ED6;&#x90E8;&#x5206;&#x548C;&#x4E4B;&#x524D;&#x90FD;&#x4E00;&#x6837;&#xFF0C;&#x8FD9;&#x6837;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x300C;&#x8BED;&#x8A00;&#x300D;&#x548C;&#x300C;&#x7FFB;&#x8BD1;&#x300D;&#xFF0C;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;&#x8BED;&#x8A00;&#xFF0C;&#x800C;&#x4E0D;&#x5728;&#x521B;&#x5EFA;&#x65F6;&#x6DFB;&#x52A0;&#xFF0C;&#x53EA;&#x662F;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x6211;&#x4EEC;&#x5C06;&#x4E0D;&#x540C;&#x7684;&#x76EE;&#x5F55;&#x4E32;&#x8054;&#x8D77;&#x6765;&#x3002;</p>
+<p>&#x9009;&#x62E9;&#x300C;&#x8BED;&#x8A00;&#x300D;&#x4E0B;&#x62C9;&#x6846;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x6211;&#x4EEC;&#x76EE;&#x524D;&#x521B;&#x5EFA;&#x7684;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x4EE5;&#x54EA;&#x4E2A;&#x8BED;&#x8A00;&#x4E3A;&#x4E3B;&#xFF0C;&#x7FFB;&#x8BD1;&#x5219;&#x6682;&#x65F6;&#x7559;&#x7A7A;&#x3002;</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmyf89ohjuj30vo07jdfr.jpg" alt=""></p>
+<p>&#x5728;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6211;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A; GitChat &#x76EE;&#x5F55;&#xFF0C;&#x800C;&#x6D4B;&#x8BD5;&#x548C; Test &#x76EE;&#x5F55;&#x5219;&#x662F;&#x4E4B;&#x524D;&#x521B;&#x5EFA;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x76EE;&#x5F55;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x5728;&#x4E0D;&#x540C;&#x8BED;&#x8A00;&#x4E0B;&#x7684;&#x5C55;&#x793A;&#x3002;</p>
+<p>&#x5728;&#x7EA2;&#x8272;&#x6846;&#x4E2D;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x663E;&#x793A;&#x4E00;&#x4E2A;&#x5BF9;&#x52FE;&#x7684;&#xFF0C;&#x5219;&#x8BF4;&#x660E;&#x5F53;&#x524D;&#x7684;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x7684;&#x4E3B;&#x8981;&#x8BED;&#x8A00;&#x662F;&#x54EA;&#x4E2A;&#xFF0C;&#x6BD4;&#x5982; GitChat &#x76EE;&#x5F55;&#x7684;&#x4E3B;&#x8981;&#x8BED;&#x8A00;&#x662F;&#x4E2D;&#x6587;&#xFF0C;&#x6D4B;&#x8BD5;&#x76EE;&#x5F55;&#x7684;&#x4E3B;&#x8981;&#x8BED;&#x8A00;&#x4E5F;&#x662F;&#x4E2D;&#x6587;&#xFF0C;Test &#x76EE;&#x5F55;&#x7684;&#x4E3B;&#x8981;&#x8BED;&#x8A00;&#x5219;&#x662F;&#x82F1;&#x6587;&#x3002;</p>
+<p>&#x663E;&#x793A;&#x56FE;&#x6807;&#x4E3A;&#x4E00;&#x4E2A;&#x94C5;&#x7B14;&#xFF0C;&#x5219;&#x8BF4;&#x660E;&#x8FD9;&#x4E2A;&#x8BED;&#x8A00;&#x5DF2;&#x7ECF;&#x521B;&#x5EFA;&#x4E86;&#xFF0C;&#x5355;&#x51FB;&#x8FD9;&#x4E2A;&#x94B1;&#x5305;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x5BF9;&#x5E94;&#x8BED;&#x8A00;&#x7684;&#x76EE;&#x5F55;&#x3002;</p>
+<p>&#x663E;&#x793A;&#x56FE;&#x6807;&#x4E3A;&#x4E00;&#x4E2A;&#x52A0;&#x53F7;&#xFF0C;&#x5219;&#x8BF4;&#x660E;&#x6211;&#x4EEC;&#x8FD8;&#x6CA1;&#x6709;&#x4E3A;&#x8FD9;&#x4E2A;&#x8BED;&#x8A00;&#x521B;&#x5EFA;&#x5BF9;&#x5E94;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x70B9;&#x51FB;&#x52A0;&#x53F7;&#xFF0C;&#x6765;&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x53EA;&#x9700;&#x8981;&#x586B;&#x5199;&#x76EE;&#x5F55;&#x7684;&#x540D;&#x79F0;&#x3001;&#x522B;&#x540D;&#x548C;&#x56FE;&#x50CF;&#x63CF;&#x8FF0;&#x5373;&#x53EF;&#xFF0C;PolyLang &#x4F1A;&#x81EA;&#x52A8;&#x628A;&#x4E24;&#x4E2A;&#x76EE;&#x5F55;&#x5173;&#x8054;&#x8D77;&#x6765;&#xFF0C;&#x975E;&#x5E38;&#x7684;&#x65B9;&#x4FBF;&#x3002;</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmyfbsx5cgj30gd0jm74l.jpg" width="60%"></p>
+<p>&#x6807;&#x7B7E;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x7C7B;&#x4F3C;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x518D;&#x8D58;&#x8FF0;&#x4E86;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x6765;&#x7FFB;&#x8BD1;&#x6587;&#x7AE0;&#xFF0C;&#x5355;&#x51FB;&#x300C;&#x6587;&#x7AE0;&#x300D;|&#x300C;&#x6240;&#x6709;&#x6587;&#x7AE0;&#x300D;&#x547D;&#x4EE4;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x5165;&#x6587;&#x7AE0;&#x5217;&#x8868;&#x3002;</p>
+<p>&#x5728;&#x6587;&#x7AE0;&#x5217;&#x8868;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x548C;&#x76EE;&#x5F55;&#x9875;&#x9762;&#x4E00;&#x6837;&#x7684;&#x6309;&#x94AE;&#xFF0C;&#x8FD9;&#x4E2A;&#x6309;&#x94AE;&#x63D0;&#x793A;&#x4E86;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x7684;&#x4E3B;&#x8BED;&#x8A00;&#x662F;&#x4EC0;&#x4E48;&#x3001;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x6709;&#x4E86;&#x5BF9;&#x5E94;&#x8BED;&#x8A00;&#x7684;&#x7FFB;&#x8BD1;&#x3002;</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmyfpnwy84j30bd08la9w.jpg" alt=""></p>
+<p>&#x548C;&#x76EE;&#x5F55;&#x64CD;&#x4F5C;&#x4E00;&#x6837;&#xFF0C;&#x70B9;&#x51FB;&#x52A0;&#x53F7;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4E3A;&#x67D0;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x521B;&#x5EFA;&#x7279;&#x5B9A;&#x8BED;&#x8A00;&#x7684;&#x6587;&#x7AE0;&#x3002;</p>
+<p>&#x5728;&#x6DFB;&#x52A0;&#x6587;&#x7AE0;&#x65F6;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x6CE8;&#x610F;&#x5230;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x76EE;&#x5F55;&#x53EA;&#x6709;&#x4EE5;&#x5F53;&#x524D;&#x8BED;&#x8A00;&#x4E3A;&#x9ED8;&#x8BA4;&#x8BED;&#x8A00;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x6211;&#x4EEC;&#x4E3A;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x6D4B;&#x8BD5;&#x7684;&#x76EE;&#x5F55;&#x662F;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#xFF0C;&#x4E5F;&#x4ECE;&#x53E6;&#x4E00;&#x4E2A;&#x65B9;&#x9762;&#x5370;&#x8BC1;&#x4E86;&#x4E4B;&#x524D;&#x8BF4;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmyfrg2fkyj308o0b1q2u.jpg" width="40%"></p>
+<p>&#x8F93;&#x5165;&#x6587;&#x7AE0;&#x5185;&#x5BB9;&#xFF0C;&#x5355;&#x51FB;&#x201C;&#x53D1;&#x5E03;&#x201D;&#x6309;&#x94AE;&#xFF0C;&#x5373;&#x53EF;&#x53D1;&#x5E03;&#x4E00;&#x6761;&#x65B0;&#x7684;&#x6587;&#x7AE0;&#x3002;&#x56DE;&#x5230;&#x6587;&#x7AE0;&#x5217;&#x8868;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x65B0;&#x7684;&#x6587;&#x7AE0;&#x4E86;&#x3002;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmyfsy4d38j30ax08ldfn.jpg" width="50%"></p>
+<p>&#x540C;&#x65F6;&#xFF0C;&#x8FD9;&#x4E24;&#x7BC7;&#x6587;&#x7AE0;&#x7684;&#x5BF9;&#x5E94;&#x7684;&#x56FE;&#x6807;&#x4E5F;&#x4ECE;&#x52A0;&#x53F7;&#x5207;&#x6362;&#x4E3A;&#x4E50;&#x94C5;&#x7B14;&#x3002;</p>
+<p>&#x8FD9;&#x6837;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x5BF9;&#x5DF2;&#x6709;&#x5185;&#x5BB9;&#x7684;&#x5904;&#x7406;&#x3002;&#x5982;&#x679C;&#x60F3;&#x8981;&#x53D1;&#x5E03;&#x65B0;&#x7684;&#x6587;&#x7AE0;&#xFF0C;&#x8FC7;&#x7A0B;&#x5927;&#x4F53;&#x7C7B;&#x4F3C;&#xFF0C;&#x5148;&#x521B;&#x5EFA;&#x4F60;&#x7684;&#x4E3B;&#x8981;&#x8BED;&#x8A00;&#x7684;&#x6587;&#x7AE0;&#xFF0C;&#x518D;&#x521B;&#x5EFA;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x7684;&#x6587;&#x7AE0;&#x5373;&#x53EF;&#x3002;</p>
+<h3 id="&#x5904;&#x7406;&#x83DC;&#x5355;&#x9879;"><a name="&#x5904;&#x7406;&#x83DC;&#x5355;&#x9879;" class="plugin-anchor" href="#&#x5904;&#x7406;&#x83DC;&#x5355;&#x9879;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5904;&#x7406;&#x83DC;&#x5355;&#x9879;</h3>
+<p>&#x7531;&#x4E8E;&#x662F;&#x53CC;&#x8BED;&#x7AD9;&#x70B9;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x6709;&#x83DC;&#x5355;&#x9879;&#xFF0C;&#x83DC;&#x5355;&#x9879;&#x4E5F;&#x5E94;&#x8BE5;&#x662F;&#x5BF9;&#x5E94;&#x4E0D;&#x540C;&#x7684;&#x3002;</p>
+<p>&#x8FDB;&#x5165;&#x5230;&#x83DC;&#x5355;&#x9879;&#x4E2D;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x83DC;&#x5355;&#x4F4D;&#x7F6E;&#x53D8;&#x6210;&#x4E86;&#x4E24;&#x4E2A;&#xFF0C;&#x6BCF;&#x4E2A;&#x8BED;&#x8A00;&#x5404;&#x6709;&#x4E00;&#x4EFD;&#x3002;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmyfxl10f1j305v01w0si.jpg" alt=""></p>
+<p>&#x6839;&#x636E;&#x4F60;&#x7684;&#x8BED;&#x8A00;&#xFF0C;&#x8BBE;&#x7F6E;&#x5BF9;&#x5E94;&#x7684;&#x8BED;&#x8A00;&#x7684;&#x83DC;&#x5355;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x4ED6;&#x4EEC;&#x653E;&#x5728;&#x5BF9;&#x5E94;&#x7684;&#x83DC;&#x5355;&#x4F4D;&#x7F6E;&#x4E0A;&#x5373;&#x53EF;&#x3002;</p>
+<h3 id="&#x63D2;&#x4EF6;&#x8BBE;&#x7F6E;&#x9879;"><a name="&#x63D2;&#x4EF6;&#x8BBE;&#x7F6E;&#x9879;" class="plugin-anchor" href="#&#x63D2;&#x4EF6;&#x8BBE;&#x7F6E;&#x9879;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x63D2;&#x4EF6;&#x8BBE;&#x7F6E;&#x9879;</h3>
+<p>&#x63D2;&#x4EF6;&#x9ED8;&#x8BA4;&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x8BBE;&#x7F6E;&#x9879;&#xFF0C;&#x4E4B;&#x540E;&#x6765;&#x5177;&#x4F53;&#x8BF4;&#x4E00;&#x8BF4;&#xFF0C;PolyLang &#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x8FD9;&#x4E9B;&#x8BBE;&#x7F6E;&#x9879;&#x3002;</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmyg0gubyvj30qg0o50tl.jpg" width="80%"></p>
+<p>&#x5728; URL &#x4FEE;&#x6539;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x6587;&#x7AE0;/&#x9875;&#x9762;&#x7684;&#x94FE;&#x63A5;&#x89C4;&#x5219;&#xFF1A;</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fmyg16ar17j30wn08xmxg.jpg" alt=""></p>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x9009;&#x62E9;&#x7B2C;&#x4E8C;&#x4E2A;&#x548C;&#x6216;&#x8005;&#x7B2C;&#x4E09;&#x4E2A;&#x3002;&#x5982;&#x679C;&#x4F60;&#x5728;&#x540C;&#x4E00;&#x53F0;&#x865A;&#x62DF;&#x4E3B;&#x673A;&#x4E0A;&#x7ED1;&#x5B9A;&#x4E86;&#x591A;&#x4E2A;&#x57DF;&#x540D;&#xFF0C;&#x5219;&#x4F7F;&#x7528;&#x7B2C;&#x4E09;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x5C06;&#x6240;&#x6709;&#x4F60;&#x7528;&#x5230;&#x7684;&#x57DF;&#x540D;&#x7ED1;&#x5B9A;&#x5728;&#x8FD9;&#x91CC;&#xFF1B;&#x5982;&#x679C;&#x4F60;&#x7684;&#x865A;&#x62DF;&#x4E3B;&#x673A;&#x53EA;&#x5141;&#x8BB8;&#x7ED1;&#x5B9A;&#x4E00;&#x4E2A;&#x57DF;&#x540D;&#xFF0C;&#x5219;&#x9009;&#x62E9;&#x7B2C;&#x4E8C;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x7B2C;&#x56DB;&#x4E2A;&#x9009;&#x9879;&#x548C;&#x7B2C;&#x4E09;&#x4E2A;&#x9009;&#x9879;&#x64CD;&#x4F5C;&#x7684;&#x8981;&#x6C42;&#x662F;&#x4E00;&#x81F4;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x4F60;&#x7684;&#x4E3B;&#x673A;&#x80FD;&#x591F;&#x7ED1;&#x5B9A;&#x591A;&#x4E2A;&#x57DF;&#x540D;&#x3002;&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x5927;&#x90E8;&#x5206;&#x65F6;&#x5019;&#x90FD;&#x4E0D;&#x4F1A;&#x4F7F;&#x7528;&#x591A;&#x4E2A;&#x57DF;&#x540D;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x4E0D;&#x518D;&#x8BF4;&#x660E;&#xFF0C;&#x4E0D;&#x8FC7;&#x5982;&#x679C;&#x4F60;&#x4F7F;&#x7528;&#xFF0C;&#x5176;&#x8BBE;&#x7F6E;&#x4E5F;&#x662F;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x7684;&#xFF0C;&#x586B;&#x5199;&#x5BF9;&#x5E94;&#x57DF;&#x540D;&#x5373;&#x53EF;&#x3002;</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fmyg3k7ed1j30gd05mt8m.jpg" alt=""></p>
+<p>&#x4E4B;&#x6240;&#x4EE5;&#x63A8;&#x8350;&#x5927;&#x5BB6;&#x4F7F;&#x7528;&#x540E;&#x9762;&#x51E0;&#x79CD;&#x800C;&#x4E0D;&#x662F;&#x7B2C;&#x4E00;&#x79CD;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x94FE;&#x63A5;&#x5185;&#x5BB9;&#x4E2D;&#x6709;&#x4E86;&#x8BED;&#x8A00;&#x4FE1;&#x606F;&#xFF0C;&#x7528;&#x6237;&#x5C31;&#x53EF;&#x4EE5;&#x5C06;&#x7AD9;&#x70B9;&#x4FDD;&#x5B58;&#x5728;&#x4E66;&#x7B7E;&#x4E2D;&#xFF0C;&#x800C;&#x65E0;&#x9700;&#x6BCF;&#x6B21;&#x90FD;&#x624B;&#x52A8;&#x5207;&#x6362;&#x81F3;&#x67D0;&#x4E2A;&#x7279;&#x5B9A;&#x7684;&#x8BED;&#x8A00;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x53F3;&#x4FA7;&#x7684;&#x8BBE;&#x7F6E;&#x9879;&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x9690;&#x85CF;&#x9ED8;&#x8BA4;&#x8BED;&#x8A00;&#x7684; url &#x4FE1;&#x606F;&#xFF0C;&#x662F;&#x6307;&#x5BF9;&#x4E8E;&#x9ED8;&#x8BA4;&#x8BED;&#x8A00;&#x662F;&#x5426;&#x4E5F;&#x663E;&#x793A;&#x540E;&#x9762;&#x7684;&#x8BED;&#x8A00;&#x540E;&#x7F00;&#x3002;&#x800C;&#x4E0B;&#x9762;&#x7684;&#x9009;&#x9879;&#xFF0C;&#x5219;&#x662F;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5728;&#x94FE;&#x63A5;&#x4E2D;&#x663E;&#x793A; language&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x5C3D;&#x53EF;&#x80FD;&#x4E0D;&#x663E;&#x793A;&#xFF0C;&#x4EE5;&#x51CF;&#x5C11; URL &#x7684;&#x957F;&#x5EA6;&#x3002;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmyg5d982nj30ab059t8n.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmyg6ut1c4j30nm03qgli.jpg" alt=""></p>
+<p>&#x4E0B;&#x65B9;&#x7684;&#x68C0;&#x6D4B;&#x6D4F;&#x89C8;&#x5668;&#x8BED;&#x8A00;&#x548C;&#x5A92;&#x4F53;&#x9ED8;&#x8BA4;&#x5F00;&#x542F;&#xFF0C;&#x6211;&#x4E5F;&#x63A8;&#x8350;&#x5927;&#x5BB6;&#x5F00;&#x542F;&#xFF0C;&#x8FD9;&#x6837;&#x7AD9;&#x70B9;&#x7684;&#x4F53;&#x9A8C;&#x4F1A;&#x66F4;&#x597D;&#xFF0C;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x65F6;&#x4F1A;&#x81EA;&#x52A8;&#x5207;&#x6362;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x8BED;&#x8A00;&#x3002;</p>
+<p>&#x5728;&#x540C;&#x6B65;&#x8FD9;&#x91CC;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x6211;&#x4EEC;&#x7684;&#x6587;&#x7AE0;&#x9700;&#x4E0D;&#x9700;&#x8981;&#x540C;&#x6B65;&#x4E00;&#x4E9B;&#x72B6;&#x6001;&#xFF08;Meta Data&#xFF09;&#xFF0C;&#x7531;&#x4E8E;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x8BED;&#x8A00;&#x4E0B;&#xFF0C;&#x53EF;&#x80FD;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x53D1;&#x5E03;&#x7B56;&#x7565;&#xFF0C;&#x8FD9;&#x91CC;&#x63A8;&#x8350;&#x4E0D;&#x9009;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x5982;&#x679C;&#x53D1;&#x5E03;&#x7B56;&#x7565;&#x662F;&#x4E0D;&#x540C;&#x8BED;&#x8A00;&#x6587;&#x7AE0;&#x7684;&#x5404;&#x9879;&#x5C5E;&#x6027;&#x76F8;&#x540C;&#xFF0C;&#x540C;&#x671F;&#x53D1;&#x5E03;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x52FE;&#x9009;&#x8981;&#x540C;&#x6B65;&#x7684;&#x9879;&#x76EE;&#x3002;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmyg7pmuevj313r04p0so.jpg" alt=""></p>
+<p>WPML &#x517C;&#x5BB9;&#x6027;&#x63D0;&#x4F9B;&#x4E86; PolyLang &#x5BF9; WPML &#x7684;&#x517C;&#x5BB9;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x591A;&#x8BF4;&#x4E86;&#x3002;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmygacoojdj30mo01lq2q.jpg" alt=""></p>
+<p>&#x5BF9;&#x4E8E;&#x5DE5;&#x5177;&#x9009;&#x9879;&#x6765;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x662F;&#x5728;&#x4E5F;&#x4E0D;&#x6253;&#x7B97;&#x7528;&#x8FD9;&#x6B3E;&#x63D2;&#x4EF6;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x8981;&#x52FE;&#x9009;&#xFF0C;&#x8FD9;&#x6837;&#x5378;&#x8F7D;&#x4E86;&#x63D2;&#x4EF6;&#xFF0C;&#x6570;&#x636E;&#x8FD8;&#x5728;&#xFF0C;&#x540E;&#x7EED;&#x8FD8;&#x53EF;&#x4EE5;&#x5B89;&#x88C5;&#x4E0A;&#x63D2;&#x4EF6;&#xFF0C;&#x7EE7;&#x7EED;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#x5982;&#x679C;&#x4F60;&#x7684;&#x7FFB;&#x8BD1;&#x5185;&#x5BB9;&#x592A;&#x70C2;&#xFF0C;&#x60F3;&#x91CD;&#x5EFA;&#x4E00;&#x4EFD;&#x7FFB;&#x8BD1;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5148;&#x52FE;&#x9009;&#x8FD9;&#x91CC;&#x9009;&#x9879;&#xFF0C;&#x518D;&#x5220;&#x9664;&#x63D2;&#x4EF6;&#x3002;</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fmygaxkwoxj30jv03va9x.jpg" alt=""></p>
+<h3 id="lingotek"><a name="lingotek" class="plugin-anchor" href="#lingotek"><i class="fa fa-link" aria-hidden="true"></i></a>Lingotek</h3>
+<p>Lingotek &#x6574;&#x5408;&#x4E86;&#x4E00;&#x4E9B;&#x7FFB;&#x8BD1;&#x670D;&#x52A1;&#xFF0C;&#x53EF;&#x4EE5;&#x501F;&#x52A9;&#x8FD9;&#x4E9B;&#x7FFB;&#x8BD1;&#x670D;&#x52A1;&#xFF0C;&#x5B9E;&#x73B0;&#x5185;&#x5BB9;&#x7684;&#x81EA;&#x52A8;&#x5316;&#x7FFB;&#x8BD1;&#xFF0C;&#x800C;&#x65E0;&#x9700;&#x81EA;&#x5DF1;&#x4EBA;&#x5DE5;&#x7FFB;&#x8BD1;&#x3002;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmygckg9kgj30zu0jqjt9.jpg" width="80%"></p>
+<p>&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x9700;&#x8981;&#x6765;&#x5F00;&#x542F;&#x5BF9;&#x5E94;&#x7684;&#x670D;&#x52A1;&#x3002;</p>
+<p>&#x5355;&#x51FB;&#x201C;&#x6FC0;&#x6D3B;&#x201D;&#x6309;&#x94AE;&#x540E;&#xFF0C;&#x4F1A;&#x4E3A;&#x4F60;&#x5B89;&#x88C5;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x63D2;&#x4EF6;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x63D2;&#x4EF6;&#x4E2D;&#x94FE;&#x63A5;&#x4F60;&#x7684; Lingotek &#x670D;&#x52A1;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x673A;&#x5668;&#x7FFB;&#x8BD1;&#x4E86;&#x3002;</p>
+<h3 id="&#x603B;&#x7ED3;"><a name="&#x603B;&#x7ED3;" class="plugin-anchor" href="#&#x603B;&#x7ED3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x603B;&#x7ED3;</h3>
+<p>&#x7ECF;&#x8FC7;&#x8FD9;&#x8282;&#x8BFE;&#xFF0C;&#x6211;&#x4EEC;&#x5B66;&#x4E60;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528; PolyLang &#x6765;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x53CC;&#x8BED;&#x7AD9;&#x70B9;&#xFF0C;&#x5BF9;&#x4E8E;&#x9700;&#x8981;&#x505A;&#x5916;&#x8D38;&#x7F51;&#x7AD9;&#x3001;&#x591A;&#x8BED;&#x8A00;&#x5E73;&#x53F0;&#x7684;&#x4F60;&#x6765;&#x8BF4;&#xFF0C;&#x6216;&#x8BB8;&#x6709;&#x6240;&#x5E2E;&#x52A9;&#x3002;</p>
+<p>&#x81F3;&#x6B64;&#xFF0C;&#x8FBE;&#x4EBA;&#x8BFE;&#x7684;&#x4E3B;&#x8981;&#x5185;&#x5BB9;&#x5C31;&#x66F4;&#x65B0;&#x5B8C;&#x6574;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x770B;&#x8FBE;&#x4EBA;&#x8BFE;&#x65F6;&#x6709;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF0C;&#x6B22;&#x8FCE;&#x5230;&#x8BFB;&#x8005;&#x5708;&#x6765;&#x548C;&#x6211;&#x4E00;&#x8D77;&#x8BA8;&#x8BBA;&#xFF0C;&#x540E;&#x7EED;&#x6211;&#x4E5F;&#x5C06;&#x6839;&#x636E;&#x8BFB;&#x8005;&#x5708;&#x7684;&#x63D0;&#x95EE;&#x60C5;&#x51B5;&#xFF0C;&#x66F4;&#x65B0;&#x4E00;&#x4E9B;&#x65B0;&#x7684;&#x8BFE;&#x7A0B;&#x51FA;&#x6765;&#x3002;</p>
+<p>&#x6700;&#x540E;&#xFF0C;&#x611F;&#x8C22;&#x8D2D;&#x4E70;&#xFF0C;&#x795D;&#x5B66;&#x4E60;&#x6109;&#x5FEB;~</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="wpml.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 2 使用 WPML 插件建设一个多语言站点">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"3 使用 Polylang 插件建设一个多语言站点","level":"1.8.3","depth":2,"next":{"title":"实战","level":"1.9","depth":1,"ref":"","articles":[{"title":"1 WordPress 数据库操作 WPDB 指南","level":"1.9.1","depth":2,"path":"opt/wpdb.md","ref":"opt/wpdb.md","articles":[]},{"title":"2 动手开发插件： Custom Author 插件开发实战","level":"1.9.2","depth":2,"path":"opt/custom-author.md","ref":"opt/custom-author.md","articles":[]},{"title":"3 轻松玩转 WP：如何使用 WordPress 的邮件发文功能","level":"1.9.3","depth":2,"path":"opt/sendmail.md","ref":"opt/sendmail.md","articles":[]}]},"previous":{"title":"2 使用 WPML 插件建设一个多语言站点","level":"1.8.2","depth":2,"path":"i18n/wpml.md","ref":"i18n/wpml.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","ga","anchors","edit-link","sitemap-general","disqus"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"easywpbook"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"http://easywpbook.com/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-comscore":{},"ga":{"configuration":"auto","token":"UA-47834775-10"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"参与本书贡献","base":"https://github.com/bestony/EasyWordPressBook/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"人人都能学会的 WordPress 实战课","links":{"sidebar":{"作者博客":"https://www.ixiqin.com","联系作者":"mailto:xiqingongzi+easywp@gmail.com"}},"gitbook":"*","description":"一本从零开始教你学习 WordPress ，带你从入门，到精通。"},"file":{"path":"i18n/polylang.md","mtime":"2019-03-10T10:35:43.375Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-10T10:36:42.226Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

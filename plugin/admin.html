@@ -1,0 +1,1149 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>4 WP 插件后台设计与开发 · 人人都能学会的 WordPress 实战课</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="create-widget.html" />
+    
+    
+    <link rel="prev" href="create.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.ixiqin.com" target="_blank" class="custom-link">作者博客</a>
+        </li>
+    
+        
+        <li>
+            <a href="mailto:xiqingongzi+easywp@gmail.com" target="_blank" class="custom-link">联系作者</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    本书介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../intro.html">
+            
+                <a href="../intro.html">
+            
+                    
+                    1 导读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../deployment.html">
+            
+                <a href="../deployment.html">
+            
+                    
+                    2 部署 WordPress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../development-env.html">
+            
+                <a href="../development-env.html">
+            
+                    
+                    3 WP 的环境配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    WordPress 使用
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../basic-usage.html">
+            
+                <a href="../basic-usage.html">
+            
+                    
+                    1 WP 基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../basic-config.html">
+            
+                <a href="../basic-config.html">
+            
+                    
+                    2 WP 基本设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../basic-plugin-1.html">
+            
+                <a href="../basic-plugin-1.html">
+            
+                    
+                    3 WP 常用插件使用说明（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../basic-plugin-2.html">
+            
+                <a href="../basic-plugin-2.html">
+            
+                    
+                    4 WP 常用插件使用说明（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../resources.html">
+            
+                <a href="../resources.html">
+            
+                    
+                    5 WP 相关资源站点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../optimize-1.html">
+            
+                <a href="../optimize-1.html">
+            
+                    
+                    6 WP 站点性能优化 （一）：动静分离
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../optimize-2.html">
+            
+                <a href="../optimize-2.html">
+            
+                    
+                    7 WP 站点性能优化 （二）：服务器优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../optimize-3.html">
+            
+                <a href="../optimize-3.html">
+            
+                    
+                    8 WP 站点性能优化 （三）：WordPress 缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../optimize-4.html">
+            
+                <a href="../optimize-4.html">
+            
+                    
+                    9 WP 站点性能优化 （四）：程序优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../security.html">
+            
+                <a href="../security.html">
+            
+                    
+                    10 WP 安全固化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    WordPress 主题
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../theme/usage.html">
+            
+                <a href="../theme/usage.html">
+            
+                    
+                    1 WP 主题使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../theme/intro.html">
+            
+                <a href="../theme/intro.html">
+            
+                    
+                    2 WP 主题开发：快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../theme/struct.html">
+            
+                <a href="../theme/struct.html">
+            
+                    
+                    3 WP 主题开发：文件结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../theme/custom-page.html">
+            
+                <a href="../theme/custom-page.html">
+            
+                    
+                    4 WP 主题开发：一些特殊的页面
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../theme/options-framework.html">
+            
+                <a href="../theme/options-framework.html">
+            
+                    
+                    5 WP 主题开发：接入 Options Framework
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../theme/tips.html">
+            
+                <a href="../theme/tips.html">
+            
+                    
+                    6 WP 主题开发：一些 WordPress 开发的小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../theme/uploads.html">
+            
+                <a href="../theme/uploads.html">
+            
+                    
+                    7 WP 主题开发：提交主题到 WordPress 官方仓库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    WordPress 插件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="usage.html">
+            
+                <a href="usage.html">
+            
+                    
+                    1 WP 插件使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="run.html">
+            
+                <a href="run.html">
+            
+                    
+                    2 WP 插件的运行机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="create.html">
+            
+                <a href="create.html">
+            
+                    
+                    3 WP 插件的创建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.4" data-path="admin.html">
+            
+                <a href="admin.html">
+            
+                    
+                    4 WP 插件后台设计与开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="create-widget.html">
+            
+                <a href="create-widget.html">
+            
+                    
+                    5 开发一个 WordPress Widget
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="create-shortcode.html">
+            
+                <a href="create-shortcode.html">
+            
+                    
+                    6 开发一个短代码插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="uploads.html">
+            
+                <a href="uploads.html">
+            
+                    
+                    7 提交你的插件到 WordPress 官方仓库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    多语言
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../i18n/theme.html">
+            
+                <a href="../i18n/theme.html">
+            
+                    
+                    1 WP 主题开发：为你的主题/插件实现国际化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../i18n/wpml.html">
+            
+                <a href="../i18n/wpml.html">
+            
+                    
+                    2 使用 WPML 插件建设一个多语言站点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../i18n/polylang.html">
+            
+                <a href="../i18n/polylang.html">
+            
+                    
+                    3 使用 Polylang 插件建设一个多语言站点
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    实战
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../opt/wpdb.html">
+            
+                <a href="../opt/wpdb.html">
+            
+                    
+                    1 WordPress 数据库操作 WPDB 指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../opt/custom-author.html">
+            
+                <a href="../opt/custom-author.html">
+            
+                    
+                    2 动手开发插件： Custom Author 插件开发实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../opt/sendmail.html">
+            
+                <a href="../opt/sendmail.html">
+            
+                    
+                    3 轻松玩转 WP：如何使用 WordPress 的邮件发文功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    答疑
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../qa/20171130.html">
+            
+                <a href="../qa/20171130.html">
+            
+                    
+                    答疑 20171130
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../qa/20171201.html">
+            
+                <a href="../qa/20171201.html">
+            
+                    
+                    答疑 20171201
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../qa/20171206.html">
+            
+                <a href="../qa/20171206.html">
+            
+                    
+                    答疑 20171206
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../qa/20171216.html">
+            
+                <a href="../qa/20171216.html">
+            
+                    
+                    答疑 20171216
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >4 WP 插件后台设计与开发</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x63D2;&#x4EF6;&#x540E;&#x53F0;&#x7684;&#x8BBE;&#x8BA1;&#x4E0E;&#x5F00;&#x53D1;"><a name="&#x63D2;&#x4EF6;&#x540E;&#x53F0;&#x7684;&#x8BBE;&#x8BA1;&#x4E0E;&#x5F00;&#x53D1;" class="plugin-anchor" href="#&#x63D2;&#x4EF6;&#x540E;&#x53F0;&#x7684;&#x8BBE;&#x8BA1;&#x4E0E;&#x5F00;&#x53D1;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x63D2;&#x4EF6;&#x540E;&#x53F0;&#x7684;&#x8BBE;&#x8BA1;&#x4E0E;&#x5F00;&#x53D1;</h2>
+<p>&#x5BF9;&#x4E8E;&#x7B80;&#x5355;&#x7684;&#x63D2;&#x4EF6;&#x6765;&#x8BF4;&#xFF0C;&#x53EF;&#x80FD;&#x65E0;&#x9700;&#x8BBE;&#x7F6E;&#xFF0C;&#x5B89;&#x88C5;&#x63D2;&#x4EF6;&#x540E;&#x542F;&#x7528;&#x529F;&#x80FD;&#x5373;&#x53EF;&#x3002;&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x4E00;&#x4E9B;&#x529F;&#x80FD;&#x66F4;&#x590D;&#x6742;&#x7684;&#x63D2;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x9700;&#x8981;&#x4E3A;&#x63D2;&#x4EF6;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x540E;&#x53F0;&#x9875;&#x9762;&#x4E86;&#xFF0C;&#x8FD9;&#x8282;&#x8BFE;&#x6211;&#x4EEC;&#x6765;&#x5B66;&#x4E60;&#x5982;&#x4F55;&#x4E3A;&#x63D2;&#x4EF6;&#x8BBE;&#x8BA1;&#x3001;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x540E;&#x53F0;&#x3002;</p>
+<h3 id="&#x5B66;&#x4E60;&#x76EE;&#x6807;"><a name="&#x5B66;&#x4E60;&#x76EE;&#x6807;" class="plugin-anchor" href="#&#x5B66;&#x4E60;&#x76EE;&#x6807;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5B66;&#x4E60;&#x76EE;&#x6807;</h3>
+<p>&#x901A;&#x8FC7;&#x8FD9;&#x8282;&#x8BFE;&#x7684;&#x5B66;&#x4E60;&#x5C06;&#x4F1A;&#x4E3A; gitchat_copyright &#x63D2;&#x4EF6;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x540E;&#x53F0;&#x7BA1;&#x7406;&#x9875;&#x9762;&#x3002;</p>
+<h3 id="&#x6DFB;&#x52A0;&#x83DC;&#x5355;"><a name="&#x6DFB;&#x52A0;&#x83DC;&#x5355;" class="plugin-anchor" href="#&#x6DFB;&#x52A0;&#x83DC;&#x5355;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6DFB;&#x52A0;&#x83DC;&#x5355;</h3>
+<h4 id="&#x6DFB;&#x52A0;&#x83DC;&#x5355;&#x9879;&#x76EE;"><a name="&#x6DFB;&#x52A0;&#x83DC;&#x5355;&#x9879;&#x76EE;" class="plugin-anchor" href="#&#x6DFB;&#x52A0;&#x83DC;&#x5355;&#x9879;&#x76EE;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6DFB;&#x52A0;&#x83DC;&#x5355;&#x9879;&#x76EE;</h4>
+<h5 id="&#x6DFB;&#x52A0;&#x4E00;&#x7EA7;&#x83DC;&#x5355;"><a name="&#x6DFB;&#x52A0;&#x4E00;&#x7EA7;&#x83DC;&#x5355;" class="plugin-anchor" href="#&#x6DFB;&#x52A0;&#x4E00;&#x7EA7;&#x83DC;&#x5355;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6DFB;&#x52A0;&#x4E00;&#x7EA7;&#x83DC;&#x5355;</h5>
+<p>&#x65E2;&#x7136;&#x8981;&#x8BBE;&#x7F6E;&#x83DC;&#x5355;&#xFF0C;&#x6211;&#x4EEC;&#x80AF;&#x5B9A;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x5165;&#x53E3;&#x80FD;&#x591F;&#x8FDB;&#x5165;&#x5230;&#x63D2;&#x4EF6;&#x7684;&#x9875;&#x9762;&#x53BB;&#x3002;&#x5728;&#x4E0A;&#x8282;&#x8BFE;&#x5C1D;&#x8BD5;&#x4F7F;&#x7528; WordPress &#x81EA;&#x5DF1;&#x7684;&#x8BBE;&#x7F6E;&#x9875;&#x9762;&#x4F5C;&#x4E3A;&#x5165;&#x53E3;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x8282;&#x8BFE;&#x6211;&#x4EEC;&#x8981;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x6DFB;&#x52A0;&#x81EA;&#x5DF1;&#x7684;&#x83DC;&#x5355;&#x9879;&#x76EE;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x8981;&#x7528;&#x5230; <em>add_menu_page</em> &#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-php">add_menu_page( string $page_title, string $menu_title, string $capability, string $menu_slug, callable $function = <span class="hljs-string">&apos;&apos;</span>, string $icon_url = <span class="hljs-string">&apos;&apos;</span>, int $position = <span class="hljs-keyword">null</span> )
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x8FD9;7&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5404;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x542B;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>page_title&#xFF1A;&#x9875;&#x9762;&#x7684;&#x6807;&#x9898;&#xFF0C;&#x4F1A;&#x548C;<code>title</code>&#x6807;&#x7B7E;&#x5185;&#x663E;&#x793A;&#x7684;&#x4E00;&#x6837;&#x3002;</li>
+<li>menu_title&#xFF1A;&#x5728;&#x63A7;&#x5236;&#x9762;&#x677F;&#x4E2D;&#x663E;&#x793A;&#x7684;&#x83DC;&#x5355;&#x540D;&#x79F0;&#x3002;</li>
+<li>capability&#xFF1A;&#x663E;&#x793A;&#x8BE5;&#x64CD;&#x4F5C;&#x9879;&#x6240;&#x9700;&#x8981;&#x7684;&#x6700;&#x4F4E;&#x6743;&#x9650;&#x3002;&#x5177;&#x4F53;&#x6743;&#x9650;&#x53EF;&#x4EE5;&#x53C2;&#x8003; <a href="https://codex.wordpress.org/Roles_and_Capabilities" target="_blank">&#x5B98;&#x65B9;&#x6587;&#x6863;</a>&#x3002;</li>
+<li>menu_slug&#xFF1A;&#x83DC;&#x5355;&#x522B;&#x540D;&#xFF0C;&#x9700;&#x8981;&#x662F;&#x552F;&#x4E00;&#x7684;&#x3002;</li>
+<li>Function&#xFF1A;&#x663E;&#x793A;&#x8BE5;&#x9875;&#x9762;&#x5185;&#x5BB9;&#x65F6;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x3002;</li>
+<li>icon_url&#xFF1A;&#x83DC;&#x5355;&#x4E2D;&#x56FE;&#x6807;&#x7684; url&#x3002;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x9664;&#x4E86;&#x7C98;&#x8D34; url&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x7C98;&#x8D34; WordPress &#x5B98;&#x65B9;&#x7684; helper css&#xFF0C;&#x6BD4;&#x5982; <em>dashicons-chart-pie</em>&#xFF0C;&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x5728;<a href="https://developer.wordpress.org/resource/dashicons/" target="_blank">&#x8FD9;&#x91CC;</a>&#x627E;&#x5230;&#x3002;&#x6216;&#x8005;&#x662F; base64 &#x540E;&#x7684;&#x56FE;&#x6807;<code>data:image/svg+xml;base64</code>&#x3002;</li>
+<li>position&#xFF1A;&#x51FA;&#x73B0;&#x5728;&#x83DC;&#x5355;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x3002;&#x5177;&#x4F53;&#x7684; Position &#x53EF;&#x4EE5;&#x53C2;&#x8003; <a href="https://developer.wordpress.org/reference/functions/add_menu_page/#default-bottom-of-menu-structure" target="_blank">&#x5B98;&#x65B9;&#x8BF4;&#x660E;</a>&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x7684; position &#x5E94;&#x8BE5;&#x548C;&#x5B98;&#x65B9;&#x7684; position &#x4E0D;&#x540C;&#xFF0C;&#x907F;&#x514D;&#x51B2;&#x7A81;&#x3002;</li>
+</ul>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmwcxtkz8mj30710a7q2v.jpg" alt=""></p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x4E00;&#x7EA7;&#x83DC;&#x5355;&#x3002;</p>
+<p>&#x5728;&#x6211;&#x4EEC;&#x7684;&#x63D2;&#x4EF6;&#x5C3E;&#x90E8;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-comment">/**
+* &#x6CE8;&#x518C;&#x83DC;&#x5355;&#x9879;
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gitchat_copyright_custom_menu</span><span class="hljs-params">()</span></span>{
+  add_menu_page( 
+      <span class="hljs-string">&apos;Gitchat &#x7248;&#x6743;&#x63D2;&#x4EF6;&#x9996;&#x9875;&apos;</span>,
+      <span class="hljs-string">&apos;GitChat &#x7248;&#x6743;&#x63D2;&#x4EF6;&apos;</span>,
+      <span class="hljs-string">&apos;manage_options&apos;</span>,
+      <span class="hljs-string">&apos;gitchat_optionpage&apos;</span>,
+      <span class="hljs-string">&apos;gitchat_custom_page&apos;</span>,
+      <span class="hljs-string">&apos;dashicons-admin-generic&apos;</span>,
+      <span class="hljs-number">100</span>
+  ); 
+}
+add_action( <span class="hljs-string">&apos;admin_menu&apos;</span>, <span class="hljs-string">&apos;gitchat_copyright_custom_menu&apos;</span> );
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gitchat_custom_page</span><span class="hljs-params">()</span></span>{
+  <span class="hljs-meta">?&gt;</span>
+  &lt;h1&gt;GitChat &#x7248;&#x6743;&#x63D2;&#x4EF6;&#x6D4B;&#x8BD5;&lt;/h1&gt;
+  <span class="hljs-meta">&lt;?php</span>
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x9875;&#x9762; title &#x662F; <em>Gitchat &#x7248;&#x6743;&#x63D2;&#x4EF6;&#x9996;&#x9875;</em>&#xFF0C;&#x83DC;&#x5355;&#x540D;&#x4E3A; <em>GitChat &#x7248;&#x6743;&#x63D2;&#x4EF6;</em>&#xFF0C;&#x6743;&#x9650;&#x4E3A;<em>&#x7BA1;&#x7406;&#x5458;&#x6743;&#x9650;</em>&#xFF0C;&#x522B;&#x540D;&#x4E3A; <em>gitchat_optionpage</em> &#xFF0C;&#x56FE;&#x6807;&#x4E3A; <em>dashicons-admin-generic</em> &#xFF0C;&#x653E;&#x5728;&#x6240;&#x6709;&#x83DC;&#x5355;&#x5E95;&#x90E8;&#x7684;&#x63D2;&#x4EF6;&#x3002;</p>
+<p><strong>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x83DC;&#x5355;&#x7684;&#x6DFB;&#x52A0;&#x5FC5;&#x987B;&#x6302;&#x8F7D;&#x5728; <em>admin_menu</em> &#x8FD9;&#x4E2A; hook &#x4E0A;&#x624D;&#x884C;&#x3002;</strong> </p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmwcy3xpqtj304p0d3gli.jpg" alt=""></p>
+<p>&#x70B9;&#x51FB;&#x8FD9;&#x4E2A;&#x83DC;&#x5355;&#x9879;&#xFF0C;&#x5C31;&#x4F1A;&#x8FDB;&#x5165;&#x5230;&#x6211;&#x4EEC;&#x7684;&#x9875;&#x9762;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5B9A;&#x4E49;&#x7684;&#x9875;&#x9762;&#x5185;&#x5BB9;&#x3002;</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmwcyvly8aj30hw0d4aa2.jpg" width="70%"></p>
+<h5 id="&#x6DFB;&#x52A0;&#x4E8C;&#x7EA7;&#x83DC;&#x5355;"><a name="&#x6DFB;&#x52A0;&#x4E8C;&#x7EA7;&#x83DC;&#x5355;" class="plugin-anchor" href="#&#x6DFB;&#x52A0;&#x4E8C;&#x7EA7;&#x83DC;&#x5355;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6DFB;&#x52A0;&#x4E8C;&#x7EA7;&#x83DC;&#x5355;</h5>
+<p>&#x6709;&#x4E9B;&#x65F6;&#x5019;&#xFF0C;&#x4E00;&#x7EA7;&#x83DC;&#x5355;&#x5E76;&#x4E0D;&#x591F;&#x6211;&#x4EEC;&#x7528;&#xFF0C;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x4E24;&#x7EA7;&#x83DC;&#x5355;&#x3002;&#x6DFB;&#x52A0;&#x4E8C;&#x7EA7;&#x83DC;&#x5355;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7528;&#x5230; <em>add_submenu_page</em> &#x65B9;&#x6CD5;&#x3002;</p>
+<pre><code class="lang-php">add_submenu_page( string $parent_slug, string $page_title, string $menu_title, string $capability, string $menu_slug, callable $function = <span class="hljs-string">&apos;&apos;</span> )
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x5B9A;&#x4E49;&#x548C; <code>add_menu_page</code> &#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x552F;&#x4E00;&#x4E0D;&#x540C;&#x7684;&#x662F;&#x9700;&#x8981;&#x4F20;&#x5165;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x6307;&#x5B9A;&#x4E0A;&#x7EA7;&#x83DC;&#x5355;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x6307;&#x5B9A;&#xFF0C;&#x7CFB;&#x7EDF;&#x5C31;&#x4E0D;&#x77E5;&#x9053;&#x5B50;&#x83DC;&#x5355;&#x7684;&#x4E0A;&#x4E00;&#x7EA7;&#x83DC;&#x5355;&#x662F;&#x4EC0;&#x4E48;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5B50;&#x83DC;&#x5355;&#x3002;</p>
+<p>&#x5728;&#x521A;&#x521A;&#x5B9A;&#x4E49;&#x7684; <code>gitchat_copyright_custom_menu</code> &#x51FD;&#x6570;&#x4E2D;&#x6DFB;&#x52A0;&#x6211;&#x4EEC;&#x7684;&#x5B50;&#x83DC;&#x5355;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x65B0;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-php">
+<span class="hljs-comment">/**
+* &#x6CE8;&#x518C;&#x83DC;&#x5355;&#x9879;
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gitchat_copyright_custom_menu</span><span class="hljs-params">()</span></span>{
+  add_menu_page( 
+      <span class="hljs-string">&apos;Gitchat &#x7248;&#x6743;&#x63D2;&#x4EF6;&#x9996;&#x9875;&apos;</span>,
+      <span class="hljs-string">&apos;GitChat &#x7248;&#x6743;&#x63D2;&#x4EF6;&apos;</span>,
+      <span class="hljs-string">&apos;manage_options&apos;</span>,
+      <span class="hljs-string">&apos;gitchat_optionpage&apos;</span>,
+      <span class="hljs-string">&apos;gitchat_custom_page&apos;</span>,
+      <span class="hljs-string">&apos;dashicons-admin-generic&apos;</span>,
+      <span class="hljs-number">100</span>
+  ); 
+  add_submenu_page(
+    <span class="hljs-string">&apos;gitchat_optionpage&apos;</span>,
+    <span class="hljs-string">&quot;&#x5173;&#x4E8E;&quot;</span>,
+    <span class="hljs-string">&quot;&#x5173;&#x4E8E;&quot;</span>,
+    <span class="hljs-string">&apos;manage_options&apos;</span>,
+    <span class="hljs-string">&apos;gitchat_aboutpage&apos;</span>,
+    <span class="hljs-string">&apos;gitchat_about_page&apos;</span>
+  );
+}
+add_action( <span class="hljs-string">&apos;admin_menu&apos;</span>, <span class="hljs-string">&apos;gitchat_copyright_custom_menu&apos;</span> );
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gitchat_custom_page</span><span class="hljs-params">()</span></span>{
+  <span class="hljs-meta">?&gt;</span>
+  &lt;h1&gt;GitChat &#x7248;&#x6743;&#x63D2;&#x4EF6;&#x6D4B;&#x8BD5;&lt;/h1&gt;
+  <span class="hljs-meta">&lt;?php</span>
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gitchat_about_page</span><span class="hljs-params">()</span></span>{
+  <span class="hljs-meta">?&gt;</span>
+  &lt;h1&gt;&#x5173;&#x4E8E; GitChat&lt;/h1&gt;
+  <span class="hljs-meta">&lt;?php</span>
+}
+</code></pre>
+<p>&#x8FD9;&#x65F6;&#x5237;&#x65B0;&#x4E00;&#x4E0B;&#x9875;&#x9762;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x83DC;&#x5355;&#x52A0;&#x5165;&#x4E86;&#x4E8C;&#x7EA7;&#x83DC;&#x5355;&#x3002;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmwdapsgkdj3098028mwz.jpg" alt=""></p>
+<p>&#x70B9;&#x51FB;&#x5176;&#x4E2D;&#x7684;&#x5173;&#x4E8E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x65B0;&#x52A0;&#x7684;&#x9875;&#x9762;&#x4E86;&#x3002;</p>
+<h4 id="&#x6DFB;&#x52A0;&#x9875;&#x9762;"><a name="&#x6DFB;&#x52A0;&#x9875;&#x9762;" class="plugin-anchor" href="#&#x6DFB;&#x52A0;&#x9875;&#x9762;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6DFB;&#x52A0;&#x9875;&#x9762;</h4>
+<h5 id="&#x4F7F;&#x7528;-wordpress-&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6837;&#x5F0F;"><a name="&#x4F7F;&#x7528;-wordpress-&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6837;&#x5F0F;" class="plugin-anchor" href="#&#x4F7F;&#x7528;-wordpress-&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6837;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F7F;&#x7528; WordPress &#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6837;&#x5F0F;</h5>
+<p>&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x6DFB;&#x52A0;&#x4E86;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x83DC;&#x5355;&#x9875;&#x9762;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x4E3A;&#x8FD9;&#x4E2A;&#x9875;&#x9762;&#x6DFB;&#x52A0;&#x5185;&#x5BB9;&#x3002;</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmwdfsxvmmj30dk03a0sn.jpg" alt=""></p>
+<p>&#x76F8;&#x6BD4;&#x4E8E;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x53BB;&#x8BBE;&#x8BA1;&#x6837;&#x5F0F;&#xFF0C;&#x6700;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x662F;&#x4F7F;&#x7528; WordPress &#x5185;&#x7F6E;&#x7684;&#x6837;&#x5F0F;&#xFF0C;&#x6765;&#x5C55;&#x73B0;&#x6211;&#x4EEC;&#x7684;&#x6837;&#x5F0F;&#x3002;&#x8FD9;&#x6837;&#x4F53;&#x9A8C;&#x4E5F;&#x548C; WordPress &#x5B98;&#x65B9;&#x7684;&#x5185;&#x5BB9;&#x5177;&#x6709;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x80FD;&#x591F;&#x66F4;&#x597D;&#x7684;&#x8868;&#x73B0;&#x51FA;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<h5 id="&#x4F7F;&#x7528;-wrap-&#x5305;&#x88F9;&#x6211;&#x4EEC;&#x7684;&#x5185;&#x5BB9;"><a name="&#x4F7F;&#x7528;-wrap-&#x5305;&#x88F9;&#x6211;&#x4EEC;&#x7684;&#x5185;&#x5BB9;" class="plugin-anchor" href="#&#x4F7F;&#x7528;-wrap-&#x5305;&#x88F9;&#x6211;&#x4EEC;&#x7684;&#x5185;&#x5BB9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F7F;&#x7528; wrap &#x5305;&#x88F9;&#x6211;&#x4EEC;&#x7684;&#x5185;&#x5BB9;</h5>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmwdfsxvmmj30dk03a0sn.jpg" alt=""></p>
+<p>&#x5728;&#x8FD9;&#x4E2A;&#x622A;&#x56FE;&#x4E2D;&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x4F7F;&#x7528;&#x7684;&#x90FD;&#x662F; <em>h1</em>&#xFF0C;dan s &#x4E0B;&#x65B9;&#x7684;&#x5185;&#x5BB9;&#x660E;&#x663E;&#x8981;&#x66F4;&#x9002;&#x5408; WordPress &#x7684;&#x754C;&#x9762;&#x8BBE;&#x8BA1;&#x98CE;&#x683C;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x56E0;&#x4E3A;&#x4E0B;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x88AB; wrap &#x7C7B;&#x6240;&#x5305;&#x88F9;&#xFF0C;&#x5C55;&#x793A;&#x7684;&#x5185;&#x5BB9;&#x4F1A;&#x6309;&#x7167; WordPress &#x5B98;&#x65B9;&#x7684;&#x6837;&#x5F0F;&#x6765;&#x4E66;&#x5199;&#x3002;</p>
+<pre><code>&lt;div class=&quot;wrap&quot;&gt;
+    &lt;!--- Content --&gt;
+&lt;/div&gt;
+</code></pre><h5 id="&#x4F7F;&#x7528;-wordpress-&#x81EA;&#x5E26;&#x7684;&#x4FE1;&#x606F;&#x63D0;&#x793A;&#x7684;&#x6837;&#x5F0F;"><a name="&#x4F7F;&#x7528;-wordpress-&#x81EA;&#x5E26;&#x7684;&#x4FE1;&#x606F;&#x63D0;&#x793A;&#x7684;&#x6837;&#x5F0F;" class="plugin-anchor" href="#&#x4F7F;&#x7528;-wordpress-&#x81EA;&#x5E26;&#x7684;&#x4FE1;&#x606F;&#x63D0;&#x793A;&#x7684;&#x6837;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F7F;&#x7528; WordPress &#x81EA;&#x5E26;&#x7684;&#x4FE1;&#x606F;&#x63D0;&#x793A;&#x7684;&#x6837;&#x5F0F;</h5>
+<p>&#x6211;&#x4EEC;&#x5728;&#x5236;&#x4F5C; WordPress &#x63D2;&#x4EF6;&#x65F6;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x7528;&#x5230;&#x4E00;&#x4E9B;&#x63D0;&#x793A;&#xFF0C;&#x6BD4;&#x5982;&#x4FE1;&#x606F;&#x4FDD;&#x5B58;&#x6210;&#x529F;&#x540E;&#x7684;&#x63D0;&#x793A;&#x3001;&#x4FE1;&#x606F;&#x51FA;&#x9519;&#x7684;&#x63D0;&#x793A;&#x7B49;&#x7B49;&#x3002;&#x8FD9;&#x4E9B; WordPress &#x5B98;&#x65B9;&#x63D0;&#x4F9B;&#x4E86;&#x56FA;&#x5B9A;&#x7684;&#x6837;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528; WordPress &#x81EA;&#x5DF1;&#x7684;&#x6837;&#x5F0F;&#x6765;&#x8FDB;&#x884C;&#x5C55;&#x793A;&#x3002;</p>
+<p>&#x8FD9;&#x65B9;&#x9762;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x590D;&#x5236;&#x8FD9;&#x91CC;&#x7684;&#x4EE3;&#x7801;&#x6765;&#x663E;&#x793A;&#xFF1A;</p>
+<pre><code>&lt;div id=&quot;message&quot; class=&quot;updated&quot;&gt;
+    &lt;p&gt;&lt;strong&gt;
+        &lt;!--- &#x4FDD;&#x5B58;&#x4FE1;&#x606F; --&gt;
+    &lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;message&quot; class=&quot;error&quot;&gt;
+    &lt;p&gt;&lt;strong&gt;
+        &lt;!--- &#x4FDD;&#x5B58;&#x4FE1;&#x606F; --&gt;
+    &lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+</code></pre><p>&#x5B9E;&#x73B0;&#x7684;&#x6548;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmwdxocbp2j30lj052glh.jpg" alt=""></p>
+<p>&#x8FD9;&#x6837;&#x7684;&#x5C55;&#x793A;&#x4F1A;&#x66F4;&#x7B26;&#x5408; WordPress &#x6574;&#x4F53;&#x7684;&#x4F53;&#x9A8C;&#x3002;</p>
+<h5 id="&#x4F7F;&#x7528;-wordpress-&#x7684;&#x6309;&#x94AE;&#x6837;&#x5F0F;"><a name="&#x4F7F;&#x7528;-wordpress-&#x7684;&#x6309;&#x94AE;&#x6837;&#x5F0F;" class="plugin-anchor" href="#&#x4F7F;&#x7528;-wordpress-&#x7684;&#x6309;&#x94AE;&#x6837;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F7F;&#x7528; WordPress &#x7684;&#x6309;&#x94AE;&#x6837;&#x5F0F;</h5>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmwe179mtfj30h903o0sn.jpg" alt=""></p>
+<p>&#x4F7F;&#x7528;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x666E;&#x901A;&#x6309;&#x94AE;&#x867D;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#xFF0C;&#x4F46;&#x4F53;&#x9A8C;&#x5374;&#x5DEE;&#x5F88;&#x591A;&#xFF0C;&#x8BBE;&#x8BA1;&#x4E5F;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; WordPress &#x7684;&#x6309;&#x94AE;&#x6837;&#x5F0F;&#xFF0C;&#x6765;&#x81EA;&#x5B9A;&#x4E49;&#x9875;&#x9762;&#x7684;&#x6309;&#x94AE;&#x3002;&#x5177;&#x4F53;&#x6309;&#x94AE;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x9700;&#x8981;&#x9009;&#x62E9;&#x3002;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;test&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&#x666E;&#x901A;&#x6309;&#x94AE;&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;test&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&#x6807;&#x51C6;&#x6309;&#x94AE;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;test&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&#x4E3B;&#x8981;&#x6309;&#x94AE;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-primary&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;test&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&#x526F;&#x6309;&#x94AE;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-secondary&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;test&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&#x5927;&#x6309;&#x94AE;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-large&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;test&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&#x5C0F;&#x6309;&#x94AE;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-small&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;test&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&#x8D85;&#x5927;&#x6309;&#x94AE;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-hero&quot;</span> /&gt;</span>
+</code></pre>
+<blockquote>
+<p>a &#x94FE;&#x63A5;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x52A0;&#x5165;&#x8FD9;&#x4E9B;&#x6837;&#x5F0F;&#x6765;&#x7F8E;&#x5316;&#x3002;</p>
+</blockquote>
+<h5 id="&#x4F7F;&#x7528;-wordpress-&#x81EA;&#x5E26;&#x7684;&#x8868;&#x5355;&#x6837;&#x5F0F;"><a name="&#x4F7F;&#x7528;-wordpress-&#x81EA;&#x5E26;&#x7684;&#x8868;&#x5355;&#x6837;&#x5F0F;" class="plugin-anchor" href="#&#x4F7F;&#x7528;-wordpress-&#x81EA;&#x5E26;&#x7684;&#x8868;&#x5355;&#x6837;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F7F;&#x7528; WordPress &#x81EA;&#x5E26;&#x7684;&#x8868;&#x5355;&#x6837;&#x5F0F;</h5>
+<p>WordPress &#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x9ED8;&#x8BA4;&#x7684;&#x8868;&#x5355;&#x6837;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x5BF9;&#x5E94;&#x7684;&#x6837;&#x5F0F;&#x6765;&#x8F93;&#x51FA;&#x5BF9;&#x5E94;&#x7684;&#x6837;&#x5F0F;&#x3002;</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fmwe6t04b9j30bf08o0sk.jpg" alt=""></p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;POST&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-table&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">valign</span>=<span class="hljs-string">&quot;top&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;input-example&quot;</span>&gt;</span>&#x8F93;&#x5165;&#x6846;<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;input-example&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;input-example&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">valign</span>=<span class="hljs-string">&quot;top&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;select-example&quot;</span>&gt;</span>&#x4E0B;&#x62C9;&#x6846;&#xFF1A;<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;select-example&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>&#x662F;<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>&#x5426;<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">valign</span>=<span class="hljs-string">&quot;top&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;check-example&quot;</span>&gt;</span>&#x9009;&#x62E9;&#x6846;<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check-example&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">valign</span>=<span class="hljs-string">&quot;top&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;radio-example&quot;</span>&gt;</span>Radio <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;radio-example&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&#x662F;&quot;</span> /&gt;</span> &#x662F;
+                        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;radio-example&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&#x5426;&quot;</span> /&gt;</span> &#x5426;
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">valign</span>=<span class="hljs-string">&quot;top&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;textarea&quot;</span>&gt;</span>&#x6587;&#x672C;&#x6846;<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;textarea&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">valign</span>=<span class="hljs-string">&quot;top&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;save&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&#x4FDD;&#x5B58;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-primary&quot;</span> /&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;reset&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&#x91CD;&#x7F6E;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-secondary&quot;</span> /&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<h5 id="&#x4F7F;&#x7528;-wordpress-&#x81EA;&#x5E26;&#x7684;&#x8868;&#x683C;&#x6837;&#x5F0F;"><a name="&#x4F7F;&#x7528;-wordpress-&#x81EA;&#x5E26;&#x7684;&#x8868;&#x683C;&#x6837;&#x5F0F;" class="plugin-anchor" href="#&#x4F7F;&#x7528;-wordpress-&#x81EA;&#x5E26;&#x7684;&#x8868;&#x683C;&#x6837;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F7F;&#x7528; WordPress &#x81EA;&#x5E26;&#x7684;&#x8868;&#x683C;&#x6837;&#x5F0F;</h5>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmwe9navbpj30lf04jgli.jpg" alt=""></p>
+<p>&#x901A;&#x8FC7;&#x5728;&#x8868;&#x683C;&#x4E0A;&#x52A0;&#x5165;<code>widefat striped</code>&#x4E24;&#x4E2A;&#x7C7B;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5C06;&#x6211;&#x4EEC;&#x7684;&#x8868;&#x683C;&#x8BBE;&#x7F6E;&#x4E3A; WordPress &#x7684;&#x6837;&#x5F0F;&#x3002;</p>
+<pre><code class="lang-html">        <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;widefat striped&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>&#x5E8F;&#x53F7;<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>&#x8FBE;&#x4EBA;&#x8BFE;&#x540D;&#x79F0;<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Angular &#x521D;&#x5B66;&#x8005;&#x5FEB;&#x901F;&#x4E0A;&#x624B;&#x6559;&#x7A0B;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>&#x5FEB;&#x901F;&#x5B66;&#x4E60; Spring Boot &#x6280;&#x672F;&#x6808;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Webpack &#x8FBE;&#x4EBA;&#x7684;&#x6210;&#x957F;&#x4E4B;&#x8DEF;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</code></pre>
+<p>&#x5176;&#x4ED6;&#x7684;&#x4E00;&#x4E9B;&#x6837;&#x5F0F;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x5728;&#x8FD9;&#x91CC;&#x6CA1;&#x6709;&#x63D0;&#x5230;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x901A;&#x8FC7; Chrome &#x7684;&#x5F00;&#x53D1;&#x8005;&#x5DE5;&#x5177;&#x5BA1;&#x67E5;&#x83B7;&#x5F97;&#xFF0C;&#x6216;&#x8005;&#x5230;&#x8BFB;&#x8005;&#x5708;&#x5185;&#x63D0;&#x95EE;&#x3002;</p>
+<h4 id="&#x9009;&#x9879;&#x9875;&#x9762;&#x8BBE;&#x7F6E;"><a name="&#x9009;&#x9879;&#x9875;&#x9762;&#x8BBE;&#x7F6E;" class="plugin-anchor" href="#&#x9009;&#x9879;&#x9875;&#x9762;&#x8BBE;&#x7F6E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x9009;&#x9879;&#x9875;&#x9762;&#x8BBE;&#x7F6E;</h4>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5B8C;&#x5584;&#x6211;&#x4EEC;&#x7684;&#x63D2;&#x4EF6;&#x7BA1;&#x7406;&#x9875;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<p>&#x4FEE;&#x6539; <code>gitchat_custom_page</code> &#x51FD;&#x6570;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-php+HTML">function gitchat_custom_page(){
+  ?&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+  &lt;?php 
+    if ($_POST[&apos;code&apos;] != null &amp;&amp; check_admin_referer( &apos;gitchat_copyright&apos; )){
+      update_option( &apos;gitchat_copyright_code&apos;, $_POST[&apos;code&apos;] );
+      $code = $_POST[&apos;code&apos;];
+      ?&gt;
+      &lt;div id=&quot;message&quot; class=&quot;updated&quot;&gt;&lt;p&gt;&lt;strong&gt;&#x4FE1;&#x606F;&#x66F4;&#x65B0;&#x6210;&#x529F;&#xFF01;&lt;/strong&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;?php
+    }else{
+      $code  = get_option(&apos;gitchat_copyright_code&apos;);
+    }
+    ?&gt;
+    &lt;h1&gt;GitChat &#x7248;&#x6743;&#x63D2;&#x4EF6;&#x8BBE;&#x7F6E;&lt;/h1&gt;
+    &lt;form method=&quot;POST&quot; action=&quot;&quot;&gt;
+            &lt;table class=&quot;form-table&quot;&gt;
+
+                &lt;tr valign=&quot;top&quot;&gt;
+                    &lt;th&gt;&lt;label for=&quot;textarea&quot;&gt;&#x7248;&#x6743;&#x4EE3;&#x7801;&lt;/label&gt;&lt;/th&gt;
+                    &lt;td&gt;&lt;textarea name=&quot;code&quot; col=&quot;30&quot; row=&quot;10&quot;&gt;&lt;?php echo $code;?&gt;&lt;/textarea&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr valign=&quot;top&quot;&gt;
+                    &lt;td&gt; 
+                        &lt;input type=&quot;submit&quot; name=&quot;save&quot; value=&quot;&#x4FDD;&#x5B58;&quot; class=&quot;button-primary&quot; /&gt;
+                        &lt;input type=&quot;reset&quot; name=&quot;reset&quot; value=&quot;&#x91CD;&#x7F6E;&quot; class=&quot;button-secondary&quot; /&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;?php
+                wp_nonce_field(&apos;gitchat_copyright&apos;);
+            ?&gt;
+        &lt;/form&gt;
+  &lt;/div&gt;
+
+  &lt;?php
+}
+</code></pre>
+<p>&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x4E2D;&#x5927;&#x90E8;&#x5206;&#x90FD;&#x662F;&#x6211;&#x4EEC;&#x5728;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x8868;&#x5355;&#x5185;&#x5BB9;&#x3002;&#x4E0D;&#x518D;&#x591A;&#x8BB2;&#xFF0C;&#x6211;&#x6765;&#x8BF4;&#x4E00;&#x8BF4;&#x91CC;&#x9762;&#x7684; PHP &#x4EE3;&#x7801;&#x3002;</p>
+<pre><code class="lang-php">&lt;?php 
+    if ($_POST &amp;&amp; $_POST[&apos;code&apos;] != null &amp;&amp; check_admin_referer( &apos;gitchat_copyright&apos; )){
+      update_option( &apos;gitchat_copyright_code&apos;, $_POST[&apos;code&apos;] );
+      $code = $_POST[&apos;code&apos;];
+      ?&gt;
+      &lt;div id=&quot;message&quot; class=&quot;updated&quot;&gt;&lt;p&gt;&lt;strong&gt;&#x4FE1;&#x606F;&#x66F4;&#x65B0;&#x6210;&#x529F;&#xFF01;&lt;/strong&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;?php
+    }else{
+      $code  = get_option(&apos;gitchat_copyright_code&apos;);
+    }
+    ?&gt;
+</code></pre>
+<p>&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x4E3B;&#x8981;&#x662F;&#x4E24;&#x4E2A;&#x529F;&#x80FD;&#xFF0C;&#x9996;&#x5148;&#x5224;&#x65AD;&#x662F;&#x5426;&#x662F; Post &#x8BF7;&#x6C42;&#xFF0C;&#x5224;&#x65AD; Post &#x8BF7;&#x6C42;&#x4E2D;&#x7684; code &#x662F;&#x5426;&#x4E3A;&#x7A7A;&#xFF0C;&#x4EE5;&#x53CA;&#x8FD9;&#x4E2A;&#x63D2;&#x4EF6;&#x7684;&#x8BF7;&#x6C42;&#x662F;&#x5426;&#x5408;&#x6CD5;&#x3002;&#x5982;&#x679C; code &#x4E0D;&#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x4F7F;&#x7528; Post &#x7684;&#x6570;&#x636E;&#x66F4;&#x65B0;&#x8BBE;&#x7F6E;&#x9879;&#xFF0C;&#x5E76;&#x63D0;&#x793A;&#x66F4;&#x65B0;&#x6210;&#x529F;&#xFF1B;&#x5982;&#x679C;&#x53D1;&#x6765;&#x7684;&#x8BF7;&#x6C42;&#x4E0D;&#x662F; Post&#xFF0C;&#x5219;&#x6267;&#x884C;&#x4E0B;&#x65B9;&#x7684;&#x83B7;&#x53D6;&#x4EE3;&#x7801;&#xFF0C;&#x5E76;&#x8D4B;&#x503C;&#x7ED9; <em>code</em> &#x3002;</p>
+<p>&#x5728; table &#x5E95;&#x90E8;&#x6211;&#x52A0;&#x4E86;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>&lt;?php wp_nonce_field(&apos;gitchat_copyright&apos;); ?&gt;
+</code></pre><p>&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x9A8C;&#x8BC1;&#x8BF7;&#x6C42;&#x3002;</p>
+<h5 id="&#x5173;&#x4E8E;-checkadminreferer-&#x548C;-wpnoncefield"><a name="&#x5173;&#x4E8E;-checkadminreferer-&#x548C;-wpnoncefield" class="plugin-anchor" href="#&#x5173;&#x4E8E;-checkadminreferer-&#x548C;-wpnoncefield"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5173;&#x4E8E; <code>check_admin_referer</code> &#x548C; <code>wp_nonce_field</code></h5>
+<p>&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x662F;&#x6211;&#x4EEC;&#x7684;&#x7B2C;&#x4E00;&#x6B21;&#x770B;&#x89C1;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x662F;&#x4E3A;&#x8868;&#x5355;&#x52A0;&#x5165;&#x9A8C;&#x8BC1;&#x6570;&#x636E;&#x907F;&#x514D;&#x88AB;&#x6076;&#x610F;&#x5229;&#x7528;&#x3002;<code>wp_nonce_field</code> &#x51FD;&#x6570;&#x4F1A;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x8868;&#x5355;&#x4E2D;&#x52A0;&#x5165;&#x4E24;&#x6BB5;&#x4EE3;&#x7801;&#xFF0C;&#x7528;&#x4E8E;&#x540E;&#x7EED;&#x7684;&#x9A8C;&#x8BC1;&#x3002;</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmwntfm9b3j30kl01dt8l.jpg" alt=""></p>
+<p>&#x800C; <code>check_admin_referer</code>&#x4F1A;&#x9A8C;&#x8BC1;&#x8FD9;&#x4E24;&#x6BB5;&#x4EE3;&#x7801;&#x662F;&#x5426;&#x5339;&#x914D;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5339;&#x914D;&#xFF0C;&#x5219;&#x4F1A;&#x62D2;&#x7EDD;&#x8BF7;&#x6C42;&#x3002;</p>
+<h3 id="&#x603B;&#x7ED3;"><a name="&#x603B;&#x7ED3;" class="plugin-anchor" href="#&#x603B;&#x7ED3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x603B;&#x7ED3;</h3>
+<p>&#x8FD9;&#x8282;&#x8BFE;&#x6211;&#x4EEC;&#x5B66;&#x4E60;&#x4E86;&#x5982;&#x4F55;&#x6784;&#x5EFA;&#x63D2;&#x4EF6;&#x7684;&#x8BBE;&#x7F6E;&#x9875;&#x9762;&#xFF0C;&#x540E;&#x7EED;&#x4F1A;&#x6839;&#x636E;&#x63D2;&#x4EF6;&#x7684;&#x590D;&#x6742;&#x7A0B;&#x5EA6;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x66F4;&#x52A0;&#x7EC6;&#x5316;&#x63D2;&#x4EF6;&#x3002;</p>
+<blockquote>
+<p>&#x672C;&#x8282;&#x8BFE;&#x7406;&#x89E3;&#x8D77;&#x6765;&#x53EF;&#x80FD;&#x4E0D;&#x592A;&#x660E;&#x767D;&#xFF0C;&#x6B22;&#x8FCE;&#x5230;&#x8BFB;&#x8005;&#x5708;&#x63D0;&#x95EE;&#x3002;</p>
+</blockquote>
+<p><a href="http://www.easywpbook.com/course-resources/16_gitchat_copyright.zip" target="_blank">&#x5355;&#x51FB;&#x8FD9;&#x91CC;&#x4E0B;&#x8F7D;&#x672C;&#x8BFE;&#x63D2;&#x4EF6;</a>&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="create.html" class="navigation navigation-prev " aria-label="Previous page: 3 WP 插件的创建">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="create-widget.html" class="navigation navigation-next " aria-label="Next page: 5 开发一个 WordPress Widget">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"4 WP 插件后台设计与开发","level":"1.7.4","depth":2,"next":{"title":"5 开发一个 WordPress Widget","level":"1.7.5","depth":2,"path":"plugin/create-widget.md","ref":"plugin/create-widget.md","articles":[]},"previous":{"title":"3 WP 插件的创建","level":"1.7.3","depth":2,"path":"plugin/create.md","ref":"plugin/create.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","ga","anchors","edit-link","sitemap-general","disqus"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"easywpbook"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"http://easywpbook.com/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-comscore":{},"ga":{"configuration":"auto","token":"UA-47834775-10"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"参与本书贡献","base":"https://github.com/bestony/EasyWordPressBook/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"人人都能学会的 WordPress 实战课","links":{"sidebar":{"作者博客":"https://www.ixiqin.com","联系作者":"mailto:xiqingongzi+easywp@gmail.com"}},"gitbook":"*","description":"一本从零开始教你学习 WordPress ，带你从入门，到精通。"},"file":{"path":"plugin/admin.md","mtime":"2019-03-10T10:35:43.411Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-10T10:36:42.226Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
