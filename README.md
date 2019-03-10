@@ -18,6 +18,10 @@ WordPress 作为世界上使用最多的 CMS （内容管理系统），成为�
 
 - [1 导读](intro.md)
 * [2 WP 的部署](development-env.md)
+    + [Windows 开发环境配置](deployment/windows-dev.md)
+    + [macOS 开发环境配置](deployment/mac-dev.md)
+    + [cPanel 生产环境配置](deployment/cpanel-production.md)
+    + [万网虚拟主机环境配置](deployment/wanwang-production.md)
 - WordPress 使用
   - [1 WP 基本使用](basic-usage.md)
   - [2 WP 基本设置](basic-config.md)
