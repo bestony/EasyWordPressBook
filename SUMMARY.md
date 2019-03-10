@@ -2,8 +2,7 @@
 
 * [本书介绍](README.md)
 * [1 导读](intro.md)
-* [2 部署 WordPress](deployment.md)
-* [3 WP 的环境配置](development-env.md)
+* [2 WP 的部署](development-env.md)
 * WordPress 使用
     - [1 WP 基本使用](basic-usage.md)
     - [2 WP 基本设置](basic-config.md)
