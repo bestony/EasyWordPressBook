@@ -72,7 +72,7 @@ WordPress 作为世界上使用最多的 CMS （内容管理系统），成为�
 
 ## 交流群
 
-![](https://postimg.aliavv.com/201810/4oznt.jpg)
+目前微信群已满 100 人，你可以加我的微信 `ixiqin_com` ，备注， WordPress ，我把你拉群。
 
 ## 协议
 
