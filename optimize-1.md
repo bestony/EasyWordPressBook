@@ -124,7 +124,7 @@ Smush Image Compression and Optimization 是 WPMU 团队推出的图片压缩插
 通过在网页中加入如下代码，则可以实现 DNS 的预解析：
 
 ```
-<link rel=”dns-prefetch” href=”//wordpress.dev”>
+<link rel="dns-prefetch" href="//wordpress.dev">
 ```
 
 在新的页面加载前，先请求 DNS 的地址，减少解析的时间。
@@ -132,8 +132,8 @@ Smush Image Compression and Optimization 是 WPMU 团队推出的图片压缩插
 在网页中加入如下代码，则可以预先建立链接，通过预链接，浏览器后续可以直接使用准备好的链接获取数据，提高链接效率。
 
 ```
-<link rel=”preconnect” href=”//wordpress.dev”>
-<link rel=”preconnect” href=”//cdn.wordpress.dev” crossorigin>
+<link rel="preconnect" href="//wordpress.dev">
+<link rel="preconnect" href="//cdn.wordpress.dev" crossorigin>
 ```
 
 在网页中加入如下代码，可以让网页预先加载好下一页的数据，对于多页的数据，可以实现体验更好的加载。
@@ -142,6 +142,6 @@ Smush Image Compression and Optimization 是 WPMU 团队推出的图片压缩插
 <link rel="prerender" href="//wordpress.dev/?p=3">
 ```
 
-当用户单击“下一页”按钮时会嗖的一下就跳到下一页去，极大地提高了用户体验。
+当用户单击“下一页"按钮时会嗖的一下就跳到下一页去，极大地提高了用户体验。
 
 看到这里，相信读者会有点崩溃，这怎么设置？难道一个个手动加？并不用，可以安装 [WordPress Instant Articles](https://wordpress.org/plugins/instant-articles/) 插件来实现相关的功能。
