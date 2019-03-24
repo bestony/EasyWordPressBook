@@ -25,10 +25,11 @@
     - [2 WP 主题开发：快速入门](theme/intro.md)
     - [3 WP 主题开发：文件结构](theme/struct.md)
     - [4 WP 主题开发：一些特殊的页面](theme/custom-page.md)
-    - [5 WP 主题开发：接入 Options Framework](theme/options-framework.md)
-    - [6 WP 主题开发：一些 WordPress 开发的小技巧](theme/tips.md)
-    - [7 WP 主题开发：提交主题到 WordPress 官方仓库](theme/uploads.md)
-    
+    - [5 WP 主题开发: 条件语法](theme/is-function.md)
+    - [6 WP 主题开发：接入 Options Framework](theme/options-framework.md)
+    - [7 WP 主题开发：一些 WordPress 开发的小技巧](theme/tips.md)
+    - [8 WP 主题开发：提交主题到 WordPress 官方仓库](theme/uploads.md)
+
 * WordPress 插件
     - [1 WP 插件使用](plugin/usage.md)
     - [2 WP 插件的运行机制](plugin/run.md)
