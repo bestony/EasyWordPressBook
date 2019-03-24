@@ -1,6 +1,6 @@
 # 人人都能学会的 WordPress 实战课
 
-[![Build Status](https://travis-ci.com/bestony/EasyWordPressBook.svg?branch=master)](https://travis-ci.com/bestony/EasyWordPressBook)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6c4801a1-d0cc-4c5c-b461-d5273aee7dcc/deploy-status)](https://app.netlify.com/sites/wordpressbook/deploys)
 
 ## 电子书介绍
 
