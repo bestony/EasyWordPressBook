@@ -27,9 +27,7 @@ MacOS 相比于 Windows 有很好的命令行支持，在开发环境上也更�
 在终端内执行如下命令，来安装 PHP 7 执行环境：
 
 ```
-brew tap homebrew/php # 添加 php 库
-brew update # 更新
-brew install php71 # 安装 php71
+brew install php@7.1 # 安装 php71
 ```
 
 当 PHP 7 安装完成后，我们开始安装 Composer，在命令行中执行如下命令：
