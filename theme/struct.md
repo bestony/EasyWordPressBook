@@ -63,7 +63,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 这么多文件，到底是如何加载的呢？接下来一一说明。
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fmxlirwb8kj31kw0zkgq1.jpg)
+![](https://postimg.aliavv.com/mbp/cyodq.jpg)
 
 这里使用了来自 [wphierachy](https://wphierarchy.com/) 的图片，这张图说明了 WordPress 的模板加载顺序。使用这张图，来说明模板到底是按照怎样一个顺序加载的。
 
@@ -73,7 +73,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 上面就是典型的一个页面的查询轨迹，所有的页面都会遵循这个查找模式，进行查找。
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fmxlyckz50j30zb08ngn9.jpg)
+![](https://postimg.aliavv.com/mbp/in2tn.jpg)
 
 在图中可以看到，所有的文件查找不到的情况下，最终就会查找到 index.php 上，这也就是为什么在一开始，便创建 index.php，通过这个文件，我们的主题便可以很好的提供服务。后续通过对页面的细分，添加不同的模板，实现更好的体验。
 

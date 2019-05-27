@@ -6,37 +6,37 @@
 
 进入 WordPress 后台，单击「插件」—「安装插件」命令，在搜索框内输入关键词 *polylang*，然后进行搜索，找到插件后进行安装，并启用插件。
 
-<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fmy4164z7xj30u40esdg7.jpg"  width = "60%" />
+![](https://postimg.aliavv.com/mbp/nh51b.jpg)
 
 ### 初始化插件
 
 启用成功后，后台会多出一个「语言」菜单项：
 
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmy434hy3wj30me08kq2u.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/edaw4.jpg)
 
 单击「语言」—「语言」命令，来添加一个语言，我们最常用的便是使用英文，这里也添加一个英文。
 
-<img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmy4573gabj31kw0x8jtm.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/hq9om.jpg)
 
 最后有个顺序，可以根据你的需要进行调整，序号越小，排的越靠前。
 
 这里我们添加两种语言，分别是英文和中文，其中中文作为默认语言。
 
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmy4nqiotvj30w7085t8o.jpg)
+![](https://postimg.aliavv.com/mbp/cuaf3.jpg)
 
 接下来要到前台为用户提供一个切换语言的工具，这里可以使用 PolyLang 自带的 widget 来实现。
 
 单击「外观」|「小工具」命令，进入到小工具页面，拖拽其中的「语言切换」小工具，到我们的边栏中去。
 
-![](https://ws4.sinaimg.cn/large/006tKfTcgy1fmy4pezesqj309r02xa9u.jpg)
+![](https://postimg.aliavv.com/mbp/6t37y.jpg)
 
 添加时，会提示你具体的样式，可以根据站点风格选择对应的设置项，不过，如果选择了显示下拉菜单，其他几项就会消失，仅保留*隐藏没有翻译的语言*和*强制链接到主页*。我这里选择显示语言名称和国旗。
 
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmy4q6q7wkj30cn09omx4.jpg"  width = "60%" />
+![](https://postimg.aliavv.com/mbp/zms8c.jpg)
 
 然后回到首页，就可以看到我们的小工具了。
 
-![](https://ws4.sinaimg.cn/large/006tKfTcgy1fmy4s9onudj307p03ymwy.jpg)
+![](https://postimg.aliavv.com/mbp/8kw2a.jpg)
 
 ### 翻译界面
 
@@ -44,7 +44,7 @@
 
 单击「语言」|「字符串翻译」命令，就会进入到翻译的界面。在这里，可以将 WordPress 站点本身的字段翻译成各种语言，从而使得站点的界面能够匹配不同语言的内容。
 
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmyet8zlp7j315z0c6t93.jpg)
+![](https://postimg.aliavv.com/mbp/8gxz7.jpg)
 
 ### 翻译文章和页面
 
@@ -54,15 +54,15 @@ Polylang 将站点内容根据语言的不同，划分了两个不同的体系�
 
 目录和标签的建立非常简单，单击「文章」|「分类目录」命令，就可以进入到目录的页面，在这个页面，进行目录的创建。
 
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmyf5rrw25j30h90k7dg4.jpg"  width = "60%" />
+![](https://postimg.aliavv.com/mbp/cnshc.jpg)
 
 目录创建的其他部分和之前都一样，这样要注意的是「语言」和「翻译」，一般情况下，我们只设置默认语言，而不在创建时添加，只是为了方便我们将不同的目录串联起来。
 
 选择「语言」下拉框，可以设置我们目前创建的这个目录以哪个语言为主，翻译则暂时留空。
 
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmyf89ohjuj30vo07jdfr.jpg)
+![](https://postimg.aliavv.com/mbp/0hn5g.jpg)
 
-在这里可以看到我创建了一个 GitChat 目录，而测试和 Test 目录则是之前创建的目录，这两个目录是同一个目录在不同语言下的展示。
+在这里可以看到我创建了一个 GitChat 目录，测试和 Test 目录则是之前创建的目录，这两个目录是同一个目录在不同语言下的展示。
 
 在红色框中的部分，显示一个对勾的，则说明当前的这个目录的主要语言是哪个，比如 GitChat 目录的主要语言是中文，测试目录的主要语言也是中文，Test 目录的主要语言则是英文。
 
@@ -70,7 +70,7 @@ Polylang 将站点内容根据语言的不同，划分了两个不同的体系�
 
 显示图标为一个加号，则说明我们还没有为这个语言创建对应的目录，点击加号，来创建目录，这个时候只需要填写目录的名称、别名和图像描述即可，PolyLang 会自动把两个目录关联起来，非常的方便。
 
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmyfbsx5cgj30gd0jm74l.jpg"  width = "60%" />
+![](https://postimg.aliavv.com/mbp/vpsvf.jpg)
 
 标签的实现方法类似，这里就不再赘述了。
 
@@ -78,17 +78,17 @@ Polylang 将站点内容根据语言的不同，划分了两个不同的体系�
 
 在文章列表中可以看到和目录页面一样的按钮，这个按钮提示了这篇文章的主语言是什么、是否已经有了对应语言的翻译。
 
-![](https://ws3.sinaimg.cn/large/006tKfTcgy1fmyfpnwy84j30bd08la9w.jpg)
+![](https://postimg.aliavv.com/mbp/i0ll4.jpg)
 
 和目录操作一样，点击加号，就可以为某一篇文章创建特定语言的文章。
 
 在添加文章时，可能会注意到，这里的目录只有以当前语言为默认语言的目录，我们为其他语言测试的目录是不存在的，也从另一个方面印证了之前说的内容。
 
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmyfrg2fkyj308o0b1q2u.jpg"  width = "40%" />
+![](https://postimg.aliavv.com/mbp/feojk.jpg)
 
 输入文章内容，单击“发布”按钮，即可发布一条新的文章。回到文章列表，就可以看到新的文章了。
 
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmyfsy4d38j30ax08ldfn.jpg"  width = "50%" />
+![](https://postimg.aliavv.com/mbp/iy37r.jpg)
 
 同时，这两篇文章的对应的图标也从加号切换为乐铅笔。
 
@@ -100,7 +100,7 @@ Polylang 将站点内容根据语言的不同，划分了两个不同的体系�
 
 进入到菜单项中，就可以看到菜单位置变成了两个，每个语言各有一份。
 
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmyfxl10f1j305v01w0si.jpg)
+![](https://postimg.aliavv.com/mbp/fjpml.jpg)
 
 根据你的语言，设置对应的语言的菜单，然后将他们放在对应的菜单位置上即可。
 
@@ -108,45 +108,45 @@ Polylang 将站点内容根据语言的不同，划分了两个不同的体系�
 
 插件默认为我们提供了一些设置项，之后来具体说一说，PolyLang 为我们提供了这些设置项。
 
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmyg0gubyvj30qg0o50tl.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/nf9lm.jpg)
 
 在 URL 修改中，我们可以设置文章/页面的链接规则：
 
-![](https://ws4.sinaimg.cn/large/006tKfTcgy1fmyg16ar17j30wn08xmxg.jpg)
+![](https://postimg.aliavv.com/mbp/bq31i.jpg)
 
 一般来说选择第二个和或者第三个。如果你在同一台虚拟主机上绑定了多个域名，则使用第三个选项，将所有你用到的域名绑定在这里；如果你的虚拟主机只允许绑定一个域名，则选择第二个选项，第四个选项和第三个选项操作的要求是一致的，需要你的主机能够绑定多个域名。不过我们大部分时候都不会使用多个域名，所以就不再说明，不过如果你使用，其设置也是非常简单的，填写对应域名即可。
 
-![](https://ws4.sinaimg.cn/large/006tKfTcgy1fmyg3k7ed1j30gd05mt8m.jpg)
+![](https://postimg.aliavv.com/mbp/eu14h.jpg)
 
 之所以推荐大家使用后面几种而不是第一种，主要是因为如果链接内容中有了语言信息，用户就可以将站点保存在书签中，而无需每次都手动切换至某个特定的语言。
 
 对于右侧的设置项，上面的隐藏默认语言的 url 信息，是指对于默认语言是否也显示后面的语言后缀。而下面的选项，则是判断是否在链接中显示 language，一般来说，我们尽可能不显示，以减少 URL 的长度。
 
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmyg5d982nj30ab059t8n.jpg)
+![](https://postimg.aliavv.com/mbp/az77o.jpg)
 
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmyg6ut1c4j30nm03qgli.jpg)
+![](https://postimg.aliavv.com/mbp/p2pl9.jpg)
 
 下方的检测浏览器语言和媒体默认开启，我也推荐大家开启，这样站点的体验会更好，用户访问时会自动切换到对应的语言。
 
 在同步这里，可以设置我们的文章需不需要同步一些状态（Meta Data），由于在不同的语言下，可能有不同的发布策略，这里推荐不选。不过，如果发布策略是不同语言文章的各项属性相同，同期发布，则可以在这里勾选要同步的项目。
 
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmyg7pmuevj313r04p0so.jpg)
+![](https://postimg.aliavv.com/mbp/ntagi.jpg)
 
 WPML 兼容性提供了 PolyLang 对 WPML 的兼容，这里就不多说了。
 
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmygacoojdj30mo01lq2q.jpg)
+![](https://postimg.aliavv.com/mbp/ojx37.jpg)
 
 对于工具选项来说，如果你不是在也不打算用这款插件了，这里就不要勾选，这样卸载了插件，数据还在，后续还可以安装上插件，继续使用。
 
 不过如果你的翻译内容太烂，想重建一份翻译，就可以先勾选这里选项，再删除插件。
 
-![](https://ws4.sinaimg.cn/large/006tKfTcgy1fmygaxkwoxj30jv03va9x.jpg)
+![](https://postimg.aliavv.com/mbp/6czr3.jpg)
 
 ### Lingotek
 
 Lingotek 整合了一些翻译服务，可以借助这些翻译服务，实现内容的自动化翻译，而无需自己人工翻译。
 
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmygckg9kgj30zu0jqjt9.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/kup9w.jpg)
 
 这里可以根据你自己的需要来开启对应的服务。
 
@@ -156,6 +156,3 @@ Lingotek 整合了一些翻译服务，可以借助这些翻译服务，实现�
 
 经过这节课，我们学习了如何使用 PolyLang 来创建一个双语站点，对于需要做外贸网站、多语言平台的你来说，或许有所帮助。
 
-至此，达人课的主要内容就更新完整了，如果在看达人课时有什么问题，欢迎到读者圈来和我一起讨论，后续我也将根据读者圈的提问情况，更新一些新的课程出来。
-
-最后，感谢购买，祝学习愉快~
