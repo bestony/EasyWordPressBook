@@ -30,7 +30,7 @@ add_menu_page( string $page_title, string $menu_title, string $capability, strin
 - icon_url：菜单中图标的 url。这个参数除了粘贴 url，还可以粘贴 WordPress 官方的 helper css，比如 *dashicons-chart-pie*，具体可以在[这里](https://developer.wordpress.org/resource/dashicons/)找到。或者是 base64 后的图标`data:image/svg+xml;base64`。
 - position：出现在菜单中的位置。具体的 Position 可以参考 [官方说明](https://developer.wordpress.org/reference/functions/add_menu_page/#default-bottom-of-menu-structure)，需要注意，我们自己定义的 position 应该和官方的 position 不同，避免冲突。
 
-![](https://ws3.sinaimg.cn/large/006tKfTcgy1fmwcxtkz8mj30710a7q2v.jpg)
+![](https://postimg.aliavv.com/mbp/vq9yy.jpg)
 
 接下来自定义一个一级菜单。
 
@@ -64,11 +64,11 @@ function gitchat_custom_page(){
 
 **需要注意的是，菜单的添加必须挂载在 *admin_menu* 这个 hook 上才行。** 
 
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmwcy3xpqtj304p0d3gli.jpg)
+![](https://postimg.aliavv.com/mbp/xpeh8.jpg)
 
 点击这个菜单项，就会进入到我们的页面了，可以看到定义的页面内容。
 
-<img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmwcyvly8aj30hw0d4aa2.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/oe3ry.jpg)
 
 ##### 添加二级菜单
 
@@ -126,7 +126,7 @@ function gitchat_about_page(){
 
 这时刷新一下页面，就可以看到菜单加入了二级菜单。
 
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmwdapsgkdj3098028mwz.jpg)
+![](https://postimg.aliavv.com/mbp/iixm8.jpg)
 
 点击其中的关于，就可以看到新加的页面了。
 
@@ -136,13 +136,13 @@ function gitchat_about_page(){
 
 现在已经添加了自定义的菜单页面，接下来为这个页面添加内容。
 
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmwdfsxvmmj30dk03a0sn.jpg)
+![](https://postimg.aliavv.com/mbp/4ugr9.jpg)
 
 相比于我们自己去设计样式，最简单的方式，是使用 WordPress 内置的样式，来展现我们的样式。这样体验也和 WordPress 官方的内容具有一致性，能够更好的表现出我们想要的内容。
 
 ##### 使用 wrap 包裹我们的内容
 
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmwdfsxvmmj30dk03a0sn.jpg)
+![](https://postimg.aliavv.com/mbp/7cnfz.jpg)
 
 在这个截图中，上面的内容使用的都是 *h1*，dan s 下方的内容明显要更适合 WordPress 的界面设计风格，这就是因为下面的内容被 wrap 类所包裹，展示的内容会按照 WordPress 官方的样式来书写。
 
@@ -174,13 +174,13 @@ function gitchat_about_page(){
 
 实现的效果如下：
 
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmwdxocbp2j30lj052glh.jpg)
+![](https://postimg.aliavv.com/mbp/091qh.jpg)
 
 这样的展示会更符合 WordPress 整体的体验。
 
 ##### 使用 WordPress 的按钮样式
 
-![](https://ws3.sinaimg.cn/large/006tKfTcgy1fmwe179mtfj30h903o0sn.jpg)
+![](https://postimg.aliavv.com/mbp/epwk9.jpg)
 
 使用浏览器的普通按钮虽然也可以，但体验却差很多，设计也不一致，可以使用 WordPress 的按钮样式，来自定义页面的按钮。具体按钮的代码如下，可以根据自己的需要选择。
 
@@ -200,7 +200,7 @@ function gitchat_about_page(){
 
 WordPress 也提供了默认的表单样式，可以直接调用对应的样式来输出对应的样式。
 
-![](https://ws4.sinaimg.cn/large/006tKfTcgy1fmwe6t04b9j30bf08o0sk.jpg)
+![](https://postimg.aliavv.com/mbp/kowz0.jpg)
 
 ```html
 <form method="POST" action="">
@@ -245,7 +245,7 @@ WordPress 也提供了默认的表单样式，可以直接调用对应的样式�
 
 ##### 使用 WordPress 自带的表格样式
 
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmwe9navbpj30lf04jgli.jpg)
+![](https://postimg.aliavv.com/mbp/6h78t.jpg)
 
 通过在表格上加入`widefat striped`两个类，就可以将我们的表格设置为 WordPress 的样式。
 
@@ -354,7 +354,7 @@ function gitchat_custom_page(){
 
 这两个函数是我们的第一次看见，这两个函数是为表单加入验证数据避免被恶意利用。`wp_nonce_field` 函数会在我们的表单中加入两段代码，用于后续的验证。
 
-![](https://ws3.sinaimg.cn/large/006tKfTcgy1fmwntfm9b3j30kl01dt8l.jpg)
+![](https://postimg.aliavv.com/mbp/sqc4o.jpg)
 
 而 `check_admin_referer`会验证这两段代码是否匹配，如果不匹配，则会拒绝请求。
 
@@ -362,6 +362,3 @@ function gitchat_custom_page(){
 
 这节课我们学习了如何构建插件的设置页面，后续会根据插件的复杂程度，你可以更加细化插件。
 
-> 本节课理解起来可能不太明白，欢迎到读者圈提问。
-
-[单击这里下载本课插件](http://www.easywpbook.com/course-resources/16_gitchat_copyright.zip)。

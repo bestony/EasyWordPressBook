@@ -26,7 +26,7 @@
 
 在最开始，依然是创建插件，这里创建一个新的插件，插件名为 *gitchat_shortcode* 。
 
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmwkbyn9l2j30gh020jr9.jpg)
+![](https://postimg.aliavv.com/mbp/k8bka.jpg)
 
 接下来开发这个插件的功能。
 
@@ -43,11 +43,11 @@ add_shortcode( 'git', 'gitchat_git_shortcode' );
 
 我们到插件后台，启用这个插件，然后进入文章管理中，创建一篇文章来测试短代码。
 
-![](https://ws3.sinaimg.cn/large/006tKfTcgy1fmwkra6fchj308m08aglh.jpg)
+![](https://postimg.aliavv.com/mbp/a8z5s.jpg)
 
 发布后，查看文章页面，就可以看到短代码输出了。
 
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmwkub0pjcj30c306cglg.jpg)
+![](https://postimg.aliavv.com/mbp/q7yw5.jpg)
 
 这样就完成了一个最简单的短代码。对于一些纯粹展示型的内容，可以通过这样一个简单的方法实现内容的嵌入。
 
@@ -92,15 +92,15 @@ function gitchat_git_shortcode( $atts ) {
 
 回到前台刷新一下页面，我们可以看到，这里我们的短代码将默认设置的值进行了输出。
 
-<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fmwl6b6a36j30cs0b8a9y.jpg"  width = "50%" />
+![](https://postimg.aliavv.com/mbp/8yjm2.jpg)
 
 单击“编辑”按钮，进入后台，修改短代码调用：
 
-![](https://ws4.sinaimg.cn/large/006tKfTcgy1fmwl7avpjlj30bh064wef.jpg)
+![](https://postimg.aliavv.com/mbp/k1a4i.jpg)
 
 再次回到前台，查看输出的内容，可以看到，我们设置的内容已经被输出出来了，这就说明内容可以被参数所接受、处理，最后输出了出来：
 
-<img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmwl859ynsj30b7074mx0.jpg"  width = "50%" />
+![](https://postimg.aliavv.com/mbp/e42tz.jpg)
 
 #### 注册一个接受标签包含内容的短代码
 
@@ -145,11 +145,11 @@ function gitchat_git_shortcode( $atts , $content = null ) {
 
 现在刷新一下文章页，可以看到，由于短代码没有匹配包含，所以并没有输出 content。
 
-<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fmwldzeux4j30b90b9dfq.jpg"  width = "50%" />
+![](https://postimg.aliavv.com/mbp/cll7d.jpg)
 
 单击“编辑”按钮，将内容修改为`[git id="!123" title="你好"]这是我的标题[/git]`，保存并回到文章页，刷新。
 
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmwlg2ni18j30ej0b00so.jpg"  width = "50%" />
+![](https://postimg.aliavv.com/mbp/iux7a.jpg)
 
 可以看到，这次输入内容正常的刷新出来了。
 
@@ -163,7 +163,7 @@ function gitchat_git_shortcode( $atts , $content = null ) {
 
 WordPress 的编辑器支持两种模式，分别是 TinyMCE 和 QuickTag 模式（HTML）模式，点击编辑器右上角的文本，就可以添加一个按钮到 QuickTag 中了。
 
-![](https://ws3.sinaimg.cn/large/006tKfTcgy1fmwlo6wc1oj30ur03amx3.jpg)
+![](https://postimg.aliavv.com/mbp/c3ei7.jpg)
 
 接下来实现在编辑器中加入一个 QuickTag。
 
@@ -202,19 +202,19 @@ function gitchat_git_qt() {
 QTags.addButton( id, display, arg1, arg2, access_key, title, priority, instance );
 ```
 
-第一个参数是按钮的 ID，需要是唯一的；第二个参数则是这个按钮上显示的文字，比如设置为 Git，显示的时候是![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmwlxt6g1vj302s00y741.jpg)，可以设置成为你自己的（比如使用 *dashicons*）；第三个参数则是第一次按下这个按钮时，会输出的内容；第四个参数是第二次按下这个按钮会输出的内容；第五个参数是 access_key，目前已经被弃用了，我们就不用管了；第六个参数是标题，当鼠标指针悬浮在这个按钮上时，将会展示标题文字，可以将其设置为短代码的说明或按钮的说明；第七个参数是优先级，这个参数会决定短代码的位置，比如将其设置为 1-9 时，这个按钮会放在第一位；设置为 11-19 时，会放在第二个位置，如果你希望放在最后，则需要设置一个非常大的值才行；最后一个参数是对按钮进行设置，可以给短代码加入 ariaLabel 和  ariaLabelClose ，基本用不到，可以不填。
+第一个参数是按钮的 ID，需要是唯一的；第二个参数则是这个按钮上显示的文字，比如设置为 Git，显示的时候是![](https://postimg.aliavv.com/mbp/sm4dv.jpg)，可以设置成为你自己的（比如使用 *dashicons*）；第三个参数则是第一次按下这个按钮时，会输出的内容；第四个参数是第二次按下这个按钮会输出的内容；第五个参数是 access_key，目前已经被弃用了，我们就不用管了；第六个参数是标题，当鼠标指针悬浮在这个按钮上时，将会展示标题文字，可以将其设置为短代码的说明或按钮的说明；第七个参数是优先级，这个参数会决定短代码的位置，比如将其设置为 1-9 时，这个按钮会放在第一位；设置为 11-19 时，会放在第二个位置，如果你希望放在最后，则需要设置一个非常大的值才行；最后一个参数是对按钮进行设置，可以给短代码加入 ariaLabel 和  ariaLabelClose ，基本用不到，可以不填。
 
 > **为什么第三个和第四个参数要这样拆？**
 >
 > 这是因为，如果选中文字再按下按钮时，编辑器会自动将选中的内容放在参数三和参数四之间，类似这样：
 >
-> ![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmwm0yekphg30rw0biaao.gif)
+> ![](https://ws2.now.sh/large/006tKfTcgy1fmwm0yekphg30rw0biaao.gif)
 >
 > 如果拆分有问题，生成的代码可能就有问题了，将短代码的参数放在参数三是更为合适的。
 
 保存插件，进入新建文章页面，将编辑器切换为 QuickTag 编辑器，就能看到添加的按钮了：
 
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmwm80roxqj30dc06qdfp.jpg)
+![](https://postimg.aliavv.com/mbp/fpe9j.jpg)
 
 ####  TinyMCE 增强
 
@@ -278,10 +278,8 @@ Tiny 编辑器的增强就比较麻烦了。
 
 编辑完成后，保存文件，回到后台，进入编辑器，可以看到我们的按钮，已经添加进去了。
 
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmwmx8qgb6j304p02v0si.jpg)
+![](https://postimg.aliavv.com/mbp/yo46u.jpg)
 
 选择我们要处理的文字，点击按钮，就可以把相关内容包含在其中了。如果不选择任何东西，则直接将短代码输入到编辑器中。
 
 至此，我们也完成了对 TinyMCE 编辑器的增强。
-
-[请单击这里下载本课插件](http://www.easywpbook.com/course-resources/18-gitchat_shortcode.zip)。

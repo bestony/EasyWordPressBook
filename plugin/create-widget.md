@@ -15,11 +15,11 @@
 
 在管理后台，它是这个样子的：
 
-<img src="https://ws4.sinaimg.cn/large/006tNc79gy1fmvm1li61aj30c80dgjr9.jpg"  width = "60%" />
+![](https://postimg.aliavv.com/mbp/4yju1.jpg)
 
 而在前台，它是这个样子的：
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fmvm6fgoq6j309f05lmwy.jpg)
+![](https://postimg.aliavv.com/mbp/1uvoc.jpg)
 
 每一个 Widget 都至少包含这两部分，其中第二部分又可能会有很多不同的样式。大多数就是对第二部分进行自定义，来达到展示特定内容的目的。
 
@@ -31,7 +31,7 @@
 
 首先要创建一个插件，这里创建的插件名称为 *gitchat_widget*，并进行初始化。
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fmvlggtbyxj30ep01yglg.jpg)
+![](https://postimg.aliavv.com/mbp/yql73.jpg)
 
 ### 初始化小工具
 
@@ -70,7 +70,7 @@ add_action('widgets_init',
 
 此时代码如下：
 
-<img src="https://ws2.sinaimg.cn/large/006tNc79gy1fmvpjf6478j313u0usdh6.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/keody.jpg)
 
 我们将两个参数打印出来看看，具体有什么作用。
 
@@ -78,11 +78,11 @@ add_action('widgets_init',
 
 进入 WordPress 后台的小工具中，拖动我们创建的 GitChat Widget 到侧边栏中。
 
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmwaekew7og30rw0biwgm.gif)
+![](https://ws1.now.sh/large/006tKfTcgy1fmwaekew7og30rw0biwgm.gif)
 
 来到前台，我们可以看到这样的输出：
 
-<img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmwafbi7bjj30a90bvdfw.jpg"  width = "50%" />
+![](https://postimg.aliavv.com/mbp/954lz.jpg)
 
 现在我们知道了这里都有哪些内容了，可以调整一下输出。将 *widget* 函数代码改为这样：
 
@@ -158,7 +158,7 @@ $link  = ! empty( $instance['link'] ) ? $instance['link'] : "http://gitbook.cn/g
 
 再次拖动一个 GitChat Widget 到侧边栏，这时会发现我们的小工具中有了三个设置项。
 
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmwb4puamaj30d20akgln.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/c35kt.jpg)
 
 将三个设置项进行修改，设置为你自己的值。
 
@@ -168,7 +168,7 @@ $link  = ! empty( $instance['link'] ) ? $instance['link'] : "http://gitbook.cn/g
 
 刚刚设置的内容，会通过 widget 函数的 *instance* 参数传递进入函数。
 
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmwb7scxhjj30ne06wmx9.jpg)
+![](https://postimg.aliavv.com/mbp/6o73h.jpg)
 
 我们可以通过 `$instance['属性名']` 来调用它.这里使用 html 的 *figure* 标签来实现结果的输出。
 
@@ -184,13 +184,13 @@ echo '<figure>
 
 效果如下：
 
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmwbfm51eaj314q0egaak.jpg)
+![](https://postimg.aliavv.com/mbp/zypat.jpg)
 
 这样就简单的实现了前台内容的输出。
 
 回到前台，刷新，可以看到：
 
-<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fmwbg1ypxtj309v0edq3u.jpg"  width = "40%" />
+![](https://postimg.aliavv.com/mbp/cmfxs.jpg)
 
 点击图片，则可以跳转到 GitChat 的达人课界面。
 
@@ -198,7 +198,7 @@ echo '<figure>
 
 回到后台，将我们的小工具的设置改为其他达人课的信息，可以看到内容已经发生了改变。
 
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmwbjpzvvwj309c0ci0to.jpg"  width = "40%" />
+![](https://postimg.aliavv.com/mbp/gigev.jpg)
 
 这样，就验证了我们的小工具开发成功。
 
@@ -207,5 +207,3 @@ echo '<figure>
 在开发过程中需要注意，并不是每个小工具都有输入和输出，在涉及到用户的输入和输出时，一定要注意在其中加入过滤函数，常用的过滤函数你可以在[这里](https://codex.wordpress.org/Validating_Sanitizing_and_Escaping_User_Data) 找到。通过对用户输入的过滤，能够避免由用户的错误输入导致的恶意代码的嵌入。
 
 > 记住，不要相信用户的输入！
-
-[单击这里下载本课插件](http://www.easywpbook.com/course-resources/17_gitchat_widget.zip)。

@@ -18,7 +18,7 @@
 
 下载后，将这个压缩包解压，可以看到里面有很多文件，不过大部分都是用不到的，只需要将 *images*、*inc*、*options.php* 三个文件移动到主题根目录中去。
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fmxowmzyttj30ll070jrd.jpg)
+![](https://postimg.aliavv.com/mbp/52qj2.jpg)
 
 然后，打开主题的 *functions.php* 文件，在其中加入如下代码：
 
@@ -31,15 +31,15 @@ if (!function_exists('optionsframework_init')){
 
 加入后代码如下：
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxp1kqcirj316a0hwwfd.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/nj5hp.jpg)
 
 保存文件，回到 WordPress 后台，可以在「外观」中找到一个「Theme Options」，点击即可进入设置页面。
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fmxp2j1aouj309q03st8j.jpg)
+![](https://postimg.aliavv.com/mbp/674s2.jpg)
 
 进入设置页面后，会看到非常多的设置项，这个都是 Options Framework 为我们提供的 Demo，等下会将这些内容处理一下，只保留我们自己需要的内容。
 
-<img src="https://ws4.sinaimg.cn/large/006tNc79gy1fmxp3qxe2rj30lj0eawel.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/rjsnt.jpg)
 
 当看到这里，说明 Options Framework 接入成功了。
 
@@ -49,13 +49,13 @@ if (!function_exists('optionsframework_init')){
 
 首先，会看到一个函数：
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fmxp6ywaarj31fw08mt8y.jpg)
+![](https://postimg.aliavv.com/mbp/7spuc.jpg)
 
 这个函数定义了数据库中我们的参数存放的字段名，可以把它改成我们自己需要的，比如 `gitchat_theme_options`。
 
 在下方，可以找到我们的设置项目：
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxp94f6r0j311a0jswf3.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/zc6mf.jpg)
 
 项目大体上可以两种，分别是选项卡和其他设置项，选项卡的 type 是 *heading*，设置项则支持多种类型：
 
@@ -74,11 +74,11 @@ if (!function_exists('optionsframework_init')){
 
 可以根据需要选择不同的选项，具体的设置范例，可以在 *options.php* 中看到。在对设置项精简以后，可以看出代码是这个样子的。这里面最需要关注的是 *id* 和 *type*，id 会用于后续获取对应的设置项，如果 id 不唯一，就没办法获取到准确的值。而 type 不对，在后台设置时，可能体验不同。*name* 和 *description* 则分别是设置项的名称和描述，可以帮助我们更好的输入对应的设置项。*std* 是默认填写的内容，*placeholder* 是在未输入内容情况下，文本框会显示的内容。
 
-<img src="https://ws2.sinaimg.cn/large/006tNc79gy1fmxpcqq7a9j30xw0nsq3m.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/xj7kb.jpg)
 
 于此同时，后台设置项变成了：
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fmxpdglulhj30oc09mjrb.jpg)
+![](https://postimg.aliavv.com/mbp/s000v.jpg)
 
 可以看出，这里的设置项和我们设置数据的顺序有关，可以根据我们的需要，来设置不同的顺序。
 
@@ -118,11 +118,11 @@ if (!function_exists('optionsframework_init')){
 
 然后在后台展示的效果如图。
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxpkzaomvj30pi0eh0sx.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/tg842.jpg)
 
 我们可以填写一下内容，测试一下能否正常保存设置项目。
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxploebpbj30pe0fzjrk.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/1qnk2.jpg)
 
 可以看到，我们的设置项被正确保存了。
 
@@ -144,17 +144,17 @@ if (!function_exists('optionsframework_init')){
 <?php echo of_get_option("user-name").",".of_get_option("user-email").",".of_get_option("user-url");?>
 ```
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fmxpse84iuj30wk09odg8.jpg)
+![](https://postimg.aliavv.com/mbp/pyro0.jpg)
 
 保存文件，回到网站的首页，刷新即可看到我们输出的内容。
 
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmyj3560dlj309603s3yb.jpg)
+![](https://postimg.aliavv.com/mbp/fcnvm.jpg)
 
 ### 修改获取参数的函数
 
 可能你会觉得默认的函数太长了，需要变得短一点，可以修改 *inc/options-framework.php* 文件，搜索 `of_get_option`，找到这段代码，将这里的两个 `of_get_option` 改为你自己的函数名：
 
-<img src="https://ws4.sinaimg.cn/large/006tNc79gy1fmxqbbfhxkj310c0kggmm.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/vk8yx.jpg)
 
 修改完成后，记得到主题中你调用的位置去修改对应的函数名。
 
@@ -162,11 +162,11 @@ if (!function_exists('optionsframework_init')){
 
 想要修改菜单中的 Theme Options ，可以打开 *inc/includes/class-options-framework-admin.php* 文件，搜索 *Theme Options*，然后就可以找到这些代码，修改其中的 `page_title` 和 `menu_title` 为你自己需要的内容。
 
-<img src="https://ws2.sinaimg.cn/large/006tNc79gy1fmxqer8n4lj30zu0m83z9.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/icw8r.jpg)
 
 修改完成后，回到后台，可以看到菜单项中的文字和页面顶部的标题都修改过来了。
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxqgh44x9j30fo095t8s.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/4p7xh.jpg)
 
 ### 其他优秀的面板
 
@@ -176,7 +176,7 @@ if (!function_exists('optionsframework_init')){
 
 OptionTree 是由 ThemeForest 赞助的主题设置模板，界面美观简洁大方，也是一个非常不错的选项框架。
 
-<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fmyj76kcf6j30x90j8mxr.jpg"  width = "90%" />
+![](https://postimg.aliavv.com/mbp/c07sw.jpg)
 
 插件地址[详见这里](https://wordpress.org/plugins/option-tree/)。
 
@@ -184,7 +184,7 @@ OptionTree 是由 ThemeForest 赞助的主题设置模板，界面美观简洁�
 
 #### Unyson Framework
 
-<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmyjb4k2ynj30hs0aamxd.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/evy4n.jpg)
 
 插件地址[详见这里](https://wordpress.org/plugins/unyson/)。
 
@@ -192,13 +192,13 @@ OptionTree 是由 ThemeForest 赞助的主题设置模板，界面美观简洁�
 
 #### Redux Framework
 
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmyjfw7o1sj30hs0aaq3a.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/s45ht.jpg)
 
 插件地址[详见这里](https://wordpress.org/plugins/redux-framework/)。
 
 #### Titan Framework
 
-<img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmyjgi2gn3j30hs08yq32.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/cy8a0.jpg)
 
 插件地址[详见这里](https://wordpress.org/plugins/titan-framework/)。
 

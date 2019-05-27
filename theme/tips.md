@@ -4,25 +4,25 @@
 
 WordPress 主题审核团队开发了一款 ThemeCheck 插件，来帮助开发者自查插件是否有问题，进入插件列表就可以看到这个插件：
 
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmyiy67g88j31bu0j9dhs.jpg)
+![](https://postimg.aliavv.com/mbp/jnbdu.jpg)
 
 安装成功后，启用该插件，在菜单栏中就会多出一项菜单项。
 
 找到「外观」—「Theme Check」，进入主题检查的页面：
 
-![](https://ws4.sinaimg.cn/large/006tKfTcgy1fmyizac30qj308w064wed.jpg)
+![](https://postimg.aliavv.com/mbp/fjzc9.jpg)
 
 在这个页面选择你要检查的主题，然后点击 Check it！就可以开始检查你的主题是否合格：
 
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmyj05u5srj30cf03bglf.jpg)
+![](https://postimg.aliavv.com/mbp/69o0a.jpg)
 
 在运行了主题的测试后，会看到一些提示：
 
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmyj0tctzoj30wn0n1mys.jpg)
+![](https://postimg.aliavv.com/mbp/rl6qw.jpg)
 
 告诉你有哪些问题要处理。一般来说，Waring 和 Require 是必须要处理的，Recommend 可以根据自己的需要开启：
 
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fmyj1zro50j312c03raa9.jpg)
+![](https://postimg.aliavv.com/mbp/ad2l1.jpg)
 
 INFO 则是你自己需要检查的。
 
@@ -32,7 +32,7 @@ INFO 则是你自己需要检查的。
 
 网站地址[请单击这里](https://generatewp.com/generator/)。
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmxx0ddvm5j30rr0lf0v1.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/xj3rm.jpg)
 
 ### 使用 Theme Unit Test Data 来进行测试
 
@@ -42,11 +42,11 @@ INFO 则是你自己需要检查的。
 
 下载后，打开开发环境的 WordPress 后台，找到「工具」—「导入」，选择其中的 WordPress 导入工具，安装该插件。
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fmxw0lkb2wj30lw05wwel.jpg)
+![](https://postimg.aliavv.com/mbp/1tp0o.jpg)
 
 安装完成后，点击「运行导入器」，选择刚刚下载的 xml 文件，点击上传文件并导入：
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fmxw1tstj0j30ok05x3yn.jpg)
+![](https://postimg.aliavv.com/mbp/82u23.jpg)
 
 在新的页面中，会提示你是导入作者还是创建新的作者或是分配给现有的作者，由于我们是测试环境，保持默认即可。
 
@@ -56,7 +56,7 @@ INFO 则是你自己需要检查的。
 
 可能会看到提示导入媒体失败的信息，不过不用管，我们没有勾选下载附件，所以报错是正常的。回到仪表盘，会看到导入了大量的文章、页面和评论：
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxw5t2o6mj30if074jrd.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/q153x.jpg)
 
 除此之外，包括菜单也导入了一些，足够用来测试我们的主题了。
 
@@ -216,4 +216,5 @@ echo '由<a href="">白宦成 </a>开发';
 add_filter('admin_footer_text', 'remove_footer_admin');
 ```
 
-<img src="https://ws4.sinaimg.cn/large/006tNc79gy1fmxwggxhncj30fg08nglp.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/cvg3r.jpg)
+

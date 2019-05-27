@@ -33,21 +33,21 @@ Template Name: 无侧边栏页面模板
 
 点击下拉框，可以看到刚刚创建的模板，选择这个模板。在页面中随便添加一些内容，作为我们稍后的演示。
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxnk0oimnj30lo0ho0t4.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/jyb9y.jpg)
 
 发布后，点击查看页面：
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fmxnkf39zcj30ac02ma9v.jpg)
+![](https://postimg.aliavv.com/mbp/tlf6y.jpg)
 
 会跳转到内容页，但是会发现，目前的页面中没有任何内容，显示的是一个白屏。这是因为页面模板中没有任何内容。
 
 接下来给这个页面模板添加内容，打开 page.php ，复制其中的内容到 page-nosidebar.php 中，并删除其中引用侧边栏的代码，调整主要内容占的页面比例：
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxnmvcrvzj314k11mwg3.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/ro6u0.jpg)
 
 修改完成后，保存文件并退出，回到刚刚的白屏页面刷新，这次可以看到页面的内容。同时也会注意到，侧边栏消失了。
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmxnrdgwupj30u60dvaa6.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/03erk.jpg)
 
 这样就完成了自定义页面模板的制作，后续可以根据你自己的需要，制作不同的页面模板。
 
@@ -108,7 +108,7 @@ get_header();
 
 创建成功后，刷新页面，可以看到这样的效果：
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmxohw58xij30hr092gln.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/mj194.jpg)
 
 这样就完成了归档页面的编写，具体代码的使用可以参考我上方代码中的注释来理解，如果出现无法理解，可以到读者圈内提问。
 
@@ -146,7 +146,7 @@ get_header();?>
 
 然后，查看这个页面就可以看到标签信息了。点击标签，就会进入到标签的详情页。
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxo97nyjkj30mn0cl74f.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/6hgkv.jpg)
 
 ### 友情链接页面
 
@@ -160,7 +160,7 @@ add_filter( 'pre_option_link_manager_enabled', '__return_true' );
 
 会看到侧边栏多了一个菜单项：
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fmy1hjlbwtj309v03pa9w.jpg)
+![](https://postimg.aliavv.com/mbp/d8atk.jpg)
 
 接下来就可以在这里添加、删除和管理链接了。
 
@@ -194,7 +194,7 @@ get_header();?>
 
 然后，使用这个页面模板创建一个新的页面，使用我们刚刚创建的友情链接模板，最终得到的效果如图所示：
 
-<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmy3ozv9p1j30jh099jrc.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/yapom.jpg)
 
 ### 总结
 

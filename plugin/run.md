@@ -12,7 +12,7 @@
 
 > 代码所在行[请单击这里](https://github.com/WordPress/WordPress/blob/02d04f2b5c61bd770d6ce4875ac25b2ad8da0c45/index.php#L17)。
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fmv4claxpvj313y0lcdgm.jpg)
+![](https://postimg.aliavv.com/mbp/pck8f.jpg)
 
 #### wp-blog-header.php
 
@@ -20,7 +20,7 @@
 
 > 代码所在行[请单击这里](https://github.com/WordPress/WordPress/blob/02d04f2b5c61bd770d6ce4875ac25b2ad8da0c45/wp-blog-header.php#L13)。
 
-<img src="https://ws2.sinaimg.cn/large/006tNc79gy1fmv4e6ste4j310m0pkdgl.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/erjxn.jpg)
 
 我们先看一看 *wp-load.php* 文件。
 
@@ -30,7 +30,7 @@
 
 > 代码所在行[请单击这里](https://github.com/WordPress/WordPress/blob/02d04f2b5c61bd770d6ce4875ac25b2ad8da0c45/wp-load.php#L37)。
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fmv4i88vjtj31eu0zgq4y.jpg)
+![](https://postimg.aliavv.com/mbp/ge4h8.jpg)
 
 接下来看看 *wp-config.php* 这个文件。
 
@@ -40,7 +40,7 @@
 
 > 代码所在行[请单击这里](https://github.com/WordPress/WordPress/blob/02d04f2b5c61bd770d6ce4875ac25b2ad8da0c45/wp-config-sample.php#L90)。
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fmv4kn2v3tj30vo0liwfh.jpg)
+![](https://postimg.aliavv.com/mbp/ge7fs.jpg)
 
 接下来看看 *wp-settings.php*。
 
@@ -50,7 +50,7 @@
 
 > 代码所在行[请单击这里](https://github.com/WordPress/WordPress/blob/02d04f2b5c61bd770d6ce4875ac25b2ad8da0c45/wp-settings.php#L304)。
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fmv4nsr67gj30vg07idg3.jpg)
+![](https://postimg.aliavv.com/mbp/7jpuq.jpg)
 
 这段代码会将已激活的插件作为循环元素进行循环，对每个插件执行注册和加载。
 
@@ -58,7 +58,7 @@
 
 > 代码所在行[请单击这里](https://github.com/WordPress/WordPress/blob/02d04f2b5c61bd770d6ce4875ac25b2ad8da0c45/wp-settings.php#L432)。
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fmv4tpqwojj31d008674x.jpg)
+![](https://postimg.aliavv.com/mbp/hjzoc.jpg)
 
 这样，我们在主题中添加的功能，也会被加载到系统当中去。
 
@@ -72,19 +72,19 @@
 
 在 wp-blog-header.php 文件中可以看到，在 *wp-load.php* 下，引用了 *template-loader.php*，该文件的功能就是进行我们后续的主题加载。
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fmv4zxx6gij30u20gm74o.jpg)
+![](https://postimg.aliavv.com/mbp/7jikn.jpg)
 
 #### 结论
 
 经过上述的分析可以得出一个结论，WordPress 的加载是这样的一个顺序，先加载 **插件**，再加载 主题根目录中的 *functions.php*，最后加载主题。
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fmv58b6fdxj30rx02zt8l.jpg)
+![](https://postimg.aliavv.com/mbp/l0gk2.jpg)
 
 ### 插件是如何运行的
 
 WordPress 的插件也是一段代码， WordPress 插件通过 WordPress 提供的插件 API 和函数，来实现集成到 WordPress 当中去。相关涉及到的函数，你可以在 *wp-includes/plugin.php* 中看到：
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fmvbld50o4j31fy13q0vi.jpg)
+![](https://postimg.aliavv.com/mbp/ijlka.jpg)
 
 WordPress 将插件的行为分为两种，分别是 Action（动作）和 Filters（过滤器）。
 
@@ -94,7 +94,7 @@ WordPress 的插件机制是基于 Hook 机制实现的，简单来说，就是�
 
 我们写插件，就是写一些自定义的函数，然后利用 WordPress 提供的对 Hook 操作的函数，将函数挂载到对应的位置上去。
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fmvbvuj8bij30lc08b3yr.jpg)
+![](https://postimg.aliavv.com/mbp/7rp1i.jpg)
 
 #### 什么是 Action
 
@@ -119,7 +119,7 @@ Filters 则是对内容的处理，通过 Filters 可以在这些数据被渲染
 
 这个函数有两个参数，第一个参数是 Hook 的名称，第二个参数则是具体的参数。
 
-<img src="https://ws2.sinaimg.cn/large/006tNc79gy1fmvce7m06cj30tm12475q.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/ldonb.jpg)
 
 比如在开发过程中，可能会用到 `get_header` 这个函数，该函数在执行时，首先会调用 *do_action*，那么，在 *get_header* 上挂载的函数就会执行，执行完成后，再执行后面的函数。
 
@@ -147,11 +147,11 @@ add_action( string $tag, callable $function_to_add, int $priority = 10, int $acc
 
 参数个数：默认情况下参数的个数是1。具体设置为多少，则取决于你使用的 Hook 能够提供多少个参数。如何找寻这个参数的个数？可以直接去看这个 Hook 的说明，查看相关的代码说明。如果这个 Hook 提供了调用的说明，可以直接根据上面的 *add_action* 的函数参数来判断这个 Hook 支持几个参数。具体的参数是什么，可以通过实例代码的注释或者到源代码中查找对应 `do_action` 函数的参数。举个例子，我希望了解 *save_post* 这个 Hook 的参数，可以到它的 [API 页面](https://codex.wordpress.org/Plugin_API/Action_Reference/save_post)去查看具体的参数调用。可以看到在示例代码中说明了参数的个数和对应的参数的含义。
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmvd0wu5urj318b1b2grv.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/xib2q.jpg)
 
 如果这个函数没有说明参数，也可以查看它的源代码，确认参赛，页面底部有说明这个函数的位置，
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fmvd1zykajj30mm05smx7.jpg)
+![](https://postimg.aliavv.com/mbp/6gjal.jpg)
 
 你可以直接去对应的文件查看这个 Hook 的调用参数。了解到参数后，就可以使用这些参数，来执行一系列操作了。
 

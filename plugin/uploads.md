@@ -20,7 +20,7 @@ WordPress 是一个基于 GPL v2 的开源程序，作为其衍生程序的插�
 
 因为你的插件要提交到 WordPress 的官方仓库，而官方仓库内的信息都是基于 README.txt 生成的：
 
-<img src="https://ws4.sinaimg.cn/large/006tNc79gy1fmvfuf8if2j31k01hbtg1.jpg"  width = "60%" />
+![](https://postimg.aliavv.com/mbp/onhkn.jpg)
 
 所以需要写好 readme.txt 。
 
@@ -119,7 +119,7 @@ WordPress.org 提供的仓库是用来发布插件的，而不是用来进行日
 
 不允许提交一个空白的插件来占「目录名」，你上传的插件必须是可用的插件：
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fmvgssxan5j30bv01pa9v.jpg)
+![](https://postimg.aliavv.com/mbp/h0u2s.jpg)
 
 ### 注册一个 WordPress.org 的账户
 
@@ -127,11 +127,11 @@ WordPress.org 提供的仓库是用来发布插件的，而不是用来进行日
 
 进入 WordPress 官网，点击顶部菜单中的 Plugins ，进入到插件市场。在插件市场页面，点击页面右上角的 Register ，就能够进入到注册的页面了。
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fmvengunfuj30y00d3q36.jpg)
+![](https://postimg.aliavv.com/mbp/wab3s.jpg)
 
 WordPress.Org 使用的也是 WordPress 构建的，所以注册也和 WordPress 相同，输入用户名、邮箱等信息，点击 「Create Account」，系统会自动给你的邮箱发送一封注册确认信。
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fmvep8gc0ej30az0hiaab.jpg)
+![](https://postimg.aliavv.com/mbp/ntx0s.jpg)
 
 确认后，回到 WordPress.org 的插件商城，点击右上角的「Login」登录。
 
@@ -139,7 +139,7 @@ WordPress.Org 使用的也是 WordPress 构建的，所以注册也和 WordPress
 
 将插件打包成为一个 zip 文件，单击 [这里](https://wordpress.org/plugins/developers/add/)打开页面，登录后会看到这样的界面。
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fmvh95ip4mj30q60dggly.jpg)
+![](https://postimg.aliavv.com/mbp/tsuuh.jpg)
 
 点击 「Select File」，选择刚刚打包的 zip 文件，单击 Upload 按钮，就可以将你的插件添加到审核队列了。
 
@@ -147,17 +147,17 @@ WordPress.Org 使用的也是 WordPress 构建的，所以注册也和 WordPress
 
 提交成功后，会收到一封来自 WordPress 邮件，提醒你插件已经成功提交了：
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fmvhhg29bnj30ra0g3gmj.jpg)
+![](https://postimg.aliavv.com/mbp/06g0z.jpg)
 
 ### 修改插件
 
 在大部分情况下第一次提交都会有一些问题，这时审核团队会给你发邮件，告诉你你的插件有什么问题，然后根据邮件内容去更新代码，并将新的代码以附件的形式回复给审核者。
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fmvhje1cvlj30rj0czmxo.jpg)
+![](https://postimg.aliavv.com/mbp/8fuqy.jpg)
 
 再次发送邮件通过审核后，会收到另一封邮件：
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fmvhnqwzutj30r90jqwfg.jpg)
+![](https://postimg.aliavv.com/mbp/o3r2k.jpg)
 
 在这邮件中，会得到一个 SVN 仓库的地址，使用 SVN 管理软件将这个仓库克隆到本地。
 
@@ -179,7 +179,7 @@ Banner 要放在 assets 目录下，并且Banner 命名为 *banner-772x250.png*�
 
 #### icon
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fmvhzafca9j30i306jaa8.jpg)
+![](https://postimg.aliavv.com/mbp/ir0js.jpg)
 
 图标也需要准备2个 png 的，或者一个 SVN 格式的也可以。
 
@@ -199,7 +199,7 @@ icon 要放在 assets 目录下，并且icon 命名为 *icon-128x128.png*、*ico
 
 文件存放的位置应该和我的示意图一致：
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fmvhty4w3fj30810c5gll.jpg)
+![](https://postimg.aliavv.com/mbp/fk9th.jpg)
 
 #### 使用 SVN 上传
 

@@ -12,7 +12,7 @@
 
 （1）插件名唯一：我们的插件名称应该是唯一的，这样才不会在加载时出现错误。同时也可以不用担心上传到 WordPress 官方中浏览出错( WordPress 官方给每个插件有一个单页，单页地址和你的插件名称有关)。
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmv5m96yv7j30la0ehq7m.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/r5cay.jpg)
 
 （2）插件名可识别：插件名称应该尽可能的可读，通过简单的读插件的名称，就能知道大体上这个插件的功能。
 
@@ -52,7 +52,7 @@ Author URI: https://gitchat.cn/
 
 这时，回到 WordPress 后台，可以在插件列表中看到这样的界面。
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fmum6kndtwj312s04k74c.jpg)
+![](https://postimg.aliavv.com/mbp/04dgf.jpg)
 
 这就是我们创建的插件。WordPress 会自动读取我们在注释中填写的内容，加载为插件的详细信息，可以把这段信息改为你自己的对应信息。
 
@@ -78,7 +78,7 @@ function copyright_end($content){
 
 添加后，代码如下：
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmv3z9mjvuj310e0jywfb.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/4rbmr.jpg)
 
 保存文件并退出。
 
@@ -88,7 +88,7 @@ function copyright_end($content){
 
 启用成功后，回到首页，找一篇文章，点击进去，可以看到如图的样式。
 
-<img src="https://ws2.sinaimg.cn/large/006tNc79gy1fmv3v8i9f9j30fi0bg0sr.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/kdfie.jpg)
 
 这说明我们的插件功能已经实现了。
 
@@ -102,7 +102,7 @@ function copyright_end($content){
 
 如果注销这个 if 判断条件，那么在首页可能也会看到这个输出的结果。
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fmv45pv4cpj30qt0avmxb.jpg)
+![](https://postimg.aliavv.com/mbp/o00g4.jpg)
 
 #### 优化插件
 
@@ -130,7 +130,7 @@ register_activation_hook( __FILE__, 'gitchat_copyright_activate' );
 
 添加后的代码如下：
 
-<img src="https://ws4.sinaimg.cn/large/006tNc79gy1fmv7yd9y18j31800xs0ue.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/prnnm.jpg)
 
 保存插件，回到后台停用插件，并重新启用。
 
@@ -146,7 +146,7 @@ select * from wp_options where option_name = 'gitchat_copyright_code'
 >
 > 如果你是 Windows 操作系统，可以使用 phpStudy 自带的 phpMyAdmin 来进行管理，访问 http://localhost/phpmyadmin 即可。
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmv7v2t5gmj310i0dqwep.jpg"  width = "50%" />
+![](https://postimg.aliavv.com/mbp/nzegp.jpg)
 
 现在我们内容已经放在数据库了。接下来设置内容的输出，让输出使用数据库中的值，而不是写死在代码中。
 
@@ -174,7 +174,7 @@ update wp_options set option_value = "<hr><p>现在输出的是数据库中的�
 
 刷新刚刚的文章页面，可以看到输出的内容已经发生了改变。
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmv86picdvj30g30bgt8q.jpg"  width = "60%" />
+![](https://postimg.aliavv.com/mbp/asqad.jpg)
 
 ##### 实现后台的管理
 
@@ -206,17 +206,17 @@ class new_general_setting {
 
 添加后的代码如下：
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmv9qci3jnj31a010a0uy.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/09fpf.jpg)
 
 >  这段代码构建了一个新的类，在类中通过 `register_fields` 方法来注入新的设置项，并通过 `fields_html` 设置了输入框的类型。 
 
 回到 WordPress 停用插件并重新启用插件。进入「设置」-「常规」：
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fmv9rb5lajj308w05a0sk.jpg)
+![](https://postimg.aliavv.com/mbp/0fqif.jpg)
 
 拉到底部，可以看到这样一项：
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fmv9rynu33j30er0anglj.jpg)
+![](https://postimg.aliavv.com/mbp/ok3ao.jpg)
 
 这时可以修改输入框里的代码并保存。回到文章页后刷新，会发现你的 copyright 代码已经更新了。
 
@@ -259,5 +259,3 @@ delete_option("gitchat_copyright_code");
 ### 结论
 
 至此，我们创建了一个非常简单的插件，这个插件只需要寥寥数行代码，就可以实现在整站的所有内容的尾部加入一段版权代码。
-
-[单击这里下载本课插件](http://www.easywpbook.com/course-resources/15_gitchat_copyright.zip)。
