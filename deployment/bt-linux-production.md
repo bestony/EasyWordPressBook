@@ -24,11 +24,7 @@ https://www.bt.cn/bbs/thread-19376-1-1.html
 
 然后在添加网站的界面输入网站信息。
 
-![](/Users/bestony/Downloads/EasyWordPressBook/deployment/images/bd1yp.jpg)
-
 创建的时候需要注意，勾选上创建 FTP 和创建 MySQL 数据库，然后点击提交，创建新的站点。
-
-![](/Users/bestony/Downloads/EasyWordPressBook/deployment/images/xv0qe.jpg)
 
 
 

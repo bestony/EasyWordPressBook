@@ -20,7 +20,7 @@ MacOS 相比于 Windows 有很好的命令行支持，在开发环境上也更�
 
 待命令执行完毕后，HomeBrew 就安装完成了。可以执行`brew`命令，查看系统返回，如果显示如下所示，则说明安装完成了。
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1flhni0zn9oj30hk0iwdg6.jpg)
+![](https://postimg.aliavv.com/mbp/0jprx.jpg)
 
 #### 安装 PHP 7 和 Composer 
 
@@ -43,7 +43,7 @@ mv composer.phar /usr/local/bin/composer
 
 > 将其移动到 `/usr/local/bin/composer` 主要是为了方便全局运行，这样我们就不用总是使用相对路径来调用 Composer 了。
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1flhnnr65wkj318s0i6mxr.jpg)
+![](https://postimg.aliavv.com/mbp/9g7e0.jpg)
 
 安装完成后，我们要为 Composer 来配置国内镜像（受不可抗力因素影响，官方镜像下载速度缓慢）。
 
@@ -64,11 +64,11 @@ valet install
 
 命令执行完成后，系统就成功帮助我们安装了 Valet 开发环境。
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1flhnwbehhej30us0bwq3f.jpg)
+![](https://postimg.aliavv.com/mbp/f9b4q.jpg)
 
 这时执行 `ping gitchat.dev`，可以看到返回的 IP 地址是 127.0.0.1，则说明环境配置成功。
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1flhnxsg1u6j30vm0cwt9j.jpg)
+![](https://postimg.aliavv.com/mbp/c8mow.jpg)
 
 #### 配置 Valet 
 
@@ -99,7 +99,7 @@ brew install mysql
 
 安装完成后，可以执行 `brew services start mysql`设置数据库的开机自启动。
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1flho3k8kjkj31900xgq49.jpg)
+![](https://postimg.aliavv.com/mbp/bv3fd.jpg)
 
 可以执行`cat ~/.mysql_secret`来获取 mysql 默认的 root 用户的密码。这个密码稍后要用到，要记下来。
 
@@ -128,18 +128,18 @@ mysql -uroot -p -e "create database wordpress"
 
 执行命令后，可能会让你输入密码，输入密码后并回车，就成功创建了数据库了。
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1flhohgy4i8j30y00j40t3.jpg)
+![](https://postimg.aliavv.com/mbp/ezx1r.jpg)
 
 在浏览器中打开 [http://wordpress.dev/](http://wordpress.dev/)，就可以一步一步按部就班的安装了。
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1flhonqwagtj31ak0wkmyf.jpg)
+![](https://postimg.aliavv.com/mbp/dw43z.jpg)
 
 在输入数据库信息时，设置数据库名为 `wordpress`，用户名为`root` ，密码为上方我们获取到的密码。其他两项不同，单击“提交”按钮。
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1flhoqakavcj316c0fs0t1.jpg)
+![](https://postimg.aliavv.com/mbp/c1u5c.jpg)
 
 单击“进行安装”按钮，在新的页面中设置基本信息，并单击“安装 WordPress”按钮。
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1flhor2kkawj317m0vs3zx.jpg)
+![](https://postimg.aliavv.com/mbp/xhbg1.jpg)
 
 这样，我们的本地开发环境就部署完成了。

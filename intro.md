@@ -28,9 +28,9 @@ WordPress 是一个独立博客系统，说简单也很简单，著名的“五�
 
 一个代码编辑器可以帮助读者很好的做代码高亮的相关工作，借助代码高亮，能够更好的分辨代码的层级，减少写错代码的可能。
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1flhs6w7tsoj30fh07nweq.jpg)
+![](https://postimg.aliavv.com/mbp/dhbap.jpg)
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1flhs74j7ezj30mk0cr0t2.jpg)
+![](https://postimg.aliavv.com/mbp/7dlna.jpg)
 
 ### 准备好钱和耐心
 
