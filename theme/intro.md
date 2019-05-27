@@ -6,7 +6,7 @@
 
 主题效果图：
 
-<img src="https://ws4.sinaimg.cn/large/006tNc79gy1fmx099v495j31kw0wj77j.jpg"  width = "70%" />
+<img src="https://ws4.now.sh/large/006tNc79gy1fmx099v495j31kw0wj77j.jpg"  width = "70%" />
 
 ### 课程内容
 
@@ -43,19 +43,19 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 然后，打开 WordPress 后台的主题管理页面，就可以看到主题了。
 
-<img src="https://ws4.sinaimg.cn/large/006tNc79gy1fmx085xc5dj30jk0h2q2r.jpg"  width = "50%" />
+<img src="https://ws4.now.sh/large/006tNc79gy1fmx085xc5dj30jk0h2q2r.jpg"  width = "50%" />
 
 你可以尝试启用这个主题，会发现主题已经能够正常的启用了，不过当点击进入前台时，发现目前的页面效果并不好，和我们的效果图差距很大。
 
 这是由于我们将 *index.html* 未经修改直接作为主题，引用的文件都失效了导致的。
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmx0aekf6kj31kw0v0got.jpg"  width = "70%" />
+<img src="https://ws1.now.sh/large/006tNc79gy1fmx0aekf6kj31kw0v0got.jpg"  width = "70%" />
 
 接下来修复这个问题，让这个页面的样式变为和之前一样的样式。
 
 打开 *index.php* 文件，找到第18行：
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fmx0d5jyhej30o602i3yf.jpg)
+![](https://ws2.now.sh/large/006tNc79gy1fmx0d5jyhej30o602i3yf.jpg)
 
 将这里的 *blog.css* 替换为 `<?php echo get_stylesheet_directory_uri() ?>/style.css`，保存文件并刷新网站首页，可以看到，首页的样式就回复了过来。
 
@@ -69,15 +69,15 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 我们发现，现在页面的标题是错误的，接下来修改一下：
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fmx0f5gag1j30eq02mq2r.jpg)
+![](https://ws1.now.sh/large/006tNc79gy1fmx0f5gag1j30eq02mq2r.jpg)
 
 重新回到文件编辑器中，打开 *index.php*，找到第12行，将这里的 *Blog Template for Bootstrap* 替换为`<?php wp_title( '|', true, 'right' ); ?>`。这样，就使用了 WordPress 自带的函数来生成页面的标题，确保了页面标题是自动生成的。
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fmx0lx6sjxj30d40263yc.jpg)
+![](https://ws3.now.sh/large/006tNc79gy1fmx0lx6sjxj30d40263yc.jpg)
 
 在别的主题中，我们会在前台页面的顶部看到一个菜单栏：
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fmx0k97ehsj30sg07aaa5.jpg)
+![](https://ws1.now.sh/large/006tNc79gy1fmx0k97ehsj30sg07aaa5.jpg)
 
 但是在我们现在的主题中是无法看到的，接下来修复这个问题，让 WordPress 主题能够正常的加载这个菜单栏。
 
@@ -89,7 +89,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 具体位置如下：
 
-<img src="https://ws4.sinaimg.cn/large/006tNc79gy1fmx0nvq2sgj30o60a63yr.jpg"  width = "60%" />
+<img src="https://ws4.now.sh/large/006tNc79gy1fmx0nvq2sgj30o60a63yr.jpg"  width = "60%" />
 
 然后找到页面的底部，在 Body 标签闭合前，加入如下代码：
 
@@ -99,7 +99,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 具体位置如下：
 
-<img src="https://ws2.sinaimg.cn/large/006tNc79gy1fmx0pjwlrqj30om09ajrm.jpg"  width = "60%" />
+<img src="https://ws2.now.sh/large/006tNc79gy1fmx0pjwlrqj30om09ajrm.jpg"  width = "60%" />
 
 现在再刷新页面就可以看到我们的菜单栏了。
 
@@ -107,19 +107,19 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 在接下来的内容中，我们要制作独立的单页等，所以需要在这里将页面进行拆分，将通用的部分抽离出去，从而提升代码的复用率。
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmx0sjfitxj31kw0t7dim.jpg"  width = "70%" />
+<img src="https://ws1.now.sh/large/006tNc79gy1fmx0sjfitxj31kw0t7dim.jpg"  width = "70%" />
 
 可以认为，在这个页面中，被我用红色框体圈出来的内容是会被多个文件所使用的，我们可以先将这两部分拆分出来。
 
 此外，页面底部的版权声明也是通用的，也可以将其拆分出来：
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fmx0tgtqvqj31kw07tglj.jpg)
+![](https://ws2.now.sh/large/006tNc79gy1fmx0tgtqvqj31kw07tglj.jpg)
 
 ##### header.php
 
 打开编辑器，在主题目录下创建一个 *header.php* 文件，然后，打开 *index.php*，找到博客标题。
 
-<img src="https://ws4.sinaimg.cn/large/006tNc79gy1fmx0vogwf4j31b00qwab5.jpg"  width = "70%" />
+<img src="https://ws4.now.sh/large/006tNc79gy1fmx0vogwf4j31b00qwab5.jpg"  width = "70%" />
 
 则博客标题以上的内容，都是可以被我们所复用的内容。我们将上方的所有代码，复制到刚刚创建的 header.php 中。接下来，删除 *index.php* 中复制过来的代码，并在这些代码的位置上插入一句话 `<?php get_header();?>`。刷新首页，会发现页面依然是老样子，没有发生任何变化。
 
@@ -129,7 +129,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 同样的，我们在代码中查找版权信息，可以看到这段代码在底部。由于网页的渲染是从上到下，而这段代码后再也没有代码了，所以我们可以创建一个新的 footer.php 文件，并将这些代码加入其中。
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmx0zyrnb2j319k0ioab4.jpg"  width = "80%" />
+<img src="https://ws1.now.sh/large/006tNc79gy1fmx0zyrnb2j319k0ioab4.jpg"  width = "80%" />
 
 同样的，创建一个 *footer.php* 文件，然后将代码复制到 *footer.php* 文件，并在 *index.php*  中这段代码所在的位置上加入一句代码 ` <?php get_footer();?>`。保存文件并刷新页面，可以看到，我们底部的版权链接也依然还在。
 
@@ -139,13 +139,13 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 通过分析代码，我们可以知道，测边栏的代码是下面这一串
 
-<img src="https://ws2.sinaimg.cn/large/006tNc79gy1fmx15bur9lj313k12aaci.jpg"  width = "70%" />
+<img src="https://ws2.now.sh/large/006tNc79gy1fmx15bur9lj313k12aaci.jpg"  width = "70%" />
 
 我们将这一串代码复制出来，新建一个  *sidebar.php* 文件，并将代码粘贴进去，然后使用 *get_sidebar* 方法加载侧边栏。
 
 经过这段代码的替换，我们的 *index.php* 变成了这个样子,可以看到我们的整个文件只有45行，这使得我们的文件变得更加简单易读。
 
-<img src="https://ws2.sinaimg.cn/large/006tNc79gy1fmx17pjbxbj30n60xk756.jpg"  width = "60%" />
+<img src="https://ws2.now.sh/large/006tNc79gy1fmx17pjbxbj30n60xk756.jpg"  width = "60%" />
 
 #### WordPress 主循环
 
@@ -163,17 +163,17 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 首先，我们清理下页面的代码：
 
-<img src="https://ws4.sinaimg.cn/large/006tNc79gy1fmxbrpibiyj310y0ommy0.jpg"  width = "70%" />
+<img src="https://ws4.now.sh/large/006tNc79gy1fmxbrpibiyj310y0ommy0.jpg"  width = "70%" />
 
 将红色部分的内容删除，将蓝色部分的代码调整成为我图上的样子。
 
 接下来，就是套用 WordPress 提供的主循环代码了，将调整的蓝色框的内容作为主循环的循环体，放入 主循环代码代码中。则变成这个样子。
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxbxp0zsej31980f6mxu.jpg"  width = "80%" />
+<img src="https://ws3.now.sh/large/006tNc79gy1fmxbxp0zsej31980f6mxu.jpg"  width = "80%" />
 
 保存文件，重新回到首页刷新，可以看到已经刷新出了文章。只不过我目前在数据库里只添加了两篇文章，所以这里循环出了两篇文章。
 
-<img src="https://ws2.sinaimg.cn/large/006tNc79gy1fmxbypz2juj30sw0kw0tb.jpg"  width = "70%" />
+<img src="https://ws2.now.sh/large/006tNc79gy1fmxbypz2juj30sw0kw0tb.jpg"  width = "70%" />
 
 现在虽然我们循环出了文章，但是内容依然是我们手写的，接下来把这里的内容也改成 WordPress 自动生成的。具体替换可以参考下方的替换规则。
 
@@ -191,23 +191,23 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 替换后的代码如下：
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxc6csv0dj310u0fqmxu.jpg"  width = "80%" />
+<img src="https://ws3.now.sh/large/006tNc79gy1fmxc6csv0dj310u0fqmxu.jpg"  width = "80%" />
 
 保存文件再刷新一下页面，可以看到页面变成了这个样子：
 
-<img src="https://ws4.sinaimg.cn/large/006tNc79gy1fmxc84hkjzj30gi0g4dg9.jpg"  width = "60%" />
+<img src="https://ws4.now.sh/large/006tNc79gy1fmxc84hkjzj30gi0g4dg9.jpg"  width = "60%" />
 
 我们的各项信息、内容都已经显示出来了。
 
 但是现在有个问题，没有办法进入到文章的详情页面。我们继续修改，在标题外，再包裹一层 *a* 标签，并将其 *href* 设置为  `<?php the_permalink();?>`。
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxcawszj3j30to0ia75l.jpg"  width = "70%" />
+<img src="https://ws3.now.sh/large/006tNc79gy1fmxcawszj3j30to0ia75l.jpg"  width = "70%" />
 
 保存文件并刷新页面，我们将鼠标指针移动到标题上，会发现标题已经变为了可以点击的超链接，点击链接，就会进入到详情页。只不过，这里的详情页使用的依然是首页的代码，所以看起来会怪怪的。
 
 > 这里涉及到了 WordPress 主题的文件结构，这部分内容将会在下一节课详细讲解，在这里可以不用太过关心，跟着课程一步步走下去，先试着做一个 WordPress 主题吧！
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxcdef3bgj30bs04ht8m.jpg"  width = "50%" />
+<img src="https://ws3.now.sh/large/006tNc79gy1fmxcdef3bgj30bs04ht8m.jpg"  width = "50%" />
 
 现在主循环已经完成了，页面也可以正常的加载内容了。
 
@@ -224,11 +224,11 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 替换完成的代码如下：
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fmxd3y2mgsj30tk08874d.jpg)
+![](https://ws4.now.sh/large/006tNc79gy1fmxd3y2mgsj30tk08874d.jpg)
 
 保存文件后，刷新，诶，按钮怎么不见了？这是因为目前站点中的文章不够，所以这两个按钮就没有生成。可以进入后台 — 「设置」—「阅读」，将 *博客页面至多显示* 改为 1 。保存并刷新，可以看到首页的文章只显示了1条，同时我们可以点击上一页，浏览到上一条文章。
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmxd52d0ggj30gs0drdft.jpg"  width = "60%" />
+<img src="https://ws1.now.sh/large/006tNc79gy1fmxd52d0ggj30gs0drdft.jpg"  width = "60%" />
 
 至此，我们主循环就完成了。
 
@@ -238,7 +238,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 点击首页的文章标题，进入内容页会发现，这里与我们记忆中别的主题有很大差距，比如：
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmxcn62wquj30vi184dhn.jpg"  width = "50%" />
+<img src="https://ws1.now.sh/large/006tNc79gy1fmxcn62wquj30vi184dhn.jpg"  width = "50%" />
 
 接下来完善这些部分。
 
@@ -248,15 +248,15 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 复制完成后，打开 *single.php* ，将页面中的`the_excerpt（）`替换为 `the_content()`，并删除底部的导航代码，再移除文章标题上的链接。
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxct4fbkcj31100h43z6.jpg"  width = "80%" />
+<img src="https://ws3.now.sh/large/006tNc79gy1fmxct4fbkcj31100h43z6.jpg"  width = "80%" />
 
 现在再刷新会发现内容页的渲染结果和首页就不同了。标题上没有了链接，内容也显示完全了：
 
-<img src="https://ws4.sinaimg.cn/large/006tNc79gy1fmxctez7fzj30gt06bglj.jpg"  width = "70%" />
+<img src="https://ws4.now.sh/large/006tNc79gy1fmxctez7fzj30gt06bglj.jpg"  width = "70%" />
 
 这段代码同样可以应用于单页，所以复制一下 *single.php* ，重命名为 *page.php*。进入后台，在页面管理中找一个页面打开。可以看到，我们的页面的样式和文章页面保持一致：
 
-<img src="https://ws2.sinaimg.cn/large/006tNc79gy1fmxcwv93uoj30g10h4my0.jpg"  width = "60%" />
+<img src="https://ws2.now.sh/large/006tNc79gy1fmxcwv93uoj30g10h4my0.jpg"  width = "60%" />
 
 这样，我们的单页就显示完成了。
 
@@ -266,21 +266,21 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 打开 *header.php*，使用代码替换博客标题和博客描述。
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fmxd82h0ioj317405ymxd.jpg)
+![](https://ws3.now.sh/large/006tNc79gy1fmxd82h0ioj317405ymxd.jpg)
 
 保存文件，刷新首页，可以看到，站点的标题已经替换为我们在「常规」中设置的内容了。
 
-<img src="https://ws4.sinaimg.cn/large/006tNc79gy1fmxd97bpk9j30fv0b2wek.jpg"  width = "70%" />
+<img src="https://ws4.now.sh/large/006tNc79gy1fmxd97bpk9j30fv0b2wek.jpg"  width = "70%" />
 
 现在站点顶部的菜单还不是我们想要的，我们也替换一下代码。
 
 在 *header.php* 中找到菜单的代码，将其替换为如下代码：
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxfl8a6kfj30r409smxe.jpg"  width = "70%" />
+<img src="https://ws3.now.sh/large/006tNc79gy1fmxfl8a6kfj30r409smxe.jpg"  width = "70%" />
 
 这里我们将多余的链接删除，然后使用 `wp_list_pages` 函数来生成具体的链接。
 
-<img src="https://ws2.sinaimg.cn/large/006tNc79gy1fmxfma3cmgj30f608wq2v.jpg"  width = "70%" />
+<img src="https://ws2.now.sh/large/006tNc79gy1fmxfma3cmgj30f608wq2v.jpg"  width = "70%" />
 
 可以看到，我们生成了对应的链接，但是样式出了些问题，不能很好的加载出来，我们添加一些样式来修复它。
 
@@ -301,7 +301,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 保存，回到首页，强制刷新当前页面，可以看到菜单效果已经正常了。点击其中的链接，则可以跳转到对应的页面去。
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmxforhghqj30sy09y0sx.jpg"  width = "70%" />
+<img src="https://ws1.now.sh/large/006tNc79gy1fmxforhghqj30sy09y0sx.jpg"  width = "70%" />
 
 现在，我们的页头和菜单就修改完了。
 
@@ -311,23 +311,23 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 打开 *sidebar.php* 删除归档下面的 所有 li 标签。
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxjodfuhxj30og0k0ab4.jpg"  width = "60%" />
+<img src="https://ws3.now.sh/large/006tNc79gy1fmxjodfuhxj30og0k0ab4.jpg"  width = "60%" />
 
 将其替换为 `<?php wp_get_archives( 'type=monthly' ); ?>`，替换后代码如下：
 
-<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fmxjprgnwlj30mc0783yl.jpg"  width = "70%" />
+<img src="https://ws3.now.sh/large/006tNc79gy1fmxjprgnwlj30mc0783yl.jpg"  width = "70%" />
 
 刷新侧边栏，可以看到链接已生成。
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fmxjq3c0rdj307q0320si.jpg)
+![](https://ws2.now.sh/large/006tNc79gy1fmxjq3c0rdj307q0320si.jpg)
 
 接下来可以修改上方 about 中的文字，将文字替换为 `<?php the_author_meta( 'description' ); ?>`。最终代码效果如下：
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmxjsqw7lyj30q60nm75a.jpg"  width = "70%" />
+<img src="https://ws1.now.sh/large/006tNc79gy1fmxjsqw7lyj30q60nm75a.jpg"  width = "70%" />
 
 这样，我们就在「关于」内容中使用了个人描述来替换。
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fmxjs8bzstj309j06sglf.jpg)
+![](https://ws3.now.sh/large/006tNc79gy1fmxjs8bzstj309j06sglf.jpg)
 
 #### 评论系统的实现
 
@@ -347,7 +347,7 @@ endif;
 
 将这段代码加在 *the_content* 后，如图所示：
 
-<img src="https://ws4.sinaimg.cn/large/006tNc79gy1fmxj4crc90j30z20ki3zd.jpg"  width = "70%" />
+<img src="https://ws4.now.sh/large/006tNc79gy1fmxj4crc90j30z20ki3zd.jpg"  width = "70%" />
 
 这段代码的作用是检测是否开启了评论，或者检测是否已经有评论。如果两者任一条件是满足的，则调取评论模板。
 
@@ -402,7 +402,7 @@ if ( post_password_required() ) {
 
 实现的效果如下：
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fmxjhe7r3rj30m10ov3z1.jpg)
+![](https://ws2.now.sh/large/006tNc79gy1fmxjhe7r3rj30m10ov3z1.jpg)
 
 现在我们就实现了简单的评论系统，后续就是对评论部分的样式进行美化，这个可以根据具体需求来设计。
 
