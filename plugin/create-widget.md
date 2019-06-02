@@ -78,7 +78,7 @@ add_action('widgets_init',
 
 进入 WordPress 后台的小工具中，拖动我们创建的 GitChat Widget 到侧边栏中。
 
-![](https://ws1.now.sh/large/006tKfTcgy1fmwaekew7og30rw0biwgm.gif)
+![](https://postimg.aliavv.com/mbp/y07zn.gif)
 
 来到前台，我们可以看到这样的输出：
 

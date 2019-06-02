@@ -22,7 +22,7 @@ WordPress 面向的用户是全体互联网用户，并非针对某一类开发�
 
 打开 WordPress 后台，点击左侧菜单栏中的「插件」—「已安装的插件」，你就会看到我们所安装的所有插件。默认情况下，WordPress 会安装「Akismet Anti-Spam」和「Hello Dolly」两款插件，其中前者是 WordPress 自带的反垃圾评论的插件，我在第五课「WordPress 常用插件使用说明（一）」中说明过，如果不会使用建议去看看那篇课程，后者则是 WordPress 创始人 Matt Mullenweg 创建的默认插件。
 
-<img src="https://ws1.now.sh/large/006tNc79gy1fmufg8aukzj30f30asjrm.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/isiy2.jpg)
 
 在插件列表中可以对插件进行管理，比如「启用」一个插件，使一个插件实现效果，或者「停用」一个插件，让它不再实现效果。如果某个插件你认为以后再也不会使用，则可以点击「删除」按钮，删除这个插件。
 
@@ -30,19 +30,19 @@ WordPress 面向的用户是全体互联网用户，并非针对某一类开发�
 
 在插件列表中，还可以获取到所有和插件相关的信息，诸如插件的版本号、开发者信息、使用说明等等。  
 
-<img src="https://ws1.now.sh/large/006tNc79gy1fmufpdbcjij30ha0d8wew.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/s2ibe.jpg)
 
 当下载了一个插件不会使用时，可以点击「查看详情」，在详情页面查看插件的具体使用说明。
 
-<img src="https://ws2.now.sh/large/006tNc79gy1fmufsqa5d7j30m60q2n0w.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/ovhm9.jpg)
 
 通过详情窗口可以很方便的了解到一个插件的各方面信息，对于一些功能性的插件，会在这个页面提供使用说明、常见文件等内容，帮助你使用这个插件。
 
-![](https://ws3.now.sh/large/006tNc79gy1fmufu6f7dqj30ee061mx4.jpg)
+![](https://postimg.aliavv.com/mbp/3bxei.jpg)
 
 除了对单独一个插件进行操作以外，还可以批量对插件执行操作，比如批量启用插件、批量停用插件等等。
 
-![](https://ws1.now.sh/large/006tNc79gy1fmufygi1fhj30lh0af0ub.jpg)
+![](https://postimg.aliavv.com/mbp/25pwr.jpg)
 
 至此，我们对于插件的基本操作，就解说完了。
 
@@ -54,15 +54,15 @@ WordPress 面向的用户是全体互联网用户，并非针对某一类开发�
 
 一般来说，推荐大家使用插件中心安装，使用插件中心安装的好处是插件都是从 WordPress 官方的插件仓库中下载，无需担心自己下载到的插件是经过修改的。
 
-![](https://ws3.now.sh/large/006tNc79gy1fmug06fek8j304g03sq2q.jpg)
+![](https://postimg.aliavv.com/mbp/lqjk0.jpg)
 
 点击「插件」—「安装插件」，就会进入到插件管理页面，点击「安装插件」，就会进入到插件中心。
 
-![](https://ws4.now.sh/large/006tNc79gy1fmug5gkdkgj31c20q6tbp.jpg)
+![](https://postimg.aliavv.com/mbp/ksrpl.jpg)
 
 在插件中心你可以在搜索框搜索要安装的插件名称，就能找到你要的插件，也可以点击底部的标签，选择合适你的插件。通过搜索，可以搜索到大量的插件。
 
-<img src="https://ws4.now.sh/large/006tNc79gy1fmug9zdimmj30in0jw0tf.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/nryr5.jpg)
 
 点击「更多详情」，确认这个插件是你需要的插件后，返回点击「现在安装」，就可以轻松的将这个插件安装到 WordPress 站点上。
 
@@ -82,33 +82,33 @@ WordPress 面向的用户是全体互联网用户，并非针对某一类开发�
 
 比如说，我下载了 https://github.com/twitter/wordpress 这个插件，下载到本地的是一个压缩包。
 
-![](https://ws2.now.sh/large/006tNc79gy1fmugof2h8gj304u06w3yd.jpg)
+![](https://postimg.aliavv.com/mbp/x6p10.jpg)
 
 将压缩包解压后，是这样的：
 
-<img src="https://ws3.now.sh/large/006tNc79gy1fmugp7g9y2j30mi0gyglx.jpg"  width = "60%" />
+![](https://postimg.aliavv.com/mbp/h1wlf.jpg)
 
 这时，进入 WordPress 后台，选择「插件」—「安装插件」，单击上方的「上传插件」按钮：
 
-![](https://ws1.now.sh/large/006tNc79gy1fmugq7xvqtj30bo043mx2.jpg)
+![](https://postimg.aliavv.com/mbp/3bjaf.jpg)
 
 这时会弹出一个上传的输入框，点击输入框中的选择文件：
 
-<img src="https://ws4.now.sh/large/006tNc79gy1fmugs85pjgg30gl06z3yq.gif"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/3aovy.gif)
 
 上传成功后，会看到这样的界面：
 
-<img src="https://ws3.now.sh/large/006tNc79gy1fmugrhgxesj30ea05hjrc.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/g4hwm.jpg)
 
 这就说明安装成功了，这时可以点击「启用插件」按钮来进行安装。
 
 > 如果上传以后，提示没有找到有效的插件，就像下面这样：
 >
-> <img src="https://ws1.now.sh/large/006tNc79gy1fmugusii3sj30ap05iglk.jpg"  width = "50%" />
+> ![](https://postimg.aliavv.com/mbp/a1zmz.jpg)
 >
 > 则可能是你的插件目录放的太深了，插件文件应该在压缩文件的根目录中。即下图，压缩包 akismet 的根目录中存放着插件文件。
 >
-> ![](https://ws1.now.sh/large/006tNc79gy1fmugwsgc0wj308o088745.jpg)
+> ![](https://postimg.aliavv.com/mbp/nuoqg.jpg)
 
 ##### 3. 使用 FTP 进行上传安装
 
@@ -119,7 +119,7 @@ WordPress 面向的用户是全体互联网用户，并非针对某一类开发�
 3. 找到 `wp-contnet/plugins/`目录。
 4. 将整个插件文件夹上传到整个目录中。
 
-![](https://ws4.now.sh/large/006tNc79gy1fmuh9arb6cj31kw0hewfr.jpg)
+![](https://postimg.aliavv.com/mbp/akf1o.jpg)
 
 这样，就可以将插件上传到 WordPress 当中，然后到 WordPress 后台去启用插件即可。
 
@@ -129,20 +129,20 @@ WordPress 面向的用户是全体互联网用户，并非针对某一类开发�
 
 进入 WordPress 后台，点击「插件」— 「编辑」，就可以进入到插件编辑界面。
 
-![](https://ws2.now.sh/large/006tNc79gy1fmuios99jfj308w07kjr8.jpg)
+![](https://postimg.aliavv.com/mbp/vvvws.jpg)
 
 插件的编辑页面整体可以分为两部分，左侧的代码框和右侧的文件框。
 
-<img src="https://ws4.now.sh/large/006tNc79gy1fmuiunk84aj31740y6go7.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/gr008.jpg)
 
 在右侧点击文件，左侧就会自动加载相关文件，然后就可以在左侧的代码编辑区域修改对应的文件内容。
 
 针对 PHP 文件中的函数，WordPress 还提供了方便的函数查询的功能，点击下方的文档后的下拉框，会看到这个文件使用的具体的函数，当选择了一个函数后，点击后面的查询按钮，就会自动跳转到这个函数的说明页面。十分的方便。
 
-<img src="https://ws1.now.sh/large/006tNc79gy1fmuixw5ftaj30je0d2gm1.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/h5a74.jpg)
 
 如果进入后，你发现当前加载的插件不是你需要修改的插件，你可以点击右上角的插件列表进行修改。
 
-<img src="https://ws2.now.sh/large/006tNc79gy1fmuj0ww6emj30io03g0sp.jpg"  width = "70%" />
+![](https://postimg.aliavv.com/mbp/hktgl.jpg)
 
 点击下拉菜单选择合适的插件，并点击选择，就会跳转到对应的插件了。

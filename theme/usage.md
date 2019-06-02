@@ -12,17 +12,17 @@
 
 从仪表盘中验证 「外观」— 「主题」。
 
-![](https://ws4.now.sh/large/006tNc79gy1fmxt8xxx8cj309605d745.jpg)
+![](https://postimg.aliavv.com/mbp/swfxp.jpg)
 
 在主题页面，我们可以看到系统默认安装的三个主题，其中第一个是我们正在使用的主题。点击这个主题，就能够看到主题详情。
 
-![](https://ws2.now.sh/large/006tNc79gy1fmxta4818aj316q0pgtd9.jpg)
+![](https://postimg.aliavv.com/mbp/nc8j1.jpg)
 
 在另外两个主题上，你可以执行启用主题，或者实时预览主题。可以在启用之前先进行预览，看看这个主题应用在你的内容上是否合适。预览完成后，可以根据预览结果选择是否要启用。
 
 > 预览的界面中可以对主题进行修改、设置。设置完成后，直接启用，就可以以你修改的结果启用主题了。这里的界面和后续主题使用部分的「自定义界面一致」，我们放在那里来讲。
 
-![](https://ws2.now.sh/large/006tNc79gy1fmxtak9612j30bs0d6mxm.jpg)
+![](https://postimg.aliavv.com/mbp/cr4gc.jpg)
 
 #### 安装主题
 
@@ -30,19 +30,19 @@
 
 安装主题我们可以在主题界面点击 「添加」，进入到主题添加界面。
 
-![](https://ws2.now.sh/large/006tNc79gy1fmxth1exnnj31bs0mltg7.jpg)
+![](https://postimg.aliavv.com/mbp/kv1yh.jpg)
 
 在主题中心可以看到一些特色主题，你可以先查看特色主题中是否有你喜欢的主题。如果没有，可以单击上方的「热门」，查看最近使用的比较多的主题，或切换到最新，查看最新发布的主题。
 
-![](https://ws1.now.sh/large/006tNc79gy1fmxthawot2j31bx0mudmg.jpg)
+![](https://postimg.aliavv.com/mbp/66pe3.jpg)
 
 如果你不喜欢查看别人选出来的主题，也可以自己来选择主题。单击上方的「筛选」，进入到筛选页面，选择你需要的主题的特性，然后点击应用过滤器，就可以自动筛选符合我们的条件的主题了。 
 
-![](https://ws3.now.sh/large/006tNc79gy1fmxtifc2b7j30wv0gcdg6.jpg)
+![](https://postimg.aliavv.com/mbp/fqczc.jpg)
 
 如果筛选结果不满意，可以点击上方的编辑过滤器，再次勾选条件，筛选需要的主题。
 
-![](https://ws4.now.sh/large/006tNc79gy1fmxtjpo69nj31kw0n816b.jpg)
+![](https://postimg.aliavv.com/mbp/y0mbk.jpg)
 
 #### 卸载主题
 
@@ -50,7 +50,7 @@
 
 从主题列表中的未启用主题中选择要删除的主题，点击主题，进入主题的详情页，在详情页的右下角，可以看到主题的删除按钮，点击删除按钮，即可删除主题：
 
-<img src="https://ws2.now.sh/large/006tNc79gy1fmxtmc61c1j313a1g7whk.jpg"  width = "60%" />
+![](https://postimg.aliavv.com/mbp/z7nze.jpg)
 
 ### WordPress 主题使用
 
@@ -62,27 +62,27 @@
 
 在自定义界面，会看到一些蓝色的按钮，点击这些按钮，左侧的编辑框内就会出现对应的设置项。
 
-<img src="https://ws4.now.sh/large/006tNc79gy1fmxtt3gxmyj30t20i5mz1.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/am84p.jpg)
 
 修改左侧的内容，右侧对应会实时显示出来，可以方便查看具体的效果。
 
-<img src="https://ws4.now.sh/large/006tNc79gy1fmxttmvls8j30pf09fq4h.jpg"  width = "80%" />
+![](https://postimg.aliavv.com/mbp/15xsk.jpg)
 
 其他的设置项也大多相同。
 
 在控制区域的底部，有三个按钮，分别代表着电脑、平板和手机，你点击下方的设备，就可以将当前网页的大小变为对应设置的预览效果，来查看主题能否在多种屏幕大小下正常工作。
 
-![](https://ws4.now.sh/large/006tNc79gy1fmxv1y2fckj309m01ka9u.jpg)
+![](https://postimg.aliavv.com/mbp/t5vk3.jpg)
 
 这里说一个大家平时可能没有注意到的设置。在修改完成后，在右上角的发布按钮这里，是有一个齿轮的，点击这个齿轮，会弹出新的设置框，在这个设置框中：
 
-![](https://ws2.now.sh/large/006tNc79gy1fmxtwuw231j309j04xq2q.jpg)
+![](https://postimg.aliavv.com/mbp/lelt2.jpg)
 
 我们可以选择发布（立刻生效）、保存草稿（留着以后发布）和计划（在特定时间发布，定期上线）。有了这个功能，在进行站点修改时，就无需一定要当时修改，可以提前修改好，定时发布即可。
 
 此外， WordPress 还提供了一个预览的功能。将操作切换为「保存草稿」，然后保存一次草稿，在下方会生成一个预览链接，可以将这个链接复制给其他人，让其他人查看你的修改是否正确等等。
 
-![](https://ws3.now.sh/large/006tNc79gy1fmxtyxqvucj30a20ajdfu.jpg)
+![](https://postimg.aliavv.com/mbp/kq5zf.jpg)
 
 当我们不在一起办公时，可以借助这个功能，很方便的让合作者看到站点修改的状况，确认修改是否正确。
 
@@ -94,25 +94,25 @@
 
 点击仪表盘中的「外观」—「小工具」，就可以进入到小工具界面了。
 
-![](https://ws1.now.sh/large/006tNc79gy1fmxu3honqqj31ao0fwwf6.jpg)
+![](https://postimg.aliavv.com/mbp/i2oj1.jpg)
 
 小工具界面可以分为两个部分，分别是控件区域和边栏区域，可以将我们要使用的控件拖动到边栏中去。
 
-![](https://ws4.now.sh/large/006tNc79gy1fmxu49nrdnj30x30cjdg5.jpg)
+![](https://postimg.aliavv.com/mbp/4k145.jpg)
 
 或者单击要添加的小工具，选择要添加到哪个边栏中去，点击添加小工具，就可以将这个小工具添加到对应的区域中去了。
 
 添加好的小工具可能需要设置一些属性，可以在边栏中设置他们的属性，以达到自定义的效果。
 
-![](https://ws3.now.sh/large/006tNc79gy1fmxu61tc4dj31kw0ljtas.jpg)
+![](https://postimg.aliavv.com/mbp/0aq6f.jpg)
 
 当一个控件区域有多个控件时，可以通过拖拽，来对控件进行排序。
 
-<img src="https://ws1.now.sh/large/006tNc79gy1fmxu7jnb4gg30cp0f4q5h.gif"  width = "60%" />
+![](https://postimg.aliavv.com/mbp/533s7.jpg)
 
 当有一些控件你暂时不使用，同时还要保留其中的设置时，可以用好「未使用的小工具」，将这个要保留的小工具拖拽到底部的「未使用的小工具」区域。放在这个区域的小工具的设置是不会丢失的。
 
-![](https://ws1.now.sh/large/006tNc79gy1fmxu9erl1tj30jc07q3yj.jpg)
+![](https://postimg.aliavv.com/mbp/6z9ma.jpg)
 
 后续需要使用时，再从这里拖拽回边栏区域中即可。如果这里面的控件都不再使用了，则可以点击下方的「清理未启用的小工具」，这个按钮会清空所有未启用的小工具。
 
@@ -132,27 +132,27 @@
 
 ##### 使用
 
-![](https://ws4.now.sh/large/006tNc79gy1fmxugudq4uj314n06jt8n.jpg)
+![](https://postimg.aliavv.com/mbp/lsjr9.jpg)
 
 我们第一次进入菜单界面时，界面中是没有任何菜单的，首先，要创建一个菜单，输入菜单名称，点击「创建」菜单，就可以创建一个新的菜单了。
 
 创建了一个菜单后，就可以向菜单中添加链接了。WordPress 提供了页面、文章和分类目录的快速添加的功能。在左侧找到你要添加的页面，点击添加到菜单，就可以将其加入到我们的菜单中去。
 
-![](https://ws1.now.sh/large/006tNc79gy1fmxuids6fuj308a0b10sm.jpg)
+![](https://postimg.aliavv.com/mbp/mxayf.jpg)
 
 需要注意的是，其实 WordPress 也支持添加标签和文章形式，但是默认没有展示出来，可以点击页面右上角的「显示选项」，勾选上「标签」和「形式」，这样在左侧的列表中就会多出对应的两项。
 
 如果要添加的链接不在这几项里，或者是要添加的内容是别的网站的链接，你可以切换到自定义链接项到这里，通过添加链接项，来添加菜单项。
 
-<img src="https://ws4.now.sh/large/006tNc79gy1fmxuq6iroaj307v0c9q2u.jpg"  width = "40%" />
+![](https://postimg.aliavv.com/mbp/iauz9.jpg)
 
 添加以后，你可以修改**导航标签**，来修改该项在菜单中最终显示的文字。
 
-![](https://ws2.now.sh/large/006tNc79gy1fmxuqv5is5j30cf09djrd.jpg)
+![](https://postimg.aliavv.com/mbp/gs309.jpg)
 
 在下方的菜单设置中，可以选择我们的菜单的显示位置。勾选要在哪个位置上使用这个菜单，然后保存设置即可使这个菜单的设置应用到对应的位置上。
 
-![](https://ws2.now.sh/large/006tNc79gy1fmxurtqn5vj30gj03xwed.jpg)
+![](https://postimg.aliavv.com/mbp/jfnyb.jpg)
 
 自动添加页面这个选项如果勾选后，可以在创建了一个新的页面时，自动将这个页面添加到菜单中。不过一般情况下，我们都不会勾选这个选项。
 

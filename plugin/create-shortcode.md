@@ -208,7 +208,7 @@ QTags.addButton( id, display, arg1, arg2, access_key, title, priority, instance 
 >
 > 这是因为，如果选中文字再按下按钮时，编辑器会自动将选中的内容放在参数三和参数四之间，类似这样：
 >
-> ![](https://ws2.now.sh/large/006tKfTcgy1fmwm0yekphg30rw0biaao.gif)
+> ![](https://postimg.aliavv.com/mbp/qffva.gif)
 >
 > 如果拆分有问题，生成的代码可能就有问题了，将短代码的参数放在参数三是更为合适的。
 
