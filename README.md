@@ -70,9 +70,8 @@ WordPress 作为世界上使用最多的 CMS （内容管理系统），成为�
 - [ ] 古腾堡编辑器
 
 ## 交流群
-
-目前微信群已满 100 人，你可以加我的微信 `ixiqin_com` ，备注， WordPress ，我把你拉群。
-
+扫描下方二维码，加我微信，并备注 WordPress，我拉你入群
+![](https://postimg.aliavv.com/mbp/kr6f7.jpg)
 ## 协议
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。
