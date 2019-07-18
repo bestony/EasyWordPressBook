@@ -70,7 +70,11 @@ WordPress 作为世界上使用最多的 CMS （内容管理系统），成为�
 - [ ] 古腾堡编辑器
 
 ## 交流群
-扫描下方二维码，加我微信，并备注 WordPress，我拉你入群
+
+QQ群：799410559
+
+## 联系我
+扫描下方二维码，加我微信，并备注 WordPress
 ![](https://postimg.aliavv.com/mbp/kr6f7.jpg)
 ## 协议
 
