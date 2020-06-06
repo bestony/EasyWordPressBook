@@ -1,7 +1,5 @@
 # 人人都能学会的 WordPress 实战课
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/6c4801a1-d0cc-4c5c-b461-d5273aee7dcc/deploy-status)](https://app.netlify.com/sites/wordpressbook/deploys)
-
 ## 电子书介绍
 
 每一个程序员都需要一个博客，记录自己的所见所闻、分享自己的所思所想。与其使用一个受限制的第三方博客服务，不如花点小钱建一个不受限制的 WordPress 博客。
