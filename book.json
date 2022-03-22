@@ -5,9 +5,7 @@
     "theme-comscore",
     "ga",
     "anchors",
-    "edit-link",
-    "sitemap-general",
-    "disqus"
+    "edit-link"
   ],
   "pluginsConfig": {
     "edit-link": {
@@ -19,15 +17,13 @@
     },
     "ga": {
       "token": "UA-47834775-10"
-    },
-     "disqus": {
-            "shortName": "easywpbook"
-        }
+    }
   },
   "links": {
     "sidebar": {
       "作者博客": "https://www.ixiqin.com",
-      "联系作者": "mailto:xiqingongzi+easywp@gmail.com"
+      "联系作者": "mailto:xiqingongzi+easywp@gmail.com",
+      "京ICP备2022003750号-2":"https://beian.miit.gov.cn"
     }
   }
 }
