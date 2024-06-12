@@ -29,7 +29,7 @@ jobs:
         with:
             node-version: 10.x
       - name: Install Gitbook Cli
-        run: npm install -g gitbook-cli && gitbook build .
+        run: npm install -g gitbook-cli && gitbook install && gitbook build .
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
