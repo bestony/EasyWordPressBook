@@ -24,6 +24,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+            node-version: 12.x
+      - name: Install Gitbook Cli
+        run: npm install -g gitbook-cli && gitbook build .
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
