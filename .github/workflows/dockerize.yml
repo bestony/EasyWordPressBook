@@ -27,7 +27,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v4
         with:
-            node-version: 12.x
+            node-version: 10.x
       - name: Install Gitbook Cli
         run: npm install -g gitbook-cli && gitbook build .
 
