@@ -28,13 +28,11 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    env:
     steps:
       - uses: actions/checkout@v4
       - uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: install mdbook
-        run: |
-          cargo install mdbook mdbook-linkcheck
+        run: cargo install mdbook mdbook-linkcheck
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
