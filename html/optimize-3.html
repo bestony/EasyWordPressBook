@@ -1,0 +1,281 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>站点性能优化 （三）：WordPress 缓存 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/optimize-3.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="wordpress-性能优化缓存"><a class="header" href="#wordpress-性能优化缓存">WordPress 性能优化：缓存</a></h1>
+<h4 id="加速加入缓存机制"><a class="header" href="#加速加入缓存机制">加速：加入缓存机制</a></h4>
+<p>WordPress 本身提供了一种叫做 WordPress Object Cache 的对象缓存机制，它是把需要缓存的内容按照 Key-Value 这样的模式进行缓存。Key-Value 形式的数据，要远比我们在数据库中查询要快的多。</p>
+<h4 id="wordpress-的三种缓存机制"><a class="header" href="#wordpress-的三种缓存机制">WordPress 的三种缓存机制</a></h4>
+<p>文件缓存：文件缓存是把 WordPress 默认的对象缓存的对象存储为文件，对外提供服务时，WordPress 直接读取文件中的缓存来进行渲染和输出。但是此类缓存对硬盘的 I/O 要求极高，所以自 WordPress 2.5 就被弃用。不过如果虚拟主机无法正常运行后面两种缓存，也可以试试文件缓存，通过安装 <a href="https://wordpress.org/plugins/wp-file-cache/">WP File Cache</a> 来启用文件缓存。</p>
+<p>内存缓存：内存缓存是把 WordPress 默认的对象缓存的对象保存到内存中去，下一次访问的时候，直接到内存中获取内容，这样就没有了文件缓存的 I/O 操作，并且 SQL 查询也减少了很多，整个系统都能变快很多。</p>
+<p>内存缓存和文件缓存一个相同的地方也是网站的动态内容根据功能分成很多个部分，分别对每个部分缓存，而不是把这个页面当作一个整体缓存了，所以访问一个页面还是需要从内存中读取多个内容。</p>
+<p>HTML 静态缓存：HTML 静态缓存可以把 WordPress 页面缓存一个静态的 HTML 页面存到服务器上，下次访问该页面的时候，不需要再次运行 PHP 代码，直接从服务器返回这个 HTML 文件即可，这样就大大降低了 CPU 的占用率，但是使用 HTML 静态化缓存插件，也有一个不好的地方，比如日志流量、最新日志，这些动态的内容不会时时更新。</p>
+<h5 id="内存缓存使用-memcached-和-batcache-进行缓存"><a class="header" href="#内存缓存使用-memcached-和-batcache-进行缓存">内存缓存：使用 Memcached 和 Batcache 进行缓存</a></h5>
+<p>我们可以安装 Memcached 来实现数据查询的缓存，在启用了 Memcached 缓存后，WordPress 会将在数据库中查询到的数据以对象的形式缓存进入内存中。我们每次访问时，WordPress 就会访问内存中的缓存，将对象读取出来进行页面渲染，可以有效的减少数据库的查询。</p>
+<p>而 BatCache 则是将页面整个缓存进入到内存中，用户进入后，WordPress 直接读取缓存中的页面，并返回给访客，能够再次进行提速。</p>
+<h5 id="安装-memcached-和-batcache"><a class="header" href="#安装-memcached-和-batcache">安装 Memcached 和 Batcache</a></h5>
+<p>安装 Memcached 和 BatCache 是有要求的，一般来说，要求使用的是独立的主机而非虚拟主机（需要有 SSH 权限），不过国外的一些 cPanel 主机也提供了 Memcached 的服务，也可以使用，具体可以咨询一下你的虚拟主机提供商。</p>
+<p><strong>首先，在服务器上安装 Memcached</strong></p>
+<p>在主机上使用命令安装 Memcached：<code>yum -y install memcached</code>或<code>apt-get -y install memcached</code>。</p>
+<p><strong>编译 PHP 的 Memcached 的支持</strong></p>
+<p>为 PHP 编译 <code>Memcached</code> 拓展。</p>
+<p><strong>下载 Memecached 插件</strong></p>
+<p>到 <a href="https://wordpress.org/plugins/memcached/">https://wordpress.org/plugins/memcached/</a> 下载 WordPress 官方提供的 Memcached 插件，解压后将其中的 <code>object-cache.php</code> 移动到  <code>wp-content</code> 目录下（此处注意，不是 <code>wp-content/plugins/</code>目录）。</p>
+<p><strong>下载 BatCache 插件</strong></p>
+<p>到 <a href="http://wordpress.org/extend/plugins/batcache/">http://wordpress.org/extend/plugins/batcache/</a> 下载 WordPress 官方提供的 BatCache 插件，解压后，将其中的 advanced-cache.php 移动到 <code>/wp-content/</code> 目录。</p>
+<p><strong>开启缓存</strong></p>
+<p>在 wp-config.php 文件中加入如下代码，开启缓存：</p>
+<pre><code>define('WP_CACHE', true);
+</code></pre>
+<h5 id="html-静态缓存使用-wp-super-cache-进行缓存"><a class="header" href="#html-静态缓存使用-wp-super-cache-进行缓存">HTML 静态缓存：使用 WP Super Cache 进行缓存</a></h5>
+<p>除了使用 Memcached 进行缓存，我们还可以使用 WP Super Cache 来进行缓存。WP Super Cache 把整个网页直接生成 HTML 文件，这样 Web 服务器就不用解析 PHP 脚本，通过使用这个插件，能使得你的 WordPress 博客将显著的提速。</p>
+<h5 id="安装-wp-super-cache"><a class="header" href="#安装-wp-super-cache">安装 WP Super Cache</a></h5>
+<p><strong>安装 WP Super Cache</strong></p>
+<p>到 <a href="https://wordpress.org/plugins/wp-super-cache/">https://wordpress.org/plugins/wp-super-cache/</a> 下载插件，并上传到后台进行安装、启用。</p>
+<p><strong>开启缓存</strong></p>
+<p>插件安装完成后，会在设置中多一个 WP Super Cache 的设置页面，单击进入设置页面，进入 “通用” TAB，勾选<strong>启用缓存功能</strong>选项。</p>
+<p><img src="https://postimg.aliavv.com/2018/i5bmp.png" alt="" /></p>
+<p>再到“高级” TAB 中勾选所有的推荐选项。这样会帮助我们自动针对未登录用户启用缓存、并对所有页面加入 Gzip 压缩。</p>
+<p><img src="https://postimg.aliavv.com/2018/n8kvc.png" alt="" /></p>
+<p><strong>CDN 选项</strong></p>
+<p>如果需要开启 CDN，可以在 CDN 页面中进行配置，勾选启用 CDN，并设置 CDN 域名即可：</p>
+<p><img src="https://postimg.aliavv.com/2018/ov2ca.png" alt="" /></p>
+<h5 id="清除缓存"><a class="header" href="#清除缓存">清除缓存</a></h5>
+<p>当我们的内容发生变化，需要清空缓存时，可以单击设置页面中的“内容” TAB 按钮，单击下方的<strong>删除已过期文件</strong>、<strong>删除缓存</strong>按钮来清空系统的缓存。</p>
+<p><img src="https://postimg.aliavv.com/2018/g1bl8.png" alt="" /></p>
+<p>WP Super Cache 的功能很强大，就不在这里一一说明了，默认的这些设置项，已经足够我们的日常使用了。</p>
+<h4 id="静态化super-static-cache-插件"><a class="header" href="#静态化super-static-cache-插件">静态化：Super Static Cache 插件</a></h4>
+<p>如果觉得 HTML 网页缓存也无法满足，那么只有静态化插件才能满足你了。</p>
+<p>江湖上盛传的 cos-html-cache 插件已经太久没更新了，所以这里推荐用 Super Static Cache 来进行静态化。</p>
+<h5 id="使用-super-static-cache-进行缓存"><a class="header" href="#使用-super-static-cache-进行缓存">使用 Super Static Cache 进行缓存</a></h5>
+<p><strong>下载插件</strong></p>
+<p>前往 <a href="https://wordpress.org/plugins/super-static-cache/">https://wordpress.org/plugins/super-static-cache/</a> 下载该插件，并上传到后台进行安装、启用。</p>
+<p><strong>设置插件</strong></p>
+<p>安装完成后，进入设置中的 <strong>Super Static Cache选项</strong>，可以看到如下的配置项，选择其中的一种模式开启即可。</p>
+<p><img src="https://postimg.aliavv.com/2018/86hpf.png" alt="" /></p>
+<p>开启后，会看到网站的根目录下多了一个 index.html：</p>
+<p><img src="https://postimg.aliavv.com/2018/gis52.png" alt="" /></p>
+<p>这就是生成的静态文件。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="optimize-2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="optimize-4.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="optimize-2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="optimize-4.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

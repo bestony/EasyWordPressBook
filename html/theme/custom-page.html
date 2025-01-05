@@ -1,0 +1,374 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>WP 主题开发：一些特殊的页面 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/theme/custom-page.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <p>#特殊文件的构建</p>
+<p>这节课来完成非主要文件的创建和内容的填充，来完善我们的 GitChat 主题。</p>
+<p>在上一节课中提到了 WordPress 主题下有多种不同的文件，可以实现很多不同的效果，其中最特殊的就是<strong>自定义页面模板</strong>。接下来先说说自定义页面模板。</p>
+<h3 id="自定义页面模板"><a class="header" href="#自定义页面模板">自定义页面模板</a></h3>
+<p>WordPress 默认提供了文章（Post）和 页面 （Page）两种不同的模板，如果作为博客使用，我们会以文章为主，如果作为 CMS （内容管理系统）使用，我们会以页面为主。</p>
+<p>在使用页面时，会发现一个问题，我们用的页面模板和文章的模板非常的像，几乎是一模一样的（当然，因为是复制了代码创建了一个新的文件，肯定是一模一样的）。</p>
+<p>但是，我们的需求可能是千变万化的，有些时候，需要展示一些特殊的页面内容，又或者是需要特殊的页面布局（比如有没有侧边栏），此时，就要用到自定义页面模板了。</p>
+<p>自定义页面模板是 WordPress 提供了一个强大而简单的功能，可以通过很少的几行代码来是实现自定义代码。接下来就尝试定义一个不包含侧边栏的自定义模板。</p>
+<p>在主题的根目录下创建一个 <em>page-nosidebar.php</em> 文件，用来自定义模板。</p>
+<blockquote>
+<p>虽然自定义页面模板没有命名规则的要求，但是建议你以一个比较规范的命名方式来命名，从而方便你后续的管理和使用。</p>
+</blockquote>
+<p>在这个文件中添加如下代码：</p>
+<pre><code class="language-php">&lt;?php
+/*
+Template Name: 无侧边栏页面模板
+*/
+</code></pre>
+<p>保存文件，然后打开 WordPress 后台，进入 「页面」—「新建页面」。</p>
+<p>在这样页面的右侧，会看到页面属性框，在其中有一个<strong>模板</strong>属性，这个属性可以帮助我们选择页面对应的模板。默认会使用 <em>page.php</em>，也就是默认模板。</p>
+<p>点击下拉框，可以看到刚刚创建的模板，选择这个模板。在页面中随便添加一些内容，作为我们稍后的演示。</p>
+<p><img src="https://postimg.aliavv.com/mbp/jyb9y.jpg" alt="" /></p>
+<p>发布后，点击查看页面：</p>
+<p><img src="https://postimg.aliavv.com/mbp/tlf6y.jpg" alt="" /></p>
+<p>会跳转到内容页，但是会发现，目前的页面中没有任何内容，显示的是一个白屏。这是因为页面模板中没有任何内容。</p>
+<p>接下来给这个页面模板添加内容，打开 page.php ，复制其中的内容到 page-nosidebar.php 中，并删除其中引用侧边栏的代码，调整主要内容占的页面比例：</p>
+<p><img src="https://postimg.aliavv.com/mbp/ro6u0.jpg" alt="" /></p>
+<p>修改完成后，保存文件并退出，回到刚刚的白屏页面刷新，这次可以看到页面的内容。同时也会注意到，侧边栏消失了。</p>
+<p><img src="https://postimg.aliavv.com/mbp/03erk.jpg" alt="" /></p>
+<p>这样就完成了自定义页面模板的制作，后续可以根据你自己的需要，制作不同的页面模板。</p>
+<h3 id="归档"><a class="header" href="#归档">归档</a></h3>
+<p>虽然 WordPress 提供了简单的归档功能，但是只能够在侧边栏中使用，侧边栏中显示的数目有限且不方便，我们可以使用自定义页面模板来实现。</p>
+<p>创建一个新的 <em>page-archive.php</em> 文件，用于存放归档代码。</p>
+<p>在其中添加如下代码：</p>
+<pre><code class="language-php">&lt;?php
+/*
+Template Name: 归档
+*/
+function _PostList($atts = array())
+{
+    global $wpdb;
+    $rawposts = $wpdb-&gt;get_results("SELECT ID, year(post_date) as post_year, post_date, post_title FROM $wpdb-&gt;posts WHERE post_status = 'publish' AND post_type = 'post' AND post_password = '' order by post_date desc");
+    foreach ($rawposts as $post) {
+        $posts[$post-&gt;post_year][] = $post;
+    }
+    $rawposts = null;
+    $html = '&lt;div class="archives-container"&gt;&lt;ul class="archives-list"&gt;';
+    foreach ($posts as $year =&gt; $posts_yearly) {
+        $html .= '&lt;li&gt;&lt;div class="archives-year"&gt;' . $year . '年&lt;/div&gt;&lt;ul class="archives-sublist"&gt;';
+        foreach ($posts_yearly as $post) {
+            $html .= '&lt;li&gt;';
+            $html .= '&lt;time datetime="' . $post-&gt;post_date . '"&gt;' . mysql2date('m月d日 D', $post-&gt;post_date, true) . '&lt;/time&gt;';
+            $html .= '&lt;a href="' . get_permalink($post-&gt;ID) . '"&gt;' . $post-&gt;post_title . '&lt;/a&gt;';
+            $html .= "&lt;/li&gt;";
+        }
+        $html .= "&lt;/ul&gt;&lt;/li&gt;";
+    }
+    $html .= "&lt;/ul&gt;&lt;/div&gt;";
+    return $html;
+}
+
+function _PostCount()
+{
+    $num_posts = wp_count_posts('post');
+    return number_format_i18n($num_posts-&gt;publish);
+}
+get_header();
+?&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col-sm-12 blog-main"&gt;
+  &lt;?php echo _PostList();  ?&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;?php get_footer();?&gt;
+</code></pre>
+<p>保存后，到后台创建一个新的页面，使用刚刚创建的归档模板。</p>
+<p>创建成功后，刷新页面，可以看到这样的效果：</p>
+<p><img src="https://postimg.aliavv.com/mbp/mj194.jpg" alt="" /></p>
+<p>这样就完成了归档页面的编写，具体代码的使用可以参考我上方代码中的注释来理解，如果出现无法理解，可以到读者圈内提问。</p>
+<h3 id="标签云"><a class="header" href="#标签云">标签云</a></h3>
+<p>标签云也是我们常用的自定义页面模板，这里给出一个标签云的例子。</p>
+<p>首先，创建一个 <em>page-tagcloud.php</em> 文件，然后在其中加入如下代码：</p>
+<pre><code class="language-php+html">&lt;?php
+/*
+Template Name: 标签云
+*/
+get_header();?&gt;
+
+&lt;div class="row"&gt;
+
+  &lt;div class="col-sm-12 blog-main"&gt;
+
+    &lt;?php wp_tag_cloud("smallest=20&amp;largest=50&amp;unix=px&amp;number=200");?&gt;
+    
+  &lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;?php get_footer();?&gt;
+
+</code></pre>
+<p>然后，到后台创建一个新的页面，该页面使用我们这里的标签云。</p>
+<blockquote>
+<p>这个页面的内容可以写任何东西，因为在这里并没有使用<code>the_content </code>来输出内容。</p>
+</blockquote>
+<p>然后，查看这个页面就可以看到标签信息了。点击标签，就会进入到标签的详情页。</p>
+<p><img src="https://postimg.aliavv.com/mbp/6hgkv.jpg" alt="" /></p>
+<h3 id="友情链接页面"><a class="header" href="#友情链接页面">友情链接页面</a></h3>
+<p>友情链接是我们几乎每一个博客博主都会用到的功能，但是 WordPress 默认的链接功能只能在侧边栏调用链接，无法在页面中调用。对于我们来说是非常不方便的，所以，可以考虑使用自定义页面模板的形式来构建。</p>
+<p>首先，需要激活 WordPress 隐藏的链接管理器功能，在主题的 <em>functions.php</em> 中添加如下代码：</p>
+<pre><code class="language-php">add_filter( 'pre_option_link_manager_enabled', '__return_true' );
+</code></pre>
+<p>会看到侧边栏多了一个菜单项：</p>
+<p><img src="https://postimg.aliavv.com/mbp/d8atk.jpg" alt="" /></p>
+<p>接下来就可以在这里添加、删除和管理链接了。</p>
+<p>然后进入代码编辑器，创建一个新的页面模板文件 <code>page-link.php</code>，在其中加入如下代码：</p>
+<pre><code class="language-php">&lt;?php
+/*
+Template Name: 友情链接
+*/
+get_header();?&gt;
+
+&lt;div class="row"&gt;
+
+  &lt;div class="col-sm-8 blog-main"&gt;
+
+  &lt;?php wp_list_bookmarks('orderby=rand&amp;show_images=0'); ?&gt;
+
+
+  &lt;/div&gt;&lt;!-- /.blog-main --&gt;
+
+ &lt;?php get_sidebar();?&gt;
+
+&lt;/div&gt;&lt;!-- /.row --&gt;
+
+&lt;/div&gt;&lt;!-- /.container --&gt;
+
+&lt;?php get_footer();?&gt;
+
+</code></pre>
+<p>然后，使用这个页面模板创建一个新的页面，使用我们刚刚创建的友情链接模板，最终得到的效果如图所示：</p>
+<p><img src="https://postimg.aliavv.com/mbp/yapom.jpg" alt="" /></p>
+<h3 id="总结"><a class="header" href="#总结">总结</a></h3>
+<p>这里只列出了几个常用的自定义页面模板，在正式开发过程中，会根据需要，创建不同的页面模板。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../theme/struct.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../theme/is-function.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../theme/struct.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../theme/is-function.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

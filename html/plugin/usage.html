@@ -1,0 +1,319 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>WP 插件使用 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/plugin/usage.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="插件使用"><a class="header" href="#插件使用">插件使用</a></h1>
+<h3 id="为什么要使用-wordpresss-的插件"><a class="header" href="#为什么要使用-wordpresss-的插件">为什么要使用 WordPresss 的插件</a></h3>
+<p>WordPress 本身的功能非常强大，帮我们集成了文章、媒体、页面、评论的管理功能，但是并不意味着我们的需求就这么简单。实际上，我们可能有很多不同的需求，比如说，我想在博客文章中插入一个来自网易云音乐的音乐播放器？有没有一个很方便的工具呢？又或者我觉得 WordPress 自带的编辑器不够好用，有没有办法换一个编辑器呢？</p>
+<p>WordPress 面向的用户是全体互联网用户，并非针对某一类开发者，对于我们这些开发者来说，可能可以通过修改核心代码来实现，但是更加海量的用户则无法以这种方式来满足自己的需求，因此，便有了插件系统，可以通过安装插件，来实现自己的需求。</p>
+<p>除此之外，使用插件还有一些其他的好处：</p>
+<ul>
+<li>无需修改核心代码，不用担心更新版本导致的功能失效。</li>
+<li>无需担心修改核心代码导致系统崩溃。</li>
+<li>使用者不需要了解底层的原理，直接安装使用即可。</li>
+</ul>
+<p>得益于这些插件，WordPress 也成为了世界第一 CMS （内容管理系统）。</p>
+<p>截止目前，在 WordPress 官方上架的插件已经达到了 53527 个，此外还有在 codecanyon 上架的众多付费插件。可以说，你的绝大多数需求，都能够找到合适的插件来满足。</p>
+<h3 id="wordpress-后台插件管理"><a class="header" href="#wordpress-后台插件管理">WordPress 后台插件管理</a></h3>
+<h4 id="管理插件"><a class="header" href="#管理插件">管理插件</a></h4>
+<p>打开 WordPress 后台，点击左侧菜单栏中的「插件」—「已安装的插件」，你就会看到我们所安装的所有插件。默认情况下，WordPress 会安装「Akismet Anti-Spam」和「Hello Dolly」两款插件，其中前者是 WordPress 自带的反垃圾评论的插件，我在第五课「WordPress 常用插件使用说明（一）」中说明过，如果不会使用建议去看看那篇课程，后者则是 WordPress 创始人 Matt Mullenweg 创建的默认插件。</p>
+<p><img src="https://postimg.aliavv.com/mbp/isiy2.jpg" alt="" /></p>
+<p>在插件列表中可以对插件进行管理，比如「启用」一个插件，使一个插件实现效果，或者「停用」一个插件，让它不再实现效果。如果某个插件你认为以后再也不会使用，则可以点击「删除」按钮，删除这个插件。</p>
+<blockquote>
+<p>记得，插件越多，就会变得越慢。</p>
+</blockquote>
+<p>在插件列表中，还可以获取到所有和插件相关的信息，诸如插件的版本号、开发者信息、使用说明等等。</p>
+<p><img src="https://postimg.aliavv.com/mbp/s2ibe.jpg" alt="" /></p>
+<p>当下载了一个插件不会使用时，可以点击「查看详情」，在详情页面查看插件的具体使用说明。</p>
+<p><img src="https://postimg.aliavv.com/mbp/ovhm9.jpg" alt="" /></p>
+<p>通过详情窗口可以很方便的了解到一个插件的各方面信息，对于一些功能性的插件，会在这个页面提供使用说明、常见文件等内容，帮助你使用这个插件。</p>
+<p><img src="https://postimg.aliavv.com/mbp/3bxei.jpg" alt="" /></p>
+<p>除了对单独一个插件进行操作以外，还可以批量对插件执行操作，比如批量启用插件、批量停用插件等等。</p>
+<p><img src="https://postimg.aliavv.com/mbp/25pwr.jpg" alt="" /></p>
+<p>至此，我们对于插件的基本操作，就解说完了。</p>
+<h4 id="安装插件"><a class="header" href="#安装插件">安装插件</a></h4>
+<p>安装插件一般来说，有三种方式。</p>
+<h5 id="1-使用插件中心安装"><a class="header" href="#1-使用插件中心安装">1. 使用插件中心安装</a></h5>
+<p>一般来说，推荐大家使用插件中心安装，使用插件中心安装的好处是插件都是从 WordPress 官方的插件仓库中下载，无需担心自己下载到的插件是经过修改的。</p>
+<p><img src="https://postimg.aliavv.com/mbp/lqjk0.jpg" alt="" /></p>
+<p>点击「插件」—「安装插件」，就会进入到插件管理页面，点击「安装插件」，就会进入到插件中心。</p>
+<p><img src="https://postimg.aliavv.com/mbp/ksrpl.jpg" alt="" /></p>
+<p>在插件中心你可以在搜索框搜索要安装的插件名称，就能找到你要的插件，也可以点击底部的标签，选择合适你的插件。通过搜索，可以搜索到大量的插件。</p>
+<p><img src="https://postimg.aliavv.com/mbp/nryr5.jpg" alt="" /></p>
+<p>点击「更多详情」，确认这个插件是你需要的插件后，返回点击「现在安装」，就可以轻松的将这个插件安装到 WordPress 站点上。</p>
+<p>还可以点击上方的「热门」、「推荐」查看当前阶段比较热门的插件来安装。</p>
+<blockquote>
+<p>虽然有很多插件都可以使用，但是不建议大家安装过多的插件，会导致站点运行速度缓慢。根据自己的实际需要安装即可。</p>
+</blockquote>
+<h5 id="2-使用后台上传进行安装"><a class="header" href="#2-使用后台上传进行安装">2. 使用后台上传进行安装</a></h5>
+<p>有些时候，可能拿到手的插件是一个 Zip 压缩包，比如如下的场景：</p>
+<blockquote>
+<ol>
+<li>你的主机无法与 WordPress 官方服务器进行通信，从 WordPress 官网下载了需要用的插件。自行安装。</li>
+<li>从 codecanyon 下载了一个付费插件，需要自己安装。</li>
+<li>从 Github 或其他代码托管平台下载了一个开源插件，需要自己安装。</li>
+</ol>
+</blockquote>
+<p>这个时候，就要从 WordPress 的插件后台进行安装了。</p>
+<p>比如说，我下载了 https://github.com/twitter/wordpress 这个插件，下载到本地的是一个压缩包。</p>
+<p><img src="https://postimg.aliavv.com/mbp/x6p10.jpg" alt="" /></p>
+<p>将压缩包解压后，是这样的：</p>
+<p><img src="https://postimg.aliavv.com/mbp/h1wlf.jpg" alt="" /></p>
+<p>这时，进入 WordPress 后台，选择「插件」—「安装插件」，单击上方的「上传插件」按钮：</p>
+<p><img src="https://postimg.aliavv.com/mbp/3bjaf.jpg" alt="" /></p>
+<p>这时会弹出一个上传的输入框，点击输入框中的选择文件：</p>
+<p><img src="https://postimg.aliavv.com/mbp/3aovy.gif" alt="" /></p>
+<p>上传成功后，会看到这样的界面：</p>
+<p><img src="https://postimg.aliavv.com/mbp/g4hwm.jpg" alt="" /></p>
+<p>这就说明安装成功了，这时可以点击「启用插件」按钮来进行安装。</p>
+<blockquote>
+<p>如果上传以后，提示没有找到有效的插件，就像下面这样：</p>
+<p><img src="https://postimg.aliavv.com/mbp/a1zmz.jpg" alt="" /></p>
+<p>则可能是你的插件目录放的太深了，插件文件应该在压缩文件的根目录中。即下图，压缩包 akismet 的根目录中存放着插件文件。</p>
+<p><img src="https://postimg.aliavv.com/mbp/nuoqg.jpg" alt="" /></p>
+</blockquote>
+<h5 id="3-使用-ftp-进行上传安装"><a class="header" href="#3-使用-ftp-进行上传安装">3. 使用 FTP 进行上传安装</a></h5>
+<p>在有些特殊情况下，我们可能无法通过 WordPress 对目录进行写操作（安全控制），此时，可以使用系统自带的 FTP 进行上传。</p>
+<ol>
+<li>解压你下载好的插件到本地。</li>
+<li>打开 FTP 软件，登录到虚拟主机上，将目录切换到 WordPress 的根目录下。</li>
+<li>找到 <code>wp-contnet/plugins/</code>目录。</li>
+<li>将整个插件文件夹上传到整个目录中。</li>
+</ol>
+<p><img src="https://postimg.aliavv.com/mbp/akf1o.jpg" alt="" /></p>
+<p>这样，就可以将插件上传到 WordPress 当中，然后到 WordPress 后台去启用插件即可。</p>
+<h4 id="修改插件"><a class="header" href="#修改插件">修改插件</a></h4>
+<p>在某些特殊的情况下，我们可能要对一个插件进行一定的修改，比如修改代码、添加 API key （一些涉及到了第三方服务的插件）等。这个时候，可以选择通过 FTP 进行修改，不过也可以通过 WordPress 后台进行修改。</p>
+<p>进入 WordPress 后台，点击「插件」— 「编辑」，就可以进入到插件编辑界面。</p>
+<p><img src="https://postimg.aliavv.com/mbp/vvvws.jpg" alt="" /></p>
+<p>插件的编辑页面整体可以分为两部分，左侧的代码框和右侧的文件框。</p>
+<p><img src="https://postimg.aliavv.com/mbp/gr008.jpg" alt="" /></p>
+<p>在右侧点击文件，左侧就会自动加载相关文件，然后就可以在左侧的代码编辑区域修改对应的文件内容。</p>
+<p>针对 PHP 文件中的函数，WordPress 还提供了方便的函数查询的功能，点击下方的文档后的下拉框，会看到这个文件使用的具体的函数，当选择了一个函数后，点击后面的查询按钮，就会自动跳转到这个函数的说明页面。十分的方便。</p>
+<p><img src="https://postimg.aliavv.com/mbp/h5a74.jpg" alt="" /></p>
+<p>如果进入后，你发现当前加载的插件不是你需要修改的插件，你可以点击右上角的插件列表进行修改。</p>
+<p><img src="https://postimg.aliavv.com/mbp/hktgl.jpg" alt="" /></p>
+<p>点击下拉菜单选择合适的插件，并点击选择，就会跳转到对应的插件了。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../theme/uploads.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../plugin/run.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../theme/uploads.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../plugin/run.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

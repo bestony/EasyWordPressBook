@@ -1,0 +1,505 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>WP 插件后台设计与开发 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/plugin/admin.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="插件后台的设计与开发"><a class="header" href="#插件后台的设计与开发">插件后台的设计与开发</a></h1>
+<p>对于简单的插件来说，可能无需设置，安装插件后启用功能即可。但是对于一些功能更复杂的插件，我们就需要为插件添加一个后台页面了，这节课我们来学习如何为插件设计、创建一个后台。</p>
+<h3 id="学习目标"><a class="header" href="#学习目标">学习目标</a></h3>
+<p>通过这节课的学习将会为 gitchat_copyright 插件创建一个后台管理页面。</p>
+<h3 id="添加菜单"><a class="header" href="#添加菜单">添加菜单</a></h3>
+<h4 id="添加菜单项目"><a class="header" href="#添加菜单项目">添加菜单项目</a></h4>
+<h5 id="添加一级菜单"><a class="header" href="#添加一级菜单">添加一级菜单</a></h5>
+<p>既然要设置菜单，我们肯定要有一个入口能够进入到插件的页面去。在上节课尝试使用 WordPress 自己的设置页面作为入口，但是这节课我们要自己创建一个页面，所以要添加自己的菜单项目。</p>
+<p>这里要用到 <em>add_menu_page</em> 函数，这个函数的定义如下：</p>
+<pre><code class="language-php">add_menu_page( string $page_title, string $menu_title, string $capability, string $menu_slug, callable $function = '', string $icon_url = '', int $position = null )
+</code></pre>
+<p>我们需要设置这7个参数，各个参数的含义如下：</p>
+<ul>
+<li>page_title：页面的标题，会和<code>title</code>标签内显示的一样。</li>
+<li>menu_title：在控制面板中显示的菜单名称。</li>
+<li>capability：显示该操作项所需要的最低权限。具体权限可以参考 <a href="https://codex.wordpress.org/Roles_and_Capabilities">官方文档</a>。</li>
+<li>menu_slug：菜单别名，需要是唯一的。</li>
+<li>Function：显示该页面内容时调用的函数。</li>
+<li>icon_url：菜单中图标的 url。这个参数除了粘贴 url，还可以粘贴 WordPress 官方的 helper css，比如 <em>dashicons-chart-pie</em>，具体可以在<a href="https://developer.wordpress.org/resource/dashicons/">这里</a>找到。或者是 base64 后的图标<code>data:image/svg+xml;base64</code>。</li>
+<li>position：出现在菜单中的位置。具体的 Position 可以参考 <a href="https://developer.wordpress.org/reference/functions/add_menu_page/#default-bottom-of-menu-structure">官方说明</a>，需要注意，我们自己定义的 position 应该和官方的 position 不同，避免冲突。</li>
+</ul>
+<p><img src="https://postimg.aliavv.com/mbp/vq9yy.jpg" alt="" /></p>
+<p>接下来自定义一个一级菜单。</p>
+<p>在我们的插件尾部添加如下代码：</p>
+<pre><code class="language-php">/**
+* 注册菜单项
+*/
+function gitchat_copyright_custom_menu(){
+  add_menu_page( 
+      'Gitchat 版权插件首页',
+      'GitChat 版权插件',
+      'manage_options',
+      'gitchat_optionpage',
+      'gitchat_custom_page',
+      'dashicons-admin-generic',
+      100
+  ); 
+}
+add_action( 'admin_menu', 'gitchat_copyright_custom_menu' );
+
+function gitchat_custom_page(){
+  ?&gt;
+  &lt;h1&gt;GitChat 版权插件测试&lt;/h1&gt;
+  &lt;?php
+}
+</code></pre>
+<p>这里我们定义了一个页面 title 是 <em>Gitchat 版权插件首页</em>，菜单名为 <em>GitChat 版权插件</em>，权限为<em>管理员权限</em>，别名为 <em>gitchat_optionpage</em> ，图标为 <em>dashicons-admin-generic</em> ，放在所有菜单底部的插件。</p>
+<p><strong>需要注意的是，菜单的添加必须挂载在 <em>admin_menu</em> 这个 hook 上才行。</strong></p>
+<p><img src="https://postimg.aliavv.com/mbp/xpeh8.jpg" alt="" /></p>
+<p>点击这个菜单项，就会进入到我们的页面了，可以看到定义的页面内容。</p>
+<p><img src="https://postimg.aliavv.com/mbp/oe3ry.jpg" alt="" /></p>
+<h5 id="添加二级菜单"><a class="header" href="#添加二级菜单">添加二级菜单</a></h5>
+<p>有些时候，一级菜单并不够我们用，可能需要两级菜单。添加二级菜单，我们需要用到 <em>add_submenu_page</em> 方法。</p>
+<pre><code class="language-php">add_submenu_page( string $parent_slug, string $page_title, string $menu_title, string $capability, string $menu_slug, callable $function = '' )
+</code></pre>
+<p>这个函数的定义和 <code>add_menu_page</code> 基本相同，唯一不同的是需要传入第一个参数，指定上级菜单，如果不指定，系统就不知道子菜单的上一级菜单是什么。</p>
+<p>接下来，我们来添加一个子菜单。</p>
+<p>在刚刚定义的 <code>gitchat_copyright_custom_menu</code> 函数中添加我们的子菜单函数。</p>
+<p>新的代码如下：</p>
+<pre><code class="language-php">
+/**
+* 注册菜单项
+*/
+function gitchat_copyright_custom_menu(){
+  add_menu_page( 
+      'Gitchat 版权插件首页',
+      'GitChat 版权插件',
+      'manage_options',
+      'gitchat_optionpage',
+      'gitchat_custom_page',
+      'dashicons-admin-generic',
+      100
+  ); 
+  add_submenu_page(
+    'gitchat_optionpage',
+    "关于",
+    "关于",
+    'manage_options',
+    'gitchat_aboutpage',
+    'gitchat_about_page'
+  );
+}
+add_action( 'admin_menu', 'gitchat_copyright_custom_menu' );
+
+function gitchat_custom_page(){
+  ?&gt;
+  &lt;h1&gt;GitChat 版权插件测试&lt;/h1&gt;
+  &lt;?php
+}
+function gitchat_about_page(){
+  ?&gt;
+  &lt;h1&gt;关于 GitChat&lt;/h1&gt;
+  &lt;?php
+}
+</code></pre>
+<p>这时刷新一下页面，就可以看到菜单加入了二级菜单。</p>
+<p><img src="https://postimg.aliavv.com/mbp/iixm8.jpg" alt="" /></p>
+<p>点击其中的关于，就可以看到新加的页面了。</p>
+<h4 id="添加页面"><a class="header" href="#添加页面">添加页面</a></h4>
+<h5 id="使用-wordpress-自定义的样式"><a class="header" href="#使用-wordpress-自定义的样式">使用 WordPress 自定义的样式</a></h5>
+<p>现在已经添加了自定义的菜单页面，接下来为这个页面添加内容。</p>
+<p><img src="https://postimg.aliavv.com/mbp/4ugr9.jpg" alt="" /></p>
+<p>相比于我们自己去设计样式，最简单的方式，是使用 WordPress 内置的样式，来展现我们的样式。这样体验也和 WordPress 官方的内容具有一致性，能够更好的表现出我们想要的内容。</p>
+<h5 id="使用-wrap-包裹我们的内容"><a class="header" href="#使用-wrap-包裹我们的内容">使用 wrap 包裹我们的内容</a></h5>
+<p><img src="https://postimg.aliavv.com/mbp/7cnfz.jpg" alt="" /></p>
+<p>在这个截图中，上面的内容使用的都是 <em>h1</em>，dan s 下方的内容明显要更适合 WordPress 的界面设计风格，这就是因为下面的内容被 wrap 类所包裹，展示的内容会按照 WordPress 官方的样式来书写。</p>
+<pre><code>&lt;div class="wrap"&gt;
+    &lt;!--- Content --&gt;
+&lt;/div&gt;
+</code></pre>
+<h5 id="使用-wordpress-自带的信息提示的样式"><a class="header" href="#使用-wordpress-自带的信息提示的样式">使用 WordPress 自带的信息提示的样式</a></h5>
+<p>我们在制作 WordPress 插件时，可能会用到一些提示，比如信息保存成功后的提示、信息出错的提示等等。这些 WordPress 官方提供了固定的样式，可以直接使用 WordPress 自己的样式来进行展示。</p>
+<p>这方面我们可以直接复制这里的代码来显示：</p>
+<pre><code>&lt;div id="message" class="updated"&gt;
+    &lt;p&gt;&lt;strong&gt;
+        &lt;!--- 保存信息 --&gt;
+    &lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div id="message" class="error"&gt;
+    &lt;p&gt;&lt;strong&gt;
+        &lt;!--- 保存信息 --&gt;
+    &lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<p>实现的效果如下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/091qh.jpg" alt="" /></p>
+<p>这样的展示会更符合 WordPress 整体的体验。</p>
+<h5 id="使用-wordpress-的按钮样式"><a class="header" href="#使用-wordpress-的按钮样式">使用 WordPress 的按钮样式</a></h5>
+<p><img src="https://postimg.aliavv.com/mbp/epwk9.jpg" alt="" /></p>
+<p>使用浏览器的普通按钮虽然也可以，但体验却差很多，设计也不一致，可以使用 WordPress 的按钮样式，来自定义页面的按钮。具体按钮的代码如下，可以根据自己的需要选择。</p>
+<pre><code class="language-html">&lt;input type="submit" name="test" value="普通按钮" /&gt;
+&lt;input type="submit" name="test" value="标准按钮" class="button" /&gt;
+&lt;input type="submit" name="test" value="主要按钮" class="button button-primary" /&gt;
+&lt;input type="submit" name="test" value="副按钮" class="button button-secondary" /&gt;
+&lt;input type="submit" name="test" value="大按钮" class="button button-large" /&gt;
+&lt;input type="submit" name="test" value="小按钮" class="button button-small" /&gt;
+&lt;input type="submit" name="test" value="超大按钮" class="button button-hero" /&gt;
+</code></pre>
+<blockquote>
+<p>a 链接也可以通过加入这些样式来美化。</p>
+</blockquote>
+<h5 id="使用-wordpress-自带的表单样式"><a class="header" href="#使用-wordpress-自带的表单样式">使用 WordPress 自带的表单样式</a></h5>
+<p>WordPress 也提供了默认的表单样式，可以直接调用对应的样式来输出对应的样式。</p>
+<p><img src="https://postimg.aliavv.com/mbp/kowz0.jpg" alt="" /></p>
+<pre><code class="language-html">&lt;form method="POST" action=""&gt;
+            &lt;table class="form-table"&gt;
+                &lt;tr valign="top"&gt;
+                    &lt;th&gt;&lt;label for="input-example"&gt;输入框&lt;/label&gt;&lt;/th&gt;
+                    &lt;td&gt;&lt;input id="input-example" name="input-example" /&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr valign="top"&gt;
+                    &lt;th&gt;&lt;label for="select-example"&gt;下拉框：&lt;/label&gt;&lt;/th&gt;
+                    &lt;td&gt;
+                        &lt;select name="select-example"&gt;
+                        &lt;option value="1"&gt;是&lt;/option&gt;
+                        &lt;option value="0"&gt;否&lt;/option&gt;
+                        &lt;/select&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr valign="top"&gt;
+                    &lt;th&gt;&lt;label for="check-example"&gt;选择框&lt;/label&gt;&lt;/th&gt;
+                    &lt;td&gt;&lt;input type="checkbox" name="check-example" /&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr valign="top"&gt;
+                    &lt;th&gt;&lt;label for="radio-example"&gt;Radio &lt;/label&gt;&lt;/th&gt;
+                    &lt;td&gt;
+                        &lt;input type="radio" name="radio-example" value="是" /&gt; 是
+                        &lt;input type="radio" name="radio-example" value="否" /&gt; 否
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr valign="top"&gt;
+                    &lt;th&gt;&lt;label for="textarea"&gt;文本框&lt;/label&gt;&lt;/th&gt;
+                    &lt;td&gt;&lt;textarea name="textarea"&gt;&lt;/textarea&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr valign="top"&gt;
+                    &lt;td&gt;
+                        &lt;input type="submit" name="save" value="保存" class="button-primary" /&gt;
+                        &lt;input type="submit" name="reset" value="重置" class="button-secondary" /&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/form&gt;
+</code></pre>
+<h5 id="使用-wordpress-自带的表格样式"><a class="header" href="#使用-wordpress-自带的表格样式">使用 WordPress 自带的表格样式</a></h5>
+<p><img src="https://postimg.aliavv.com/mbp/6h78t.jpg" alt="" /></p>
+<p>通过在表格上加入<code>widefat striped</code>两个类，就可以将我们的表格设置为 WordPress 的样式。</p>
+<pre><code class="language-html">        &lt;table class="widefat striped"&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th&gt;序号&lt;/th&gt;
+                    &lt;th&gt;达人课名称&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;1&lt;/td&gt;
+                    &lt;td&gt;Angular 初学者快速上手教程&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;2&lt;/td&gt;
+                    &lt;td&gt;快速学习 Spring Boot 技术栈&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;3&lt;/td&gt;
+                    &lt;td&gt;Webpack 达人的成长之路&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+</code></pre>
+<p>其他的一些样式，如果我在这里没有提到，你需要用，可以自己通过 Chrome 的开发者工具审查获得，或者到读者圈内提问。</p>
+<h4 id="选项页面设置"><a class="header" href="#选项页面设置">选项页面设置</a></h4>
+<p>接下来完善我们的插件管理页面的内容。</p>
+<p>修改 <code>gitchat_custom_page</code> 函数内容如下：</p>
+<pre><code class="language-php+HTML">function gitchat_custom_page(){
+  ?&gt;
+  &lt;div class="wrap"&gt;
+  &lt;?php 
+    if ($_POST['code'] != null &amp;&amp; check_admin_referer( 'gitchat_copyright' )){
+      update_option( 'gitchat_copyright_code', $_POST['code'] );
+      $code = $_POST['code'];
+      ?&gt;
+      &lt;div id="message" class="updated"&gt;&lt;p&gt;&lt;strong&gt;信息更新成功！&lt;/strong&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;?php
+    }else{
+      $code  = get_option('gitchat_copyright_code');
+    }
+    ?&gt;
+    &lt;h1&gt;GitChat 版权插件设置&lt;/h1&gt;
+    &lt;form method="POST" action=""&gt;
+            &lt;table class="form-table"&gt;
+            
+                &lt;tr valign="top"&gt;
+                    &lt;th&gt;&lt;label for="textarea"&gt;版权代码&lt;/label&gt;&lt;/th&gt;
+                    &lt;td&gt;&lt;textarea name="code" col="30" row="10"&gt;&lt;?php echo $code;?&gt;&lt;/textarea&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr valign="top"&gt;
+                    &lt;td&gt; 
+                        &lt;input type="submit" name="save" value="保存" class="button-primary" /&gt;
+                        &lt;input type="reset" name="reset" value="重置" class="button-secondary" /&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;?php
+                wp_nonce_field('gitchat_copyright');
+            ?&gt;
+        &lt;/form&gt;
+  &lt;/div&gt;
+  
+  &lt;?php
+}
+</code></pre>
+<p>这段代码中大部分都是我们在上面提到的表单内容。不再多讲，我来说一说里面的 PHP 代码。</p>
+<pre><code class="language-php">&lt;?php 
+    if ($_POST &amp;&amp; $_POST['code'] != null &amp;&amp; check_admin_referer( 'gitchat_copyright' )){
+      update_option( 'gitchat_copyright_code', $_POST['code'] );
+      $code = $_POST['code'];
+      ?&gt;
+      &lt;div id="message" class="updated"&gt;&lt;p&gt;&lt;strong&gt;信息更新成功！&lt;/strong&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;?php
+    }else{
+      $code  = get_option('gitchat_copyright_code');
+    }
+    ?&gt;
+</code></pre>
+<p>这段代码主要是两个功能，首先判断是否是 Post 请求，判断 Post 请求中的 code 是否为空，以及这个插件的请求是否合法。如果 code 不为空，则使用 Post 的数据更新设置项，并提示更新成功；如果发来的请求不是 Post，则执行下方的获取代码，并赋值给 <em>code</em> 。</p>
+<p>在 table 底部我加了一段代码：</p>
+<pre><code>&lt;?php wp_nonce_field('gitchat_copyright'); ?&gt;
+</code></pre>
+<p>这段代码可以帮助我们验证请求。</p>
+<h5 id="关于-check_admin_referer-和-wp_nonce_field"><a class="header" href="#关于-check_admin_referer-和-wp_nonce_field">关于 <code>check_admin_referer</code> 和 <code>wp_nonce_field</code></a></h5>
+<p>这两个函数是我们的第一次看见，这两个函数是为表单加入验证数据避免被恶意利用。<code>wp_nonce_field</code> 函数会在我们的表单中加入两段代码，用于后续的验证。</p>
+<p><img src="https://postimg.aliavv.com/mbp/sqc4o.jpg" alt="" /></p>
+<p>而 <code>check_admin_referer</code>会验证这两段代码是否匹配，如果不匹配，则会拒绝请求。</p>
+<h3 id="总结"><a class="header" href="#总结">总结</a></h3>
+<p>这节课我们学习了如何构建插件的设置页面，后续会根据插件的复杂程度，你可以更加细化插件。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../plugin/create.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../plugin/create-widget.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../plugin/create.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../plugin/create-widget.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>开发一个 WordPress Widget - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/plugin/create-widget.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h2 id="开发一个-wordpress-widget"><a class="header" href="#开发一个-wordpress-widget">开发一个 WordPress Widget</a></h2>
+<h3 id="插件开发目标"><a class="header" href="#插件开发目标">插件开发目标</a></h3>
+<p>这节课来创建一个简单的 WordPress Widget，实现在侧边栏显示达人课的链接。</p>
+<h3 id="重新认识-widget"><a class="header" href="#重新认识-widget">重新认识 Widget</a></h3>
+<p>很多 WordPress 主题都支持自定义的侧边栏小工具，有了自定义的侧边栏小工具，WordPress 的侧边栏也可以变得多姿多彩。在开始开发 Widget 之前，先来重新认识一下 Widget。</p>
+<p>一个 Widget 可以分为两个部分：</p>
+<ul>
+<li>上方的标题部分</li>
+<li>下方的内容部分</li>
+</ul>
+<p>在管理后台，它是这个样子的：</p>
+<p><img src="https://postimg.aliavv.com/mbp/4yju1.jpg" alt="" /></p>
+<p>而在前台，它是这个样子的：</p>
+<p><img src="https://postimg.aliavv.com/mbp/1uvoc.jpg" alt="" /></p>
+<p>每一个 Widget 都至少包含这两部分，其中第二部分又可能会有很多不同的样式。大多数就是对第二部分进行自定义，来达到展示特定内容的目的。</p>
+<h3 id="插件开发过程"><a class="header" href="#插件开发过程">插件开发过程</a></h3>
+<p>这节课就来尝试创建一个 WordPress widget 小工具，这个小工具可以通过后台的设置，实现在前台输出达人课的基本信息。</p>
+<h4 id="创建插件"><a class="header" href="#创建插件">创建插件</a></h4>
+<p>首先要创建一个插件，这里创建的插件名称为 <em>gitchat_widget</em>，并进行初始化。</p>
+<p><img src="https://postimg.aliavv.com/mbp/yql73.jpg" alt="" /></p>
+<h3 id="初始化小工具"><a class="header" href="#初始化小工具">初始化小工具</a></h3>
+<p>初始化完成插件后，来初始化我们的小工具。</p>
+<p>在插件中加入如下代码：</p>
+<pre><code class="language-Php">class gitchat_widget extends WP_Widget {
+    
+    public function __construct() {
+        $widget_ops = array( 
+            'classname' =&gt; 'gitchat_widget',
+            'description' =&gt; '这是一个 GitChat 小工具',
+        );
+        parent::__construct( 'gitchat_widget', 'Gitchat Widget', $widget_ops );
+    }
+  
+}
+add_action('widgets_init',
+    create_function('', 'return register_widget("gitchat_widget");')
+);
+</code></pre>
+<p>上述代码就是 WordPress 初始化一个小工具的代码。</p>
+<p>这里创建了一个继承了 <em>WP_Widget</em> 类的类 <em>gitchat_widget</em>，该类的的构造函数内构造了一组参数，参数指定了控件的名称、描述、id 等。</p>
+<p>此外，通过 <code>add_action</code> 实现对 <em>widgets</em> 进行初始化的挂载，这里用到了一个函数 <code>create_function</code>，该函数可以实现创建一个匿名函数，这个函数没有参数，代码是注册一个 id 为 gitchat_widget 的 Widget。</p>
+<h4 id="实现前台展示功能"><a class="header" href="#实现前台展示功能">实现前台展示功能</a></h4>
+<p>接下来实现前台的展示功能。</p>
+<p>首先在 <code>__constract</code>  函数后加入一个新的函数 <code>widget</code>，这个函数接受两个参数，分别是 <em>args</em> 和 <em>instance</em>。</p>
+<p>此时代码如下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/keody.jpg" alt="" /></p>
+<p>我们将两个参数打印出来看看，具体有什么作用。</p>
+<p>在 <code>widget</code>函数中加入代码<code>var_export($args);</code>。</p>
+<p>进入 WordPress 后台的小工具中，拖动我们创建的 GitChat Widget 到侧边栏中。</p>
+<p><img src="https://postimg.aliavv.com/mbp/y07zn.gif" alt="" /></p>
+<p>来到前台，我们可以看到这样的输出：</p>
+<p><img src="https://postimg.aliavv.com/mbp/954lz.jpg" alt="" /></p>
+<p>现在我们知道了这里都有哪些内容了，可以调整一下输出。将 <em>widget</em> 函数代码改为这样：</p>
+<pre><code class="language-php">public function widget( $args, $instance ) {
+        echo $args['before_widget']; // 输出 widget 前面的内容，一般是主题提供的样式。
+        // 输出内容
+        echo $args['after_widget'];
+    }
+</code></pre>
+<h4 id="添加小工具设置"><a class="header" href="#添加小工具设置">添加小工具设置</a></h4>
+<p>现在小工具不能设置任何东西，所以接下来要让小工具更加完善，可以添加图片地址和对应的链接，这样就可以在前台显示我们的达人课和跳转链接了。</p>
+<p>在 <em>widget</em> 函数后新创建一个函数 <em>form</em> ，该函数接受一个 <em>instance</em> 参数，其将会在小工具中为我们渲染一个表单，用于填写具体的信息。同时，还要创建另外一个函数 <em>update</em>，该函数接受两个参数，分别是 <em>new_instance</em> 和 <em>old_instance</em>。</p>
+<pre><code class="language-php">    public function form( $instance ) {     
+    }
+    public function update( $new_instance, $old_instance ) {
+    }
+</code></pre>
+<p>接下来一一实现这两个方法。</p>
+<p>首先要实现的是 <em>form</em> 表单，在这个方法中要输出表单，同时，还需要确保之前填写的内容不会丢失，这样方便修改，而无需每次都重新完全填写所有内容，所以将 form 方法改写成下面这样。</p>
+<pre><code class="language-php">public function form( $instance ) {
+        $title = ! empty( $instance['title'] ) ? $instance['title'] : "默认标题";
+        $image_url = !empty($instance['image_url']) ? $instance['image_url'] : "http://images.gitbook.cn/FjhhSzg105uzXTpqZb3N3JIAKokE";
+        $link  = ! empty( $instance['link'] ) ? $instance['link'] : "http://gitbook.cn/gitchat/column/5a16601f13c02f4a35c9f8ad";
+        ?&gt;
+        &lt;p&gt;
+        &lt;label for="&lt;?php echo esc_attr( $this-&gt;get_field_id( 'title' ) ); ?&gt;"&gt;标题&lt;/label&gt; 
+        &lt;input class="widefat" id="&lt;?php echo esc_attr( $this-&gt;get_field_id( 'title' ) ); ?&gt;" name="&lt;?php echo esc_attr( $this-&gt;get_field_name( 'title' ) ); ?&gt;" type="text" value="&lt;?php echo esc_attr( $title ); ?&gt;"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+        &lt;label for="&lt;?php echo esc_attr( $this-&gt;get_field_id( 'image_url' ) ); ?&gt;"&gt;图片地址&lt;/label&gt; 
+        &lt;input class="widefat" id="&lt;?php echo esc_attr( $this-&gt;get_field_id( 'image_url' ) ); ?&gt;" name="&lt;?php echo esc_attr( $this-&gt;get_field_name( 'image_url' ) ); ?&gt;" type="text" value="&lt;?php echo esc_attr( $image_url ); ?&gt;"&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+        &lt;label for="&lt;?php echo esc_attr( $this-&gt;get_field_id( 'link' ) ); ?&gt;"&gt;链接&lt;/label&gt; 
+        &lt;input class="widefat" id="&lt;?php echo esc_attr( $this-&gt;get_field_id( 'link' ) ); ?&gt;" name="&lt;?php echo esc_attr( $this-&gt;get_field_name( 'link' ) ); ?&gt;" type="text" value="&lt;?php echo esc_attr( $link ); ?&gt;"&gt;
+        &lt;/p&gt;
+        &lt;?php 
+    }
+</code></pre>
+<p>其中，代码的前三行是设置从数据库中获取到原先的数据，如果数据不存在，则将其设置为默认的数据。当然也可以额将后面的默认数据置空。</p>
+<pre><code class="language-php">$title = ! empty( $instance['title'] ) ? $instance['title'] : "默认标题";
+$image_url = !empty($instance['image_url']) ? $instance['image_url'] : "http://images.gitbook.cn/FjhhSzg105uzXTpqZb3N3JIAKokE";
+$link  = ! empty( $instance['link'] ) ? $instance['link'] : "http://gitbook.cn/gitchat/column/5a16601f13c02f4a35c9f8ad";
+</code></pre>
+<p>下面的数据则是输出一个个表单，这里我取其中一个来说明</p>
+<pre><code class="language-php+HTML">&lt;p&gt;
+&lt;label for="&lt;?php echo esc_attr( $this-&gt;get_field_id( 'title' ) ); ?&gt;"&gt;标题&lt;/label&gt; 
+&lt;input class="widefat" id="&lt;?php echo esc_attr( $this-&gt;get_field_id( 'title' ) ); ?&gt;" name="&lt;?php echo esc_attr( $this-&gt;get_field_name( 'title' ) ); ?&gt;" type="text" value="&lt;?php echo esc_attr( $title ); ?&gt;"&gt;
+&lt;/p&gt;
+</code></pre>
+<p>首先，输出一个 <em>label</em>，来帮助我们分辩到底设置的是哪个选项。然后，定义一个输入框，设置它的名字为 <em>field_name</em>，然后再设置其内容为我们刚刚获取到的数据库中的值。</p>
+<blockquote>
+<p>esc_attr 是安全输出函数，对输出内容进行转义，确保恶意代码不会被执行。</p>
+</blockquote>
+<p>保存文件，回到小工具页面，刷新。</p>
+<p>再次拖动一个 GitChat Widget 到侧边栏，这时会发现我们的小工具中有了三个设置项。</p>
+<p><img src="https://postimg.aliavv.com/mbp/c35kt.jpg" alt="" /></p>
+<p>将三个设置项进行修改，设置为你自己的值。</p>
+<h4 id="完善前台展示"><a class="header" href="#完善前台展示">完善前台展示</a></h4>
+<p>现在后台的设置已经完善了，接下来完善前台的展示，刚刚只是展示了框架，并没有展示具体的内容。</p>
+<p>刚刚设置的内容，会通过 widget 函数的 <em>instance</em> 参数传递进入函数。</p>
+<p><img src="https://postimg.aliavv.com/mbp/6o73h.jpg" alt="" /></p>
+<p>我们可以通过 <code>$instance['属性名']</code> 来调用它.这里使用 html 的 <em>figure</em> 标签来实现结果的输出。</p>
+<p>在上面的代码中加入如下代码：</p>
+<pre><code class="language-php">echo '&lt;figure&gt;
+       &lt;a href="' .   $instance['link'] .  '"&gt;
+       &lt;img src="'.   $instance['image_url'] .  '" alt="'.$instance['title'].'" width="304" height="228"&gt;&lt;/a&gt;
+       &lt;figcaption&gt;'. $instance['title'] .  '&lt;/figcaption&gt;
+      &lt;/figure&gt;';
+</code></pre>
+<p>效果如下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/zypat.jpg" alt="" /></p>
+<p>这样就简单的实现了前台内容的输出。</p>
+<p>回到前台，刷新，可以看到：</p>
+<p><img src="https://postimg.aliavv.com/mbp/cmfxs.jpg" alt="" /></p>
+<p>点击图片，则可以跳转到 GitChat 的达人课界面。</p>
+<h4 id="再次验证功能"><a class="header" href="#再次验证功能">再次验证功能</a></h4>
+<p>回到后台，将我们的小工具的设置改为其他达人课的信息，可以看到内容已经发生了改变。</p>
+<p><img src="https://postimg.aliavv.com/mbp/gigev.jpg" alt="" /></p>
+<p>这样，就验证了我们的小工具开发成功。</p>
+<h3 id="开发中需要注意的内容"><a class="header" href="#开发中需要注意的内容">开发中需要注意的内容</a></h3>
+<p>在开发过程中需要注意，并不是每个小工具都有输入和输出，在涉及到用户的输入和输出时，一定要注意在其中加入过滤函数，常用的过滤函数你可以在<a href="https://codex.wordpress.org/Validating_Sanitizing_and_Escaping_User_Data">这里</a> 找到。通过对用户输入的过滤，能够避免由用户的错误输入导致的恶意代码的嵌入。</p>
+<blockquote>
+<p>记住，不要相信用户的输入！</p>
+</blockquote>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../plugin/admin.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../plugin/create-shortcode.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../plugin/admin.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../plugin/create-shortcode.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

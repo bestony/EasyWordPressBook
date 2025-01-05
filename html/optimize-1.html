@@ -1,0 +1,307 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>站点性能优化 （一）：动静分离 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/optimize-1.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="wordpress-性能优化动静分离"><a class="header" href="#wordpress-性能优化动静分离">WordPress 性能优化：动静分离</a></h1>
+<h4 id="总论"><a class="header" href="#总论">总论</a></h4>
+<h5 id="为什么网站打开速度很重要"><a class="header" href="#为什么网站打开速度很重要">为什么网站打开速度很重要</a></h5>
+<p>当用户第一次登录你的网站时，如果你在最开始的几秒钟没有捕捉到他们的注意力，没有让他们对内容产生兴趣，他们可能马上就关掉网站。调查显示如果网站 3 秒内没有打开，那么将会有 40% 的用户离开。如果网站加载时间太长，用户还没看就走了，那就白白流失了一个访客。</p>
+<p>此外，网站速度还将影响你的网站在搜索引擎中的排名，速度缓慢、跳出率大，都会导致排名下降，流量减少。</p>
+<p>接下来，我会用大约 4 节课的篇幅讲讲如何优化？</p>
+<h5 id="如何分析网站速度慢的原因"><a class="header" href="#如何分析网站速度慢的原因">如何分析网站速度慢的原因</a></h5>
+<p>想要进行优化，首先要搞清楚问题在哪，找到问题的源头，才能更好的解决问题。</p>
+<p>排查网站加载速度的问题一般可以使用 Chrome 自带的 Devtools 来进行检查。在 Devtools 中，我们可以看到每个文件的加载时间、加载顺序、加载大小等等。通过这个时间，可以很方便的找到我们的网站速度到底慢在哪。</p>
+<p><img src="https://postimg.aliavv.com/2018/1h0jn.png" alt="" /></p>
+<p>此外，可以安装 WordPress 插件 Debug Bar 来调试数据库查询，并借此对耗时较长的数据库查询进行优化。</p>
+<p><img src="https://postimg.aliavv.com/2018/5hg8i.png" alt="" /></p>
+<p>此外，还可以借助一些其他的浏览器插件来进行网站速度的判别，比如 <a href="https://chrome.google.com/webstore/detail/ninejjcohidippngpapiilnmkgllmakh">Yslow</a>。</p>
+<p><img src="https://postimg.aliavv.com/2018/jt6f9.png" alt="" /></p>
+<h4 id="加速提升带宽"><a class="header" href="#加速提升带宽">加速：提升带宽</a></h4>
+<h5 id="最直接的方法提升带宽"><a class="header" href="#最直接的方法提升带宽">最直接的方法：提升带宽</a></h5>
+<p>如果使用的是虚拟主机，那么一般来说不会存在太多的带宽问题，服务商一般提供的都是 100M 的网络，更多应该关注的是你的流量是否够用。</p>
+<p>如果使用的是国外的 VPS，如 Linode、DigitalOcean、Vultr 等，那么你的带宽也不太是问题，你的问题更多是主机延时太高，导致请求的基本线比较高。</p>
+<p>不过应该有不少人使用的还是国内的云主机，国内的云主机有个很大的特点，就是带宽贵，大部分人购买的可能都是 1M-5M 以内的云主机，很少有人会买更高的带宽，因为 5M 以上带宽的价格会飙升。</p>
+<p>我们的网站大多数情况下都需要加载很多文件，各种不同的样式表、各种功能的 javascript 文件、各种图片，如果带宽很小（如 1M），那么加载速度就可能受到影响。因为云主机的带宽是固定的，如果图片的下载将带宽占满，那其他文件的下载就必定会卡住，所以，最直接的方案就是提升带宽。通过提供一个足够大的带宽，保证各个文件的下载。带宽变大，除了可以保证其他文件的下载，还可以保证让你的文件更快的被下载。</p>
+<h5 id="动静分离"><a class="header" href="#动静分离">动静分离</a></h5>
+<p>在有些时候，我们没有办法提升带宽，毕竟当已经到了 5M 时，每 M 的提升价格都远超之前。不过，除了提升带宽，我们也的确有一些其他方法来加速网站，这就是——动静分离。</p>
+<p>动静分离就是将网站的主程序（动态文件）和附件（静态文件）进行分割。虽然并没有实质上提升我们的带宽，但是通过将静态文件拆分，变相达到了动静分离的效果。</p>
+<h5 id="使用各种云存储来实现动静分离"><a class="header" href="#使用各种云存储来实现动静分离">使用各种云存储来实现动静分离</a></h5>
+<p>目前各大云计算服务商都提供了云存储业务，而一些独立的云存储服务商也都干的有声有色。一般来说，我们可以选择<a href="https://oss.console.aliyun.com/overview">阿里云的 OSS</a>、<a href="https://console.upyun.com/register/?invite=BJNB_q2D-">又拍云的云存储</a>、<a href="https://portal.qiniu.com/signup?code=3lh4p6616cor6">七牛云的云存储</a>。</p>
+<p>其中，如果主机是阿里云的，推荐使用<a href="https://oss.console.aliyun.com/overview">阿里云的 OSS</a>，这样可以在数据存储时使用内网上传，不占用外网的带宽。同理，如果使用的是腾讯云的云主机，也可以使用<a href="https://console.cloud.tencent.com/cos">腾讯云的 COS</a>。</p>
+<p>各家为了方便用户接入，基本都提供了对应的插件，具体可以看下表，将各家的免费额度也标注了出来。</p>
+<div class="table-wrapper"><table><thead><tr><th>厂商</th><th>免费额度</th><th>插件地址</th><th>使用说明</th></tr></thead><tbody>
+<tr><td>阿里云OSS</td><td>无</td><td><a href="https://github.com/IvanChou/aliyun-oss-support">插件地址</a></td><td><a href="https://github.com/IvanChou/aliyun-oss-support/wiki/Quick-start">使用说明</a></td></tr>
+<tr><td>腾讯云COS</td><td><a href="https://cloud.tencent.com/document/product/436/6240">免费 50G 存储，10G 流量</a></td><td><a href="https://www.slmwp.com/cos-sync-plugins.html">插件下载&amp;&amp;说明</a></td><td></td></tr>
+<tr><td>又拍云</td><td><a href="https://www.upyun.com/league">免费 10G 存储，15G 流量</a></td><td><a href="https://github.com/ihacklog/hacklog-remote-attachment-upyun">插件下载</a></td><td><a href="http://80x86.io/post/hacklog-remote-attachment-upaiyun-version">教程地址</a></td></tr>
+<tr><td>七牛云</td><td><a href="https://www.qiniu.com/prices">免费 10GB 存储，免费 10GB 流量</a></td><td><a href="https://wordpress.org/plugins/wpjam-qiniu/">插件地址</a></td><td><a href="http://blog.wpjam.com/project/wpjam-qiniutek/">插件说明</a></td></tr>
+</tbody></table>
+</div>
+<p>当接入了对象存储后，你的附件都将上传至对象存储，加载的链接也会变成对象存储的链接，从而减少了从主站加载数据的需要。</p>
+<blockquote>
+<p>留个思考题：有没有想过我们在第 4 课，媒体设置中的文件上传配置能如何帮助我们进行动静分离呢？</p>
+</blockquote>
+<h5 id="使用-cdn"><a class="header" href="#使用-cdn">使用 CDN</a></h5>
+<p>在某些情况下，你可能觉得使用动静分离很麻烦，那有没有相对简单一点的方法呢？有。你可以试试 CDN （内容分发网络）。CDN 可以把网站中的内容缓存到一个个 CDN 节点，用户访问时会先访问 CDN 节点，如果 CDN 节点中有相关的内容，就不会再回源，请求你自己的服务器。</p>
+<p>在使用 CDN 时，需要注意给你自己的网站开启网站静态化缓存（WP Super Cache），再在 CDN 处开启缓存，不然如果没有缓存，每次访问都会请求源站，反而可能会让你的网站变得速度更慢。</p>
+<h5 id="压缩图片"><a class="header" href="#压缩图片">压缩图片</a></h5>
+<p>如果上述动静分离的方法对于来说，有一些麻烦，也可以选择将图片压缩从而来减少加载的时间。毕竟大部分情况下，一个页面中最大的还是图片。</p>
+<p>图片压缩一般来说是两种方式，在上传之前的手动压缩和上传之后的程序自动压缩。</p>
+<h5 id="使用-tinypngcom-进行手动压缩"><a class="header" href="#使用-tinypngcom-进行手动压缩">使用 tinypng.com 进行手动压缩</a></h5>
+<p>Tinypng 是一个在线的图片压缩服务，可以压缩 png 或 jpg 文件，可以在上传图片前先将文件批量上传到 Tinypng 中进行压缩，然后再上传到博客去。</p>
+<p><img src="https://postimg.aliavv.com/2018/r1oqc.png" alt="" /></p>
+<p>如果一次性上传了多个图片，可以单击下方的 download all 按钮来下载所有图片。</p>
+<p>此外，如果感觉麻烦，也可以使用其官方推出的 <a href="https://wordpress.org/plugins/tiny-compress-images/">WordPress 插件</a>。</p>
+<p><img src="https://postimg.aliavv.com/2018/tp8zn.png" alt="" /></p>
+<p>不过这个插件每个月只能压缩 500 张图片，所以在使用时注意设置。</p>
+<p><img src="https://postimg.aliavv.com/2018/eo96m.png" alt="" /></p>
+<h5 id="使用-smush-插件压缩图片"><a class="header" href="#使用-smush-插件压缩图片">使用 Smush 插件压缩图片</a></h5>
+<p>Smush Image Compression and Optimization 是 WPMU 团队推出的图片压缩插件。</p>
+<p><strong>下载并安装插件</strong></p>
+<p>到 <a href="https://wordpress.org/plugins/wp-smushit/">https://wordpress.org/plugins/wp-smushit/</a> 下载插件，并在 WordPress 后台上传、安装、启用。</p>
+<p><strong>设置</strong></p>
+<p>安装完成后，会有一些设置项，可以根据我下方的解释，选择合适的选项。</p>
+<p><img src="https://postimg.aliavv.com/2018/m4ll8.png" alt="" /></p>
+<p>设置完成后，单击 <strong>Get Started</strong> 按钮，即可进入插件页面。</p>
+<p><strong>旧图片压缩</strong></p>
+<p>进入插件页面会看到提示：你有旧的图片需要压缩，单击 <strong>Bulk SMUSH</strong> 按钮，即可压缩已有附件。</p>
+<p><img src="https://postimg.aliavv.com/2018/x7d9c.png" alt="" /></p>
+<p>压缩完成，即可看到相关的压缩信息：</p>
+<p><img src="https://postimg.aliavv.com/2018/v73by.png" alt="" /></p>
+<h4 id="加入预加载功能"><a class="header" href="#加入预加载功能">加入预加载功能</a></h4>
+<p>我们可以通过一些标签，为博客页面加入预加载功能，分别是<code>dns-prefetch</code>、<code>preconnect</code>和<code>prerender</code>。</p>
+<p>通过在网页中加入如下代码，则可以实现 DNS 的预解析：</p>
+<pre><code>&lt;link rel="dns-prefetch" href="//wordpress.dev"&gt;
+</code></pre>
+<p>在新的页面加载前，先请求 DNS 的地址，减少解析的时间。</p>
+<p>在网页中加入如下代码，则可以预先建立链接，通过预链接，浏览器后续可以直接使用准备好的链接获取数据，提高链接效率。</p>
+<pre><code>&lt;link rel="preconnect" href="//wordpress.dev"&gt;
+&lt;link rel="preconnect" href="//cdn.wordpress.dev" crossorigin&gt;
+</code></pre>
+<p>在网页中加入如下代码，可以让网页预先加载好下一页的数据，对于多页的数据，可以实现体验更好的加载。</p>
+<pre><code>&lt;link rel="prerender" href="//wordpress.dev/?p=3"&gt;
+</code></pre>
+<p>当用户单击“下一页"按钮时会嗖的一下就跳到下一页去，极大地提高了用户体验。</p>
+<p>看到这里，相信读者会有点崩溃，这怎么设置？难道一个个手动加？并不用，可以安装 <a href="https://wordpress.org/plugins/instant-articles/">WordPress Instant Articles</a> 插件来实现相关的功能。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="resources.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="optimize-2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="resources.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="optimize-2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

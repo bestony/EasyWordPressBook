@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>轻松玩转 WP：如何使用 WordPress 的邮件发文功能 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/opt/sendmail.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="轻松玩转-wp如何使用-wordpress-的邮件发文功能"><a class="header" href="#轻松玩转-wp如何使用-wordpress-的邮件发文功能">轻松玩转 WP：如何使用 WordPress 的邮件发文功能</a></h1>
+<blockquote>
+<p>在之前的读者圈内，有读者问到我，如何通过邮件来发布 WordPress 文章，之前就说要补充这部分的内容，一直没顾上，今天把这个内容补充上来。</p>
+</blockquote>
+<p>本篇内容主要分为两个部分，分别是如何利用 WordPress 自带的「通过电子邮件发布」功能（不推荐使用，仅作了解），并介绍了一个功能更强的发布插件「Postie」（推荐使用）。</p>
+<h3 id="使用通过电子邮件发布功能发布文章"><a class="header" href="#使用通过电子邮件发布功能发布文章">使用「通过电子邮件发布」功能发布文章</a></h3>
+<p>WordPress 本身提供了通过电子邮件发布的功能，如果你只是希望实现用电子邮件发布文章的能力，那么这个功能已经满足你的要求了。</p>
+<p>不过，同样因为是 WordPress 官方提供的功能，在功能的设计上并没有我们所希望的那么完善，而且，根据官方的说明，这个功能也将在未来的某个时间点，从 WordPress 中移除掉（The built-in WordPress functionality is deprecated and will be removed in an upcoming release.）。好在目前这个功能并没有被去掉，而你不希望被众多插件拖慢速的话，这个自带的功能还是很不错的。</p>
+<p>话不多说，接下来，我们开始配置 WordPress 自带的通过电子邮件发送的功能。</p>
+<h4 id="1准备邮箱"><a class="header" href="#1准备邮箱">1.准备邮箱</a></h4>
+<p>无论是使用自带的功能，还是使用第三方插件提供的功能，都需要准备一个邮箱来接收具体的文章，这就要求你准备好一个邮箱，用来接受邮件。</p>
+<p><img src="https://postimg.aliavv.com/0dd59b99-5808-4ba2-ad05-4c9e2ec879a7.png" alt="" /></p>
+<p>一般来说，我们可以使用第三方的邮箱来接受邮件，比如 163 邮箱、Gmail、QQ 邮箱等，这里你需要注意的是，建议<strong>使用一个全新的邮箱，并借助于邮箱系统自带的过滤器，来确保无关的邮件不会进入你的收件箱，从而确保你的博客内容不会收到干扰</strong>。此外，你可以使用自建的域名邮箱来作为接收文章的邮箱。</p>
+<p>在选择邮箱时，需要考虑到国内特殊的网络环境，如果你的 WordPress 部署在国内的主机上，最好不要使用 Gmail 等在国内无法正常访问的邮箱，使用国内服务商提供的邮箱可以确保你的邮箱能够正常的登录和获取邮件。</p>
+<p>在完成了邮箱的注册等操作后，注意要到邮箱的设置界面去设置开启 POP 服务，如果未开启该服务，则无法让 WordPress 登录你的邮箱来获取邮件和邮件内容了。</p>
+<p><img src="https://postimg.aliavv.com/9a070fc9-34b0-411e-b5c3-95d53aa4779c.png" alt="" /></p>
+<p>此外，还需要注意的是，国内的一些邮箱采用了独立的授权码机制（比如 QQ 邮箱），在这种情况下，你需要将独立的授权码填写在你的 WordPress 后台的设置界面。</p>
+<h4 id="2设置-wordpress-后台的发布功能"><a class="header" href="#2设置-wordpress-后台的发布功能">2.设置 WordPress 后台的发布功能</a></h4>
+<p>在完成了邮箱的准备后，就可以进入 WordPress 后台，在 WordPress 后台的 「设置」——「撰写设置」页面，找到「通过电子邮件发布」，并将邮箱服务提供商给你的邮件服务器等信息，填写在这里。这里需要注意的是，我们需要在这里指定默认的邮件发布分类目录。</p>
+<p><img src="https://postimg.aliavv.com/9efff906-8cb4-41aa-b56f-b29953d1d3c5.png" alt="" /></p>
+<p>设置完成后，单击“保存”按钮，接下来就可以试着使用邮件来发布内容了。</p>
+<h4 id="3测试内容的发布"><a class="header" href="#3测试内容的发布">3.测试内容的发布</a></h4>
+<p>我们打开自己的私人邮箱，在私人邮箱中，编写一封发向我们的收件邮箱的邮件，用来测试我们的测试内容的发布。</p>
+<p><img src="https://postimg.aliavv.com/88684458-a503-4b7f-9894-3fa3e6d61fc2.png" alt="" /></p>
+<p>发布内容后，打开浏览器，输入网址<code>https://yourdomain/wp-mail.php</code>，将 yourdomain 替换为你自己的域名），来触发 WordPress 去拉取邮件。</p>
+<p><img src="https://postimg.aliavv.com/bd57020c-1c38-44ae-96a4-bc7e6935b714.png" alt="" /></p>
+<p>访问完成后，稍等 2 分钟，然后回到站点的首页、刷新，就可以看到我们通过邮件发布的内容了，再根据我们的需要编辑内容，发布即可。</p>
+<p><img src="https://postimg.aliavv.com/d6c85b36-92bb-47c2-b7c2-75104238aee5.png" alt="" /></p>
+<h4 id="4设置自动拉取内容"><a class="header" href="#4设置自动拉取内容">4.设置自动拉取内容</a></h4>
+<p>在使用中我们遇见了一个问题，那就是内容无法自动拉取，需要访问特定的域名来触发，如何简化掉这一个流程呢？接下来提供两个思路。</p>
+<h5 id="通过用户访问来自动拉取内容"><a class="header" href="#通过用户访问来自动拉取内容"><strong>通过用户访问来自动拉取内容</strong></a></h5>
+<p>可以在网页的底部添加一些代码，从而当页面被请求加载时，能够自动去拉取文件，而不需要你手动去拉取，这样就降低了操作的难度，同时还可以借助访客来确保能拿到最新的文章。</p>
+<h5 id="通过-crontab-来自动拉取内容"><a class="header" href="#通过-crontab-来自动拉取内容"><strong>通过 Crontab 来自动拉取内容</strong></a></h5>
+<p>本质上来说，想要触发拉取文章，就是需要让 wp-mail.php 被请求，我们可以使用 Crontab 来实现自动的内容拉取。</p>
+<p>我们可以在 Crontab 中使用 wget 命令来确保 wp-mail.php 文件被请求。</p>
+<pre><code class="language-php">wget -N https://yourdomain/wp-mail.php
+</code></pre>
+<p>将其中的 yourdomain 替换为你自己的域名，然后将其加入 Crontab 中来实现定期的自动访问。比如，你需要每 5 分钟能自动拉取内容，就可以添加如下内容（WordPress 默认限制每 5 分钟检查一次，如果需要更高的频次，则需要在 wp-config.php 文件中设置 <code>WP_MAIL_INTERVAL</code> 的值）。</p>
+<pre><code class="language-bash">*/5 * * * * wget -N https://yourdomain/wp-mail.php
+</code></pre>
+<p>这样就无需借助于用户的访问来进行内容的拉取，对于一些小的站点来说，能够更加清楚的确保新内容的获取。</p>
+<p>如果你刷新的频次太高，就会看到这样的提示：</p>
+<p><img src="https://postimg.aliavv.com/536fead0-1b38-4d6a-a4f2-00decd1ce578.png" alt="" /></p>
+<p>此外，还可以**  使用各种云监控提供的定时访问功能来触发内容的拉取**，这个和 crontab 的用法基本一致，可以参考各个平台的说明。</p>
+<h3 id="使用postie插件发布文章"><a class="header" href="#使用postie插件发布文章">使用「Postie」插件发布文章</a></h3>
+<p>WordPress 自带的邮件发布功能不完善，无法设置自定义的邮件标题等，因此，推荐你使用 Postie 来实现邮件发布文章。</p>
+<h4 id="配置插件"><a class="header" href="#配置插件">配置插件</a></h4>
+<p>在 WordPress 后台的插件管理界面搜索并按照 Postie 插件，安装完成后，点击提示，进入设置页面。</p>
+<p><img src="https://postimg.aliavv.com/e1a06b7d-0f3f-4dd4-9485-bf959a679895.png" alt="" /></p>
+<p>在设置页面中的 「Mailserver」 部分设置收件邮箱的地址（邮箱注册和配置的部分参考使用「通过电子邮件发布」功能发布文章中的第一小节，准备邮箱部分。）</p>
+<p><img src="https://postimg.aliavv.com/9b408aec-9252-4f2a-af77-936c71c6739b.png" alt="" /></p>
+<p>配置完成后，点击页面底部的「保存更改」，保存配置，然后点击页面右上角的 「Test Config」。</p>
+<p>在弹出的页面中搜索 ** <code>DISABLE_WP_CRON</code>**，看看这一项的值是不是 Off，如果不是 Off ，就要看看是不是在 <code>wp-config.php</code> 中关闭了插件运行所需的 <code>WP\_Cron</code>。</p>
+<p>然后拖动到底部，找到 「Connect to Mail Host」一栏，可以看到「Successful POP3 connection on port 110」，则说明你的配置是正确的。</p>
+<p><img src="https://postimg.aliavv.com/0ca187e9-1e3c-4bea-8231-80eb507c7473.png" alt="" /></p>
+<p>如果设置错误，则会提醒你报错，比如下面这样的，便是账号密码不匹配。</p>
+<p><img src="https://postimg.aliavv.com/81cf8e23-a063-4871-b9e1-80ce7fc9398a.png" alt="" /></p>
+<p>除了邮箱账号密码的设置以外，还有一个很重要的设置便是自动检查频次的设置，在下方的「Check for mail every」部分可以设置检查邮箱的频次，默认是 30 分钟一次，可以根据你的需要，调整检查的频次。</p>
+<p><img src="https://postimg.aliavv.com/92709714-ecf6-4704-9f84-f29d46826212.png" alt="" /></p>
+<p>此外，建议你设置一下 「 Message 」 中的 <strong>Perferred Text Type</strong>，这个项目用于指定默认的邮件类型，默认值是 Text，但是国内的邮件系统大多都是默认 HTML，所以可以也设置为“默认 HTML”。</p>
+<p><img src="https://postimg.aliavv.com/d12e9c35-0c1e-4bf0-bfb7-32ee80d50e53.png" alt="" /></p>
+<p>Message 页面下方的配置都是发文章时的一些默认配置，都非常简单，就不再赘述，如果你有需要，可以单独在读者圈进行提问。</p>
+<p>配置完成后，保存配置。</p>
+<h4 id="发送邮件"><a class="header" href="#发送邮件">发送邮件</a></h4>
+<p>在邮箱中新建一封邮件，并发送到我们的邮箱中，等待一个检查周期，就可以看到已经发布了邮件的内容。</p>
+<p><img src="https://postimg.aliavv.com/2d99bb33-783f-47cf-8e21-c3880c164ee8.png" alt="" /></p>
+<p>我们可以看到，WordPress 自动的识别出我们通过邮件设置的格式等。</p>
+<h4 id="自定义目录和标签"><a class="header" href="#自定义目录和标签">自定义目录和标签</a></h4>
+<p>在通过邮件发布文章时，可以设置自定义的目录和 tag，这是 Postie 相比于原生功能的优越之处，而且，使用起来非常简单。</p>
+<p>如果你需要设置自定义的目录，可以在邮件的标题中指定，使用<code>[]</code> 或<code>- -</code>来包裹你的目录名即可（需要目录名存在），比如<code>[category1]</code>、<code>- category1 -</code>。</p>
+<p>如果你需要设置自定义的标签，就在文章的正文中放置 <code>tags:</code>，然后放入 tag （不要求存在），不同的 tag 之间使用英文逗号隔开，比如：<code>tags: cats, funny</code>。</p>
+<p><img src="https://postimg.aliavv.com/9f31eba4-de9e-4a68-b23f-9412d964dba5.png" alt="" /></p>
+<p>发布后的效果如下：</p>
+<p><img src="https://postimg.aliavv.com/171dd45a-d636-47db-a0d6-186f65bd461a.png" alt="" /></p>
+<p>至此，我们完成了使用 Email 来发布 WordPress 文章的内容，虽然 WordPress 官方提供了通过邮件发布的功能，但是我更加推荐你使用功能完善的 「Postie」 来完成通过 Email 发布文章的需求。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../opt/custom-author.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../qa/20171130.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../opt/custom-author.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../qa/20171130.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

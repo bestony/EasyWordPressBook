@@ -1,0 +1,311 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>常用插件使用说明（一） - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/basic-plugin-1.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="wordpress-常用插件使用说明一"><a class="header" href="#wordpress-常用插件使用说明一">WordPress 常用插件使用说明（一）</a></h1>
+<p>本节课和下节课我们介绍一些常用的插件的使用，具体包括如下插件：Akismet、WP-Postviews、BackWPup、Google Authenticator、Crayon Syntax Highlighter、XML Sitemap &amp; Google News feeds、WP-Optimize、mailgun、TablePress。</p>
+<h4 id="akismet"><a class="header" href="#akismet">Akismet</a></h4>
+<p>插件地址：<a href="https://wordpress.org/plugins/Akismet/">https://wordpress.org/plugins/Akismet/</a></p>
+<p>Akismet 是 WordPress 自带的反垃圾评论插件。如果博客的评论系统使用的是 WordPress 自己的评论系统，而没有对接诸如 Disqus 之类的第三方评论系统，则本插件一定要装。</p>
+<p>Akismet 对接了其反垃圾服务器，任何评论将发送到其服务器，判断是否是垃圾评论，则将其放在垃圾邮件分组中，会节省大量的时间。</p>
+<p>在启用该插件后，需要设置 Akismet key，而这个 Key 需要使用 WordPress.com 的账号登录 <a href="https://akismet.com/account/add-subscription/choose-plan">Akismet.com</a> 获取。</p>
+<h5 id="创建-api-key"><a class="header" href="#创建-api-key">创建 API Key</a></h5>
+<p>登录成功后，如果是第一次登录，会看到如下界面，单击其中的 <strong>Add Personal Subscription</strong> 按钮。</p>
+<p><img src="https://postimg.aliavv.com/2018/nlslu.png" alt="" /></p>
+<p>滑动下方的下拉条，拖动到 0 元每年，单击 <strong>Create Subscription</strong> 按钮。</p>
+<p><img src="https://postimg.aliavv.com/2018/8txp7.png" alt="" /></p>
+<p>稍等片刻，就会看到订阅创建成功。</p>
+<p><img src="https://postimg.aliavv.com/2018/qnq26.png" alt="" /></p>
+<p>将页面中的 AKISMET API KEY 复制出来：</p>
+<p><img src="https://postimg.aliavv.com/2018/czrfj.png" alt="" /></p>
+<p>粘贴到 WordPress 后台的 Akismet 设置页面，并连接即可。</p>
+<p><img src="https://postimg.aliavv.com/2018/dqnk9.png" alt="" /></p>
+<h5 id="设置-akismet"><a class="header" href="#设置-akismet">设置 Akismet</a></h5>
+<p>连接完成后，可以设置插件选项，根据自己的需要设置下面的设置项。如果你和我一样，担心会丢失评论，可以勾选“总是将垃圾放入垃圾目录以便审阅”选项。</p>
+<p><img src="https://postimg.aliavv.com/2018/jjbi7.png" alt="" /></p>
+<h4 id="wp-postviews"><a class="header" href="#wp-postviews">WP-Postviews</a></h4>
+<p>插件地址：<a href="https://wordpress.org/plugins/WP-Postviews/">https://wordpress.org/plugins/WP-Postviews/</a></p>
+<p>WP-Postviews 会统计每篇文章的阅读量，可以通过一个特定的标签输出到前台，很多主题都集成了这个插件。如果你的主题没有集成，也可以自行为主题接入。</p>
+<blockquote>
+<p>在需要展示的地方调用 <code>&lt;?php the_views();?&gt;</code> 即可。</p>
+</blockquote>
+<h5 id="插件设置"><a class="header" href="#插件设置">插件设置</a></h5>
+<p>WP-Postview 安装完成后会新增一个设置页，可以通过修改设置来更好的使用该插件。</p>
+<p><img src="https://postimg.aliavv.com/2018/vewog.png" alt="" /></p>
+<p>一般来说，我们要修改 Views Template，比如改为 <code>%VIEW_COUNT%人看过</code>。</p>
+<p>下方的 Most Viewed Template 则是设置小工具的样式，WP-Postviews 默认注册了一个小工具，我们可以在主题的小工具中设置。</p>
+<p><img src="https://postimg.aliavv.com/2018/tk44s.png" alt="" /></p>
+<p>然后回到主页，就可以在侧边栏中看到了。</p>
+<p><img src="https://postimg.aliavv.com/2018/1c8xy.png" alt="" /></p>
+<p>如果你的主题有特殊的样式，根据在设置页面进行修改即可。此外，还可以设置是否在特定的页面展示阅读量。</p>
+<p><img src="https://postimg.aliavv.com/2018/uafi1.png" alt="" /></p>
+<h4 id="backwpup"><a class="header" href="#backwpup">BackWPup</a></h4>
+<p>插件地址：<a href="https://wordpress.org/plugins/BackWPup/">https://wordpress.org/plugins/BackWPup/</a> 。</p>
+<p>BackWPup 是一款非常好用的备份插件，我们可以使用它来备份网站数据，以防数据出现问题后，无法恢复。</p>
+<h5 id="创建备份任务"><a class="header" href="#创建备份任务">创建备份任务</a></h5>
+<p>首先，我们要创建一个备份任务，点击左侧菜单<strong>BackWPup</strong> | <strong>Add New Job</strong> 命令，可以设置各种选项：</p>
+<p><img src="https://postimg.aliavv.com/2018/grr0x.png" alt="" /></p>
+<p>这一部分比较核心的是 Job Destination，就是备份目标位置。</p>
+<p><img src="https://postimg.aliavv.com/2018/u9pj5.png" alt="" /></p>
+<p>以 FTP 来为大家演示。</p>
+<p>设置完上面的选项后，单击下方的 save changes 按钮，保存设置。</p>
+<p>保存刷新后，会发现顶部的 tab 多了一个 <strong>To:FTP</strong> ，单击进去可以设置 FTP 服务器的具体配置信息。</p>
+<p>比如，使用又拍云作为备份的服务器，具体配置如下：</p>
+<p><img src="https://postimg.aliavv.com/2018/wqxs3.png" alt="" /></p>
+<p>配置完成后，单击 save changes 按钮，保存设置。</p>
+<p><img src="https://postimg.aliavv.com/2018/abcwl.png" alt="" /></p>
+<p>单击 Run now 按钮，就可以开始运行备份任务，当你看到这样的界面，则说明备份成功。</p>
+<p><img src="https://postimg.aliavv.com/2018/udtxa.png" alt="" /></p>
+<p>可以登录到 FTP 确认一下。</p>
+<p><img src="https://postimg.aliavv.com/2018/yoypa.png" alt="" /></p>
+<h5 id="设置自动备份"><a class="header" href="#设置自动备份">设置自动备份</a></h5>
+<p>打开 <a href="https://www.easycron.com/user/token?ref=95671">EasyCron.com</a>，登录后，可以看到这样的界面。</p>
+<p><img src="https://postimg.aliavv.com/2018/t9u13.png" alt="" /></p>
+<p>单击菜单栏中的 API 选项：</p>
+<p><img src="https://postimg.aliavv.com/2018/d49f1.png" alt="" /></p>
+<p>复制页面中的 API token，回到 WordPress 后台，单击左侧菜单 <strong>BackWPup</strong> | <strong>Settings</strong> 名，选择 API 。</p>
+<p>将我们刚刚复制的 token 粘贴在此，并勾选下方的 <em>If you check this box, a cron job will be created on EasyCron that all 5 Minutes calls the WordPress cron</em>选项：</p>
+<p><img src="https://postimg.aliavv.com/2018/v2kzj.png" alt="" /></p>
+<p>然后单击 Save Changes 按钮，这样我们就成功接入了 EasyCron 作为定时任务。</p>
+<p>这时如果你去看 EasyCron 后台，会看到这样一条记录：</p>
+<p><img src="https://postimg.aliavv.com/2018/kcta0.png" alt="" /></p>
+<p>这就是插件自动生成的任务。</p>
+<p>单击左侧菜单 <strong>BackWPup</strong> | <strong>Jobs</strong> 命令，找到刚刚创建的任务，单击 Edit 按钮，进入后，切换到 Schedule Tab，将 Start Job 改为 <code>with EasyCron.com</code>。</p>
+<p>下方就会出现具体的备份频次配置，根据你的需要配置，并保存即可。</p>
+<p><img src="https://postimg.aliavv.com/2018/cqopr.png" alt="" /></p>
+<h4 id="google-authenticator"><a class="header" href="#google-authenticator">Google Authenticator</a></h4>
+<p>插件地址：<a href="https://wordpress.org/plugins/google-authenticator/">https://wordpress.org/plugins/google-authenticator/</a></p>
+<p>Google Authenticator 可以帮助我们在 WordPress 上加入两步验证的插件，在 WordPress 中启用插件以后，再次登录就需要输入验证码了，为 WordPress 站点增加一重保障。</p>
+<h5 id="设置"><a class="header" href="#设置">设置</a></h5>
+<p>启用插件后，单击<strong>用户</strong>中的<strong>我的个人资料</strong>选项，会看到如下设置项：</p>
+<p><img src="https://postimg.aliavv.com/2018/srhl4.png" alt="" /></p>
+<p>首先，修改下方的描述，设置为你的博客的名字，或者是你自己自定义的名字，然后单击密钥右侧的<strong>显示/隐藏 QR 码</strong>，会看到下方出现一个二维码。使用安装好的两步验证软件（我使用的是 Authy）扫描这个二维码，然后在应用中确认保存。保存完成后，勾选上方的启用，并更新个人资料。</p>
+<p><img src="https://postimg.aliavv.com/2018/4kxk6.jpg" alt="" /></p>
+<p>这样，我们就配置好了两步验证。</p>
+<h5 id="测试登录"><a class="header" href="#测试登录">测试登录</a></h5>
+<p>退出账号，重新登录，会发现多了一个密码框，再登录就需要输入你的两步验证软件中的动态口令了。如果没有填写，则会提醒验证码有误。</p>
+<p><img src="https://postimg.aliavv.com/2018/neh4q.png" alt="" /></p>
+<p>输入正确的验证码，就可以正常登录了。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="basic-config.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="basic-plugin-2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="basic-config.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="basic-plugin-2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

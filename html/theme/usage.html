@@ -1,0 +1,318 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>WP 主题使用 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/theme/usage.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="wordpress-主题的使用和管理"><a class="header" href="#wordpress-主题的使用和管理">WordPress 主题的使用和管理</a></h1>
+<p>对于很多新手来说，选择 WordPress 的一个很重要的原因便是它丰富的主题，海量的主题让我们有充足的选择。对于新手来说，无疑是十分友好的，无需编写一行代码，就可以任选主题。</p>
+<p>因此， WordPress 也成就了非常多的外包团队，他们使用 WordPress 为企业、个人建立网站，帮助企业和个人成功。</p>
+<h3 id="wordpress-后台主题管理"><a class="header" href="#wordpress-后台主题管理">WordPress 后台主题管理</a></h3>
+<h4 id="切换主题"><a class="header" href="#切换主题">切换主题</a></h4>
+<p>在我们安装完成了 WordPress 后，WordPress 默认提供三款主题，比如目前提供的是 Twenty Seventeen、Twenty Sixteen，可以在后台直接切换主题来使用。</p>
+<p>从仪表盘中验证 「外观」— 「主题」。</p>
+<p><img src="https://postimg.aliavv.com/mbp/swfxp.jpg" alt="" /></p>
+<p>在主题页面，我们可以看到系统默认安装的三个主题，其中第一个是我们正在使用的主题。点击这个主题，就能够看到主题详情。</p>
+<p><img src="https://postimg.aliavv.com/mbp/nc8j1.jpg" alt="" /></p>
+<p>在另外两个主题上，你可以执行启用主题，或者实时预览主题。可以在启用之前先进行预览，看看这个主题应用在你的内容上是否合适。预览完成后，可以根据预览结果选择是否要启用。</p>
+<blockquote>
+<p>预览的界面中可以对主题进行修改、设置。设置完成后，直接启用，就可以以你修改的结果启用主题了。这里的界面和后续主题使用部分的「自定义界面一致」，我们放在那里来讲。</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/mbp/cr4gc.jpg" alt="" /></p>
+<h4 id="安装主题"><a class="header" href="#安装主题">安装主题</a></h4>
+<p>安装主题分为三种方法，在主题中心安装、在 后台上传和在 FTP 中上传。这里只讲前两者，第三种方法和插件的上传方法基本一致，只是目录从 <em>wp-content/plugins</em> 变为 <em>wp-content/themes</em>。</p>
+<p>安装主题我们可以在主题界面点击 「添加」，进入到主题添加界面。</p>
+<p><img src="https://postimg.aliavv.com/mbp/kv1yh.jpg" alt="" /></p>
+<p>在主题中心可以看到一些特色主题，你可以先查看特色主题中是否有你喜欢的主题。如果没有，可以单击上方的「热门」，查看最近使用的比较多的主题，或切换到最新，查看最新发布的主题。</p>
+<p><img src="https://postimg.aliavv.com/mbp/66pe3.jpg" alt="" /></p>
+<p>如果你不喜欢查看别人选出来的主题，也可以自己来选择主题。单击上方的「筛选」，进入到筛选页面，选择你需要的主题的特性，然后点击应用过滤器，就可以自动筛选符合我们的条件的主题了。</p>
+<p><img src="https://postimg.aliavv.com/mbp/fqczc.jpg" alt="" /></p>
+<p>如果筛选结果不满意，可以点击上方的编辑过滤器，再次勾选条件，筛选需要的主题。</p>
+<p><img src="https://postimg.aliavv.com/mbp/y0mbk.jpg" alt="" /></p>
+<h4 id="卸载主题"><a class="header" href="#卸载主题">卸载主题</a></h4>
+<p>在前面的课程中曾说过，安装的主题多了，可能会导致 WordPress 的速度变慢，我们需要根据使用情况，删除不用或不太可能再用的主题。</p>
+<p>从主题列表中的未启用主题中选择要删除的主题，点击主题，进入主题的详情页，在详情页的右下角，可以看到主题的删除按钮，点击删除按钮，即可删除主题：</p>
+<p><img src="https://postimg.aliavv.com/mbp/z7nze.jpg" alt="" /></p>
+<h3 id="wordpress-主题使用"><a class="header" href="#wordpress-主题使用">WordPress 主题使用</a></h3>
+<h4 id="主题自定义"><a class="header" href="#主题自定义">主题自定义</a></h4>
+<p>我们的主题可能有很多不同的设置项，这些设置项可以通过主题的「自定义」功能来修改。这里以 Twenty SevenTeen 为例，来说明主题自定义的用法。</p>
+<p>点击仪表盘中的「外观」—「自定义」，就可以进入到自定义界面了。</p>
+<p>在自定义界面，会看到一些蓝色的按钮，点击这些按钮，左侧的编辑框内就会出现对应的设置项。</p>
+<p><img src="https://postimg.aliavv.com/mbp/am84p.jpg" alt="" /></p>
+<p>修改左侧的内容，右侧对应会实时显示出来，可以方便查看具体的效果。</p>
+<p><img src="https://postimg.aliavv.com/mbp/15xsk.jpg" alt="" /></p>
+<p>其他的设置项也大多相同。</p>
+<p>在控制区域的底部，有三个按钮，分别代表着电脑、平板和手机，你点击下方的设备，就可以将当前网页的大小变为对应设置的预览效果，来查看主题能否在多种屏幕大小下正常工作。</p>
+<p><img src="https://postimg.aliavv.com/mbp/t5vk3.jpg" alt="" /></p>
+<p>这里说一个大家平时可能没有注意到的设置。在修改完成后，在右上角的发布按钮这里，是有一个齿轮的，点击这个齿轮，会弹出新的设置框，在这个设置框中：</p>
+<p><img src="https://postimg.aliavv.com/mbp/lelt2.jpg" alt="" /></p>
+<p>我们可以选择发布（立刻生效）、保存草稿（留着以后发布）和计划（在特定时间发布，定期上线）。有了这个功能，在进行站点修改时，就无需一定要当时修改，可以提前修改好，定时发布即可。</p>
+<p>此外， WordPress 还提供了一个预览的功能。将操作切换为「保存草稿」，然后保存一次草稿，在下方会生成一个预览链接，可以将这个链接复制给其他人，让其他人查看你的修改是否正确等等。</p>
+<p><img src="https://postimg.aliavv.com/mbp/kq5zf.jpg" alt="" /></p>
+<p>当我们不在一起办公时，可以借助这个功能，很方便的让合作者看到站点修改的状况，确认修改是否正确。</p>
+<blockquote>
+<p>预览也是使用的自定义界面，唯一不同的是无法保存草稿和定时发布。</p>
+</blockquote>
+<h4 id="小工具设置"><a class="header" href="#小工具设置">小工具设置</a></h4>
+<p>有了小工具，我们的站点侧边栏就会变得生动起来，可以根据需要来设置侧边栏。</p>
+<p>点击仪表盘中的「外观」—「小工具」，就可以进入到小工具界面了。</p>
+<p><img src="https://postimg.aliavv.com/mbp/i2oj1.jpg" alt="" /></p>
+<p>小工具界面可以分为两个部分，分别是控件区域和边栏区域，可以将我们要使用的控件拖动到边栏中去。</p>
+<p><img src="https://postimg.aliavv.com/mbp/4k145.jpg" alt="" /></p>
+<p>或者单击要添加的小工具，选择要添加到哪个边栏中去，点击添加小工具，就可以将这个小工具添加到对应的区域中去了。</p>
+<p>添加好的小工具可能需要设置一些属性，可以在边栏中设置他们的属性，以达到自定义的效果。</p>
+<p><img src="https://postimg.aliavv.com/mbp/0aq6f.jpg" alt="" /></p>
+<p>当一个控件区域有多个控件时，可以通过拖拽，来对控件进行排序。</p>
+<p><img src="https://postimg.aliavv.com/mbp/533s7.jpg" alt="" /></p>
+<p>当有一些控件你暂时不使用，同时还要保留其中的设置时，可以用好「未使用的小工具」，将这个要保留的小工具拖拽到底部的「未使用的小工具」区域。放在这个区域的小工具的设置是不会丢失的。</p>
+<p><img src="https://postimg.aliavv.com/mbp/6z9ma.jpg" alt="" /></p>
+<p>后续需要使用时，再从这里拖拽回边栏区域中即可。如果这里面的控件都不再使用了，则可以点击下方的「清理未启用的小工具」，这个按钮会清空所有未启用的小工具。</p>
+<h4 id="菜单设置"><a class="header" href="#菜单设置">菜单设置</a></h4>
+<p>对于一些支持自定义菜单的主题，可以很方便的管理我们的菜单。</p>
+<p>从仪表盘中验证「外观」— 「菜单」，就可以进入到菜单管理的界面了。</p>
+<h5 id="概念"><a class="header" href="#概念">概念</a></h5>
+<p>在开始使用之前，需要先理解两个概念：菜单和位置。</p>
+<p><strong>菜单</strong>：菜单是一组链接的集合，可以准备多个不同的菜单，将不同的菜单放在不同的位置上，也可以一个菜单放在多个位置上。但是，同一个位置上只能放一个菜单。</p>
+<p><strong>位置</strong>：位置是你所安装的 WordPress 主题提前预留给你用来放置菜单的位置。有几个位置取决于你使用的主题留了多少个用于放置菜单的接口。</p>
+<h5 id="使用"><a class="header" href="#使用">使用</a></h5>
+<p><img src="https://postimg.aliavv.com/mbp/lsjr9.jpg" alt="" /></p>
+<p>我们第一次进入菜单界面时，界面中是没有任何菜单的，首先，要创建一个菜单，输入菜单名称，点击「创建」菜单，就可以创建一个新的菜单了。</p>
+<p>创建了一个菜单后，就可以向菜单中添加链接了。WordPress 提供了页面、文章和分类目录的快速添加的功能。在左侧找到你要添加的页面，点击添加到菜单，就可以将其加入到我们的菜单中去。</p>
+<p><img src="https://postimg.aliavv.com/mbp/mxayf.jpg" alt="" /></p>
+<p>需要注意的是，其实 WordPress 也支持添加标签和文章形式，但是默认没有展示出来，可以点击页面右上角的「显示选项」，勾选上「标签」和「形式」，这样在左侧的列表中就会多出对应的两项。</p>
+<p>如果要添加的链接不在这几项里，或者是要添加的内容是别的网站的链接，你可以切换到自定义链接项到这里，通过添加链接项，来添加菜单项。</p>
+<p><img src="https://postimg.aliavv.com/mbp/iauz9.jpg" alt="" /></p>
+<p>添加以后，你可以修改<strong>导航标签</strong>，来修改该项在菜单中最终显示的文字。</p>
+<p><img src="https://postimg.aliavv.com/mbp/gs309.jpg" alt="" /></p>
+<p>在下方的菜单设置中，可以选择我们的菜单的显示位置。勾选要在哪个位置上使用这个菜单，然后保存设置即可使这个菜单的设置应用到对应的位置上。</p>
+<p><img src="https://postimg.aliavv.com/mbp/jfnyb.jpg" alt="" /></p>
+<p>自动添加页面这个选项如果勾选后，可以在创建了一个新的页面时，自动将这个页面添加到菜单中。不过一般情况下，我们都不会勾选这个选项。</p>
+<p>除了管理菜单，还可以管理位置，点击上方的「管理位置」，可以进入到管理位置的页面。</p>
+<p>在这个页面，可以切换每个位置上使用的菜单，而无需切换到一个个具体的菜单中操作。</p>
+<h4 id="顶部设置"><a class="header" href="#顶部设置">顶部设置</a></h4>
+<p>在顶部设置中，可以修改页面顶部的大图，这部分的使用和自定义区域的使用基本一致，不再赘述。</p>
+<h4 id="编辑主题"><a class="header" href="#编辑主题">编辑主题</a></h4>
+<p>有些时候，我们可能需要修改主题中的代码，比如添加统计代码、添加一些平台的验证信息，此时打开 FTP 工具可能太过麻烦，如果要修改的信息是添加在主题中的，可以通过编辑功能来修改，这里的使用基本和插件的编辑部分是一致的，也就不再赘述了。</p>
+<h3 id="总结"><a class="header" href="#总结">总结</a></h3>
+<p>至此，我们学习了如何使用和设置 WordPress 主题，从下节课开始，就尝试来开发一个我们自己的 WordPress 主题。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../security.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../theme/intro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../security.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../theme/intro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>万网虚拟主机环境配置 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/deployment/wanwang-production.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h3 id="购买虚拟主机--设置域名解析"><a class="header" href="#购买虚拟主机--设置域名解析">购买虚拟主机 &amp;&amp; 设置域名解析</a></h3>
+<p>课程实践目标：一步一步完成 WordPress 站点的建立。</p>
+<h3 id="购买基础设施"><a class="header" href="#购买基础设施">购买基础设施</a></h3>
+<p>在课程的一开始，要完成课程购买的内容，当跟着这个流程完成了购买后，也就基本掌握了虚拟主机和域名的设置，对于后续的课程、WordPress 的使用，都提供了帮助。</p>
+<h3 id="购买虚拟主机"><a class="header" href="#购买虚拟主机">购买虚拟主机</a></h3>
+<p>进入<a href="https://wanwang.aliyun.com/hosting/">阿里云的虚拟主机页面</a>，找到其中的共享普惠版虚拟主机。</p>
+<blockquote>
+<p>这款主机已经下架，你可以选择购买其他版本的主机。</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/2018/ovdg0.png" alt="" /></p>
+<p>进入购买页面后，有多种可选方案，个人建议购买云解析的版本会比较实惠。</p>
+<blockquote>
+<p>因为这个虚拟主机只是测试机，域名解析不和我们的主机绑定，另外两项和我们的主机绑定。</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/2018/iiuql.png" alt="" /></p>
+<p>购买时注意操作系统选择 Linux，不然基础环境就是 Asp.net 了。</p>
+<p><img src="https://postimg.aliavv.com/2018/35nji.png" alt="" /></p>
+<p>确认订单并支付。</p>
+<h3 id="购买域名"><a class="header" href="#购买域名">购买域名</a></h3>
+<p>接下来购买域名，这里我们选择<strong>可以备案</strong>的后缀**.xyz**。</p>
+<blockquote>
+<p>如何知道一个后缀是否可以备案？
+进入 <a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">http://www.miitbeian.gov.cn/publish/query/indexFirst.action</a> 在左侧选择域名类型进行搜索查询，能够查到的就能备案。</p>
+</blockquote>
+<p>在万网首页输入要注册的域名，将后缀选择为 .xyz ，会进入到查询页面。</p>
+<p><img src="https://postimg.aliavv.com/2018/0j3hb.png" alt="" /></p>
+<p>如果查询到该域名未注册，就可以将其加入清单中，并单击<strong>去结算</strong>按钮。</p>
+<p><img src="https://postimg.aliavv.com/2018/f5czs.png" alt="" /></p>
+<p>在新的页面中，确认订单信息，并选择域名的所有者。</p>
+<p><img src="https://postimg.aliavv.com/2018/9cmsh.png" alt="" /></p>
+<p>此外，记得勾选域名隐私保护，不然接下来可能会有无数的骚扰电话、骚扰邮件发送给你。</p>
+<blockquote>
+<p>如果域名信息填写的内容是虚假的，ICANN 是有权收回你的域名的，所以尽量选择真实的信息+域名隐私保护。</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/2018/zx0o3.png" alt="" /></p>
+<p>确认完信息，支付订单即可。</p>
+<h3 id="管理虚拟主机"><a class="header" href="#管理虚拟主机">管理虚拟主机</a></h3>
+<p>进入 <a href="https://netcn.console.aliyun.com/core/host/list2#">https://netcn.console.aliyun.com/core/host/list2#</a> 管理控制台，就可以看到虚拟主机了。</p>
+<p><img src="https://postimg.aliavv.com/2018/t8f3g.png" alt="" /></p>
+<p>单击“管理”链接，即可进入到虚拟主机的管理界面。</p>
+<p>首先，需要设置一系列的账户密码：</p>
+<p><img src="https://postimg.aliavv.com/2018/84lys.png" alt="" /></p>
+<blockquote>
+<p>这里的密码要记清楚，稍后我们要用到。</p>
+</blockquote>
+<p>然后验证手机或邮箱：</p>
+<p><img src="https://postimg.aliavv.com/2018/8kc1q.png" alt="" /></p>
+<p>设置完成后，会看到一系列的账户信息，可以将其保存在笔记本中。</p>
+<blockquote>
+<p>不妨试试印象笔记？<a href="http://gitbook.cn/books/59bc8da5c602a07381e3b5bd/index.html">“职场高效率：用印象笔记来提升你的工作效率”</a></p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/2018/4x1lk.png" alt="" /></p>
+<p>单击上方的<strong>进入管理控制台</strong>按钮，可以进入到我们的虚拟主机页面。</p>
+<p>在这里，我们可以看到一系列可能会用到的设置项。</p>
+<h3 id="环境基础设置"><a class="header" href="#环境基础设置">环境基础设置</a></h3>
+<p>在上传文件前需要修改一些配置。</p>
+<h4 id="绑定域名"><a class="header" href="#绑定域名">绑定域名</a></h4>
+<p>万网的虚拟主机和域名对接的很好，我们可以很方便的绑定域名。</p>
+<p>单击左侧菜单中的<strong>域名管理</strong> | <strong>域名绑定</strong>命令，在新的页面中单击“绑定域名”按钮，并在弹出的对话框中设置域名，或者在下方的选择框中选择要绑定的域名。</p>
+<p><img src="https://postimg.aliavv.com/2018/5fcl8.png" alt="" /></p>
+<p>绑定成功后会看到，它会提示域名未备案，所以暂时我们还不能使用自己的域名去访问，需要将自己的域名备案后才能访问。</p>
+<p><img src="https://postimg.aliavv.com/2018/8jap0.png" alt="" /></p>
+<h3 id="上传文件"><a class="header" href="#上传文件">上传文件</a></h3>
+<p>首先，下载 WordPress 的源代码，前往 <a href="https://cn.wordpress.org/">https://cn.wordpress.org/</a> ，单击页面中的<strong>下载 WordPress 4.9</strong>按钮，下载源代码。</p>
+<p><img src="https://postimg.aliavv.com/2018/31l33.png" alt="" /></p>
+<p>下载完成后，将源码解压出来。</p>
+<blockquote>
+<p>上传文件我们使用的是 FTP 协议，这里使用的软件是 FileZila，读者也可以到软件的官网下载：<a href="https://filezilla-project.org/">https://filezilla-project.org/</a></p>
+</blockquote>
+<p>回到虚拟主机管理管理控制台，单击上方菜单栏中的<strong>站点信息</strong>按钮，进入到控制台主页面。我们可以看到 FTP 链接信息。</p>
+<p><img src="https://postimg.aliavv.com/2018/euexo.png" alt="" /></p>
+<p>打开 FileZila ，将这几项分别填入输入框内。</p>
+<p><img src="https://postimg.aliavv.com/2018/bmmwb.png" alt="" /></p>
+<p>单击快速链接。</p>
+<p>连接成功后，在左侧的本地站点链接中，找到 WordPress 源码文件目录，就像上图中那样。</p>
+<p>右侧的远程连接则进入到 htdocs 目录下：</p>
+<p><img src="https://postimg.aliavv.com/2018/jagwl.png" alt="" /></p>
+<p>删除其中的 zhuye.html，并回到左侧，选中所有文件，将其上传到当前目录。</p>
+<p><img src="https://postimg.aliavv.com/2018/h28z5.gif" alt="" /></p>
+<p>等待其上传完成。</p>
+<h3 id="访问测试"><a class="header" href="#访问测试">访问测试</a></h3>
+<p>回到管理控制台，复制我们的临时域名，到浏览器中打开，可以看到这样的界面。</p>
+<p><img src="https://postimg.aliavv.com/2018/3lir6.png" alt="" /></p>
+<p>输入 FTP 密码，就会看到正常的页面了。</p>
+<p><img src="https://postimg.aliavv.com/2018/89j93.png" alt="" /></p>
+<p><strong>安装 WordPress</strong></p>
+<p>当备案完成后，进入备案好的域名，会重新看到 WordPress 的安装界面。</p>
+<p><img src="https://postimg.aliavv.com/2018/89j93.png" alt="" /></p>
+<p>单击<strong>现在就开始!<strong>按钮，输入数据库信息，并单击</strong>提交</strong>按钮：</p>
+<p><img src="https://postimg.aliavv.com/2018/zs63b.png" alt="" /></p>
+<blockquote>
+<p>数据库信息可以在虚拟主机管理控制台获取：</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/2018/2ak7x.png" alt="" /></p>
+<p>在新的页面单击“立即安装”按钮，会进入到站点信息配置，设置具体的站点信息，然后单击<strong>安装 WordPress</strong>按钮，就会开始安装。</p>
+<p><img src="https://postimg.aliavv.com/2018/8y7e0.png" alt="" /></p>
+<p>当看到这样的界面时就说明安装好了，这样就完成了最基本的 WordPress 部署了。</p>
+<p><img src="https://postimg.aliavv.com/2018/0sxz1.png" alt="" /></p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../deployment/cpanel-production.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../deployment/bt-linux-production.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../deployment/cpanel-production.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../deployment/bt-linux-production.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>答疑 20171216 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/qa/20171216.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="答疑-20171216"><a class="header" href="#答疑-20171216">答疑 20171216</a></h1>
+<h2 id="安装完成插件后报错怎么办"><a class="header" href="#安装完成插件后报错怎么办">安装完成插件后报错怎么办？</a></h2>
+<blockquote>
+<p>源问题：白老师，我成功安装一个插件后，出现这个提示Warning: sprintf() [function.sprintf]: Too few arguments请问是什么问题?</p>
+</blockquote>
+<p>一般来说，官方的 WordPress 核心不会轻易报错。如果你在安装了一个插件/主题后，出现了报错，那么大概率来说，是这个插件/主题本身的代码不够规范，导致出现了错误。
+如何判断具体是哪个插件呢？你可以先停用你刚刚安装的插件，看看是否还在报错。如果停用后，不再报错，则说明是这个插件的问题。</p>
+<p>在你确定了问题后，就可以到 WordPress 官方的插件页面，去提交问题了。</p>
+<h2 id="如何选择源码存放目录"><a class="header" href="#如何选择源码存放目录">如何选择源码存放目录？</a></h2>
+<blockquote>
+<p>源问题：源代码应该放到后台哪个位置？</p>
+</blockquote>
+<p>一般来，cPanel、DirectAdmin 这类的面板，都有一个<code>public_html</code>文件夹，你可以将你的 WordPress 源码放在 <code>public_html</code> 中，如果你需要安装在子目录(xxx.com/blog)，则可以在<code>public_html</code>目录下创建新的目录，来放 WordPress 的源码。</p>
+<h2 id="wordpress-的主题插件可以不受版权限制的使用呢"><a class="header" href="#wordpress-的主题插件可以不受版权限制的使用呢">WordPress 的主题/插件可以不受版权限制的使用呢？</a></h2>
+<blockquote>
+<p>白老师，请教一下，收费的主题或插件是不是都有申请过专利或其他版权登记之类的？不然我们是不是可以稍作修改就可以不受版权限制来使用呢?😄</p>
+</blockquote>
+<p>软件著作权的登记是一个费时费力的事情，所以大部分的主题作者不会考虑去做相关的登记。而且，「著作权」本身是在这个主题开发完成后，就天然存在的，登记仅仅是去做一个公证，所以大部分开发者都不会选择去做著作权的登记。</p>
+<p>不登记不意味着我们可以无限制的使用，我们拿 Themeforest 来举例。Themeforest 的每个主题都有两个不同的授权：Regular License 和 Extend License。我们大部分时候都是购买  Regular 授权，这个授权按要求，仅能用于「你自己」的「一个」站点，无法用于给客户，如果你要给客户安装，需要另外购买一份 Regular License 或者 Extend License。但是**事实上，由于版权意识的淡薄和代码中不加入相关的限制，你自己使用也没有问题。**你在客户的站点上使用，开发者也没有办法追责。</p>
+<p><img src="https://postimg.aliavv.com/2018/xh91e.png" alt="" /></p>
+<p>由于国内对版权的淡漠，国内的不少开发者都采用了按域名授权的模式来售卖主题，一份主题的授权只能绑定1～2个域名，如果你需要在更多的域名上使用，需要另外购买。</p>
+<h2 id="如果安装-wordpress-时手抖误操作了把文件覆盖了怎么办"><a class="header" href="#如果安装-wordpress-时手抖误操作了把文件覆盖了怎么办">如果安装 WordPress 时，手抖误操作了，把文件覆盖了怎么办？</a></h2>
+<blockquote>
+<p>源问题： 我是准备在绑定新域名安装程序！结果你说把路径设置一下！我也跟者做！结果把我原来站点内容覆盖了！现在如何解决吗？</p>
+</blockquote>
+<p>金无足赤，人无完人。我们每个人都有可能遇见误操作的情况。如果你真的出现了误操作的情况，也不用着急，有办法找回。</p>
+<p><em>这里的找回仅限于「覆盖」</em></p>
+<p>在默认覆盖的情况下，我们的文件夹是不会被删除的，所以你首先要做的是将网站根目录下的 <strong>wp-content</strong>  文件夹下载到本地进行备份，以免丢失附件。然后，到数据库管理工具（如 phpMyAdmin）中导出你的数据，以防不测。</p>
+<p>在备份完成后，你可以删除网站根目录下所有的文件，重新上传 WordPress 的源码，进行安装。在安装完成后，上传你的 <strong>wp-content</strong> 目录，并使用数据库管理工具导入你刚刚备份的数据，来恢复站点的访问。</p>
+<p>事实上，整个网站目录，只有 WP-Content 目录是和我们密切相关的，其他目录的文件都是 WP 官方提供的，每次的版本更新也只会更新那些文件，而不会更新 WP-Content 目录。所以，经常对 WP-Content 目录进行备份、经常导出自己的数据库备份，还是很有必要的。</p>
+<h2 id="如何判断一个主题插件中是否包含恶意代码"><a class="header" href="#如何判断一个主题插件中是否包含恶意代码">如何判断一个主题/插件中是否包含恶意代码？</a></h2>
+<blockquote>
+<p>源问题：白老师，如何才能找出主题或插件里面的恶意代码?是不是可以安装Sandboxie软件测试?</p>
+</blockquote>
+<p>Sandboxie 是针对二进制文件的沙箱，并不会针对 WordPress 起作用。想要测试 WordPress 主题或插件，你需要安装一个空白（不安装任何第三方主题/插件）的 WordPress，然后安装你要检测的主题/插件，看你的网站能否正常运转。</p>
+<p>具体到操作层面，我的建议是你在空白 WordPress 下使用 git 进行版本控制，安装插件前，进行一次 commit，然后安装插件，运行一段时间后，使用<code>git status</code>命令查看你的文件的变动情况，如果基本没什么变动(事实上应该是完全没有变动，因为这里要求你不能安装缓存插件)，则这个主题/插件大概率上是安全的。</p>
+<p>最稳妥的方法还是自己对代码进行一遍 review。</p>
+<h2 id="免费主题是否能够来做商业网站"><a class="header" href="#免费主题是否能够来做商业网站">免费主题是否能够来做商业网站？</a></h2>
+<blockquote>
+<p>源问题：白老师，请问免费主题修改后能否用来做单位网站?会不会涉及侵权问题?如何才能知道主题是否安全?</p>
+</blockquote>
+<p>免费主题能不能做单位网站你要看开发者的授权。如果开发者允许，自无不可。</p>
+<p>此外，由于 WordPress 本身采用具有传染性的 GPL 协议进行开源，所以理论上所有的 WordPress 插件、主题都要以 GPL 进行开源。如果你真的要使用，要注意一下。</p>
+<h2 id="有没有什么日历插件比较推荐"><a class="header" href="#有没有什么日历插件比较推荐">有没有什么日历插件比较推荐？</a></h2>
+<blockquote>
+<p>源问题 我想在网站上放置一个日历，不是文章发表的记录，而是用来发布活动的，可以自定义时间、事件。请问有没有这类插件？</p>
+</blockquote>
+<p>这方面我推荐你使用 The Events Calendar ，官方提供插件的中文，很方便。</p>
+<h2 id="使用filezilla上传wordpress解压包有文件传输失败怎么办"><a class="header" href="#使用filezilla上传wordpress解压包有文件传输失败怎么办">使用Filezilla上传WordPress解压包有文件传输失败怎么办？</a></h2>
+<blockquote>
+<p>源问题：使用Filezilla上传WordPress解压包有文件传输失败怎么办？</p>
+</blockquote>
+<p>你可以重新上传，然后跳过那些已经上传了的文件。也可以上传压缩包，使用阿里云虚拟主机后台的解压工具进行解压。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../qa/20171206.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../qa/20171206.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

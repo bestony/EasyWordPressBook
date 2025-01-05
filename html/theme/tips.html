@@ -1,0 +1,370 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>WP 主题开发：一些 WordPress 开发的小技巧 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/theme/tips.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="一些-wordpress-开发的技巧"><a class="header" href="#一些-wordpress-开发的技巧">一些 WordPress 开发的技巧</a></h1>
+<h3 id="使用-theme-check-插件来检查你的主题是否合格"><a class="header" href="#使用-theme-check-插件来检查你的主题是否合格">使用 Theme Check 插件来检查你的主题是否合格</a></h3>
+<p>WordPress 主题审核团队开发了一款 ThemeCheck 插件，来帮助开发者自查插件是否有问题，进入插件列表就可以看到这个插件：</p>
+<p><img src="https://postimg.aliavv.com/mbp/jnbdu.jpg" alt="" /></p>
+<p>安装成功后，启用该插件，在菜单栏中就会多出一项菜单项。</p>
+<p>找到「外观」—「Theme Check」，进入主题检查的页面：</p>
+<p><img src="https://postimg.aliavv.com/mbp/fjzc9.jpg" alt="" /></p>
+<p>在这个页面选择你要检查的主题，然后点击 Check it！就可以开始检查你的主题是否合格：</p>
+<p><img src="https://postimg.aliavv.com/mbp/69o0a.jpg" alt="" /></p>
+<p>在运行了主题的测试后，会看到一些提示：</p>
+<p><img src="https://postimg.aliavv.com/mbp/rl6qw.jpg" alt="" /></p>
+<p>告诉你有哪些问题要处理。一般来说，Waring 和 Require 是必须要处理的，Recommend 可以根据自己的需要开启：</p>
+<p><img src="https://postimg.aliavv.com/mbp/ad2l1.jpg" alt="" /></p>
+<p>INFO 则是你自己需要检查的。</p>
+<h3 id="使用-generatewp-来生成代码"><a class="header" href="#使用-generatewp-来生成代码">使用 GenerateWP 来生成代码</a></h3>
+<p>对于一些常用的代码，可以考虑使用 GenerateWP 来生成。这是一个辅助开发的网站，里面有大量的代码生成工具，可以根据自己的需要，使用这里的生成器，来生成复合格式的代码，从而加速开发过程。</p>
+<p>网站地址<a href="https://generatewp.com/generator/">请单击这里</a>。</p>
+<p><img src="https://postimg.aliavv.com/mbp/xj3rm.jpg" alt="" /></p>
+<h3 id="使用-theme-unit-test-data-来进行测试"><a class="header" href="#使用-theme-unit-test-data-来进行测试">使用 Theme Unit Test Data 来进行测试</a></h3>
+<p>我们在开发主题时，可能会遇见没有足够的文章来测试我们的主题。这个时候，可以考虑使用 WordPress Theme Review Team 提供的 Theme Unit Test 数据来进行测试。</p>
+<p>这些数据存放在<a href="https://github.com/WPTRT/theme-unit-test">这里</a>，可以直接下载<a href="https://raw.githubusercontent.com/WPTRT/theme-unit-test/master/themeunittestdata.wordpress.xml">这个文件</a>。</p>
+<p>下载后，打开开发环境的 WordPress 后台，找到「工具」—「导入」，选择其中的 WordPress 导入工具，安装该插件。</p>
+<p><img src="https://postimg.aliavv.com/mbp/1tp0o.jpg" alt="" /></p>
+<p>安装完成后，点击「运行导入器」，选择刚刚下载的 xml 文件，点击上传文件并导入：</p>
+<p><img src="https://postimg.aliavv.com/mbp/82u23.jpg" alt="" /></p>
+<p>在新的页面中，会提示你是导入作者还是创建新的作者或是分配给现有的作者，由于我们是测试环境，保持默认即可。</p>
+<p>这里需要注意的是，下方有一个「下载并导入文件附件」这个选项，如果网络不是超级好的话，不建议勾选，因为这个选项勾选后，WordPress 会去下载图片等附件，需要耗费大量的时间，足以把 WordPress 卡死。</p>
+<p>确认完选项后，单击“提交”按钮，WordPress 会自动提示你导入完成。</p>
+<p>可能会看到提示导入媒体失败的信息，不过不用管，我们没有勾选下载附件，所以报错是正常的。回到仪表盘，会看到导入了大量的文章、页面和评论：</p>
+<p><img src="https://postimg.aliavv.com/mbp/q153x.jpg" alt="" /></p>
+<p>除此之外，包括菜单也导入了一些，足够用来测试我们的主题了。</p>
+<h3 id="使用-get_template_part-方法来拆分内容模板"><a class="header" href="#使用-get_template_part-方法来拆分内容模板">使用 <code>get_template_part</code> 方法来拆分内容模板</a></h3>
+<p>在前面的开发中注意到，其实文章页和单页的内容部分是一样的，而首页和这个页面的内容又是几乎相同，仅仅区别于 <code>the_content</code> 和 <code>the_excerpt</code> 函数。但是我们却不得不将文章页的代码复制了一份，这样代码复用度依然不够高。</p>
+<p>有没有什么办法能够提升代码复用度呢？有的，那就是使用<code>get_template_part</code>函数。</p>
+<p>这个函数可以实现引用另一个模板的部分代码到当前的模板中。这样，我们就可以很方便的在不同的文件中使用同一份代码，从而提高我们代码的复用度，提升代码的可读性。</p>
+<p>这个函数的使用方法如下：</p>
+<pre><code class="language-php"> &lt;?php get_template_part( $slug, $name ); ?&gt; 
+</code></pre>
+<p>在模板中加入这一行代码， WordPress 会自动查找：</p>
+<ul>
+<li><code>$slug.php</code></li>
+<li><code>$slug-$name.php</code></li>
+</ul>
+<p>这些文件，来进行引用（也可以用于子主题调用父主题的内容）。</p>
+<h3 id="使用-wp_enqueue_style-和-wp_enqueue_script-来加载脚本和样式表"><a class="header" href="#使用-wp_enqueue_style-和-wp_enqueue_script-来加载脚本和样式表">使用 <code>wp_enqueue_style</code> 和 <code>wp_enqueue_script</code> 来加载脚本和样式表</a></h3>
+<p>大部分时候，我们都是直接将 CSS 和 Javascirpt 的 URL 直接放在页面的模板中，不过，按照 WordPress 官方的规范，应该使用<code>wp_enqueue_style</code>和<code>wp_enqueue_script</code>来加载脚本和样式表。</p>
+<p>这里举一个例子：</p>
+<pre><code class="language-Php">function gitchat_theme_style() {
+    wp_enqueue_style( 'gitchat_style', get_template_directory_uri() . '/style.css' ); 
+}
+add_action( 'wp_enqueue_script', 'gitchat_theme_style' );
+</code></pre>
+<p>上面这段代码实现了在页面顶部加载主题根目录的 <em>style.css</em> 文件。</p>
+<h3 id="用户注销账户后返回到首页"><a class="header" href="#用户注销账户后返回到首页">用户注销账户后，返回到首页</a></h3>
+<p>默认情况下，用户注销后会回到登录页，不过大多数情况下，用户注销便是不想再次登录，可以直接将下述代码加入到你的 <em>functions.php</em> 中：</p>
+<pre><code class="language-php">add_action(‘wp_logout’,’auto_redirect_after_logout’);
+function auto_redirect_after_logout(){
+  wp_redirect( home_url() ); // 注销后跳转到首页
+  exit();
+}
+</code></pre>
+<h3 id="屏蔽掉一些无用的菜单项"><a class="header" href="#屏蔽掉一些无用的菜单项">屏蔽掉一些无用的菜单项</a></h3>
+<p>WordPress 提供了很多强大的功能，但是客户可能很多时候是一些小白用户，对于他们来说，能够更加简单的使用才是最重要的。所以可以在代码中加入一些函数，屏蔽掉一些无用的菜单项，简化后台。</p>
+<p>比如，下面这段代码就只保留了仪表盘、文章、页面、评论和设置这几项，可以直接将下述代码加入到你的 <em>functions.php</em> 中。</p>
+<pre><code class="language-php">function remove_menus(){
+  remove_menu_page( 'upload.php' );                 //媒体库
+  remove_menu_page( 'themes.php' );                 //外观
+  remove_menu_page( 'plugins.php' );                //插件
+  remove_menu_page( 'users.php' );                  //用户
+  remove_menu_page( 'tools.php' );                  //工具
+}
+add_action( 'admin_menu', 'remove_menus' );
+</code></pre>
+<p>简化后的菜单对于一些普通用户来说，会更加友好。</p>
+<p>如果只是想要屏蔽一些二级菜单，则可以参考下面的代码来修改：</p>
+<pre><code class="language-Php">function remove_submenu() {
+    // 删除”外观”下面的子菜单”编辑”
+    remove_submenu_page('themes.php', 'theme-editor.php');
+}
+if (is_admin()){
+    //删除子菜单
+    add_action('admin_init','remove_submenu');
+}
+</code></pre>
+<h3 id="屏蔽后台仪表盘一些无用的控件"><a class="header" href="#屏蔽后台仪表盘一些无用的控件">屏蔽后台仪表盘一些无用的控件</a></h3>
+<p>仪表盘是用户登录后台第一眼就会看到的内容，过多的控件会让用户产生迷惑，可以根据你自己的需要屏蔽控件。</p>
+<pre><code class="language-php">function remove_dashboard_widget() {
+    global $wp_meta_boxes;
+    // 以下这一行代码将删除 "快速发布" 模块
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+    // 以下这一行代码将删除 "引入链接" 模块
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
+    // 以下这一行代码将删除 "插件" 模块
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+    // 以下这一行代码将删除 "近期评论" 模块
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
+    // 以下这一行代码将删除 "近期草稿" 模块
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);
+    // 以下这一行代码将删除 "WordPress 开发日志" 模块
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+    // 以下这一行代码将删除 "其它 WordPress 新闻" 模块
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+}
+add_action('wp_dashboard_setup', 'remove_dashboard_widget' );
+</code></pre>
+<h3 id="移除管理菜单的图标"><a class="header" href="#移除管理菜单的图标">移除管理菜单的图标</a></h3>
+<p>对于直接作为外包项目的 WordPress，我们希望让用户尽可能的少看到 WordPress 的相关信息，所以或许需要这段移除 WordPress logo 的代码：</p>
+<pre><code class="language-Php">function remove_admin_bar_logo() {
+        global $wp_admin_bar;
+        $wp_admin_bar-&gt;remove_menu('wp-logo');
+}
+add_action('wp_before_admin_bar_render', 'remove_admin_bar_logo', 0);
+</code></pre>
+<h3 id="使用-is_-语法来判断当前页面"><a class="header" href="#使用-is_-语法来判断当前页面">使用 <em>is_</em> 语法来判断当前页面</a></h3>
+<p>WordPress 为我们提供了很多 <em>is_</em> 开头的判断函数，借助这些函数，可以很方便的对不同页面的内容进行定制。具体的标签可以 <a href="https://codex.wordpress.org/zh-cn:%E6%9D%A1%E4%BB%B6%E6%A0%87%E7%AD%BE">参考这里</a>。</p>
+<p>这里举个例子，根据所处页面，生成不同的 <code>title</code>标签：</p>
+<pre><code class="language-php">&lt;title&gt;
+&lt;?php 
+if (is_home()) {
+    echo bloginfo('name');
+} elseif (is_404()) {
+    echo '404 未找到';
+} elseif (is_category()) {
+    echo '目录:'; wp_title('');
+} elseif (is_search()) {
+    echo '搜索结果';
+} elseif ( is_day() || is_month() || is_year() ) {
+    echo '归档:'; wp_title('');
+} else {
+    echo wp_title('');
+}
+?&gt;
+&lt;/title&gt;
+</code></pre>
+<h3 id="在管理员后台添加开发者信息"><a class="header" href="#在管理员后台添加开发者信息">在管理员后台添加开发者信息</a></h3>
+<p>可以通过如下代码，在管理员后台添加开发者信息，这样可以帮助客户更好的联系到你。</p>
+<p>在主题中添加如下代码可以实现：</p>
+<pre><code class="language-php">function remove_footer_admin () {
+echo '由&lt;a href=""&gt;白宦成 &lt;/a&gt;开发';
+}
+add_filter('admin_footer_text', 'remove_footer_admin');
+</code></pre>
+<p><img src="https://postimg.aliavv.com/mbp/cvg3r.jpg" alt="" /></p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../theme/options-framework.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../theme/uploads.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../theme/options-framework.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../theme/uploads.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

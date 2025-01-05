@@ -1,0 +1,357 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>WP 主题开发：文件结构 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/theme/struct.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="wordpress-的主题文件结构"><a class="header" href="#wordpress-的主题文件结构">WordPress 的主题文件结构</a></h1>
+<p>在上节课完成了一个简单的主题的开发过程，但是毕竟是一个简单的主题，所以功能非常简陋，比如常见的 404 处理都没有。这节课先来了解一下 WordPress 的主题文件结构，通过对主题结构的了解，你会明白，WordPress 主题应该有哪些文件、每个文件都能解决什么样的功能，通过这样就明白应该使用什么样的文件来完成一些特殊的功能。</p>
+<h3 id="一览"><a class="header" href="#一览">一览</a></h3>
+<p>WordPress 主题可能会有很多文件，不过总体来说可以将它们分为三类：</p>
+<ul>
+<li>CSS 样式文件和 JS 脚本文件：<em>style.css</em> ；</li>
+<li>函数文件：<em>function.php</em> ；</li>
+<li>模板文件：<em>index.php</em>、<em>home.php</em>、<em>single.php</em>。</li>
+</ul>
+<h3 id="css-样式文件和-js-脚本文件"><a class="header" href="#css-样式文件和-js-脚本文件">CSS 样式文件和 JS 脚本文件</a></h3>
+<p>CSS 样式文件和 JS 脚本文件是我们的主题最常见的两个文件，他们构成了主题的样式和页面内的效果交互。其中最重要的，就是 <em>style.css</em> 文件。除了 <em>style.css</em> 意外，还可能看到 <em>rtl.css</em>  （Right-To-Left），这个是给一些特殊的语言，用于从右向左阅读习惯的人使用的，大部分情况下，我们是不需要这个的。</p>
+<h4 id="stylecss"><a class="header" href="#stylecss">Style.css</a></h4>
+<p>Style.css 文件不仅承载着我们主题的样式表文件，还记录了主题的默认信息，比如主题名、主题描述、主题作者等等。一个典型的例子就是在上一节课中定义的 GitChat 主题的模板文件：</p>
+<pre><code class="language-css">/*
+Theme Name: GitChat
+Theme URI: http://gitbook.cn/gitchat/column/5a16601f13c02f4a35c9f8ad
+Author: 白宦成
+Author URI: http://gitbook.cn/gitchat/column/5a16601f13c02f4a35c9f8ad
+Description: GitChat WordPress 演示达人课
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: blue
+Text Domain: gitchat
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+</code></pre>
+<h3 id="函数文件"><a class="header" href="#函数文件">函数文件</a></h3>
+<p>函数文件实现了我们的 WordPress 主题的各种功能，比如管理后台、特殊的内容输出、特殊的内容过滤器等等，一般来说，都会将其放在 <em>functions.php</em> 当中。但并不绝对，毕竟主题代码可能会非常的复杂，这个时候，可能会根据实际情况，将其放在其他文件夹中保存，然后在 <em>functions.php</em> 中引用，以提升代码的可读性。</p>
+<h3 id="模板文件"><a class="header" href="#模板文件">模板文件</a></h3>
+<p>模板文件是 WordPress 定义好的一系列文件，无法对其重命名，不过可以直接使用这些名字来创建文件。具体的模板文件列表如下：</p>
+<ul>
+<li><code>index.php</code>：主模板，这个模板必须提供。</li>
+<li><code>comments.php</code>：评论模板。</li>
+<li><code>front-page.php</code>：首页模板，当切换为静态首页时，可以选择这个。</li>
+<li><code>home.php</code>：主页模板，默认的首页。如果开启了静态首页，这个模板则用于展示最新的文字。</li>
+<li><code>single.php</code>：单独页面模板，显示单独的一篇文章时被调用。对于这个以及其他的请求模板，如果模板不存在会使用<code>index.php</code>。</li>
+<li><code>single-{post-type}.php</code>：自定义单独页面模板。例如，<code>single-books.php</code> 展示自定义文章类型为 <code>books</code>的文章. 如果文章类型未被设置则使用<code>index.php</code>。</li>
+<li><code>page.php</code>：页面模板，独立页面调用。</li>
+<li><code>category.php</code>：分类模板。分类页面调用。</li>
+<li><code>tag.php</code>：标签模板，标签页面调用。</li>
+<li><code>taxonomy.php</code>：术语模板，请求自定义分类法的术语时使用。</li>
+<li><code>author.php</code>：作者模板，作者页面调用。</li>
+<li><code>date.php</code>：日期/时间模板，按时间查询时使用的模板。</li>
+<li><code>archive.php</code>：存档模板，查询分类，作者或日期时使用的模板。需要注意的是，该模板将会分别被<code>category.php</code>、<code>author.php</code>、<code>date.php</code>所覆盖（如果存在的话）。</li>
+<li><code>search.php</code>：搜索结果模板，显示搜索结果时使用的模板。</li>
+<li><code>attachment.php</code>：附件模板，查看单个附件时使用的模板。</li>
+<li><code>image.php</code>：图片附件模板，当在 WordPress 中查看单个图片时将调用此模板，如果不存在此模板，则调用 attachment.php 模板。</li>
+<li><code>404.php</code>：404 错误页面模板，当 WordPress 无法查找到匹配查询的日志或页面时，使用 404.php 文件。</li>
+</ul>
+<p>这么多文件，到底是如何加载的呢？接下来一一说明。</p>
+<p><img src="https://postimg.aliavv.com/mbp/cyodq.jpg" alt="" /></p>
+<p>这里使用了来自 <a href="https://wphierarchy.com/">wphierachy</a> 的图片，这张图说明了 WordPress 的模板加载顺序。使用这张图，来说明模板到底是按照怎样一个顺序加载的。</p>
+<p>这张图中，灰色的的方块代表着一个一个的页面，意味着我们的一个个不同的需求；红色的方块则代表着文件名含变量的文件模板，它们会根据变量的值，加载不同的模板；淡蓝色的则代表着普通模板；深蓝的代表主要的页面模板。</p>
+<p>这张图的查看的顺序是从左向右查看，举个例子，当我们需要查看一个目录的页面时，首先，这个页面是一个归档类型的页面（archive），然后继续向右查找，找到我们要看的目录归档（Category Archive）；然后继续向右看，我们看到指向了<code>category-$slug.php</code>，这个文件是变量文件， WordPress 会根据我们目录的别名（slug），查询是否存在对应的文件，如果有这个文件，就进行渲染，不再输出。如果不存在，则继续向右查找；继续向右看到了 <code>category-$id.php</code>，当到了这一步后， WordPress 会根据目录的 ID 查询，是否存在对应的文件，如果存在则继续查找，如果不存在，则继续向右查找。继续向右，看到了淡蓝色的 <em>category.php</em>，如果这个文件存在，则进行渲染。如果不存在，则继续向右查找，查找到 <em>archive.php</em>，最后一直会查找到 <em>index.php</em>.</p>
+<p>上面就是典型的一个页面的查询轨迹，所有的页面都会遵循这个查找模式，进行查找。</p>
+<p><img src="https://postimg.aliavv.com/mbp/in2tn.jpg" alt="" /></p>
+<p>在图中可以看到，所有的文件查找不到的情况下，最终就会查找到 index.php 上，这也就是为什么在一开始，便创建 index.php，通过这个文件，我们的主题便可以很好的提供服务。后续通过对页面的细分，添加不同的模板，实现更好的体验。</p>
+<h4 id="文字版本的加载顺序"><a class="header" href="#文字版本的加载顺序">文字版本的加载顺序</a></h4>
+<p>上面的版本每次都要查询图片可能不是很方便，这里我总结了一份文字版本的加载顺序，读者可以根据这个加载顺序来制作模板。加载顺序从序号小的开始，如果查不到这个文件，则查询序号更大的文件是否存在。</p>
+<h5 id="主页"><a class="header" href="#主页">主页</a></h5>
+<ul>
+<li>home.php</li>
+<li>index.php</li>
+</ul>
+<h5 id="文章页面"><a class="header" href="#文章页面">文章页面</a></h5>
+<ul>
+<li>single-$posttype.php</li>
+<li>single.php</li>
+<li>index.php</li>
+</ul>
+<h5 id="页面"><a class="header" href="#页面">页面</a></h5>
+<ul>
+<li>自定义页面模板</li>
+<li>page-$slug.php</li>
+<li>page-$id.php</li>
+<li>page.php</li>
+<li>index.php</li>
+</ul>
+<h5 id="分类页面"><a class="header" href="#分类页面">分类页面</a></h5>
+<ul>
+<li>category-$slug.php</li>
+<li>category-$id.php</li>
+<li>category.php</li>
+<li>archive.php</li>
+<li>index.php</li>
+</ul>
+<h5 id="标签页面"><a class="header" href="#标签页面">标签页面</a></h5>
+<ul>
+<li>tag-$slug.php</li>
+<li>tag-$Id.php</li>
+<li>tag.php</li>
+<li>archive.php</li>
+<li>index.php</li>
+</ul>
+<h5 id="作者页面"><a class="header" href="#作者页面">作者页面</a></h5>
+<ul>
+<li>author-$nickname.php</li>
+<li>author-$Id.php</li>
+<li>author.php</li>
+<li>archive.php</li>
+<li>index.php</li>
+</ul>
+<h5 id="日期页面"><a class="header" href="#日期页面">日期页面</a></h5>
+<ul>
+<li>date.php</li>
+<li>archive.php</li>
+<li>index.php</li>
+</ul>
+<h5 id="搜索页面"><a class="header" href="#搜索页面">搜索页面</a></h5>
+<ul>
+<li>search.php</li>
+<li>index.php</li>
+</ul>
+<h5 id="404-页面"><a class="header" href="#404-页面">404 页面</a></h5>
+<ul>
+<li>404.php</li>
+<li>index.php</li>
+</ul>
+<h5 id="附件页面"><a class="header" href="#附件页面">附件页面</a></h5>
+<ul>
+<li>$mimetype.php</li>
+<li>attachment.php</li>
+<li>single.php</li>
+<li>index.php</li>
+</ul>
+<h3 id="总结"><a class="header" href="#总结">总结</a></h3>
+<p>经过上面的内容，我想你已经明白了，是如何制作这些特殊的页面了，我们可以通过创建不同文件名的文件，将其放在主题根目录来实现不同的功能。</p>
+<p>不过，在页面中，提到了「自定义页面模板」，这个是怎么用的？别急，在下一课细细说来。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../theme/intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../theme/custom-page.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../theme/intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../theme/custom-page.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>WP 主题开发：快速入门 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/theme/intro.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="wordpress-主题开发快速入门"><a class="header" href="#wordpress-主题开发快速入门">WordPress 主题开发快速入门</a></h1>
+<h3 id="课程目标"><a class="header" href="#课程目标">课程目标</a></h3>
+<p>经过本次课程可以学会制作一个简单的 WordPress 主题。</p>
+<p>主题效果图：</p>
+<p><img src="https://postimg.aliavv.com/mbp/3zc5w.jpg" alt="" /></p>
+<h3 id="课程内容"><a class="header" href="#课程内容">课程内容</a></h3>
+<p>课程资源请<a href="http://www.easywpbook.com/course-resources/blog-template.zip">单击这里</a>。</p>
+<h4 id="创建一个主题"><a class="header" href="#创建一个主题">创建一个主题</a></h4>
+<p>在课程的开始首先应该创建一个主题。</p>
+<p>打开 WordPress 源码文件夹，进入到 <em>wp-content/themes</em> 目录中，创建一个名为 <em>gitchat</em> 的目录。</p>
+<p>接下来下载课程资源中的 <em>blog-template.zip</em>，解压后会看到一个 <em>index.html</em> 和 一个 <em>blog.css</em>。</p>
+<p>将 <em>index.html</em>  改为 <em>index.php</em>，将 <em>blog.css</em>  改为 <em>style.css</em>，将两个文件移动到刚刚创建的 <em>gitchat</em> 目录中去。</p>
+<p>接下来打开 <em>style.css</em> ，在文件的顶部加入如下代码。</p>
+<pre><code class="language-php">/*
+Theme Name: GitChat
+Theme URI: http://gitbook.cn/gitchat/column/5a16601f13c02f4a35c9f8ad
+Author: 白宦成
+Author URI: http://gitbook.cn/gitchat/column/5a16601f13c02f4a35c9f8ad
+Description: GitChat WordPress 演示达人课
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: blue
+Text Domain: gitchat
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+</code></pre>
+<p>然后，打开 WordPress 后台的主题管理页面，就可以看到主题了。</p>
+<p><img src="https://postimg.aliavv.com/mbp/ltimg.jpg" alt="" /></p>
+<p>你可以尝试启用这个主题，会发现主题已经能够正常的启用了，不过当点击进入前台时，发现目前的页面效果并不好，和我们的效果图差距很大。</p>
+<p>这是由于我们将 <em>index.html</em> 未经修改直接作为主题，引用的文件都失效了导致的。</p>
+<p><img src="https://postimg.aliavv.com/mbp/zojxd.jpg" alt="" /></p>
+<p>接下来修复这个问题，让这个页面的样式变为和之前一样的样式。</p>
+<p>打开 <em>index.php</em> 文件，找到第18行：</p>
+<p><img src="https://postimg.aliavv.com/mbp/s8zs5.jpg" alt="" /></p>
+<p>将这里的 <em>blog.css</em> 替换为 <code>&lt;?php echo get_stylesheet_directory_uri() ?&gt;/style.css</code>，保存文件并刷新网站首页，可以看到，首页的样式就回复了过来。</p>
+<blockquote>
+<p>这里除了使用这个代码，还可以使用：</p>
+<p><em><code>&lt;?php echo get_bloginfo('template_directory'); ?&gt;</code>/style.css</em></p>
+<p>这段代码，WordPress 针对同一个实现的效果可能会有多种不同的代码，不过并不重要，我们记住几个常用的即可。</p>
+</blockquote>
+<h4 id="完善顶部内容"><a class="header" href="#完善顶部内容">完善顶部内容</a></h4>
+<p>我们发现，现在页面的标题是错误的，接下来修改一下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/dsgq5.jpg" alt="" /></p>
+<p>重新回到文件编辑器中，打开 <em>index.php</em>，找到第12行，将这里的 <em>Blog Template for Bootstrap</em> 替换为<code>&lt;?php wp_title( '|', true, 'right' ); ?&gt;</code>。这样，就使用了 WordPress 自带的函数来生成页面的标题，确保了页面标题是自动生成的。</p>
+<p><img src="https://postimg.aliavv.com/mbp/9wpgp.jpg" alt="" /></p>
+<p>在别的主题中，我们会在前台页面的顶部看到一个菜单栏：</p>
+<p><img src="https://postimg.aliavv.com/mbp/7uoap.jpg" alt="" /></p>
+<p>但是在我们现在的主题中是无法看到的，接下来修复这个问题，让 WordPress 主题能够正常的加载这个菜单栏。</p>
+<p>重新回到编辑器，打开 <em>index.php</em> ，找到 head 标签，在 head 标签闭合前，加入如下代码：</p>
+<pre><code class="language-php"> &lt;?php wp_head();?&gt;
+</code></pre>
+<p>具体位置如下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/6d3mu.jpg" alt="" /></p>
+<p>然后找到页面的底部，在 Body 标签闭合前，加入如下代码：</p>
+<pre><code class="language-php">&lt;?php wp_footer(); ?&gt;
+</code></pre>
+<p>具体位置如下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/zn6kn.jpg" alt="" /></p>
+<p>现在再刷新页面就可以看到我们的菜单栏了。</p>
+<h4 id="拆分出-headerphpfooterphpsidebarphp"><a class="header" href="#拆分出-headerphpfooterphpsidebarphp">拆分出 header.php、footer.php、Sidebar.php</a></h4>
+<p>在接下来的内容中，我们要制作独立的单页等，所以需要在这里将页面进行拆分，将通用的部分抽离出去，从而提升代码的复用率。</p>
+<p><img src="https://postimg.aliavv.com/mbp/j2gxi.jpg" alt="" /></p>
+<p>可以认为，在这个页面中，被我用红色框体圈出来的内容是会被多个文件所使用的，我们可以先将这两部分拆分出来。</p>
+<p>此外，页面底部的版权声明也是通用的，也可以将其拆分出来：</p>
+<p><img src="https://postimg.aliavv.com/mbp/430js.jpg" alt="" /></p>
+<h5 id="headerphp"><a class="header" href="#headerphp">header.php</a></h5>
+<p>打开编辑器，在主题目录下创建一个 <em>header.php</em> 文件，然后，打开 <em>index.php</em>，找到博客标题。</p>
+<p><img src="https://postimg.aliavv.com/mbp/1gvfe.jpg" alt="" /></p>
+<p>则博客标题以上的内容，都是可以被我们所复用的内容。我们将上方的所有代码，复制到刚刚创建的 header.php 中。接下来，删除 <em>index.php</em> 中复制过来的代码，并在这些代码的位置上插入一句话 <code>&lt;?php get_header();?&gt;</code>。刷新首页，会发现页面依然是老样子，没有发生任何变化。</p>
+<blockquote>
+<p><em>get_header()</em> 函数能够引用同一目录下的 <em>header.php</em> 文件，从而帮助我们提升代码的复用率。</p>
+</blockquote>
+<h5 id="footerphp"><a class="header" href="#footerphp">footer.php</a></h5>
+<p>同样的，我们在代码中查找版权信息，可以看到这段代码在底部。由于网页的渲染是从上到下，而这段代码后再也没有代码了，所以我们可以创建一个新的 footer.php 文件，并将这些代码加入其中。</p>
+<p><img src="https://postimg.aliavv.com/mbp/5t2rr.jpg" alt="" /></p>
+<p>同样的，创建一个 <em>footer.php</em> 文件，然后将代码复制到 <em>footer.php</em> 文件，并在 <em>index.php</em>  中这段代码所在的位置上加入一句代码 <code> &lt;?php get_footer();?&gt;</code>。保存文件并刷新页面，可以看到，我们底部的版权链接也依然还在。</p>
+<blockquote>
+<p><em>get_footer</em> 方法和 <em>get_header</em> 方法一样，都是帮助我们引用文件的。</p>
+</blockquote>
+<h5 id="sidebarphp"><a class="header" href="#sidebarphp">sidebar.php</a></h5>
+<p>通过分析代码，我们可以知道，测边栏的代码是下面这一串</p>
+<p><img src="https://postimg.aliavv.com/mbp/fxxeo.jpg" alt="" /></p>
+<p>我们将这一串代码复制出来，新建一个  <em>sidebar.php</em> 文件，并将代码粘贴进去，然后使用 <em>get_sidebar</em> 方法加载侧边栏。</p>
+<p>经过这段代码的替换，我们的 <em>index.php</em> 变成了这个样子,可以看到我们的整个文件只有45行，这使得我们的文件变得更加简单易读。</p>
+<p><img src="https://postimg.aliavv.com/mbp/ut7c1.jpg" alt="" /></p>
+<h4 id="wordpress-主循环"><a class="header" href="#wordpress-主循环">WordPress 主循环</a></h4>
+<p>页面拆分完毕了，但是页面的主题部分还是静态的内容，我们真正想要加载的内容还依然是静态内容。</p>
+<p>接下来把主要的内容转换为动态的内容。这里我们使用 WordPress 官方提供的 主循环代码来实现页面内容动态输出。</p>
+<pre><code class="language-php">&lt;?php if ( have_posts() ) : ?&gt;
+    &lt;?php while ( have_posts() ) : the_post(); ?&gt;
+        ... Display post content
+    &lt;?php endwhile; ?&gt;
+&lt;?php endif; ?&gt;
+</code></pre>
+<p>首先，我们清理下页面的代码：</p>
+<p><img src="https://postimg.aliavv.com/mbp/jh0sn.jpg" alt="" /></p>
+<p>将红色部分的内容删除，将蓝色部分的代码调整成为我图上的样子。</p>
+<p>接下来，就是套用 WordPress 提供的主循环代码了，将调整的蓝色框的内容作为主循环的循环体，放入 主循环代码代码中。则变成这个样子。</p>
+<p><img src="https://postimg.aliavv.com/mbp/frcha.jpg" alt="" /></p>
+<p>保存文件，重新回到首页刷新，可以看到已经刷新出了文章。只不过我目前在数据库里只添加了两篇文章，所以这里循环出了两篇文章。</p>
+<p><img src="https://postimg.aliavv.com/mbp/ueosa.jpg" alt="" /></p>
+<p>现在虽然我们循环出了文章，但是内容依然是我们手写的，接下来把这里的内容也改成 WordPress 自动生成的。具体替换可以参考下方的替换规则。</p>
+<blockquote>
+<p><strong>替换规则</strong>：</p>
+<p>标题 替换为 <code>&lt;?php the_title();?&gt;</code>；</p>
+<p>摘要 替换为 <code>&lt;?php the_excerpt();?&gt;</code>；</p>
+<p>作者 替换为 <code>&lt;?php the_author();?&gt;</code>；</p>
+<p>作者标签的 href 的值替换为 <code>&lt;?php the_author_link();?&gt;</code>；</p>
+<p>日期 替换为 <code>&lt;?php the_date();?&gt;</code>。</p>
+</blockquote>
+<p>替换后的代码如下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/4fd6q.jpg" alt="" /></p>
+<p>保存文件再刷新一下页面，可以看到页面变成了这个样子：</p>
+<p><img src="https://postimg.aliavv.com/mbp/5k9b1.jpg" alt="" /></p>
+<p>我们的各项信息、内容都已经显示出来了。</p>
+<p>但是现在有个问题，没有办法进入到文章的详情页面。我们继续修改，在标题外，再包裹一层 <em>a</em> 标签，并将其 <em>href</em> 设置为  <code>&lt;?php the_permalink();?&gt;</code>。</p>
+<p><img src="https://postimg.aliavv.com/mbp/mzwj0.jpg" alt="" /></p>
+<p>保存文件并刷新页面，我们将鼠标指针移动到标题上，会发现标题已经变为了可以点击的超链接，点击链接，就会进入到详情页。只不过，这里的详情页使用的依然是首页的代码，所以看起来会怪怪的。</p>
+<blockquote>
+<p>这里涉及到了 WordPress 主题的文件结构，这部分内容将会在下一节课详细讲解，在这里可以不用太过关心，跟着课程一步步走下去，先试着做一个 WordPress 主题吧！</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/mbp/ehnia.jpg" alt="" /></p>
+<p>现在主循环已经完成了，页面也可以正常的加载内容了。</p>
+<p>先在首页下方还有两个大按钮没有处理，接下来处理他们。</p>
+<p>这两个按钮是用来进入上一页或者下一页的，好在 WordPress 提供了方便的函数，我们可以很轻松的完成这部分的修改。</p>
+<p>使用下面的代码替换两个按钮的 <em>href</em>，顺便再将文字改为中文。</p>
+<pre><code class="language-php">&lt;?php next_posts_link( 'Older posts' ); ?&gt;
+&lt;?php previous_posts_link( 'Newer posts' ); ?&gt;
+</code></pre>
+<p>替换完成的代码如下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/95ga9.jpg" alt="" /></p>
+<p>保存文件后，刷新，诶，按钮怎么不见了？这是因为目前站点中的文章不够，所以这两个按钮就没有生成。可以进入后台 — 「设置」—「阅读」，将 <em>博客页面至多显示</em> 改为 1 。保存并刷新，可以看到首页的文章只显示了1条，同时我们可以点击上一页，浏览到上一条文章。</p>
+<p>至此，我们主循环就完成了。</p>
+<h4 id="处理文章页和单页"><a class="header" href="#处理文章页和单页">处理文章页和单页</a></h4>
+<p>处理完了主循环，接下来美化一下文章详情页。</p>
+<p>点击首页的文章标题，进入内容页会发现，这里与我们记忆中别的主题有很大差距，比如：</p>
+<p><img src="https://postimg.aliavv.com/mbp/f5lpx.jpg" alt="" /></p>
+<p>接下来完善这些部分。</p>
+<p>之前曾说过，我们之所以看到的不合适，是因为目前加载的内容是首页的模板，所以无法正常的显示。</p>
+<p>首先创建一个 <em>single.php</em>  用于展示文章内容。将 <em>index.php</em> 内的代码复制到 <em>single.php</em> 中，稍后我们来修改。</p>
+<p>复制完成后，打开 <em>single.php</em> ，将页面中的<code>the_excerpt（）</code>替换为 <code>the_content()</code>，并删除底部的导航代码，再移除文章标题上的链接。</p>
+<p><img src="https://postimg.aliavv.com/mbp/huktv.jpg" alt="" /></p>
+<p>现在再刷新会发现内容页的渲染结果和首页就不同了。标题上没有了链接，内容也显示完全了：</p>
+<p><img src="https://postimg.aliavv.com/mbp/gnxov.jpg" alt="" /></p>
+<p>这段代码同样可以应用于单页，所以复制一下 <em>single.php</em> ，重命名为 <em>page.php</em>。进入后台，在页面管理中找一个页面打开。可以看到，我们的页面的样式和文章页面保持一致：</p>
+<p><img src="https://postimg.aliavv.com/mbp/1ppj6.jpg" alt="" /></p>
+<p>这样，我们的单页就显示完成了。</p>
+<h4 id="完善页头和菜单"><a class="header" href="#完善页头和菜单">完善页头和菜单</a></h4>
+<p>一直看着顶部的菜单和标题不爽？没事，接下来修改这些内容。</p>
+<p>打开 <em>header.php</em>，使用代码替换博客标题和博客描述。</p>
+<p><img src="https://postimg.aliavv.com/mbp/92yx3.jpg" alt="" /></p>
+<p>保存文件，刷新首页，可以看到，站点的标题已经替换为我们在「常规」中设置的内容了。</p>
+<p><img src="https://postimg.aliavv.com/mbp/1wi0i.jpg" alt="" /></p>
+<p>现在站点顶部的菜单还不是我们想要的，我们也替换一下代码。</p>
+<p>在 <em>header.php</em> 中找到菜单的代码，将其替换为如下代码：</p>
+<p><img src="https://postimg.aliavv.com/mbp/jrhkz.jpg" alt="" />
+这里我们将多余的链接删除，然后使用 <code>wp_list_pages</code> 函数来生成具体的链接。</p>
+<p><img src="https://postimg.aliavv.com/mbp/882zs.jpg" alt="" /></p>
+<p>可以看到，我们生成了对应的链接，但是样式出了些问题，不能很好的加载出来，我们添加一些样式来修复它。</p>
+<p>打开 style.css 文件，在文件尾部加入如下代码：</p>
+<pre><code class="language-css">/* 新增菜单样式 */
+.blog-nav li {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  font-weight: 500; 
+}
+.blog-nav li a {
+  color: #fff;
+}
+</code></pre>
+<p>保存，回到首页，强制刷新当前页面，可以看到菜单效果已经正常了。点击其中的链接，则可以跳转到对应的页面去。</p>
+<p><img src="https://postimg.aliavv.com/mbp/goxhi.jpg" alt="" /></p>
+<p>现在，我们的页头和菜单就修改完了。</p>
+<h4 id="完善侧边栏"><a class="header" href="#完善侧边栏">完善侧边栏</a></h4>
+<p>完成了页头和主题内容，接下来实现侧边栏。</p>
+<p>打开 <em>sidebar.php</em> 删除归档下面的 所有 li 标签。</p>
+<p><img src="https://postimg.aliavv.com/mbp/u6k8s.jpg" alt="" /></p>
+<p>将其替换为 <code>&lt;?php wp_get_archives( 'type=monthly' ); ?&gt;</code>，替换后代码如下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/bnkcx.jpg" alt="" /></p>
+<p>刷新侧边栏，可以看到链接已生成。</p>
+<p><img src="https://postimg.aliavv.com/mbp/kdwv2.jpg" alt="" /></p>
+<p>接下来可以修改上方 about 中的文字，将文字替换为 <code>&lt;?php the_author_meta( 'description' ); ?&gt;</code>。最终代码效果如下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/fc2ey.jpg" alt="" /></p>
+<p>这样，我们就在「关于」内容中使用了个人描述来替换。</p>
+<p><img src="https://postimg.aliavv.com/mbp/7shpp.jpg" alt="" /></p>
+<h4 id="评论系统的实现"><a class="header" href="#评论系统的实现">评论系统的实现</a></h4>
+<p>WordPress 内建的评论系统非常好用，主题自然也应该接入评论系统。</p>
+<blockquote>
+<p>事实上应该是必须，如果要将你的主题上传到 WordPress 官方，是一定要接入评论系统的，这个在其官方的要求中有说明。</p>
+</blockquote>
+<p>首先，在 <em>single.php</em> 中添加如下代码：</p>
+<pre><code class="language-php">&lt;?php
+if ( comments_open() || get_comments_number() ) :
+    comments_template();
+endif;
+?&gt;
+</code></pre>
+<p>将这段代码加在 <em>the_content</em> 后，如图所示：</p>
+<p><img src="https://postimg.aliavv.com/mbp/k2gqf.jpg" alt="" /></p>
+<p>这段代码的作用是检测是否开启了评论，或者检测是否已经有评论。如果两者任一条件是满足的，则调取评论模板。</p>
+<p>现在在我们的评论页面引用了评论模板，但并没有开发评论模板，现在我们来开发评论的模板。</p>
+<p>创建一个 <em>comments.php</em>, 这个文件将会存放评论模板。在 <em>comments.php</em> 中添加如下代码：</p>
+<pre><code class="language-php+HTML">
+&lt;?php
+// part 1 
+if ( post_password_required() ) {
+    return;
+} ?&gt;
+    &lt;div id="comments" class="comments-area"&gt;
+        &lt;?php
+        // part 2 
+        if ( have_comments() ) : ?&gt;
+            &lt;h3 class="comments-title"&gt;
+                &lt;?php
+                // part 3 
+                printf( _n( '“%2$s” 有一条评论', '“%2$s” 有 %1$s 条评论', get_comments_number(), 'comments title'),
+                     get_comments_number() , get_the_title() );
+                ?&gt;
+            &lt;/h3&gt;
+            &lt;ul class="comment-list"&gt;
+                &lt;?php 
+                // part 4
+                wp_list_comments( array(
+                    'short_ping'  =&gt; true,
+                    'avatar_size' =&gt; 50,
+                ) );
+                ?&gt;
+            &lt;/ul&gt;
+        &lt;?php endif; ?&gt;
+        &lt;?php
+        // part 5
+        if ( ! comments_open() &amp;&amp; get_comments_number() &amp;&amp; post_type_supports( get_post_type(), 'comments' ) ) : ?&gt;
+            &lt;p class="no-comments"&gt;
+                &lt;?php _e( '评论已关闭.' ); ?&gt;
+            &lt;/p&gt;
+        &lt;?php endif; ?&gt;
+        &lt;?php comment_form(); ?&gt;
+    &lt;/div&gt;
+</code></pre>
+<p>这段代码首先进行了判断，如果这篇文件需要密码才能浏览，则不显示评论框。</p>
+<p>在第二部分代码，判断文章是否已经有了评论，如果有则执行第三部分代码，输出评论的数目；并在第四部分显示评论。</p>
+<p>最后，在第五部分，检测评论是否开启、文章是否有评论、以及当前文章是否支持评论，如果不允许，则输出一个评论已关闭。如果允许，则输出评论的表单。</p>
+<p>实现的效果如下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/v4uzh.jpg" alt="" /></p>
+<p>现在我们就实现了简单的评论系统，后续就是对评论部分的样式进行美化，这个可以根据具体需求来设计。</p>
+<h4 id="主题功能强化"><a class="header" href="#主题功能强化">主题功能强化</a></h4>
+<p>虽然我们现在主题已经开发好了，但是主题非常简单，只能渲染内容，接下来为主题添加一些功能代码，优化主题。</p>
+<p>在主题的根目录创建一个新的文件，<em>functions.php</em>。这里我们就实现一个关闭 WordPress 自带 Google 字体的功能，这个功能能够加速我们的站点的访问。</p>
+<p>在 functions.php 中添加如下代码：</p>
+<pre><code class="language-php">&lt;?php
+
+function remove_open_sans() {
+    wp_deregister_style( 'open-sans' );
+    wp_register_style( 'open-sans', false );
+}
+add_action('wp_enqueue_scripts', 'remove_open_sans');
+add_action('admin_enqueue_scripts', 'remove_open_sans');
+</code></pre>
+<p>这段代实现了注销 WordPress 自带的 open-sans 字体，同时将这个函数挂载到前台和后台的加载过程。保存文件，回到后台，刷新页面，你会发现 Google 字体被去掉了。</p>
+<blockquote>
+<p>关于这个文件之所以能够工作的机理，你可以查看我们在第14行的追溯，在 wp-settings.php 的 421 行，WordPress 引入了这个文件。</p>
+</blockquote>
+<p>至此，我们完成了一个简单的主题开发。更复杂的功能实现，可以查看我们后面的课程。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../theme/usage.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../theme/struct.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../theme/usage.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../theme/struct.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

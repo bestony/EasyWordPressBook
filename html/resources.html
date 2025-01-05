@@ -1,0 +1,325 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>相关资源站点 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/resources.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="wordpress-相关资源分享"><a class="header" href="#wordpress-相关资源分享">WordPress 相关资源分享</a></h1>
+<p>课程实践目标：了解一些 WordPress 的资源</p>
+<p>这节课主要是分享一些个人觉得不错的站点，帮助读者更好的使用 WordPress。</p>
+<h4 id="wordpress-官方站点"><a class="header" href="#wordpress-官方站点">WordPress 官方站点</a></h4>
+<h5 id="wordpress-make--plugins"><a class="header" href="#wordpress-make--plugins">WordPress Make · plugins</a></h5>
+<p>地址：<a href="https://make.wordpress.org/plugins/">https://make.wordpress.org/plugins/</a></p>
+<p>这是 WordPress 官方的插件团队博客，在这里可以看到 WordPress 官方在插件方面的动态。</p>
+<h5 id="wordpress-make--themes"><a class="header" href="#wordpress-make--themes">WordPress Make · themes</a></h5>
+<p>地址：<a href="https://make.wordpress.org/themes/">https://make.wordpress.org/themes/</a></p>
+<p>这里是 WordPress 官方的主题审核团队博客，如果希望你的主题更快的被审核，减少打回的次数，那么平时多关注是有必要的。</p>
+<h5 id="wordpress-codex"><a class="header" href="#wordpress-codex">WordPress Codex</a></h5>
+<p>地址：<a href="https://codex.wordpress.org/zh-cn:Main_Page">https://codex.wordpress.org/zh-cn:Main_Page</a></p>
+<p>这是 WordPress 官方的 Wiki，任何关于 WordPress 本身的问题和使用问题都可以在这里找到对应的答案。</p>
+<h5 id="wordpress-developer"><a class="header" href="#wordpress-developer">WordPress Developer</a></h5>
+<p>地址：<a href="https://developer.wordpress.org/">https://developer.wordpress.org/</a></p>
+<p>这是 WordPress 官方的开发者资源中心。相比于 Codex ，他更加专注于 WordPress 开发，当你在开发时遇见问题，可以第一时间这里搜索，这里的答案会是最标准的。</p>
+<p>这个站点中我最常用的就是 <a href="https://developer.wordpress.org/reference/">https://developer.wordpress.org/reference/</a> ，你可以在这里查看每个函数的调用方式以及它调用的函数和它被哪些函数所调用。此外，可以在这里看到最新版本的 WordPress 提供的 API 有哪些。</p>
+<h4 id="第三方-wordpress-站点"><a class="header" href="#第三方-wordpress-站点">第三方 WordPress 站点</a></h4>
+<h5 id="themeforest"><a class="header" href="#themeforest">ThemeForest</a></h5>
+<p>地址：<a href="https://themeforest.net/">https://themeforest.net/</a></p>
+<p>ThemeForest（主题森林）可以说是目前国内外最大的主题市场，不止是 WordPress，包括 HTMl、 Drupal、设计模板等都包含。</p>
+<p>如果你希望了解国外的 WordPress 流行风格，可以到 ThemeForest 去查看最近的流行主题。此外，如果你是一个主题作者，也可以将自己的主题托管在上面进行售卖。</p>
+<h5 id="codecanyon"><a class="header" href="#codecanyon">CodeCanyon</a></h5>
+<p>地址：<a href="https://codecanyon.net/">https://codecanyon.net/</a></p>
+<p>提到了 ThemeForest ，就不能不提 Codecanyon。两家都是 envato 旗下的在线商城，前者专注于主题，而后者则专注于插件。</p>
+<p>在 Codecanyon 当中可以找到大量的付费插件，可以根据自己的需要，购买对应的插件。同样的，你可以提交自己的作品到上面去售卖。</p>
+<h5 id="wp-大学"><a class="header" href="#wp-大学">WP 大学</a></h5>
+<p>地址：<a href="https://www.wpdaxue.com">https://www.wpdaxue.com</a></p>
+<p>WP 大学是目前国内做 WordPress 相关内容做的最好的站点之一，站长多年关注 WordPress，网站内容涵盖 WordPress 新手教程、 WordPress 使用技巧、 WordPress 主题开发、WordPress 插件开发、WordPress 主题售卖等功能。堪称国内 WordPress 第一站。</p>
+<h5 id="wp-酷"><a class="header" href="#wp-酷">WP 酷</a></h5>
+<p>地址：<a href="https://www.mywpku.com/">https://www.mywpku.com/</a></p>
+<p>WP 酷是国内的一个专注 WordPress 的主题分享站点，如果找不到合适的 WordPress 主题，不妨去看看里面分享的主题，大多设计感不错，而且大部分免费。</p>
+<p>此外，博主还会分享一些 WordPress 的使用技巧在博客中，值得一看。</p>
+<h5 id="我爱水煮鱼"><a class="header" href="#我爱水煮鱼">我爱水煮鱼</a></h5>
+<p>地址：<a href="http://blog.wpjam.com/">http://blog.wpjam.com/</a></p>
+<p>我爱水煮鱼是国内知名的作者，他所写的 WordPress 主题教程、 WordPress 插件教程是很多开发者的入门教程，值得一看。</p>
+<h5 id="爱找主题"><a class="header" href="#爱找主题">爱找主题</a></h5>
+<p>地址：<a href="http://www.2zzt.com/">http://www.2zzt.com/</a></p>
+<p>这个站点收集了大量的主题，如果你找不到想要的主题也可以到这里去看看，里面收集了大量的企业站主题、个人博客主题。</p>
+<h5 id="wordpress魂"><a class="header" href="#wordpress魂">WordPress魂</a></h5>
+<p>地址：<a href="http://www.2zzt.com/">http://www.2zzt.com/</a></p>
+<p>WordPress 魂的站长黄聪录制了两批课程 <strong><a href="http://wphun.com/737">《跟黄聪学Wordpress插件开发》</a></strong> 和 <strong><a href="http://wphun.com/673">《跟黄聪学WordPress主题开发》</a></strong>，都是非常棒的视频课程，而且是免费的。如果你想学习相关开发，值得一看。</p>
+<h5 id="wopus"><a class="header" href="#wopus">WOPUS</a></h5>
+<p>地址：<a href="http://www.wopus.org/">http://www.wopus.org/</a></p>
+<p>Wopus 是一个多年的 WordPress 站点了，在上面可以看到很多和 WordPress 相关的文章，不过这个站点最值得关注的还是其 IDC 业务，因为其本身是做 WordPress 相关的，旗下的虚拟主机也针对 WordPress 进行了很多优化。</p>
+<h5 id="知更鸟"><a class="header" href="#知更鸟">知更鸟</a></h5>
+<p>地址：<a href="http://zmingcx.com/">http://zmingcx.com/</a></p>
+<p>知更鸟也是国内一个知名的 WordPress 主题制作人，他的主题广泛被 WordPress 博主使用，而且他会经常在博客上分享制作 WordPress 主题时遇见的坑和解决办法，值得一看。</p>
+<h5 id="wpbeginner"><a class="header" href="#wpbeginner">WPBeginner</a></h5>
+<p>地址：<a href="http://www.wpbeginner.com/">http://www.wpbeginner.com/</a></p>
+<p>WPBeginner 是国外的一个 WordPress 教程分享网站，里面每天都有新的 WordPress 文章发布，值得订阅，平时经常去看。不过里面的内容是英文的，对于一些英文不好的人来说，可能会稍微有些吃力，但整体难度不大。</p>
+<h5 id="tutsplus"><a class="header" href="#tutsplus">Tutsplus</a></h5>
+<p>地址：<a href="https://code.tutsplus.com/categories/wordpress">https://code.tutsplus.com/categories/wordpress</a></p>
+<p>Tusplus 是 envato 旗下的在线知识分享平台，上面有非常多的 WordPress 相关的教程。而且由于和 ThemeForest 是同一家总部，所以在内容上很多都是 ThemeForest 的作者写的。</p>
+<h4 id="wordpress-相关应用"><a class="header" href="#wordpress-相关应用">WordPress 相关应用</a></h4>
+<h5 id="wordpress-for-ios-免费"><a class="header" href="#wordpress-for-ios-免费">WordPress for iOS （免费）</a></h5>
+<p>地址：<a href="https://itunes.apple.com/us/app/wordpress/id335703880?mt=8">https://itunes.apple.com/us/app/wordpress/id335703880?mt=8</a></p>
+<p><img src="https://postimg.aliavv.com/2018/7x6il.jpg" alt="" /></p>
+<p>WordPress 官方客户端配合 JetPack 插件将会非常好用，不过可能会比较臃肿，个人不喜欢。</p>
+<h5 id="wordpress-for-android-免费"><a class="header" href="#wordpress-for-android-免费">WordPress for Android （免费）</a></h5>
+<p>地址：<a href="https://play.google.com/store/apps/details?id=org.wordpress.android">https://play.google.com/store/apps/details?id=org.wordpress.android</a></p>
+<p><img src="https://postimg.aliavv.com/2018/guiqn.jpg" alt="" /></p>
+<p>WordPress 官方客户端，也是需要配合 JetPack 插件才能更好用，不过个人不喜欢。</p>
+<p>值得一提的是，官方的两个客户端都是开源的，你可以在 <a href="https://github.com/wordpress-mobile">https://github.com/wordpress-mobile</a> 找到。</p>
+<h5 id="mweb-for-ios--mac-付费"><a class="header" href="#mweb-for-ios--mac-付费">MWeb for iOS / Mac （付费）</a></h5>
+<p>地址：<a href="http://zh.mweb.im/">http://zh.mweb.im/</a></p>
+<p>MWeb 是一款我非常喜欢的 Markdown 客户端，这节达人课就是在 MWeb 上写的。</p>
+<p><img src="https://postimg.aliavv.com/2018/nn7vk.jpg" alt="" /></p>
+<p>MWeb 对 WordPress 有非常好的支持，只需要简单的设计就可以发布内容。</p>
+<h4 id="免费商用图片站点"><a class="header" href="#免费商用图片站点">免费商用图片站点</a></h4>
+<p>写博客时总是要配一些图片，免费商用的图片自然是用起来最放心了。在这里给大家分享一些可以下载到免费商用图片的站点。</p>
+<h5 id="pixabay"><a class="header" href="#pixabay">Pixabay</a></h5>
+<p>地址：<a href="https://pixabay.com/">https://pixabay.com/</a></p>
+<p>Pixabay 是全球最大的免费商用图片下载站点，而且支持中文关键词搜索，非常友好。我在给文章配特色图像会优先来这里搜索。</p>
+<h5 id="gratisography"><a class="header" href="#gratisography">Gratisography</a></h5>
+<p>地址：<a href="http://www.gratisography.com/">http://www.gratisography.com/</a></p>
+<p>Gratisography 的图片每周会更新，而且是分好类的，可以很方便的根据分类选择图片。</p>
+<h5 id="magdeleine"><a class="header" href="#magdeleine">Magdeleine</a></h5>
+<p>地址：<a href="http://magdeleine.co/">http://magdeleine.co/</a></p>
+<p>Magdeleine 内有非常多偏向黑白对比的图片，这个站点着重提供风景照。</p>
+<h5 id="unsplash"><a class="header" href="#unsplash">Unsplash</a></h5>
+<p>地址：<a href="https://unsplash.com/">https://unsplash.com/</a></p>
+<p>UnSplash 是一个完全免费的、无版权的高清图片资源网站，有大量的图片。此外还提供了 Unsplash Wallpaper，可以用 Unsplash 的每日图片作为你的壁纸。</p>
+<h5 id="foodiesfeed"><a class="header" href="#foodiesfeed">Foodiesfeed</a></h5>
+<p>地址：<a href="https://foodiesfeed.com/">https://foodiesfeed.com/</a></p>
+<p>这个网站上全是吃的照片，如果你是美食博主，那这个网站必不可少，打开这个网站就会让你充满食欲。</p>
+<h5 id="travel-coffee-book"><a class="header" href="#travel-coffee-book">Travel Coffee Book</a></h5>
+<p>地址：<a href="http://travelcoffeebook.com/">http://travelcoffeebook.com/</a></p>
+<p>这个网站里的内容都是旅行者拍的全世界的风景照，都非常漂亮。</p>
+<h5 id="泼辣有图"><a class="header" href="#泼辣有图">泼辣有图</a></h5>
+<p>地址：<a href="http://www.polayoutu.com/collections">http://www.polayoutu.com/collections</a></p>
+<p>泼辣有图是国内的开源无版权图片，每期会精选10张照片来分享。而且每张图片都会配上图片故事，也很有意思。</p>
+<h5 id="pixelsquid"><a class="header" href="#pixelsquid">PixelSQUID</a></h5>
+<p>地址：<a href="https://www.pixelsquid.com/stock-images">https://www.pixelsquid.com/stock-images</a></p>
+<p>这个网站的图片都是一个个不同的对象（Object），每个对象都可以通过鼠标调整显示的角度，很适合拿来做剪贴画，而且都是白底的图片。</p>
+<h5 id="sozai"><a class="header" href="#sozai">Sozai</a></h5>
+<p>地址：<a href="http://www.sozai-page.com/">http://www.sozai-page.com/</a></p>
+<p>这个网站分享的都是免费的食材图片，也很适合美食博主。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="basic-plugin-2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="optimize-1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="basic-plugin-2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="optimize-1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

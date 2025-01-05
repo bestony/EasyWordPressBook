@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>WP 主题开发：提交主题到 WordPress 官方仓库 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/theme/uploads.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="分发你的主题"><a class="header" href="#分发你的主题">分发你的主题</a></h1>
+<p>同样的，当我们开发完成了主题后，我们也需要将主题发布出去，最简单、最省心的方式便是上传到 WordPress 官方的市场中。</p>
+<p>上传到 WordPress 官方的市场依然需要遵循很多规则，接下来解读一下主题审核的流程和一些注意事项。</p>
+<h3 id="审核流程"><a class="header" href="#审核流程">审核流程</a></h3>
+<p>（1）上传主题，添加到新主题的<a href="https://themes.trac.wordpress.org/query?priority=new+theme&amp;status=new&amp;status=reviewing&amp;priority=previously+reviewed&amp;keywords=!~child-theme&amp;col=id&amp;col=summary&amp;col=status&amp;col=time&amp;col=changetime&amp;col=rep">队列</a>中：在这里可以看到主题的审核进度、审核员的反馈信息。</p>
+<p>（2）主题被分配给审核员：审核员会检测主题是否「完备」，并对照最佳实践，查看是否符合一些其他的最佳实践（不符合也不影响审核，不过建议符合最佳实践，可以让审核员对你的主题有好感，通过的几率更大）。</p>
+<p>（3）审核员审核完成后，会开一个工单（Ticket）：在 Ticket 中说明你的问题，并等待更新。</p>
+<blockquote>
+<p>如果没有在工单开启后7天内反馈信息，可能会被审核员关闭掉工单，下次就要重新提交申请了。</p>
+<p>如果审核员在你回复的48小时内没有回复，可以申请将主题重新放入队列中，等待新的审核员接管。</p>
+</blockquote>
+<p>（4）审核员审核通过后，会将此主题标记为通过，发送给终审审核员，由其进行最终审核：这个审核可以在<a href="https://themes.trac.wordpress.org/report/24">这里</a>看到。</p>
+<p>（5）最终审核员如果发现了问题，会将这个主题退回给审核员进行审核。</p>
+<p>（6）如果这个主题没有被审核出问题，将会上传到 WordPress 的仓库中去。</p>
+<h3 id="wordpress-官方的主题审核清单"><a class="header" href="#wordpress-官方的主题审核清单">WordPress 官方的主题审核清单</a></h3>
+<h4 id="无障碍相关"><a class="header" href="#无障碍相关">无障碍相关</a></h4>
+<p>如果给你的标题加入了 <em>accessibility-ready</em> 标签，则主题需要为其做出一些准备，具体的清单可以参考<a href="https://make.wordpress.org/themes/handbook/review/accessibility/">这里</a>。</p>
+<blockquote>
+<p>这一项不需要太过于关注，大部分情况下我们不会加入这个标签。</p>
+</blockquote>
+<h4 id="代码规范"><a class="header" href="#代码规范">代码规范</a></h4>
+<ul>
+<li>PHP 和 JS 代码中不会报错（提醒）；</li>
+<li>主题的头部必须有符合标准的 DOCTYPE 声明和语言声明；</li>
+<li>用户输入数据在进入数据库之前，需要进行转义和验证，所有不可信的数据在输出时需要进行转义；</li>
+<li>经过 Theme Check 插件的检查；</li>
+<li>主题定义的函数、变量、设置项、全局变量、常量等，需要有唯一的前缀。</li>
+</ul>
+<h4 id="代码特性"><a class="header" href="#代码特性">代码特性</a></h4>
+<ul>
+<li>如果存在，优先使用 WordPress 自带的函数实现功能；</li>
+<li>不能使用 WordPress 核心的私有方法；</li>
+<li><strong>不能要求付费使用特性</strong>；</li>
+<li>避免使用硬编码来输出某些内容，尽可能的使用其他内容；</li>
+<li>主题的标签不应该超过3个，而且标签应该有对应的设计和代码的实现；</li>
+<li>尽可能使用 WordPress 自带的标签来输出内容；</li>
+<li><strong>包含评论功能的实现</strong>；</li>
+<li>向下兼容3个版本；</li>
+<li><strong>主题不能移除/隐藏 adminBar</strong>。</li>
+</ul>
+<h4 id="演示和选项"><a class="header" href="#演示和选项">演示和选项</a></h4>
+<ul>
+<li>主题选项不应该使用自定义文章类型来保存；</li>
+<li><strong>与主题设计无关的功能需要移除</strong>；</li>
+<li>使用 <a href="https://make.wordpress.org/core/2016/11/30/starter-content-for-themes-in-4-7/"><em>starter-content</em></a> 来为用户演示内容。</li>
+</ul>
+<h4 id="文档"><a class="header" href="#文档">文档</a></h4>
+<ul>
+<li>任何非官方的、自行添加的功能都需要有对应的文档来说明。</li>
+</ul>
+<h4 id="语言"><a class="header" href="#语言">语言</a></h4>
+<ul>
+<li>所有输出的内容都应该进行翻译（国际化，我们下节课会说）；</li>
+<li>在 style.css 中加入 <em>text domain</em>；</li>
+<li>主题应该有一个唯一的别名（<em>slug</em>）；</li>
+<li>可以在主题中使用任何一种语言，但是整个主题内都应该使用这一种语言。</li>
+</ul>
+<h4 id="协议"><a class="header" href="#协议">协议</a></h4>
+<ul>
+<li>主题需要基于 GPL 协议，或与 GPL 协议不冲突；</li>
+<li>明确声明版权和许可，在 style.css 的头部加入 LICENSE 和 LICENSE URL；</li>
+<li>对所有的资源进行版权和许可的说明（字体、图片等）；</li>
+<li>代码应该是你自己的编写的，或者授权给你的；</li>
+<li><strong>前台应该显示用户的版权，而不是主题开发者的版权。</strong></li>
+</ul>
+<h4 id="命名"><a class="header" href="#命名">命名</a></h4>
+<ul>
+<li>主题的名称不允许使用 WordPress、Theme；</li>
+<li>如果涉及到 WordPress，则需要拼写准确（W、P 大写）。</li>
+</ul>
+<h4 id="设置和选项"><a class="header" href="#设置和选项">设置和选项</a></h4>
+<ul>
+<li>将设置项保存在一个数组中；</li>
+<li>支持自定义<a href="https://make.wordpress.org/themes/2015/04/22/details-on-the-new-theme-settings-customizer-guideline/">说明</a>；</li>
+<li>不向数据库写入插件设置的默认值；</li>
+<li>对于主题的设置应该加入权限控制，确保不会有越权行为。</li>
+</ul>
+<h4 id="插件"><a class="header" href="#插件">插件</a></h4>
+<ul>
+<li>主题不能包含插件；</li>
+<li>主题不能需要插件才能工作；</li>
+<li>主题只能推荐存在于 WordPress 官方目录中的插件；</li>
+<li>需要使用 <a href="http://tgmpluginactivation.com/">TGM Plugin Activation</a>  来推荐用户安装插件；</li>
+<li>主题可以引入满足要求的库，比如 options frameworks。</li>
+</ul>
+<h4 id="截图"><a class="header" href="#截图">截图</a></h4>
+<ul>
+<li>截图应该是主题的演示；</li>
+<li>截图可以选择性的展示支持的插件、设置和模板；</li>
+<li>截图不能是一个 logo 或者 mockup；</li>
+<li>主题截图不能大于 1200x900。</li>
+</ul>
+<h4 id="隐私"><a class="header" href="#隐私">隐私</a></h4>
+<ul>
+<li>未经用户允许，不能向开发者发送数据；</li>
+<li>不能使用短链接服务。</li>
+</ul>
+<h4 id="销售和链接"><a class="header" href="#销售和链接">销售和链接</a></h4>
+<ul>
+<li>Theme URI 是可选项；</li>
+<li>如果有 Theme URI ，这个值应该是该主题在 WordPress 官方仓库的地址；</li>
+<li>如果这个地址是演示站点，则该站点的内容必须关于主题本身，且不含测试数据；</li>
+<li>Author URI 是可选项，它应该是指向开发者个人网站的链接；</li>
+<li>主题的底部只能有一个信息链接，而且这个链接应该是在 style.css 中定义的；</li>
+<li>主题的底部应该还有一个信息链接指向 WordPress.org。</li>
+</ul>
+<h4 id="样式表和脚本"><a class="header" href="#样式表和脚本">样式表和脚本</a></h4>
+<ul>
+<li>脚本和样式表不能进行硬编码；</li>
+<li>除非你提供了源文件，否则不能对样式表和脚本进行压缩；</li>
+<li>使用 WordPress 自带的库文件，而不是在主题中自行维护一个版本；</li>
+<li>除了 Google Font，尽可能使用自带的文件，而不是远程链接。</li>
+</ul>
+<h4 id="模板"><a class="header" href="#模板">模板</a></h4>
+<ul>
+<li>如果涉及到这些文件，应使用其对应的函数来引用：
+<ul>
+<li>header.php （<code>get_header()</code>）</li>
+<li>footer.php （<code>get_footer()</code>）</li>
+<li>sidebar.php (<code>get_sidebar()</code>)</li>
+<li>searchform.php (<code>get_search_form()</code>)</li>
+</ul>
+</li>
+<li>自定义模板文件应该使用 <code>get_template_part</code>来引用或 <code>locate_tempalte</code>来引用；</li>
+<li>根据首页的设置显示正确的内容。</li>
+</ul>
+<h3 id="选择"><a class="header" href="#选择">选择</a></h3>
+<p>看到上面的审核要求清单，是不是觉得差距很大？我们习以为常的东西在 WordPress 官方的规定中都是不允许出现的，对于大多数开发者来说，可能上面的很多条款会让我们十分难受，那么这个时候，你就要考虑你是否真的要将你的主题上架到 WordPress 官方商店了。</p>
+<p>在国内，WordPress 主题的盗版屡禁不止，开发者们通过不同的方式来实现对盗版用户的封堵。在这里给大家提供一种可能，可以考虑将你的主题上传到 Themeforest 来进行售卖，Themeforest 也是一个知名的 WordPress 主题商店，但是它对于商业性质的主题更加友好，要求也更少一些，或许能够给你带来不错的收入。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../theme/tips.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../plugin/usage.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../theme/tips.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../plugin/usage.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

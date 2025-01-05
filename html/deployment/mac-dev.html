@@ -1,0 +1,311 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>macOS 开发环境配置 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/deployment/mac-dev.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="macos-下的开发环境配置"><a class="header" href="#macos-下的开发环境配置">macOS 下的开发环境配置</a></h1>
+<h3 id="在本地的-mac-电脑上配置开发环境"><a class="header" href="#在本地的-mac-电脑上配置开发环境">在本地的 Mac 电脑上配置开发环境</a></h3>
+<p>MacOS 相比于 Windows 有很好的命令行支持，在开发环境上也更友好，系统自带运行 WordPress 需要的 PHP 和 Apache。</p>
+<p>不过，为了能够更简单的进行 WordPress 开发，建议读者使用 Laravel 的 Valet 组件来进行 WordPress 开发。</p>
+<h4 id="安装-homebrew"><a class="header" href="#安装-homebrew">安装 homeBrew</a></h4>
+<p><code>Valet</code> 需要 <code>PHP 7</code> 环境和 <code>composer</code> 来运行，同时还需要 <code>homebrew</code> 来安装依赖环境（<code>Nginx</code>、<code>Ngrok</code>、<code>Dnsmasq</code>）。而 <code>PHP 7</code> 和 <code>composer</code> 环境也可以通过 <code>homeBrew</code> 来安装，所以在开始先来安装 <code>homeBrew</code>.</p>
+<p>打开 LaunchPad，找到 <strong>终端</strong> 应用，在终端应用中粘贴如下命令，并回车。</p>
+<pre><code>/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+</code></pre>
+<blockquote>
+<p>homeBrew 的安装需要 XCode Command Line 的支持，可以通过执行 <code>xcode-select --install</code> 来安装。</p>
+</blockquote>
+<p>待命令执行完毕后，HomeBrew 就安装完成了。可以执行<code>brew</code>命令，查看系统返回，如果显示如下所示，则说明安装完成了。</p>
+<p><img src="https://postimg.aliavv.com/mbp/0jprx.jpg" alt="" /></p>
+<h4 id="安装-php-7-和-composer"><a class="header" href="#安装-php-7-和-composer">安装 PHP 7 和 Composer</a></h4>
+<p>在终端内执行如下命令，来安装 PHP 7 执行环境：</p>
+<pre><code>brew install php@7.1 # 安装 php71
+</code></pre>
+<p>当 PHP 7 安装完成后，我们开始安装 Composer，在命令行中执行如下命令：</p>
+<pre><code>php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+mv composer.phar /usr/local/bin/composer
+</code></pre>
+<p>通过上述的命令，把 Composer 安装到本地目录了。</p>
+<blockquote>
+<p>将其移动到 <code>/usr/local/bin/composer</code> 主要是为了方便全局运行，这样我们就不用总是使用相对路径来调用 Composer 了。</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/mbp/9g7e0.jpg" alt="" /></p>
+<p>安装完成后，我们要为 Composer 来配置国内镜像（受不可抗力因素影响，官方镜像下载速度缓慢）。</p>
+<p>Composer 支持项目加速和全局加速，我们这里没有 Composer 项目，所以选择全局加速。在命令行中执行如下命令：</p>
+<pre><code>composer config -g repo.packagist composer https://packagist.phpcomposer.com
+</code></pre>
+<h4 id="安装-valet"><a class="header" href="#安装-valet">安装 Valet</a></h4>
+<p>在命令行中执行如下命令来安装 Valet：</p>
+<pre><code>composer global require laravel/valet
+valet install
+</code></pre>
+<p>命令执行完成后，系统就成功帮助我们安装了 Valet 开发环境。</p>
+<p><img src="https://postimg.aliavv.com/mbp/f9b4q.jpg" alt="" /></p>
+<p>这时执行 <code>ping gitchat.dev</code>，可以看到返回的 IP 地址是 127.0.0.1，则说明环境配置成功。</p>
+<p><img src="https://postimg.aliavv.com/mbp/c8mow.jpg" alt="" /></p>
+<h4 id="配置-valet"><a class="header" href="#配置-valet">配置 Valet</a></h4>
+<p>安装完 Valet，我们还要进行简单的配置，来更好的使用。</p>
+<p>首先，来创建网站文件的目录：</p>
+<pre><code>mkdir -p ~/Developer/php #创建目录
+</code></pre>
+<p>然后，将这个目录设置为 Valet 的主目录：</p>
+<pre><code>cd ~/Developer/php # 进入目录
+valet park #配置 Valet
+</code></pre>
+<p>这样，在 PHP 目录下创建的任何一个文件夹，都可以通过 <code>[文件夹名].dev</code> 的域名进行访问。</p>
+<h4 id="安装-mysql"><a class="header" href="#安装-mysql">安装 MySQL</a></h4>
+<p>WordPress 需要 MySQL 作为数据库，接下来我们来安装数据库。</p>
+<pre><code>brew install mysql
+</code></pre>
+<p>安装完成后，可以执行 <code>brew services start mysql</code>设置数据库的开机自启动。</p>
+<p><img src="https://postimg.aliavv.com/mbp/bv3fd.jpg" alt="" /></p>
+<p>可以执行<code>cat ~/.mysql_secret</code>来获取 mysql 默认的 root 用户的密码。这个密码稍后要用到，要记下来。</p>
+<blockquote>
+<p>如果提示为<code>No such file or directory</code>，则说明 root 密码为空。</p>
+</blockquote>
+<h4 id="安装-wordpress"><a class="header" href="#安装-wordpress">安装 WordPress</a></h4>
+<p>接下来，我们来安装 WordPress。</p>
+<p>首先，创建目录，并下载 WordPress 的文件。</p>
+<pre><code>cd  ~/Developer/php # 进入目标目录
+mkdir wordpress  # 创建新的文件夹
+cd wordpress  # 进入新的文件夹
+wget https://wordpress.org/latest.zip
+unzip latest.zip
+mv wordpress/* ./
+</code></pre>
+<p>然后创建数据库：</p>
+<pre><code>mysql -uroot -p -e "create database wordpress" 
+</code></pre>
+<p>执行命令后，可能会让你输入密码，输入密码后并回车，就成功创建了数据库了。</p>
+<p><img src="https://postimg.aliavv.com/mbp/ezx1r.jpg" alt="" /></p>
+<p>在浏览器中打开 <a href="http://wordpress.dev/">http://wordpress.dev/</a>，就可以一步一步按部就班的安装了。</p>
+<p><img src="https://postimg.aliavv.com/mbp/dw43z.jpg" alt="" /></p>
+<p>在输入数据库信息时，设置数据库名为 <code>wordpress</code>，用户名为<code>root</code> ，密码为上方我们获取到的密码。其他两项不同，单击“提交”按钮。</p>
+<p><img src="https://postimg.aliavv.com/mbp/c1u5c.jpg" alt="" /></p>
+<p>单击“进行安装”按钮，在新的页面中设置基本信息，并单击“安装 WordPress”按钮。</p>
+<p><img src="https://postimg.aliavv.com/mbp/xhbg1.jpg" alt="" /></p>
+<p>这样，我们的本地开发环境就部署完成了。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../deployment/windows-dev.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../deployment/cpanel-production.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../deployment/windows-dev.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../deployment/cpanel-production.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

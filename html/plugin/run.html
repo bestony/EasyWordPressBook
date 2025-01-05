@@ -1,0 +1,339 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>WP 插件的运行机制 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/plugin/run.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="插件是如何运行的"><a class="header" href="#插件是如何运行的">插件是如何运行的</a></h1>
+<h3 id="插件的加载机制"><a class="header" href="#插件的加载机制">插件的加载机制</a></h3>
+<p>了解插件的加载机制，能够帮助我们更加深入的了解插件的开发，也能够帮助我们更好的对插件进行开发。下面了解一下 WordPress 的插件加载机制。</p>
+<blockquote>
+<p>要注意，PHP 的执行顺序是一行一行向下执行的，方便理解后面的加载顺序判断。</p>
+</blockquote>
+<h4 id="indexphp"><a class="header" href="#indexphp">index.php</a></h4>
+<p>无论从哪里进入到 WordPress，一定会从 <em>index.php</em> 文件开始加载，打开根目录的 index.php ，可以看到这个文件引用了 <em>wp-blog-header.php</em> 文件。再无其他代码。</p>
+<blockquote>
+<p>代码所在行<a href="https://github.com/WordPress/WordPress/blob/02d04f2b5c61bd770d6ce4875ac25b2ad8da0c45/index.php#L17">请单击这里</a>。</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/mbp/pck8f.jpg" alt="" /></p>
+<h4 id="wp-blog-headerphp"><a class="header" href="#wp-blog-headerphp">wp-blog-header.php</a></h4>
+<p>打开 wp-blog-header.php 文件，可以看到这个文件引用了两个文件。</p>
+<blockquote>
+<p>代码所在行<a href="https://github.com/WordPress/WordPress/blob/02d04f2b5c61bd770d6ce4875ac25b2ad8da0c45/wp-blog-header.php#L13">请单击这里</a>。</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/mbp/erjxn.jpg" alt="" /></p>
+<p>我们先看一看 <em>wp-load.php</em> 文件。</p>
+<h4 id="wp-loadphp"><a class="header" href="#wp-loadphp">wp-load.php</a></h4>
+<p>打开这个文件可以看到，该文件检测了 <em>wp-config.php</em> 文件，如果未检测到该文件，则进入到安装进程。我们使用时这个文件是存在的，所以执行的是下方的 <code>require_once( ABSPATH . 'wp-config.php' );</code>命令。</p>
+<blockquote>
+<p>代码所在行<a href="https://github.com/WordPress/WordPress/blob/02d04f2b5c61bd770d6ce4875ac25b2ad8da0c45/wp-load.php#L37">请单击这里</a>。</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/mbp/ge4h8.jpg" alt="" /></p>
+<p>接下来看看 <em>wp-config.php</em> 这个文件。</p>
+<h4 id="wp-configphp"><a class="header" href="#wp-configphp">wp-config.php</a></h4>
+<p><em>wp-config.php</em> 文件内存放着 WordPress 的配置信息，包括数据库、Debug 等信息。我们一直往下看，会看到这里它引入到了一个 <em>wp-settings.php</em>。</p>
+<blockquote>
+<p>代码所在行<a href="https://github.com/WordPress/WordPress/blob/02d04f2b5c61bd770d6ce4875ac25b2ad8da0c45/wp-config-sample.php#L90">请单击这里</a>。</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/mbp/ge7fs.jpg" alt="" /></p>
+<p>接下来看看 <em>wp-settings.php</em>。</p>
+<h4 id="wp-settingsphp"><a class="header" href="#wp-settingsphp">wp-settings.php</a></h4>
+<p>这里包含了大量的 WordPress 初始化函数，前面的内容不做过多的解释，可以直接拉到第 303 行，则看到这样的代码。</p>
+<blockquote>
+<p>代码所在行<a href="https://github.com/WordPress/WordPress/blob/02d04f2b5c61bd770d6ce4875ac25b2ad8da0c45/wp-settings.php#L304">请单击这里</a>。</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/mbp/7jpuq.jpg" alt="" /></p>
+<p>这段代码会将已激活的插件作为循环元素进行循环，对每个插件执行注册和加载。</p>
+<p>继续向下看，会在第 421 行看到这样一段代码，该代码实现了加载我们激活的主题的 functions.php 文件。</p>
+<blockquote>
+<p>代码所在行<a href="https://github.com/WordPress/WordPress/blob/02d04f2b5c61bd770d6ce4875ac25b2ad8da0c45/wp-settings.php#L432">请单击这里</a>。</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/mbp/hjzoc.jpg" alt="" /></p>
+<p>这样，我们在主题中添加的功能，也会被加载到系统当中去。</p>
+<p>这个文件没有再引用其他的文件，然后返回 <em>wp-config.php</em>。</p>
+<h4 id="wp-blog-headerphp-1"><a class="header" href="#wp-blog-headerphp-1">wp-blog-header.php</a></h4>
+<p>我们发现，wp-config.php 也执行到了文件的尾部，接下来返回到上一个文件——<em>wp-load.php</em>。</p>
+<p>在 <em>wp-load.php</em> 中可以看到，在这个 if 代码块中，只有这一条引用代码，所以该文件也执行完了，代码执行回到上一个文件 <em>wp-blog-header.php</em>。</p>
+<p>在 wp-blog-header.php 文件中可以看到，在 <em>wp-load.php</em> 下，引用了 <em>template-loader.php</em>，该文件的功能就是进行我们后续的主题加载。</p>
+<p><img src="https://postimg.aliavv.com/mbp/7jikn.jpg" alt="" /></p>
+<h4 id="结论"><a class="header" href="#结论">结论</a></h4>
+<p>经过上述的分析可以得出一个结论，WordPress 的加载是这样的一个顺序，先加载 <strong>插件</strong>，再加载 主题根目录中的 <em>functions.php</em>，最后加载主题。</p>
+<p><img src="https://postimg.aliavv.com/mbp/l0gk2.jpg" alt="" /></p>
+<h3 id="插件是如何运行的-1"><a class="header" href="#插件是如何运行的-1">插件是如何运行的</a></h3>
+<p>WordPress 的插件也是一段代码， WordPress 插件通过 WordPress 提供的插件 API 和函数，来实现集成到 WordPress 当中去。相关涉及到的函数，你可以在 <em>wp-includes/plugin.php</em> 中看到：</p>
+<p><img src="https://postimg.aliavv.com/mbp/ijlka.jpg" alt="" /></p>
+<p>WordPress 将插件的行为分为两种，分别是 Action（动作）和 Filters（过滤器）。</p>
+<h4 id="什么是-hook"><a class="header" href="#什么是-hook">什么是 Hook</a></h4>
+<p>WordPress 的插件机制是基于 Hook 机制实现的，简单来说，就是在 WordPress 的核心代码中，加入了大量让 Hook 挂载的位置，当程序执行到这里时，就会顺着 Hook 上挂载的钩子走一遍，然后再回来继续执行后面的代码；如果没有挂载任何钩子，则不执行操作。</p>
+<p>我们写插件，就是写一些自定义的函数，然后利用 WordPress 提供的对 Hook 操作的函数，将函数挂载到对应的位置上去。</p>
+<p><img src="https://postimg.aliavv.com/mbp/7rp1i.jpg" alt="" /></p>
+<h4 id="什么是-action"><a class="header" href="#什么是-action">什么是 Action</a></h4>
+<p>Action 会在 WordPress 内核运行到一定的点或事件时会调用的，被调用后，插件可以执行一些具体的操作。</p>
+<h4 id="什么是-filters"><a class="header" href="#什么是-filters">什么是 Filters</a></h4>
+<p>Filters 则是对内容的处理，通过 Filters 可以在这些数据被渲染到页面前或保存到数据库前对其进行修改。</p>
+<p>简单的来说，两者的区别主要是下面这样的：</p>
+<ul>
+<li>Action 函数在被调用时，是可以直接调用的，自定义的函数无需提供返回值；</li>
+<li>Filters 函数在被调用时，会被传入一个具体的字符串，函数执行完成后，还需要将这个字符串返回给系统，方便系统进行渲染。</li>
+</ul>
+<h3 id="重要的函数"><a class="header" href="#重要的函数">重要的函数</a></h3>
+<p>刚刚只是说明了什么是 Action、什么是 Filters 具体功能的实现，则是通过下面这四个重要的函数来实现的。</p>
+<h4 id="do_action"><a class="header" href="#do_action">do_action</a></h4>
+<p><em>do_action</em> 是 WordPress 插件机制非常重要的一环，当程序运行到这个函数时，就会将挂载在这个 Hook 上的所有函数执行一遍。</p>
+<p>这个函数有两个参数，第一个参数是 Hook 的名称，第二个参数则是具体的参数。</p>
+<p><img src="https://postimg.aliavv.com/mbp/ldonb.jpg" alt="" /></p>
+<p>比如在开发过程中，可能会用到 <code>get_header</code> 这个函数，该函数在执行时，首先会调用 <em>do_action</em>，那么，在 <em>get_header</em> 上挂载的函数就会执行，执行完成后，再执行后面的函数。</p>
+<p>有了这个函数的存在，才有了后续我们开发插件时，各种功能的实现。</p>
+<h4 id="add_action"><a class="header" href="#add_action">add_action</a></h4>
+<p><em>add_action</em> 可以将我们自定义的函数加到特定的 Hook 上去，等待执行。一般来说，我们只需要执行如下命令即可。</p>
+<pre><code class="language-php">add_action("Hook 名","函数名")
+</code></pre>
+<p>不过这样的使用忽略掉了两个参数，在执行一些特定的操作时，可能就不足了。</p>
+<p>我们可以看看这个函数的官方文档。</p>
+<pre><code class="language-Php">add_action( string $tag, callable $function_to_add, int $priority = 10, int $accepted_args = 1 )    
+</code></pre>
+<p>这个函数一共有四个参数，其中前两者分别是 Hook 名和对应的函数，而后两者分别是优先级和可以接受的参数个数。</p>
+<p>优先级：如果你不设置的话，添加的函数默认优先级是 10，也可以根据你自己的需要设置具体的优先级。优先级的规则是越小越先执行。同时添加了一个优先级为 5 和一个优先级为 10 的函数，会先执行优先级为5的函数，再执行优先级为10的函数。</p>
+<p>参数个数：默认情况下参数的个数是1。具体设置为多少，则取决于你使用的 Hook 能够提供多少个参数。如何找寻这个参数的个数？可以直接去看这个 Hook 的说明，查看相关的代码说明。如果这个 Hook 提供了调用的说明，可以直接根据上面的 <em>add_action</em> 的函数参数来判断这个 Hook 支持几个参数。具体的参数是什么，可以通过实例代码的注释或者到源代码中查找对应 <code>do_action</code> 函数的参数。举个例子，我希望了解 <em>save_post</em> 这个 Hook 的参数，可以到它的 <a href="https://codex.wordpress.org/Plugin_API/Action_Reference/save_post">API 页面</a>去查看具体的参数调用。可以看到在示例代码中说明了参数的个数和对应的参数的含义。</p>
+<p><img src="https://postimg.aliavv.com/mbp/xib2q.jpg" alt="" /></p>
+<p>如果这个函数没有说明参数，也可以查看它的源代码，确认参赛，页面底部有说明这个函数的位置，</p>
+<p><img src="https://postimg.aliavv.com/mbp/6gjal.jpg" alt="" /></p>
+<p>你可以直接去对应的文件查看这个 Hook 的调用参数。了解到参数后，就可以使用这些参数，来执行一系列操作了。</p>
+<blockquote>
+<p>虽然你可能查到了有三个参数，可以不使用三个参数，比如只使用前两个。但是如果要用第一个和第三个，则还是需要在 <em>add_action</em> 中设置参数个数为3。</p>
+</blockquote>
+<h4 id="apply_filters"><a class="header" href="#apply_filters">apply_filters</a></h4>
+<p><em>apply_filters</em> 函数和 <em>do_action</em> 类似，它会对数据执行一系列操作来进行处理。系统通过如下方法进行调用,</p>
+<pre><code class="language-php">$value = apply_filters( 'example_filter', 'filter me', $arg1, $arg2 );
+</code></pre>
+<p>可以看到这个函数的结果会被赋值给一个变量，所以它和 <em>do_action</em> 不同之处就在于它需要一个返回值。其他大体上相同，不再赘述。</p>
+<h4 id="add_filter"><a class="header" href="#add_filter">add_filter</a></h4>
+<p>这个函数和刚刚说的 <code>add_action</code> 基本相同，函数的定义也相同。</p>
+<pre><code class="language-php">add_filter( string $tag, callable $function_to_add, int $priority = 10, int $accepted_args = 1 )
+</code></pre>
+<p>这个函数的使用不再赘述，可以参考上面 <code>add_action</code> 的内容。</p>
+<h3 id="hook-列表"><a class="header" href="#hook-列表">Hook 列表</a></h3>
+<p>WordPress 提供了大量的 Hook，这里不再一一列举，把官方的列表给大家，在使用中出现了问题，再到读者圈内提问即可。</p>
+<p><a href="https://codex.wordpress.org/Plugin_API/Action_Reference">Action Hook 列表</a></p>
+<p><a href="https://codex.wordpress.org/Plugin_API/Filter_Reference">Filter Hook 列表</a></p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../plugin/usage.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../plugin/create.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../plugin/usage.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../plugin/create.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

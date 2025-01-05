@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>使用 WPML 插件建设一个多语言站点 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/i18n/wpml.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="使用-wpml-插件构建一个多语言站点"><a class="header" href="#使用-wpml-插件构建一个多语言站点">使用 WPML 插件构建一个多语言站点</a></h1>
+<p>这节课来学习如何使用 WPML 来创建一个 多语言站点。</p>
+<h3 id="购买插件"><a class="header" href="#购买插件">购买插件</a></h3>
+<p>WPML 是付费插件，可以到<a href="https://wpml.org/zh-hans/">官网</a>购买。</p>
+<p>如果不想购买，可以去看第29课 Polylang 的内容，在下一课中，将使用免费（主要功能）的 PolyLang 来创建多语言站点。</p>
+<h3 id="初始化配置"><a class="header" href="#初始化配置">初始化配置</a></h3>
+<p>安装并启用 WPML 后，会有一个初始化的过程，首先我们初始化一下插件，单击「配置 WPML」按钮，进入配置的页面。</p>
+<p><img src="https://postimg.aliavv.com/mbp/smlgv.jpg" alt="" /></p>
+<p>将语言设置为中文：</p>
+<p><img src="https://postimg.aliavv.com/mbp/92a48.jpg" alt="" /></p>
+<p>然后选择我们要支持的语言，这里依然选择英文：</p>
+<p><img src="https://postimg.aliavv.com/mbp/gr48a.jpg" alt="" /></p>
+<p>接下来配置语言切换器，在语言切换器这里，可以通过拖拽来调整我们语言展示顺序以及当某篇文章没有对应的内容时的跳转机制。</p>
+<p><img src="https://postimg.aliavv.com/mbp/yqplv.jpg" alt="" /></p>
+<p>下面这些选项，则根据你自己的个人需要来设置，可以将语言转换器添加到小工具和页脚，来让访客更加容易切换语言。</p>
+<p><img src="https://postimg.aliavv.com/mbp/sl12y.jpg" alt="" /></p>
+<p>设置完成后，就是输入你在 WPML 官网购买的授权进行激活。</p>
+<h3 id="设置插件"><a class="header" href="#设置插件">设置插件</a></h3>
+<p>WPML 提供了非常多的设置项，可以根据自己的需要来进行设置。</p>
+<p>首先是根据你的需要，可以设置默认的语言以及增加新的语言、删除不再使用的语言。</p>
+<p><img src="https://postimg.aliavv.com/mbp/rvyvw.jpg" alt="" /></p>
+<p>接下来是 URL 格式，可以根据自己的需要，选择不同的语言格式，比如子目录格式、不同域名的格式、参数格式等等。推荐大家使用目录，需要配置的内容较少，而且URL也比较美观。</p>
+<p><img src="https://postimg.aliavv.com/mbp/98ueu.jpg" alt="" /></p>
+<p>语言切换器部分大体上和我们初始化的内容是一致的，不过这里有几个多出来的选项，我说明一下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/yte5i.jpg" alt="" /></p>
+<p>这里保留 URL 参数可以让语言切换器在切换语言时，带上一定的参数，比如 <em>version</em>、<em>time</em> 等信息，在这里设置参数，如 <em>version、time</em>，然后当通过链接进入时，链接中的版本信息和时间信息就被保留下来了。</p>
+<p>额外的 CSS 可以为语言选择器添加一些 CSS 样式，使其适配我们网站的风格。</p>
+<p>向后兼容选项是否开启取决于你的主题是否需要，你的主题是最近更新过的，可以不勾选这个选项了。</p>
+<p>这四个选项我们之前说过，不再说明：</p>
+<p><img src="https://postimg.aliavv.com/mbp/q2qts.jpg" alt="" /></p>
+<p>自定义语言切换器这里允许我们根据自己的需要设置语言切换器的样式，如果有特殊的切换需要，可以在这里调整。</p>
+<p><img src="https://postimg.aliavv.com/mbp/iktpe.jpg" alt="" /></p>
+<p>要显示的博客文章则是设置你的站点在不同语言下的显示策略，如果某篇文章不存在对应版本的翻译，该如何选择？</p>
+<p>隐藏语言则可以帮助你将某些语言隐藏起来，方便调试，调试完成后，再重新开放出来。</p>
+<p>使主题多语化可以为你的主题加入多语言的支持，一般都是勾选的。</p>
+<p><img src="https://postimg.aliavv.com/mbp/wzcrr.jpg" alt="" /></p>
+<p>浏览器语言重定向则根据你自己的需要选择，是否需要根据 用户的浏览器语言自动切换到对应的语言中。可以根据自己的需要设置，不过建议禁用掉，因为如果随意跳转，可能会让你的访客产生迷惑。</p>
+<p>SEO 选项则是在页面的头部加入其他语言的链接，勾选上即可。</p>
+<p><img src="https://postimg.aliavv.com/mbp/lbe9x.jpg" alt="" /></p>
+<p>用于 Ajax 操作的语言过滤：这一项取决于你的主题是否使用了 Ajax ，如果使用了，则可以开启这个选项。如果没有使用，可以不开启这个选项。</p>
+<p><img src="https://postimg.aliavv.com/mbp/w02nz.jpg" alt="" /></p>
+<h3 id="翻译目录"><a class="header" href="#翻译目录">翻译目录</a></h3>
+<p>在 WPML 中，对目录的处理要在插件中进行，单击「WPML」— 「分类翻译」命令，就可以进入到目录的翻译页面，选择你要翻译「目录」或「标签」。</p>
+<p>可以看到已经创建的目录：</p>
+<p><img src="https://postimg.aliavv.com/mbp/y7p3v.jpg" alt="" /></p>
+<p>显示为一个地球图标，则说明这个目录的主语言为当前所对应的语言，而后面的加号，则表示需要为这个目录创建一个对应的目录。后面显示的铅笔的，则说明已经为这个目录创建了对应目录，接下来可以点击铅笔对这个目录进行修改。</p>
+<p>点击加号新增对应的目录，可以很方便的设置对应的内容。点击中间的按钮，可以将左侧的内容复制到右侧。设置完成后，单击“保存”按钮，即可创建对应语言的目录了。</p>
+<p><img src="https://postimg.aliavv.com/mbp/59isx.jpg" alt="" /></p>
+<h3 id="设置菜单"><a class="header" href="#设置菜单">设置菜单</a></h3>
+<p>单击「外观」— 「菜单」命令，可以看到不同的语言：</p>
+<p><img src="https://postimg.aliavv.com/mbp/2gsk5.jpg" alt="" /></p>
+<p>切换不同的语言，可以看到不同语言下的主菜单，然后勾选菜单的显示位置即可。</p>
+<p>对于有多个菜单的语言，可以在上方的选择器中切换对应的菜单。</p>
+<p><img src="https://postimg.aliavv.com/mbp/frsk4.jpg" alt="" /></p>
+<h3 id="翻译文章"><a class="header" href="#翻译文章">翻译文章</a></h3>
+<p>对于我们来说，最主要的还是创建文章和页面，这里我以文章举例。</p>
+<p>打开「文章」—「写文章」页面，就可以开始创建文章了，点击页面右侧的语言链接，可以切换我们正在写的文章是属于哪一门语言的。</p>
+<p><img src="https://postimg.aliavv.com/mbp/3pbqe.jpg" alt="" /></p>
+<p>或着，可以点击菜单栏中的语言选项，来切换当前正在操作的语言。</p>
+<p><img src="https://postimg.aliavv.com/mbp/vpy71.jpg" alt="" /></p>
+<p>切换了语言就会发现，不同语言下的目录是不同的，需要根据不同语言，创建不同的目录。</p>
+<p><img src="https://postimg.aliavv.com/mbp/57mf1.jpg" alt="" /></p>
+<h3 id="扩充你的-wpml-能力"><a class="header" href="#扩充你的-wpml-能力">扩充你的 WPML 能力</a></h3>
+<p>WPML 提供了多种插件，可以安装这些拓展插件来提升 WPML 的能力，实现更好的管理。</p>
+<p>插件列表<a href="https://wpml.org/zh-hans/documentation-4/wpml%E7%9A%84%E6%A0%B8%E5%BF%83%E6%8F%92%E4%BB%B6%E5%92%8C%E9%99%84%E5%8A%A0%E6%8F%92%E4%BB%B6/">详见这里</a>。</p>
+<h3 id="总结"><a class="header" href="#总结">总结</a></h3>
+<p>至此，我们就完成了使用 WPML 来创建一个多语言站点的操作，如果你希望使用一个免费版本的插件来构建多语言站点，下节课的 Polylang 不会让你失望。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../i18n/theme.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../i18n/polylang.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../i18n/theme.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../i18n/polylang.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

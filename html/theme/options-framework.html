@@ -1,0 +1,357 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>WP 主题开发：接入 Options Framework - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/theme/options-framework.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="接入-options-framework"><a class="header" href="#接入-options-framework">接入 Options Framework</a></h1>
+<p>终于在这节课要开始为主题制作一个管理后台了。</p>
+<p>可能中间你一直奇怪，为什么我没有讲为主题制作一个管理后台，毕竟一个高度自定义化的主题，是一定会需要很多设置项的，如果不将其做在后台的管理菜单中，就需要通过修改代码来实现自定义，显然这并不符合我们的主题的定位，通过修改代码实现自定义的形式仅适合开发者们。</p>
+<p>如今，我们要尝试使用 Options Framework 来在我们的主题内集成主题设置。</p>
+<h3 id="接入-options-framework-的优势"><a class="header" href="#接入-options-framework-的优势">接入 Options Framework 的优势</a></h3>
+<p>接入 Options Framework 可以让我们以更简单的形式来实现主题的选项，让我们把更多的精力放在主题的本身，而不是研究如何过滤用户输入的数据，这些内容 Options Framework 都会在后台帮我们做好，只需要设计具体的设置项目即可。</p>
+<h3 id="在-gitchat-主题中接入-options-framework"><a class="header" href="#在-gitchat-主题中接入-options-framework">在 GitChat 主题中接入 Options Framework</a></h3>
+<p>首先，我们需要下载 Options Framework，开发者将其开源在 <a href="https://github.com/devinsays/options-framework-theme">Github</a>，可以在这里直接下载到最新的代码。</p>
+<blockquote>
+<p>下载地址请<a href="https://github.com/devinsays/options-framework-theme/archive/master.zip">单击这里</a>。</p>
+</blockquote>
+<p>下载后，将这个压缩包解压，可以看到里面有很多文件，不过大部分都是用不到的，只需要将 <em>images</em>、<em>inc</em>、<em>options.php</em> 三个文件移动到主题根目录中去。</p>
+<p><img src="https://postimg.aliavv.com/mbp/52qj2.jpg" alt="" /></p>
+<p>然后，打开主题的 <em>functions.php</em> 文件，在其中加入如下代码：</p>
+<pre><code class="language-php">if (!function_exists('optionsframework_init')){
+    define('OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri().'/inc/');
+    require_once dirname(__FILE__).'/inc/options-framework.php';
+}
+</code></pre>
+<p>加入后代码如下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/nj5hp.jpg" alt="" /></p>
+<p>保存文件，回到 WordPress 后台，可以在「外观」中找到一个「Theme Options」，点击即可进入设置页面。</p>
+<p><img src="https://postimg.aliavv.com/mbp/674s2.jpg" alt="" /></p>
+<p>进入设置页面后，会看到非常多的设置项，这个都是 Options Framework 为我们提供的 Demo，等下会将这些内容处理一下，只保留我们自己需要的内容。</p>
+<p><img src="https://postimg.aliavv.com/mbp/rjsnt.jpg" alt="" /></p>
+<p>当看到这里，说明 Options Framework 接入成功了。</p>
+<h3 id="添加设置项"><a class="header" href="#添加设置项">添加设置项</a></h3>
+<p>我们的设置项被放在主题根目录下的 <em>options.php</em> 文件中，我们可以打开这个文件，查看具体的内容。</p>
+<p>首先，会看到一个函数：</p>
+<p><img src="https://postimg.aliavv.com/mbp/7spuc.jpg" alt="" /></p>
+<p>这个函数定义了数据库中我们的参数存放的字段名，可以把它改成我们自己需要的，比如 <code>gitchat_theme_options</code>。</p>
+<p>在下方，可以找到我们的设置项目：</p>
+<p><img src="https://postimg.aliavv.com/mbp/zc6mf.jpg" alt="" /></p>
+<p>项目大体上可以两种，分别是选项卡和其他设置项，选项卡的 type 是 <em>heading</em>，设置项则支持多种类型：</p>
+<ul>
+<li>text</li>
+<li>textarea</li>
+<li>checkbox</li>
+<li>select</li>
+<li>radio</li>
+<li>upload（图片上传工具）</li>
+<li>images（使用图片替代 radio 选择）</li>
+<li>background（背景设置）</li>
+<li>multicheck</li>
+<li>color（Jquery 实现的颜色选择器）</li>
+<li>typography（排版选择器）</li>
+<li>editor</li>
+</ul>
+<p>可以根据需要选择不同的选项，具体的设置范例，可以在 <em>options.php</em> 中看到。在对设置项精简以后，可以看出代码是这个样子的。这里面最需要关注的是 <em>id</em> 和 <em>type</em>，id 会用于后续获取对应的设置项，如果 id 不唯一，就没办法获取到准确的值。而 type 不对，在后台设置时，可能体验不同。<em>name</em> 和 <em>description</em> 则分别是设置项的名称和描述，可以帮助我们更好的输入对应的设置项。<em>std</em> 是默认填写的内容，<em>placeholder</em> 是在未输入内容情况下，文本框会显示的内容。</p>
+<p><img src="https://postimg.aliavv.com/mbp/xj7kb.jpg" alt="" /></p>
+<p>于此同时，后台设置项变成了：</p>
+<p><img src="https://postimg.aliavv.com/mbp/s000v.jpg" alt="" /></p>
+<p>可以看出，这里的设置项和我们设置数据的顺序有关，可以根据我们的需要，来设置不同的顺序。</p>
+<p>接下来，将站长的信息作为选项，用于侧边栏的输出。</p>
+<p>将 <em>options.php</em> 中的代码改为如下代码：</p>
+<pre><code class="language-php">    $options[] = array( 
+        'name' =&gt; __( '作者名称', 'theme-textdomain' ),
+        'desc' =&gt; __( '作者的昵称或网名，用于侧边栏显示', 'theme-textdomain' ),
+        'id' =&gt; 'user_name',
+        'placeholder' =&gt; '会显示在侧边栏',
+        'std' =&gt; '',
+        'class' =&gt; 'mini',
+        'type' =&gt; 'text'
+    );
+    $options[] = array( 
+        'name' =&gt; __( '作者的邮箱地址', 'theme-textdomain' ),
+        'desc' =&gt; __( '作者的邮箱地址，用于侧边栏显示', 'theme-textdomain' ),
+        'id' =&gt; 'user_mail',
+        'std' =&gt; '',
+        'class' =&gt; '',
+        'placeholder' =&gt; '会显示在侧边栏',
+        'type' =&gt; 'text'
+    );
+    $options[] = array( 
+        'name' =&gt; __( '作者的网站地址', 'theme-textdomain' ),
+        'desc' =&gt; __( '作者的网站地址，用于侧边栏显示', 'theme-textdomain' ),
+        'id' =&gt; 'user_url',
+        'std' =&gt; '',
+        'class' =&gt; '',
+        'placeholder' =&gt; '会显示在侧边栏',
+        'type' =&gt; 'text'
+    );
+</code></pre>
+<p>然后在后台展示的效果如图。</p>
+<p><img src="https://postimg.aliavv.com/mbp/tg842.jpg" alt="" /></p>
+<p>我们可以填写一下内容，测试一下能否正常保存设置项目。</p>
+<p><img src="https://postimg.aliavv.com/mbp/1qnk2.jpg" alt="" /></p>
+<p>可以看到，我们的设置项被正确保存了。</p>
+<h3 id="在主题中调用函数获取设置项"><a class="header" href="#在主题中调用函数获取设置项">在主题中调用函数获取设置项</a></h3>
+<p>现在的设置项已经设置好了，接下来在主题中调用它。</p>
+<p>打开 <em>sidebar.php</em> 文件，找到 <code>&lt;?php the_author_meta( 'description' ); ?&gt; </code>，删去这段代码，然后使用我们的设置项来输出内容。</p>
+<p>默认情况下，我们获取设置项的函数是<code>of_get_option</code>，使用如下代码，可以获取到我们的设置项的值：</p>
+<pre><code class="language-Php">&lt;?php echo of_get_option("设置id");?&gt;
+</code></pre>
+<p>接下来，修改我们的 About 的输出，将其改为：</p>
+<pre><code class="language-Php">&lt;?php echo of_get_option("user-name").",".of_get_option("user-email").",".of_get_option("user-url");?&gt;
+</code></pre>
+<p><img src="https://postimg.aliavv.com/mbp/pyro0.jpg" alt="" /></p>
+<p>保存文件，回到网站的首页，刷新即可看到我们输出的内容。</p>
+<p><img src="https://postimg.aliavv.com/mbp/fcnvm.jpg" alt="" /></p>
+<h3 id="修改获取参数的函数"><a class="header" href="#修改获取参数的函数">修改获取参数的函数</a></h3>
+<p>可能你会觉得默认的函数太长了，需要变得短一点，可以修改 <em>inc/options-framework.php</em> 文件，搜索 <code>of_get_option</code>，找到这段代码，将这里的两个 <code>of_get_option</code> 改为你自己的函数名：</p>
+<p><img src="https://postimg.aliavv.com/mbp/vk8yx.jpg" alt="" /></p>
+<p>修改完成后，记得到主题中你调用的位置去修改对应的函数名。</p>
+<h3 id="如何修改菜单中的-theme-options"><a class="header" href="#如何修改菜单中的-theme-options">如何修改菜单中的 Theme Options</a></h3>
+<p>想要修改菜单中的 Theme Options ，可以打开 <em>inc/includes/class-options-framework-admin.php</em> 文件，搜索 <em>Theme Options</em>，然后就可以找到这些代码，修改其中的 <code>page_title</code> 和 <code>menu_title</code> 为你自己需要的内容。</p>
+<p><img src="https://postimg.aliavv.com/mbp/icw8r.jpg" alt="" /></p>
+<p>修改完成后，回到后台，可以看到菜单项中的文字和页面顶部的标题都修改过来了。</p>
+<p><img src="https://postimg.aliavv.com/mbp/4p7xh.jpg" alt="" /></p>
+<h3 id="其他优秀的面板"><a class="header" href="#其他优秀的面板">其他优秀的面板</a></h3>
+<p>除了 Options Framework，还有很多其他比较优秀的面板，我们也可以选择这些面板来使用。</p>
+<h3 id="optiontree"><a class="header" href="#optiontree">OptionTree</a></h3>
+<p>OptionTree 是由 ThemeForest 赞助的主题设置模板，界面美观简洁大方，也是一个非常不错的选项框架。</p>
+<p><img src="https://postimg.aliavv.com/mbp/c07sw.jpg" alt="" /></p>
+<p>插件地址<a href="https://wordpress.org/plugins/option-tree/">详见这里</a>。</p>
+<p>演示主题<a href="https://github.com/valendesigns/option-tree-theme">详见这里</a>。</p>
+<h4 id="unyson-framework"><a class="header" href="#unyson-framework">Unyson Framework</a></h4>
+<p><img src="https://postimg.aliavv.com/mbp/evy4n.jpg" alt="" /></p>
+<p>插件地址<a href="https://wordpress.org/plugins/unyson/">详见这里</a>。</p>
+<p>演示主题<a href="https://github.com/ThemeFuse/Scratch-Theme">详见这里</a>。</p>
+<h4 id="redux-framework"><a class="header" href="#redux-framework">Redux Framework</a></h4>
+<p><img src="https://postimg.aliavv.com/mbp/s45ht.jpg" alt="" /></p>
+<p>插件地址<a href="https://wordpress.org/plugins/redux-framework/">详见这里</a>。</p>
+<h4 id="titan-framework"><a class="header" href="#titan-framework">Titan Framework</a></h4>
+<p><img src="https://postimg.aliavv.com/mbp/cy8a0.jpg" alt="" /></p>
+<p>插件地址<a href="https://wordpress.org/plugins/titan-framework/">详见这里</a>。</p>
+<p>插件的选项框架非常的多，可以根据自己的需要，选择一款美观好用的主题插件。各个插件的使用大体上相同，区别仅仅是引入的文件不同罢了。</p>
+<p>可以选择一个你喜欢的选项框架，然后一直用下去。</p>
+<h3 id="总结"><a class="header" href="#总结">总结</a></h3>
+<p>至此，我们学习了如何接入 Options Framework，你也可以根据自己的审美喜好，添加不同的主题设置框架，来加速你的主题开发。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../theme/is-function.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../theme/tips.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../theme/is-function.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../theme/tips.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

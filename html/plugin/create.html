@@ -1,0 +1,392 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>WP 插件的创建 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/plugin/create.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="创建一个插件"><a class="header" href="#创建一个插件">创建一个插件</a></h1>
+<h3 id="插件开发目标"><a class="header" href="#插件开发目标">插件开发目标</a></h3>
+<p>这节课来尝试创建一个插件，实现在文章尾部输出一段简单的文字。</p>
+<h3 id="插件开发过程"><a class="header" href="#插件开发过程">插件开发过程</a></h3>
+<h4 id="给插件起名"><a class="header" href="#给插件起名">给插件起名</a></h4>
+<p>既然要创建一个插件，那么必然就要给插件起一个名字，在起名时，需要注意以下三点：</p>
+<p>（1）插件名唯一：我们的插件名称应该是唯一的，这样才不会在加载时出现错误。同时也可以不用担心上传到 WordPress 官方中浏览出错( WordPress 官方给每个插件有一个单页，单页地址和你的插件名称有关)。</p>
+<p><img src="https://postimg.aliavv.com/mbp/r5cay.jpg" alt="" /></p>
+<p>（2）插件名可识别：插件名称应该尽可能的可读，通过简单的读插件的名称，就能知道大体上这个插件的功能。</p>
+<p>（3）如果名字已经重复了，可以使用前缀来区分，比如 <em>gitchat_</em> 来区分插件和其他人的插件。</p>
+<h4 id="创建一个插件-1"><a class="header" href="#创建一个插件-1">创建一个插件</a></h4>
+<h5 id="1-创建插件目录"><a class="header" href="#1-创建插件目录">1. 创建插件目录</a></h5>
+<p>打开开发环境中的 WordPress，进入<em>wp-content/plugins</em> 目录，创建一个新的目录 <em>gitchat_copyright</em> 目录。</p>
+<blockquote>
+<p>为了避免冲突，使用 <em>gitchat_</em> 作为插件前缀。</p>
+</blockquote>
+<h5 id="2-创建插件文件并初始化代码"><a class="header" href="#2-创建插件文件并初始化代码">2. 创建插件文件，并初始化代码</a></h5>
+<p>进入 <em>copyright</em> 目录，创建一个文件 <em>gitchat_copyright.php</em>，并在其中添加如下代码。</p>
+<blockquote>
+<p>这里创建的 <em>gitchat_copyright.php</em> 是插件的入口文件。有了入口文件，WordPress 才能识别出插件和对应的功能。</p>
+</blockquote>
+<blockquote>
+<p><strong>如果是 Windows 系统，保存时请确保以 UTF-8 编码保存代码。</strong></p>
+</blockquote>
+<pre><code class="language-php">&lt;?php
+/*
+Plugin Name: Copyright
+Plugin URI: https://gitchat.cn/plugins
+Description: 这是一个 copyright 插件，能够在文章尾部添加内容。
+Version: 1.0
+Author: Gitchat
+Author URI: https://gitchat.cn/
+*/
+</code></pre>
+<p>保存后退出。</p>
+<p>这段代码，是 WordPress 标准的插件信息头，通过这段代码，WordPress 就可以自动识别出我们的插件具体信息。具体的说明，可以在 <a href="https://codex.wordpress.org/zh-cn:%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E6%8F%92%E4%BB%B6#.E5.90.8D.E5.AD.97.EF.BC.8C.E6.96.87.E4.BB.B6.E5.92.8C.E4.BD.8D.E7.BD.AE">这里</a> 找到相关信息。</p>
+<p>这时，回到 WordPress 后台，可以在插件列表中看到这样的界面。</p>
+<p><img src="https://postimg.aliavv.com/mbp/04dgf.jpg" alt="" /></p>
+<p>这就是我们创建的插件。WordPress 会自动读取我们在注释中填写的内容，加载为插件的详细信息，可以把这段信息改为你自己的对应信息。</p>
+<h4 id="添加插件代码"><a class="header" href="#添加插件代码">添加插件代码</a></h4>
+<h5 id="1-分析功能"><a class="header" href="#1-分析功能">1. 分析功能</a></h5>
+<p>我们希望实现的功能是在文章的尾部加入一些内容，则需要对 <code>the_conent</code> 函数进行修改，实现在内容后输出特定的内容。</p>
+<h5 id="2-代码实现"><a class="header" href="#2-代码实现">2. 代码实现</a></h5>
+<p>在原有代码后加入如下代码，来实现具体的功能：</p>
+<pre><code class="language-php">function copyright_end($content){
+    if(is_single()){
+       $content .= '&lt;hr&gt;&lt;p&gt;这是一个来自 GitChat 达人课的插件&lt;/p&gt;&lt;hr&gt;';
+       return $content;
+    }
+ }
+ add_filter( "the_content", "copyright_end" );
+</code></pre>
+<p>添加后，代码如下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/4rbmr.jpg" alt="" /></p>
+<p>保存文件并退出。</p>
+<h5 id="3-启动测试"><a class="header" href="#3-启动测试">3. 启动测试</a></h5>
+<p>回到 WordPress 的后台，进入「插件」— 「已安装的插件」，找到刚刚创建的「Copyright」插件，并启用。</p>
+<p>启用成功后，回到首页，找一篇文章，点击进去，可以看到如图的样式。</p>
+<p><img src="https://postimg.aliavv.com/mbp/kdfie.jpg" alt="" /></p>
+<p>这说明我们的插件功能已经实现了。</p>
+<h5 id="4-代码解读"><a class="header" href="#4-代码解读">4. 代码解读</a></h5>
+<p>在这段代码中定义了 <em>copyright_end</em> 函数，来实现对输出内容的修改。</p>
+<p>同时，我在下方调用 <em>the_content</em> 过滤器，实现对内容的修改嵌入。</p>
+<p>这里特别需要注意的是，在函数中调用了<code>is_single</code>函数，该函数是用来判断当前页面是否是文章页面。</p>
+<p>如果注销这个 if 判断条件，那么在首页可能也会看到这个输出的结果。</p>
+<p><img src="https://postimg.aliavv.com/mbp/o00g4.jpg" alt="" /></p>
+<h4 id="优化插件"><a class="header" href="#优化插件">优化插件</a></h4>
+<p>目前我们的插件并不好用，因为输出的内容是在代码中写死的，对于开发者来说，无伤大雅，但插件的使用者不可能只是开发者，所以需要对插件进行优化，让输出的内容可以在后台进行修改。</p>
+<h5 id="实现初始化方法"><a class="header" href="#实现初始化方法">实现初始化方法</a></h5>
+<p>既然要允许在后台修改我们要输出的内容，那么就需要将用户设置的输出内容进行设置，允许用户输出内容。最简单的，就是将数据存储在 WordPress 的设置表，和站点设置放在一起。</p>
+<p>这就需要我们在插件启用时，对这个数据进行初始化。这里用到了 WordPress 提供的 <em>register_activation_hook</em>。</p>
+<blockquote>
+<p>如果你放在普通过程中，会发现你的设置内容会被不停的初始化。</p>
+</blockquote>
+<p>在插件中添加如下代码：</p>
+<pre><code class="language-php">/**
+ * 初始化设置项
+ */
+function gitchat_copyright_activate() {
+    add_option('gitchat_copyright_code','&lt;hr&gt;&lt;p&gt;这是一个来自 GitChat 达人课的插件&lt;/p&gt;&lt;hr&gt;');
+}
+register_activation_hook( __FILE__, 'gitchat_copyright_activate' );
+</code></pre>
+<p>添加后的代码如下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/prnnm.jpg" alt="" /></p>
+<p>保存插件，回到后台停用插件，并重新启用。</p>
+<p>重新启用成功后，就可以在数据库中找到对应的选项，比如我们查询一下看一下。</p>
+<pre><code class="language-sql">select * from wp_options where option_name = 'gitchat_copyright_code'
+</code></pre>
+<blockquote>
+<p><strong>如何执行上述操作？</strong></p>
+<p>如果你是 macOS 操作系统，可以下载 Sequel Pro。使用 Sequel Pro 链接到数据库，并进行管理。</p>
+<p>如果你是 Windows 操作系统，可以使用 phpStudy 自带的 phpMyAdmin 来进行管理，访问 http://localhost/phpmyadmin 即可。</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/mbp/nzegp.jpg" alt="" /></p>
+<p>现在我们内容已经放在数据库了。接下来设置内容的输出，让输出使用数据库中的值，而不是写死在代码中。</p>
+<p>将第24行的：</p>
+<pre><code class="language-Php">$content .= '&lt;hr&gt;&lt;p&gt;这是一个来自 GitChat 达人课的插件&lt;/p&gt;&lt;hr&gt;';
+</code></pre>
+<p>改为：</p>
+<pre><code class="language-php"> $content .= get_option('gitchat_copyright_code');  
+</code></pre>
+<p>保存文件。回到网站首页，打开一个文章页，可以看到刚刚设置的效果依然还在。</p>
+<p>接下来修改一下数据库中的值，来测试一下输出的是否是我们存放在数据中的内容。</p>
+<p>在数据库中执行如下代码：</p>
+<pre><code class="language-sql">update wp_options set option_value = "&lt;hr&gt;&lt;p&gt;现在输出的是数据库中的内容了&lt;/p&gt;&lt;hr&gt;" where option_name = 'gitchat_copyright_code'   
+</code></pre>
+<p>刷新刚刚的文章页面，可以看到输出的内容已经发生了改变。</p>
+<p><img src="https://postimg.aliavv.com/mbp/asqad.jpg" alt="" /></p>
+<h5 id="实现后台的管理"><a class="header" href="#实现后台的管理">实现后台的管理</a></h5>
+<p>虽然现在实现了参数的数据库存储，但是目前的方式依然非常不方便，需要在数据库管理工具的帮助下才能设置输出内容，极为不方便。</p>
+<p>接下来把这一项放在系统后台的设置项目中。</p>
+<p>在插件中添加如下代码：</p>
+<pre><code class="language-php">/**
+ * 菜单项注册
+ */
+$new_general_setting = new new_general_setting();
+class new_general_setting {
+  function new_general_setting( ) {
+    add_filter( 'admin_init' , array( &amp;$this , 'register_fields' ) );
+  }
+  function register_fields() {
+    register_setting( 'general', 'gitchat_copyright_code');
+    add_settings_field('fav_color', '&lt;label for="gitchat_copyright_code"&gt;Copyright 代码&lt;/label&gt;' , array(&amp;$this, 'fields_html') , 'general' );
+  }
+  function fields_html() {
+    $value = get_option( 'gitchat_copyright_code', '' );
+    echo '&lt;textarea name="gitchat_copyright_code" id="gitchat_copyright_code" cols="30" rows="10"&gt;'. $value. '&lt;/textarea&gt;';
+  }
+}
+</code></pre>
+<p>添加后的代码如下：</p>
+<p><img src="https://postimg.aliavv.com/mbp/09fpf.jpg" alt="" /></p>
+<blockquote>
+<p>这段代码构建了一个新的类，在类中通过 <code>register_fields</code> 方法来注入新的设置项，并通过 <code>fields_html</code> 设置了输入框的类型。</p>
+</blockquote>
+<p>回到 WordPress 停用插件并重新启用插件。进入「设置」-「常规」：</p>
+<p><img src="https://postimg.aliavv.com/mbp/0fqif.jpg" alt="" /></p>
+<p>拉到底部，可以看到这样一项：</p>
+<p><img src="https://postimg.aliavv.com/mbp/ok3ao.jpg" alt="" /></p>
+<p>这时可以修改输入框里的代码并保存。回到文章页后刷新，会发现你的 copyright 代码已经更新了。</p>
+<p>这样就实现了在后台的管理。</p>
+<h5 id="实现停用方法"><a class="header" href="#实现停用方法">实现停用方法</a></h5>
+<p>有些时候可能需要记录用户对插件的停用，比如当用户停用了插件后，向服务端发送情况，停掉某些特定服务等等。</p>
+<p>这部分，可以使用 WordPress 的 <code>register_deactivation_hook</code> 来实现。</p>
+<p>这个函数的使用方法和刚刚提到的 <code>register_activation_hook</code> 差不多，不再举例说明这里给出一个示例代码，大家根据自己的需要进行设置。</p>
+<pre><code class="language-php">function gitchat_copyright_deactivate() {
+    // 具体的停用插件的逻辑
+}
+register_deactivation_hook( __FILE__, 'gitchat_copyright_deactivate' );
+</code></pre>
+<h5 id="实现卸载方法"><a class="header" href="#实现卸载方法">实现卸载方法</a></h5>
+<p>我们在启用插件时，在数据库中加入了一些字段，当卸载这个插件时，最好将添加的数据库字段删除，不然的话，长期以往会导致我们的数据库中存在大量无用的字段。</p>
+<p>在插件目录下创建一个 <em>uninstall.php</em>，在其中加入如下代码：</p>
+<pre><code class="language-php">&lt;?php
+// part 1
+if(!defined("WP_UNINSTALL_PLUGIN"))
+    exit();
+// part 2
+delete_option("gitchat_copyright_code");
+</code></pre>
+<p>上述这段代码可以分为两个部分，第一部分是 WordPress 的卸载插件检测，在卸载时，会设置<code>WP_UNINSTALL_PLUGIN</code>。如果检测不到，就退出，以确保这个程序是被合理的调用，而不是会是被直接访问而调用，导致我们的设置丢失。</p>
+<p>第二部分则是从数据库中删除这个数据项。以达到删除无用字段的目的。当然，如果你的插件十分复杂，也可以在这里写具体的卸载逻辑。</p>
+<h3 id="结论"><a class="header" href="#结论">结论</a></h3>
+<p>至此，我们创建了一个非常简单的插件，这个插件只需要寥寥数行代码，就可以实现在整站的所有内容的尾部加入一段版权代码。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../plugin/run.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../plugin/admin.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../plugin/run.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../plugin/admin.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

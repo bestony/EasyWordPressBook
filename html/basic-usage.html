@@ -1,0 +1,412 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>基本使用 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/basic-usage.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="wordpress-基本使用"><a class="header" href="#wordpress-基本使用">WordPress 基本使用</a></h1>
+<p>课程实践目标：掌握 WordPress 的使用。</p>
+<h4 id="通用内容"><a class="header" href="#通用内容">通用内容</a></h4>
+<h5 id="控制内容的展示"><a class="header" href="#控制内容的展示">控制内容的展示</a></h5>
+<p><img src="https://postimg.aliavv.com/2018/72vqn.jpg" alt="" /></p>
+<p>每个页面都可以单击右上角的<strong>显示选项</strong>来控制页面显示什么内容，方便调整自己的页面布局，符合自己的写作习惯。</p>
+<h5 id="帮助模块"><a class="header" href="#帮助模块">帮助模块</a></h5>
+<p><img src="https://postimg.aliavv.com/2018/556mb.jpg" alt="" /></p>
+<p>WordPress 每个页面都有一个帮助模块，在帮助模块中，可以看到当前页面的具体帮助内容，假如不知道当前页面怎么用，除了在达人课的读者圈中提问，也可以单击上方的“帮助”按钮来寻找答案。</p>
+<h4 id="仪表盘"><a class="header" href="#仪表盘">仪表盘</a></h4>
+<p>仪表盘是我们登录 WordPress 后台后首先会看到的内容。</p>
+<h5 id="welcome"><a class="header" href="#welcome">Welcome</a></h5>
+<p><img src="https://postimg.aliavv.com/2018/vtgbb.jpg" alt="" /></p>
+<p>Welcome 是新用户引导，单击“不再显示”链接后，下次就不会再出现。</p>
+<blockquote>
+<p>如果后面还想看，可以单击右上角的“显示”选项：</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/2018/mliov.jpg" alt="" /></p>
+<blockquote>
+<p>勾选其中的 Welcome 复选框， 这个界面就会出现了。</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/2018/nvdij.jpg" alt="" /></p>
+<h5 id="概述"><a class="header" href="#概述">概述</a></h5>
+<p><img src="https://postimg.aliavv.com/2018/y35tn.jpg" alt="" /></p>
+<p>概述里展示了我们博客的最基础的几个数据：博客文章数、博客评论数、单页数目、当前版本和当前使用的主题。</p>
+<p>单击其中的超链接，就会跳转到对应的列表。例如，单击“1篇文章”链接，就会跳转到文章列表，可以对文章进行管理。</p>
+<h5 id="快速草稿"><a class="header" href="#快速草稿">快速草稿</a></h5>
+<p><img src="https://postimg.aliavv.com/2018/ovjd8.jpg" alt="" /></p>
+<p>快速草稿可以帮助我们在仪表盘记录心中的所念所想，而无需加载完整的 WordPress 编辑器来编辑格式。当有一些小的灵感时，可以在这里快速的输入、并保存，后续再完善，以免忘记了这个想法。</p>
+<h5 id="活动"><a class="header" href="#活动">活动</a></h5>
+<p><img src="https://postimg.aliavv.com/2018/5b5sr.jpg" alt="" /></p>
+<p>在这里会显示博客的最新动向，比如最近发布的文章、最近游客留下的评论等等。</p>
+<h5 id="wordpress-活动与新闻"><a class="header" href="#wordpress-活动与新闻">WordPress 活动与新闻</a></h5>
+<p><img src="https://postimg.aliavv.com/2018/hi1yj.jpg" alt="" /></p>
+<p>这个栏目展示了 WordPress 官方的一些新闻和活动，不过对于我们大多数人来说都没有任何用。所以这个选项一般都是隐藏的。</p>
+<p><img src="https://postimg.aliavv.com/2018/jfrjr.jpg" alt="" /></p>
+<p>单击右侧的“小三角”按钮，就可以收缩 tab 了：</p>
+<p><img src="https://postimg.aliavv.com/2018/cqze4.jpg" alt="" /></p>
+<p>不过，用户也可以单击页面右上角的显示选项，取消该选项的勾选即可。</p>
+<p><img src="https://postimg.aliavv.com/2018/4mki1.jpg" alt="" /></p>
+<h5 id="调整仪表盘的布局"><a class="header" href="#调整仪表盘的布局">调整仪表盘的布局</a></h5>
+<p>仪表盘的每个元素都是可以调整位置的，当将鼠标的光标移动到标题时，等待其变为移动符号时，拖动区块即可移动。</p>
+<p><img src="https://postimg.aliavv.com/2018/8vj3q.gif" alt="" /></p>
+<h4 id="文章管理"><a class="header" href="#文章管理">文章管理</a></h4>
+<h5 id="新建文章"><a class="header" href="#新建文章">新建文章</a></h5>
+<p>文章是 WordPress 的最基本的单位，我们可以通过两种方式进入新建文章的页面，一个是通过菜单栏中的“文章——新建文章”进入：</p>
+<p><img src="https://postimg.aliavv.com/2018/zsvmz.jpg" alt="" /></p>
+<p>或者通过顶部的快捷菜单进入。</p>
+<p><img src="https://postimg.aliavv.com/2018/sl4ve.jpg" alt="" /></p>
+<h5 id="页面布局调整"><a class="header" href="#页面布局调整">页面布局调整</a></h5>
+<p>进入到新建文章页面后，会看到很多项目：</p>
+<p><img src="https://postimg.aliavv.com/2018/9u46m.jpg" alt="" /></p>
+<p>在使用前，建议读者先调整这个页面的布局，调整为符合你自己习惯的布局。</p>
+<p>单击上方的<strong>显示选项</strong>按钮，可以看到具体显示哪些模块，是否切换为单栏布局。</p>
+<p><img src="https://postimg.aliavv.com/2018/ehesp.jpg" alt="" /></p>
+<p>一般来说，推荐显示 <strong>形式（需要主题支持）</strong>、<strong>分类目录</strong>、<strong>标签</strong>、<strong>特色图片（特色图片）</strong>、<strong>摘要</strong>。</p>
+<blockquote>
+<p>我的布局如下，仅供参考：</p>
+</blockquote>
+<p><img src="https://postimg.aliavv.com/2018/5vath.jpg" alt="" /></p>
+<p>其他内容可以根据自己的具体情况来设置。</p>
+<p>下方的全高度编辑器其实是“全屏”功能，影响不到，主要是手动开启的。而后面的免打扰功能开启后，会在读者进行写作时进入免打扰模式，隐藏左侧的菜单和右侧的发布等连接。</p>
+<p><img src="https://postimg.aliavv.com/2018/vtfyz.jpg" alt="" /></p>
+<h5 id="新建文章-1"><a class="header" href="#新建文章-1">新建文章</a></h5>
+<p><strong>标题栏</strong></p>
+<p>页面中的元素非常简单，上方的标题栏填写我们设置的文章标题。</p>
+<p><strong>固定链接</strong></p>
+<p>下方的固定链接则可以编辑，设置我们文章的链接名。如果你有自己的文章风格，不希望其为你生成默认的中文链接名，可以在这里手动设置。</p>
+<p><img src="https://postimg.aliavv.com/2018/84hqk.jpg" alt="" /></p>
+<p><strong>添加媒体</strong></p>
+<p>WordPress 为我们提供了非常完善的多媒体资源管理能力。单击“添加媒体”按钮，就可以上传要添加的图片了。</p>
+<p><img src="https://postimg.aliavv.com/2018/9c3sd.jpg" alt="" /></p>
+<p>你可以上传新的图片，或者使用媒体库中的图片，</p>
+<p><img src="https://postimg.aliavv.com/2018/gyz65.jpg" alt="" /></p>
+<p>上传后，选中你要插入的图片（支持选中多个）。单击“插入”按钮即可插入图片到文章。</p>
+<blockquote>
+<p>在插入前可以设置图片的说明和替代文本，说明将会设置为 caption 标签。而替代文本则会设置为 alt 属性。</p>
+</blockquote>
+<p>下方编辑器也非常好用，可以直接单击下方的按钮，选择对应的样式设置。</p>
+<p><img src="https://postimg.aliavv.com/2018/f1p6u.jpg" alt="" /></p>
+<p>下方的摘要则会影响到文章列表和 RSS 列表的内容输出，你可以认真写一写摘要，并借此提高读者的打开率。</p>
+<p>有的主题会支持不同形式的主题，可以设置不同形式的主题，以使用主题针对特定形式的设定。</p>
+<p>有些主题还支持自定义栏目，还可以根据主题说明设置对应的自定义栏目。</p>
+<p><img src="https://postimg.aliavv.com/2018/0pjxh.jpg" alt="" /></p>
+<h4 id="分类目录"><a class="header" href="#分类目录">分类目录</a></h4>
+<p>单击左侧菜单栏中的“文章——分类目录”按钮，可以进入到分类目录的设置页面。</p>
+<p><img src="https://postimg.aliavv.com/2018/ml9d8.jpg" alt="" /></p>
+<p>可以新建一个分类目录。分类目录支持多级，这样可以很方便的分类文章。</p>
+<p><img src="https://postimg.aliavv.com/2018/uyo4k.jpg" alt="" /></p>
+<p>右侧则是分类目录的列表，可以单击编辑进入详细编辑页面编辑，也可以单击快速编辑修改分类名和分类别名。单击“查看”按钮，则会进入到前台的目录页面。</p>
+<p><img src="https://postimg.aliavv.com/2018/gy5i7.jpg" alt="" /></p>
+<h4 id="标签"><a class="header" href="#标签">标签</a></h4>
+<p>除了分类目录，我们还可以通过标签对文章进行管理，标签的操作逻辑和分类目录基本一致，唯一不同的是标签不支持多级分类。</p>
+<p><img src="https://postimg.aliavv.com/2018/ot49j.jpg" alt="" /></p>
+<h4 id="页面管理"><a class="header" href="#页面管理">页面管理</a></h4>
+<p>页面部分比较简单，很多基础操作和文章管理是一致的，就不在赘述相同的部分了，这里只讲一下主要的不同点。</p>
+<h4 id="新建页面"><a class="header" href="#新建页面">新建页面</a></h4>
+<p>新建页面中大体上和新建文章没有区别这里只说不同点，便是页面属性。</p>
+<p><img src="https://postimg.aliavv.com/2018/lidfz.png" alt="" /></p>
+<p>页面没有目录，但是可以设置页面的上级页面，通过一个主页面和若干子页面来管理内容，可以帮助我们更好的整理内容。</p>
+<p>模板则是 WordPress 一个非常有用的功能。很多时候，我们需要的功能不止是新闻的展示，可能是一些其他的功能，如展示友情链接、展示日历、展示消息通知等等。</p>
+<p>通过选择不同的模板，就可以实现不同功能页面的加载。</p>
+<blockquote>
+<p>此功能需要主题的支持，后续主题开发课也会加入这部分内容。</p>
+</blockquote>
+<h4 id="多媒体资源管理"><a class="header" href="#多媒体资源管理">多媒体资源管理</a></h4>
+<h5 id="上传文件"><a class="header" href="#上传文件">上传文件</a></h5>
+<p>多媒体资源的上传有两种方式，一种是通过新增文章、页面时上传，另一种是通过媒体库进行上传。</p>
+<p>单击 <strong>媒体</strong> | <strong>添加</strong> 命令，可以看到上传的界面，选择要上传的内容就会自动上传了。你也可以把要上传的内容拖动到上传区域来进行上传。</p>
+<p><img src="https://postimg.aliavv.com/2018/z64uo.png" alt="" /></p>
+<h5 id="管理文件"><a class="header" href="#管理文件">管理文件</a></h5>
+<p>单击<strong>媒体</strong> | <strong>媒体库</strong>命令，会进入媒体库，可以在媒体库中管理附件：</p>
+<p><img src="https://postimg.aliavv.com/2018/ne1o3.png" alt="" /></p>
+<p>单击“附件”按钮，可以进入到附件的编辑页面进行管理：</p>
+<p><img src="https://postimg.aliavv.com/2018/tajy6.png" alt="" /></p>
+<p>可以为附件设置具体的信息，如果你的主题中有附件页，就可以看到具体的信息：</p>
+<p><img src="https://postimg.aliavv.com/2018/w4nvo.png" alt="" /></p>
+<p>此外，我们还可以编辑图片，对图片进行简单的处理，在附件的编辑页面单击“编辑图像”按钮。</p>
+<p><img src="https://postimg.aliavv.com/2018/j7iur.png" alt="" /></p>
+<p>WordPress 支持对图片进行裁剪、旋转、镜像等功能。（我这里因为是gif，所以裁剪是灰的。）</p>
+<p><img src="https://postimg.aliavv.com/2018/u9tvs.png" alt="" /></p>
+<p>编辑完成后，单击右侧的“更新”按钮即可将图片进行更新。</p>
+<h4 id="友情链接管理"><a class="header" href="#友情链接管理">友情链接管理</a></h4>
+<blockquote>
+<p>在最新版本的 WordPress 中默认没有开启这个功能，不过可以通过安装 <a href="https://cn.wordpress.org/plugins/link-manager/">Link Manager</a> 插件来开启这个功能。</p>
+</blockquote>
+<p>单击左侧边栏的<strong>链接管理</strong>，可以进入到链接管理的界面。</p>
+<p>首先，我们可以根据需要，创建链接所属目录，创建方式和创建文章目录相同，单击<strong>链接分类目录</strong>，进入到管理页面。</p>
+<p><img src="https://postimg.aliavv.com/2018/7tsbt.gif" alt="" /></p>
+<p>创建完成目录后，我们可以创建具体的链接，单击左侧菜单栏中的<strong>添加</strong>按钮，进入到添加链接的页面。</p>
+<p><img src="https://postimg.aliavv.com/2018/lcwcu.png" alt="" /></p>
+<p>必要设置包括名称和 Web 地址，将要添加的网站的名称和 Web 地址填入其中，即可添加链接了。</p>
+<p>不过下方有很多其他的设置也值得知道。</p>
+<p><img src="https://postimg.aliavv.com/2018/24asp.png" alt="" /></p>
+<p>在下方应该会注意到有个 XFN（XML Friends NetWork），通过 XFN 可以表明这个链接和你的远近亲疏关系，还是很有意思的。不过目前国内并没有针对此进行优化。</p>
+<p><img src="https://postimg.aliavv.com/2018/4k82b.png" alt="" /></p>
+<p>此外，如果你觉得文字链接不好看，还可以选择使用图片链接，上传图片、设置备注、设置 RSS 地址等。</p>
+<p><img src="https://postimg.aliavv.com/2018/kps6o.png" alt="" /></p>
+<p>如果希望链接展示在前台，可以前往<strong>外观</strong> | <strong>小工具</strong>中添加。</p>
+<p><img src="https://postimg.aliavv.com/2018/77wmz.png" alt="" /></p>
+<p>你可以在可视区域中添加一个链接小工具，并设置要显示的链接和具体的类型。</p>
+<h4 id="评论管理"><a class="header" href="#评论管理">评论管理</a></h4>
+<p>单击左侧的<strong>评论管理</strong> 按钮，会进入到评论管理的页面。</p>
+<p><img src="https://postimg.aliavv.com/2018/rnk88.png" alt="" /></p>
+<p>评论默认有四种状态，待审核、已批准、垃圾评论和回收站评论。</p>
+<p>所有未被确认为垃圾评论，但又从未留言过的评论都会放在待审核列表中（取决于在评论设置中的设置）。</p>
+<p>可以在列表中修改一个评论的状态、回复、甚至是编辑它。</p>
+<p><img src="https://postimg.aliavv.com/2018/uvp1b.gif" alt="" /></p>
+<p>也可以单击后面的按钮，查看同一篇文章的其他评论。</p>
+<p><img src="https://postimg.aliavv.com/2018/je0rn.gif" alt="" /></p>
+<p>可以批量选择评论，并对他们进行处理。</p>
+<p><img src="https://postimg.aliavv.com/2018/cbte7.gif" alt="" /></p>
+<p>上述就是我们常用的评论的操作。</p>
+<p>此外，记得时常去清理下回收站，让数据库更干净。</p>
+<p><img src="https://postimg.aliavv.com/2018/dfk48.png" alt="" /></p>
+<h4 id="主题管理"><a class="header" href="#主题管理">主题管理</a></h4>
+<p>此部分会在后续的主题开发中进行讲解。</p>
+<h4 id="插件管理"><a class="header" href="#插件管理">插件管理</a></h4>
+<p>此部分会在后续的插件开发中进行讲解。</p>
+<h4 id="用户管理"><a class="header" href="#用户管理">用户管理</a></h4>
+<p>用户管理这里大体上和我们后面要讲的个人信息设置相同，具体的细节操作我不再重复，可以到第4课看 WordPress 的基本设置。</p>
+<h5 id="用户列表"><a class="header" href="#用户列表">用户列表</a></h5>
+<p>点击左侧边栏、<strong>用户</strong>——<strong>所有用户</strong>，我们可以看到目前博客的所有注册用户、以及其所有文章。</p>
+<p><img src="https://postimg.aliavv.com/2018/kylp0.png" alt="" /></p>
+<p>除了自己这个用户无法删除外，你可以删除其他用户。</p>
+<h5 id="新建用户"><a class="header" href="#新建用户">新建用户</a></h5>
+<p>单击左侧边栏 | <strong>用户</strong> | <strong>添加用户</strong>命令，我们可以新建一个 WordPress 用户。</p>
+<p>基本属性直接填写即可，这里关注一下密码和角色。</p>
+<p><img src="https://postimg.aliavv.com/2018/7leyn.png" alt="" /></p>
+<p>默认情况下， WordPress 会为用户生成一个极为复杂的密码，如果希望自己帮用户指定密码的话，可以单击“显示密码”按钮，在弹出的密码框中输入密码。</p>
+<p><img src="https://postimg.aliavv.com/2018/295k3.png" alt="" /></p>
+<p>而角色则会影响这个用户在站内的操作，具体的角色权限说明如下：</p>
+<ul>
+<li>管理员：能够管理网站内的所有内容。</li>
+<li>编辑：发表文章、编辑文章及编辑其他人的文章等。</li>
+<li>作者：发布和编辑自己的文章。</li>
+<li>投稿者：撰写和编辑自己的文章，但不能发布。</li>
+<li>订阅者：查看评论/添加评论/查看文章等等。</li>
+</ul>
+<p>可以根据需要配置不同的角色给特定的用户。</p>
+<h4 id="修改用户身份"><a class="header" href="#修改用户身份">修改用户身份</a></h4>
+<p>在用户列表中单击用户名下方的“编辑”按钮，可以进入到用户的个人编辑页面。</p>
+<p><img src="https://postimg.aliavv.com/2018/ebcj6.gif" alt="" /></p>
+<p>在用户的个人编辑页面，我们可以找到<strong>角色</strong>选项，将其改为其他角色，再保存即可修改一个用户的角色。</p>
+<p><img src="https://postimg.aliavv.com/2018/ewafm.png" alt="" /></p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="deployment/bt-linux-production.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="basic-config.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="deployment/bt-linux-production.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="basic-config.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

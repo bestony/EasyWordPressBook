@@ -1,0 +1,281 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>cPanel 生产环境配置 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/deployment/cpanel-production.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="在-cpanel-上安装-wordpress"><a class="header" href="#在-cpanel-上安装-wordpress">在 cPanel 上安装 WordPress</a></h1>
+<p>cPanel 是我们经常使用的一款虚拟主机面板，功能强大。如果购买了一些国外的主机商的虚拟主机，一般提供的都是 cPanel 。</p>
+<h4 id="在-cpanel-上快速安装-wordpress"><a class="header" href="#在-cpanel-上快速安装-wordpress">在 cPanel 上快速安装 WordPress</a></h4>
+<p>有的主机的 cPanel 集成了 Softaculous 的安装工具，这样我们可以通过简单的配置来安装 WordPress。</p>
+<p>可以登录你的 cPanel， 在其中寻找 <strong>Softaculous App Installer</strong>。</p>
+<p><img src="https://postimg.aliavv.com/mbp/mizuo.jpg" alt="" /></p>
+<p>单击其中的 WordPress 会进入到安装界面。</p>
+<p><img src="https://postimg.aliavv.com/mbp/me0o2.jpg" alt="" /></p>
+<p>填写其中的安装信息，点击最下方的安装：</p>
+<p><img src="https://postimg.aliavv.com/mbp/hd3ru.jpg" alt="" /></p>
+<p>稍等片刻，就安装成功了。</p>
+<p><img src="https://postimg.aliavv.com/mbp/a1s1r.jpg" alt="" /></p>
+<p>可以单击上面的管理员后台的链接，登录 WordPress 后台。</p>
+<h4 id="在-cpanel-中使用常规方法安装-wordpress"><a class="header" href="#在-cpanel-中使用常规方法安装-wordpress">在 cPanel 中使用常规方法安装 WordPress</a></h4>
+<p>虽然快捷安装方便，但并不是每个主机商都会集成，所以我们再补充一个常规的安装方法。</p>
+<h5 id="下载-wordpress-安装包"><a class="header" href="#下载-wordpress-安装包">下载 WordPress 安装包</a></h5>
+<p>访问 http://wordpress.org/latest.zip 即可下载到最新的 WordPress 安装包。</p>
+<h5 id="上传-wordpress-的安装包"><a class="header" href="#上传-wordpress-的安装包">上传 WordPress 的安装包</a></h5>
+<p>打开 cPanel ，找到<strong>文件管理器</strong>：</p>
+<p><img src="https://postimg.aliavv.com/mbp/iv1n7.jpg" alt="" /></p>
+<p>在文件管理器中找到 <code>public_html</code> 目录，单击进入该目录。</p>
+<p><img src="https://postimg.aliavv.com/mbp/0a2yi.jpg" alt="" /></p>
+<p>进入该目录后，单击“上传”按钮：</p>
+<p><img src="https://postimg.aliavv.com/mbp/8bqhg.jpg" alt="" /></p>
+<p>在新的页面中选择我们刚刚下载的 latest.zip 文件，进行上传。</p>
+<p><img src="https://postimg.aliavv.com/mbp/0sn91.jpg" alt="" /></p>
+<p>等待其上传成功后，就关掉这个页面。</p>
+<blockquote>
+<p>删除成功后，会变成绿色的进度条。</p>
+</blockquote>
+<p>回到文件管理器页面，单击“重新加载”按钮，就可以看到刚刚上传的文件了。</p>
+<p><img src="https://postimg.aliavv.com/mbp/qirk5.jpg" alt="" /></p>
+<p>选中它，单击上方的“提取”按钮：</p>
+<p><img src="https://postimg.aliavv.com/mbp/ijtli.jpg" alt="" /></p>
+<p>并在弹出的窗口中选择<strong>Extract File</strong>，稍等片刻，就解压成功了。</p>
+<p><img src="https://postimg.aliavv.com/mbp/7sobj.jpg" alt="" /></p>
+<p>单击解压出来的 wordpress 文件夹，进入该文件夹。</p>
+<p>勾选菜单栏中的“全选”复选框，再单击上方的“移动”按钮。</p>
+<p><img src="https://postimg.aliavv.com/mbp/8d1pg.jpg" alt="" /></p>
+<p>在弹出窗口中，将移动路径改为 <code>/public_html</code>，并单击<strong>Move File</strong>按钮。</p>
+<p>这样我们就完成了 WordPress 文件上传了。</p>
+<h5 id="创建数据库"><a class="header" href="#创建数据库">创建数据库</a></h5>
+<p>接下来回到 cPanel 管理界面，找到其中的 <code>MySQL 数据库向导</code>。点击进入向导。</p>
+<p><img src="https://postimg.aliavv.com/mbp/hybl9.jpg" alt="" /></p>
+<p>分别输入数据库名、用户名和密码：</p>
+<p><img src="https://postimg.aliavv.com/mbp/wfc39.jpg" alt="" /></p>
+<p><img src="https://postimg.aliavv.com/mbp/y4a49.jpg" alt="" /></p>
+<p>在选择权限时，勾选“所有权限”复选框：</p>
+<p><img src="https://postimg.aliavv.com/mbp/xya9r.jpg" alt="" /></p>
+<p>然后单击“下一步”按钮，就可以看到添加成功的界面。</p>
+<p><img src="https://postimg.aliavv.com/mbp/7v2bz.jpg" alt="" /></p>
+<p>稍后安装 WordPress 时，就可以使用刚刚创建的数据库去安装 WordPress 了。</p>
+<h5 id="安装-wordpress"><a class="header" href="#安装-wordpress">安装 WordPress</a></h5>
+<p>接下来，就可以访问你的虚拟主机绑定的域名去安装 WordPress 了。具体的安装部分，可以参考上方的 Mac 开发环境配置部分的相关内容。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../deployment/mac-dev.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../deployment/wanwang-production.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../deployment/mac-dev.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../deployment/wanwang-production.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>动手开发插件： Custom Author 插件开发实战 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/opt/custom-author.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="动手开发插件custom-author-插件开发实战"><a class="header" href="#动手开发插件custom-author-插件开发实战">动手开发插件：Custom Author 插件开发实战</a></h1>
+<p>今天分享一个插件的完整开发流程，帮助你来理解我的开发工作流，让你更好的开发出自己的 WordPress 插件。</p>
+<h3 id="起因"><a class="header" href="#起因">起因</a></h3>
+<p>咱们 GitChat 的丹华老师找到我，我咨询了一个问题</p>
+<blockquote>
+<p>如何在发布文章时指定特定的作者？</p>
+</blockquote>
+<p>遇到这个问题后，我先向丹华老师咨询了一个问题：</p>
+<ol>
+<li>你使用的作者是否会重复？</li>
+</ol>
+<p>得到了丹华老师否定的回答后，我就知道，我可能需要帮他找一款同类型插件来解决他的问题。如果使用的作者能够重复，那么其实可以通过 WordPress 内置的用户系统来实现，只需要在发布时选择作者就行了。不过因为很少会重复，手动的收入就很有必要了。</p>
+<blockquote>
+<p><strong>为什么要先沟通问题？</strong></p>
+<p>遇见问题时，程序员的天性总是希望通过造轮子来解决问题，但是，我们应该尽可能的控制自己，不要通过造轮子来解决问题。 WordPress 的插件已经足够多了！完全可以通过沟通，来引导用户确定自己的需求，或对需求进行转化。尝试着用一些非技术的手段来解决问题！技术应该是核武器，不要轻易动用。</p>
+</blockquote>
+<p>通过一段搜索后，我确定没有同类型的插件，便考虑写一个新的插件。</p>
+<h3 id="定名"><a class="header" href="#定名">定名</a></h3>
+<p>在开始写插件的时候，难免要为插件起名，一个好的插件名可以帮助你引入更多的用户。由于我的插件非常简单，仅仅需要提供发布文章时的自定义作者，因此我初步拟定插件名为 Custom Author。</p>
+<p>同名的插件你发布到 WordPress 时，访问的路径会是 xxx-2，非常不好看，所以我又对插件名称进行了确认，确认了该名称尚未被使用。</p>
+<blockquote>
+<p><strong>在为插件起名时，如何确定 WordPress 中没有同名的插件？</strong></p>
+</blockquote>
+<blockquote>
+<p>访问网址 <a href="https://wordpress.org/plugins/%E6%8F%92%E4%BB%B6%E5%90%8D%E7%A7%B0">https://wordpress.org/plugins/插件名称</a>：</p>
+<ul>
+<li>如果你看到的是搜索结果，就说明该名称尚未被使用，页面的路径也会被自动导流到 <a href="https://wordpress.org/plugins/search/custom-author/">https://wordpress.org/plugins/search/custom-author/</a>。</li>
+<li>如果你看到的是插件的详情页面，则说明该名称已经被使用了。</li>
+</ul>
+</blockquote>
+<h3 id="思路"><a class="header" href="#思路">思路</a></h3>
+<p>由于我需要为文章手动指定作者信息，而 WordPress 本身的用户系统中用户的创建需要输入较多信息，且容易造成用户的污染，因此，我考虑使用 Post Meta 信息来进行用户信息的设置。</p>
+<p>同时，在浏览文章时，将对应的 Post Meta 信息读取，替换掉默认的作者信息。</p>
+<p><img src="https://postimg.aliavv.com/f5b0088a-b60f-4ce1-9be7-495ebb769878.png" alt="" /></p>
+<p>此外，在替换作者信息时，也需要考虑一些边缘情况。需要考虑，如果某篇文章没有设置 Post Meta 信息的话，就需要让其显示默认的作者信息，或者设置一个默认作者信息（这个可以通过插件设置来实现，不过当前这个插件其实没有必要做这个功能，使用 WordPress 默认的用户信息也可以）。</p>
+<p>这里经过考虑，我决定在浏览文章时，加入一层判定，如果设置了 Post Meta 信息，就读取 Post Meta 信息；未设置该信息时，就显示默认的用户信息。</p>
+<p><img src="https://postimg.aliavv.com/bfec44e5-091c-427d-bb4c-1cd78751b5a3.png" alt="" /></p>
+<p>在用户操作时，对用户最为友好的便是通过界面的手动输入来设置作者信息，因此，我考虑在界面中加入一个输入框，来作为作者信息输入。此处考虑到插件的特定用户是丹华老师，因此，我将这个输入框放在发布框内，方便他操作。</p>
+<p><img src="https://postimg.aliavv.com/9f1eec60-8009-4fdf-a5e9-4e7e3ac013ea.png" alt="" /></p>
+<h3 id="实现"><a class="header" href="#实现">实现</a></h3>
+<p>在完成了插件功能的考虑后，接下来就进入到插件的开发阶段了。在刚刚，我们将插件的整个工作流程分为了两部分，前台的显示和替换以及后台的 Post Meta 设置。</p>
+<h4 id="后台功能"><a class="header" href="#后台功能">后台功能</a></h4>
+<p>在这里，首先添加了两个 Action，用来在 WordPress 上的发布框中添加内容的输出，并添加了数据处理函数。</p>
+<pre><code class="language-php">add_action('post_submitbox_misc_actions', 'cus_author_createCustomField');
+add_action('save_post', 'cus_author_saveCustomField');
+</code></pre>
+<p>然后分别设置他们的处理函数<code>cus_author_createCustomField</code>和 <code>cus_author_saveCustomField</code>。</p>
+<p>在<code>cus_author_createCustomField</code>中，我使用了如下的代码，来判断当前编辑的内容是否是 Post，也就是文章类型，从而可以设置仅对文章类型的页面输出插件的内容。</p>
+<pre><code class="language-php">$post_id = get_the_ID();
+if (get_post_type($post_id) != 'post') {
+    return;
+}
+</code></pre>
+<p>随后，提取文章的 Post Meta：</p>
+<pre><code class="language-php">$value = get_post_meta($post_id, '_custom_author_name', true);
+</code></pre>
+<p>这里我设置第三个参数为 true，表明我希望返回值是单个对象，而不是一个数组。</p>
+<p>并添加 nonce 安全处理，借助 nonce 安全处理，可以避免我们设置的接口被恶意请求。WordPress 在处理时，会进行安全校验。</p>
+<pre><code class="language-php">wp_nonce_field('custom_author_nonce' , 'custom_author_nonce');
+</code></pre>
+<p>以及使用 HTML 输出界面，此部分不再粘贴代码，相关代码在<a href="https://github.com/bestony/custom-author/blob/master/custom-author.php#L45">详见这里</a>。</p>
+<p>在 <code>cus_author_saveCustomField</code> 中，添加了如下一系列函数来进行校验：</p>
+<pre><code class="language-php">if (defined('DOING_AUTOSAVE') &amp;&amp; DOING_AUTOSAVE) {
+    return;
+}
+</code></pre>
+<p>上述代码可以避免自动保存功能触发的更新。</p>
+<pre><code class="language-php">if (
+    !isset($_POST['custom_author_nonce']) ||
+    !wp_verify_nonce($_POST['custom_author_nonce'], 'custom_author_nonce')
+) {
+    return;
+}
+</code></pre>
+<p>上述代码会检测是否提交了 nonce 信息，以及 nonce 信息是否是正确的。如果不正确，就返回，从而确保用户的请求一定是 WordPress 后台发起的，而不是用户通过其他渠道恶意发起的。</p>
+<pre><code class="language-php">if (!current_user_can('edit_post', $post_id)) {
+    return;
+}
+</code></pre>
+<p>以及，判断用户是否有对应的权限编辑特定的文章，如果没有权限，就返回。</p>
+<p>在完成了权限校验后，便是对用户输入进行保存：</p>
+<pre><code class="language-php">if (isset($_POST['_custom_author_name'])) {
+    update_post_meta($post_id, '_custom_author_name', sanitize_text_field($_POST['_custom_author_name']));
+} else {
+    /**
+     * 不存在就删除
+     */
+    delete_post_meta($post_id, '_custom_author_name');
+}
+</code></pre>
+<p>在这段代码中，需要注意的是，我使用了 <code>sanitize_text_field</code> 来对用户输入进行校验。你不应该相信用户的输入，而是尽可能的做好安全校验。</p>
+<p>后台部分完整代码<a href="https://github.com/bestony/custom-author/blob/master/custom-author.php#L27-L87">详见这里</a>。</p>
+<h4 id="前台部分"><a class="header" href="#前台部分">前台部分</a></h4>
+<p>在完成了后台部分的内容后，我们来实现前台的内容展示。在完成这部分功能时，不需要再使用 <code>add_action</code>，而是要使用 <code>add_filter</code>。</p>
+<pre><code class="language-php">
+add_filter('the_author','cus_author_the_author');
+function cus_author_the_author($author){
+    $custom_author = get_post_meta(get_the_ID(), '_custom_author_name');
+    if ($custom_author) {
+        return $custom_author[0];
+    } else {
+        return $author;
+    }
+}
+</code></pre>
+<p>前台内容的展示逻辑非常简单，你只需要判断文章是否设置了自定义的作者名称。如果设置了自定义作者信息，就使用手动设置的值；如果没有设置，就使用函数传入的默认的作者名称。</p>
+<h3 id="提交审核"><a class="header" href="#提交审核">提交审核</a></h3>
+<p>在完成了插件的开发后，我便筹划将插件提交到官方。毕竟，通过官方审核的插件能够让更多人信任，同时，使用时体验也更好，只需要在 WordPress 后台搜索即可。</p>
+<p><img src="https://postimg.aliavv.com/f3563737-93da-4821-96d9-e8c14242ce53.png" alt="" /></p>
+<p>前往 <a href="https://wordpress.org/plugins/developers/add/">wordpress 网站</a> 提交插件审核，等待一晚上的时间（由于存在时差，插件的审核总是在我们的半夜进行），就会收到审核结果了。如果审核没有通过，只需要根据审核邮件的内容进行修改。</p>
+<p><img src="https://postimg.aliavv.com/3443adef-7602-4d71-9103-e8a372768353.png" alt="" /></p>
+<p>修改完成后，将修改后的插件作为附件回复给审核者，再等一个晚上就会收到审核的意见。</p>
+<p><img src="https://postimg.aliavv.com/3bcce5ac-f98c-4105-80fb-07797ad59de9.png" alt="" /></p>
+<p>审核通过后，就会收到 WordPress 官方的邮件，提醒你使用 SVN 管理插件，接下来就是准备插件的一些展示文件了，这部分内容可以参考一下咱们之前的达人课<a href="https://gitbook.cn/gitchat/column/5a16601f13c02f4a35c9f8ad/topic/5a16633c13c02f4a35c9fa3b">  第 19 课：提交你的插件到 WordPress 的官方仓库</a>。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../opt/wpdb.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../opt/sendmail.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../opt/wpdb.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../opt/sendmail.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

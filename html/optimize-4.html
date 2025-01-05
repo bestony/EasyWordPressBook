@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>站点性能优化 （四）：程序优化 - 人人都能学会的 WordPress 实战课</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="给普通人的 WordPress 的实战课">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/pagetoc.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+            
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">人人都能学会的 WordPress 实战课</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/bestony/EasyWordPressBook/edit/main/src/optimize-4.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                         <a href="https://www.ixiqin.com" target="_blank" rel="noopener noreferrer" title="www.ixiqin.com"
+                        aria-label="www.ixiqin.com">
+                        <i id="home-button" class="fa fa-home"></i>
+                    </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                     <main>
+                        <div class="content-wrap">
+                            <h1 id="wordpress-性能优化程序优化"><a class="header" href="#wordpress-性能优化程序优化">WordPress 性能优化：程序优化</a></h1>
+<p>除了之前提到的动静分离、服务器优化、缓存加速以外，还有一点很重要的就是程序层面的优化。</p>
+<h4 id="加速程序优化"><a class="header" href="#加速程序优化">加速：程序优化</a></h4>
+<h5 id="关闭-google-字体"><a class="header" href="#关闭-google-字体">关闭 Google 字体</a></h5>
+<p>Google 字体绝对是拖慢国内 WordPress 浏览速度的一个重要原因。可以通过在主题的如下插件来关闭 Google 字体。</p>
+<pre><code>function remove_open_sans() {
+    wp_deregister_style( 'open-sans' );
+    wp_register_style( 'open-sans', false );
+    wp_enqueue_style('open-sans','');
+}
+add_action( 'init', 'remove_open_sans' );
+</code></pre>
+<h5 id="加速-gravatar-头像"><a class="header" href="#加速-gravatar-头像">加速 Gravatar 头像</a></h5>
+<p>由于 Gravatar 的主域名被屏蔽，可以考虑使用 https 的 Gravatar 域名，或者将图片缓存到本地。</p>
+<p>将下面的代码加入到主题的 functions.php 中，并在根目录中创建一个 avatar 目录，给予 PHP 可写的权限，上传一个 default.jpg 作为默认的头像。</p>
+<pre><code>function my_avatar($avatar) {
+  $tmp = strpos($avatar, 'http');
+  $g = substr($avatar, $tmp, strpos($avatar, "'", $tmp) - $tmp);
+  $tmp = strpos($g, 'avatar/') + 7;
+  $f = substr($g, $tmp, strpos($g, "?", $tmp) - $tmp);
+  $w = get_bloginfo('wpurl');
+  $e = ABSPATH .'avatar/'. $f .'.jpg';
+  $t = 1209600; //设定时间为14天，单位为秒
+  if ( !is_file($e) || (time() - filemtime($e)) &gt; $t ) { //头像不存在或时间超过14天，重新获取
+    copy(htmlspecialchars_decode($g), $e);
+  } else  $avatar = strtr($avatar, array($g =&gt; $w.'/avatar/'.$f.'.jpg'));
+  if (filesize($e) &lt; 500) copy($w.'/avatar/default.jpg', $e);
+  return $avatar;
+}
+add_filter('get_avatar', 'my_avatar');
+</code></pre>
+<h4 id="加速-php-代码"><a class="header" href="#加速-php-代码">加速 PHP 代码</a></h4>
+<h5 id="使用最新版的-php"><a class="header" href="#使用最新版的-php">使用最新版的 PHP</a></h5>
+<p>PHP 目前在线上跑的版本有很多，从 5.4、5.5 到最新的 7.1 在线上都有，而自 PHP 7 开始，PHP 的性能有大幅度的提升，所以建议将你的旧版 PHP 升级到最新版的 PHP 7。</p>
+<blockquote>
+<p>需要注意的是，部分插件不兼容 PHP 7，要确认使用的插件是否兼容 PHP 7。</p>
+</blockquote>
+<h5 id="控制插件主题的数量"><a class="header" href="#控制插件主题的数量">控制插件、主题的数量</a></h5>
+<p>一方面要尽可能的减少用到的插件，插件越多，程序就越臃肿，运行的效率就越低。确认你是否需要使用到相关的功能？能不能将相关的功能使用其他的方式来引入？对于一些评分较低的插件，可以考虑使用评分更高的同类插件来替换。</p>
+<p>另一方面，对于不用的主题和插件，可以将其删除，以减少 WordPress 对目录的扫描。</p>
+<h5 id="优化主题"><a class="header" href="#优化主题">优化主题</a></h5>
+<p>首先，要尽可能的选择框架更小、引用更少的主题，用更少的代码实现更多的功能。对于一些引用文件特别多的主题，可以考虑减少一部分引用文件，去掉一些用处不大的功能。如果实在无法去除，则确保对每个引用文件都进行压缩（minify），去除代码中无用的注释和空格，缩小文件大小。此外，还可以借助诸如 Better WordPress Minify 之类的插件来简化请求，将多个 CSS/JS 文件简化为一个 CSS/JS 文件，也能提升网站的加载速度。</p>
+<p>其次，对于主题使用到的函数，可以考虑使用获取缓存数据的函数来替换直接从数据库查询数据的函数。比如<code>get_the_terms</code> 和 <code>wp_get_object_terms</code>。</p>
+<blockquote>
+<p>It should be noted that the results from <code>wp_get_object_terms</code> are not cached which will result in a db call everytime this function is called. For performance, functions like <code>get_the_terms()</code> (which the results of has been cached), should be used.</p>
+</blockquote>
+<blockquote>
+<p><code>https://codex.wordpress.org/Function_Reference/wp_get_object_terms.</code></p>
+</blockquote>
+<p>通过使用缓存数据可以有效减少数据库查询，提升数据的查询结果。</p>
+<p>如果一定要从数据库中直接查询，则要注意对查询结果进行缓存，可以使用 <a href="https://codex.wordpress.org/Class_Reference/WP_Object_Cache">WordPress Object Cache 函数</a>来进行处理。</p>
+<p>此外，也要精简主题的结构，去除一些无用的标签，减少 HTML 的代码，也可以有效的提升网站加载速度。</p>
+<h4 id="优化图片"><a class="header" href="#优化图片">优化图片</a></h4>
+<p>这里的图片优化不同于前面的图片优化，前面的优化更多是用户层面的，而这里的图片优化值得是 CSS 雪碧图（Sprites），通过使用 CSS 雪碧图，可以减少 CSS 调用的图片的数量，加速页面的展示。</p>
+<h5 id="加入-lazyload"><a class="header" href="#加入-lazyload">加入 LazyLoad</a></h5>
+<p>为博客加入 LazyLoad 可以让页面不在一开始就加载图片，从而让图片的加载分步进行，能够更好的利用服务器的带宽，将压力分流到整个页面的浏览过程中。除此之外，还可以给你的服务器减少一些请求的压力和流量的使用，如果图片没有被浏览到，则不加载相关的图片。</p>
+<p><strong>使用 ROCKET LAZYLOAD</strong></p>
+<p>到 <a href="https://wordpress.org/plugins/rocket-lazy-load/">https://wordpress.org/plugins/rocket-lazy-load/</a> 下载插件，在后台启用该插件后，可以设置图片、iFrame 和 YouTube 视频的 LazyLoad。</p>
+<p><img src="https://postimg.aliavv.com/2018/nz5ch.png" alt="" /></p>
+<h4 id="优化数据库"><a class="header" href="#优化数据库">优化数据库</a></h4>
+<p>WordPress 有修订版本的功能，可以使用插件来删除旧文章的修订版本，来优化数据库，达到更好的查询效果。</p>
+<h5 id="安装-wp-optimize"><a class="header" href="#安装-wp-optimize">安装 WP-Optimize</a></h5>
+<p>可以到 <a href="https://wordpress.org/plugins/wp-optimize/">https://wordpress.org/plugins/wp-optimize/</a> 下载插件，并在后台安装、启用插件。</p>
+<p><strong>清除数据库中的垃圾</strong></p>
+<p>打开后台的 WP-Optimize 插件页面，勾选要优化的项目，单击上面的  <strong>Run All Selected Optimizations</strong> 选项，即可进行优化。</p>
+<p><img src="https://postimg.aliavv.com/2018/75loz.png" alt="" /></p>
+<h4 id="开启-etag"><a class="header" href="#开启-etag">开启 ETag</a></h4>
+<p>在为我们的博客打开 ETag 后，浏览器将自动判断内容是否更新，如果未发生更新，则使用旧的数据，这样可以有效帮助我们减少网页的加载，提升页面的加载速度。</p>
+<p>在 WordPress 中，我们可以通过安装 <a href="https://wordpress.org/plugins/smart-wp/">Smart WordPress</a> 插件来开启 ETag。</p>
+<p>插件安装完成后，进入插件的设置页面，可以看到有这样的选项，勾选选项打开 ETag 的插入即可。</p>
+<p><img src="https://postimg.aliavv.com/2018/tul7r.png" alt="" /></p>
+<p>这个插件除了可以帮助我们控制 ETag 以外，还可以帮我们设置 <code>Last-Modified </code> Response Header。</p>
+<p><img src="https://postimg.aliavv.com/2018/c60j7.png" alt="" /></p>
+<p>以及 <code>Cache-Control</code> Response Header。</p>
+<p><img src="https://postimg.aliavv.com/2018/flm24.png" alt="" /></p>
+<p>通过上述的这些设置，可以帮助我们有效的提升浏览器对博客缓存的利用率。</p>
+<h4 id="加速浏览"><a class="header" href="#加速浏览">加速浏览</a></h4>
+<p>鼓励和提醒你的用户使用最新版的高性能浏览器，如 FireFox、Opera、Chrome，这些浏览器的高性能渲染引擎会比 IE 有更好的表现，间接实现了对 WordPress 的加速。</p>
+
+                            <hr>
+                            <a href="https://beian.miit.gov.cn" style="font-size: 1rem;" target="_blank" class="custom-link">京ICP备2022003750号-2</a>
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="optimize-3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="security.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="optimize-3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="security.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>
