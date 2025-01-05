@@ -108,7 +108,7 @@ Tusplus 是 envato 旗下的在线知识分享平台，上面有非常多的 Wor
 
 #### WordPress 相关应用
 
-##### WordPress for iOS [Free]
+##### WordPress for iOS （免费）
 
 地址：[https://itunes.apple.com/us/app/wordpress/id335703880?mt=8](https://itunes.apple.com/us/app/wordpress/id335703880?mt=8)
 
@@ -116,7 +116,7 @@ Tusplus 是 envato 旗下的在线知识分享平台，上面有非常多的 Wor
 
 WordPress 官方客户端配合 JetPack 插件将会非常好用，不过可能会比较臃肿，个人不喜欢。
 
-##### WordPress for Android [Free]
+##### WordPress for Android （免费）
 
 地址：[https://play.google.com/store/apps/details?id=org.wordpress.android](https://play.google.com/store/apps/details?id=org.wordpress.android)
 
@@ -126,7 +126,7 @@ WordPress 官方客户端，也是需要配合 JetPack 插件才能更好用，�
 
 值得一提的是，官方的两个客户端都是开源的，你可以在 [https://github.com/wordpress-mobile](https://github.com/wordpress-mobile) 找到。
 
-##### MWeb for iOS / Mac [Paid]
+##### MWeb for iOS / Mac （付费）
 
 地址：[http://zh.mweb.im/](http://zh.mweb.im/)
 

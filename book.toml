@@ -12,3 +12,5 @@ git-repository-url = "https://github.com/bestony/EasyWordPressBook"
 git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/bestony/EasyWordPressBook/edit/main/{path}"
 cname = "easywpbook.com"
+
+[output.linkcheck]
