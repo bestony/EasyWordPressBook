@@ -80,7 +80,7 @@ WP 酷是国内的一个专注 WordPress 的主题分享站点，如果找不到
 
 地址：[http://www.2zzt.com/](http://www.2zzt.com/)
 
-WordPress 魂的站长黄聪录制了两批课程**“[《跟黄聪学Wordpress插件开发》](http://wphun.com/737)”**和**“[《跟黄聪学WordPress主题开发》](http://wphun.com/673)”**，都是非常棒的视频课程，而且是免费的。如果你想学习相关开发，值得一看。
+WordPress 魂的站长黄聪录制了两批课程 **[《跟黄聪学Wordpress插件开发》](http://wphun.com/737)** 和 **[《跟黄聪学WordPress主题开发》](http://wphun.com/673)**，都是非常棒的视频课程，而且是免费的。如果你想学习相关开发，值得一看。
 
 ##### WOPUS
 
