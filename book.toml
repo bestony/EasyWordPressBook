@@ -1,0 +1,14 @@
+[book]
+authors = ["白宦成 <bestony@linux.com>"]
+language = "zh-Hans"
+multilingual = false
+src = "src"
+title = "人人都能学会的 WordPress 实战课"
+description = "给普通人的 WordPress 的实战课"
+
+
+[output.html]
+git-repository-url = "https://github.com/bestony/EasyWordPressBook"
+git-repository-icon = "fa-github"
+edit-url-template = "https://github.com/bestony/EasyWordPressBook/edit/main/{path}"
+cname = "easywpbook.com"
