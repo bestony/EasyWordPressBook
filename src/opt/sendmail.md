@@ -16,17 +16,16 @@ WordPress 本身提供了通过电子邮件发布的功能，如果你只是希�
 
 无论是使用自带的功能，还是使用第三方插件提供的功能，都需要准备一个邮箱来接收具体的文章，这就要求你准备好一个邮箱，用来接受邮件。
 
-![enter image description here](https://images.gitbook.cn/a754f450-6ace-11e8-be8f-7dfa349ed714)
+![](https://postimg.aliavv.com/0dd59b99-5808-4ba2-ad05-4c9e2ec879a7.png)
 
 一般来说，我们可以使用第三方的邮箱来接受邮件，比如 163 邮箱、Gmail、QQ 邮箱等，这里你需要注意的是，建议**使用一个全新的邮箱，并借助于邮箱系统自带的过滤器，来确保无关的邮件不会进入你的收件箱，从而确保你的博客内容不会收到干扰**。此外，你可以使用自建的域名邮箱来作为接收文章的邮箱。
 
-<img src="https://images.gitbook.cn/ad4b4a80-6ace-11e8-95b2-5d9502ef3f23"  width = "60%" />
 
 在选择邮箱时，需要考虑到国内特殊的网络环境，如果你的 WordPress 部署在国内的主机上，最好不要使用 Gmail 等在国内无法正常访问的邮箱，使用国内服务商提供的邮箱可以确保你的邮箱能够正常的登录和获取邮件。
 
 在完成了邮箱的注册等操作后，注意要到邮箱的设置界面去设置开启 POP 服务，如果未开启该服务，则无法让 WordPress 登录你的邮箱来获取邮件和邮件内容了。
 
-![enter image description here](https://images.gitbook.cn/b251e980-6ace-11e8-95b2-5d9502ef3f23)
+![](https://postimg.aliavv.com/9a070fc9-34b0-411e-b5c3-95d53aa4779c.png)
 
 此外，还需要注意的是，国内的一些邮箱采用了独立的授权码机制（比如 QQ 邮箱），在这种情况下，你需要将独立的授权码填写在你的 WordPress 后台的设置界面。
 
@@ -34,7 +33,7 @@ WordPress 本身提供了通过电子邮件发布的功能，如果你只是希�
 
 在完成了邮箱的准备后，就可以进入 WordPress 后台，在 WordPress 后台的 「设置」——「撰写设置」页面，找到「通过电子邮件发布」，并将邮箱服务提供商给你的邮件服务器等信息，填写在这里。这里需要注意的是，我们需要在这里指定默认的邮件发布分类目录。
 
-![enter image description here](https://images.gitbook.cn/b6b347d0-6ace-11e8-b510-ebe41f970f61)
+![](https://postimg.aliavv.com/9efff906-8cb4-41aa-b56f-b29953d1d3c5.png)
 
 设置完成后，单击“保存”按钮，接下来就可以试着使用邮件来发布内容了。
 
@@ -42,15 +41,15 @@ WordPress 本身提供了通过电子邮件发布的功能，如果你只是希�
 
 我们打开自己的私人邮箱，在私人邮箱中，编写一封发向我们的收件邮箱的邮件，用来测试我们的测试内容的发布。
 
-<img src="https://images.gitbook.cn/bc9c7ea0-6ace-11e8-95b2-5d9502ef3f23"  width = "60%" />
+![](https://postimg.aliavv.com/88684458-a503-4b7f-9894-3fa3e6d61fc2.png)
 
-发布内容后，打开浏览器，[输入网址](https://yourdomain/wp-mail.php)，将 yourdomain 替换为你自己的域名），来触发 WordPress 去拉取邮件。
+发布内容后，打开浏览器，输入网址`https://yourdomain/wp-mail.php`，将 yourdomain 替换为你自己的域名），来触发 WordPress 去拉取邮件。
 
-<img src="https://images.gitbook.cn/01af99a0-6acf-11e8-be8f-7dfa349ed714"  width = "70%" />
+![](https://postimg.aliavv.com/bd57020c-1c38-44ae-96a4-bc7e6935b714.png)
 
 访问完成后，稍等 2 分钟，然后回到站点的首页、刷新，就可以看到我们通过邮件发布的内容了，再根据我们的需要编辑内容，发布即可。
 
-![enter image description here](https://images.gitbook.cn/06293ae0-6acf-11e8-95b2-5d9502ef3f23)
+![](https://postimg.aliavv.com/d6c85b36-92bb-47c2-b7c2-75104238aee5.png)
 
 #### 4.设置自动拉取内容
 
@@ -80,7 +79,7 @@ wget -N https://yourdomain/wp-mail.php
 
 如果你刷新的频次太高，就会看到这样的提示：
 
-![enter image description here](https://images.gitbook.cn/0b110740-6acf-11e8-b510-ebe41f970f61)
+![](https://postimg.aliavv.com/536fead0-1b38-4d6a-a4f2-00decd1ce578.png)
 
 此外，还可以**  使用各种云监控提供的定时访问功能来触发内容的拉取**，这个和 crontab 的用法基本一致，可以参考各个平台的说明。
 
@@ -92,11 +91,11 @@ WordPress 自带的邮件发布功能不完善，无法设置自定义的邮件�
 
 在 WordPress 后台的插件管理界面搜索并按照 Postie 插件，安装完成后，点击提示，进入设置页面。
 
-![enter image description here](https://images.gitbook.cn/0fb5fe40-6acf-11e8-b784-4fdd1e8c8060)
+![](https://postimg.aliavv.com/e1a06b7d-0f3f-4dd4-9485-bf959a679895.png)
 
 在设置页面中的 「Mailserver」 部分设置收件邮箱的地址（邮箱注册和配置的部分参考使用「通过电子邮件发布」功能发布文章中的第一小节，准备邮箱部分。）
 
-<img src="https://images.gitbook.cn/15985740-6acf-11e8-b510-ebe41f970f61"  width = "80%" />
+![](https://postimg.aliavv.com/9b408aec-9252-4f2a-af77-936c71c6739b.png)
 
 配置完成后，点击页面底部的「保存更改」，保存配置，然后点击页面右上角的 「Test Config」。
 
@@ -104,19 +103,19 @@ WordPress 自带的邮件发布功能不完善，无法设置自定义的邮件�
 
 然后拖动到底部，找到 「Connect to Mail Host」一栏，可以看到「Successful POP3 connection on port 110」，则说明你的配置是正确的。
 
-<img src="https://images.gitbook.cn/1bbdfad0-6acf-11e8-b510-ebe41f970f61"  width = "80%" />
+![](https://postimg.aliavv.com/0ca187e9-1e3c-4bea-8231-80eb507c7473.png)
 
 如果设置错误，则会提醒你报错，比如下面这样的，便是账号密码不匹配。
 
-![enter image description here](https://images.gitbook.cn/5ec34470-6acf-11e8-be8f-7dfa349ed714)
+![](https://postimg.aliavv.com/81cf8e23-a063-4871-b9e1-80ce7fc9398a.png)
 
 除了邮箱账号密码的设置以外，还有一个很重要的设置便是自动检查频次的设置，在下方的「Check for mail every」部分可以设置检查邮箱的频次，默认是 30 分钟一次，可以根据你的需要，调整检查的频次。
 
-![enter image description here](https://images.gitbook.cn/6dd377f0-6acf-11e8-b784-4fdd1e8c8060)
+![](https://postimg.aliavv.com/92709714-ecf6-4704-9f84-f29d46826212.png)
 
 此外，建议你设置一下 「 Message 」 中的 **Perferred Text Type**，这个项目用于指定默认的邮件类型，默认值是 Text，但是国内的邮件系统大多都是默认 HTML，所以可以也设置为“默认 HTML”。
 
-![enter image description here](https://images.gitbook.cn/7ab92a50-6acf-11e8-95b2-5d9502ef3f23)
+![](https://postimg.aliavv.com/d12e9c35-0c1e-4bf0-bfb7-32ee80d50e53.png)
 
 Message 页面下方的配置都是发文章时的一些默认配置，都非常简单，就不再赘述，如果你有需要，可以单独在读者圈进行提问。
 
@@ -126,11 +125,10 @@ Message 页面下方的配置都是发文章时的一些默认配置，都非常
 
 在邮箱中新建一封邮件，并发送到我们的邮箱中，等待一个检查周期，就可以看到已经发布了邮件的内容。
 
-![enter image description here](https://images.gitbook.cn/88ae9f00-6acf-11e8-b510-ebe41f970f61)
+![](https://postimg.aliavv.com/2d99bb33-783f-47cf-8e21-c3880c164ee8.png)
 
 我们可以看到，WordPress 自动的识别出我们通过邮件设置的格式等。
 
-<img src="https://images.gitbook.cn/94d34b50-6acf-11e8-be8f-7dfa349ed714"  width = "80%" />
 
 #### 自定义目录和标签
 
@@ -140,10 +138,10 @@ Message 页面下方的配置都是发文章时的一些默认配置，都非常
 
 如果你需要设置自定义的标签，就在文章的正文中放置 `tags:`，然后放入 tag （不要求存在），不同的 tag 之间使用英文逗号隔开，比如：`tags: cats, funny`。
 
-<img src="https://images.gitbook.cn/a1136ee0-6acf-11e8-be8f-7dfa349ed714"  width = "50%" />
+![](https://postimg.aliavv.com/9f31eba4-de9e-4a68-b23f-9412d964dba5.png)
 
 发布后的效果如下：
 
-![enter image description here](https://images.gitbook.cn/af635fa0-6acf-11e8-95b2-5d9502ef3f23)
+![](https://postimg.aliavv.com/171dd45a-d636-47db-a0d6-186f65bd461a.png)
 
 至此，我们完成了使用 Email 来发布 WordPress 文章的内容，虽然 WordPress 官方提供了通过邮件发布的功能，但是我更加推荐你使用功能完善的 「Postie」 来完成通过 Email 发布文章的需求。
