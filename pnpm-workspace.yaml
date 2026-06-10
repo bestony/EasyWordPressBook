@@ -1,6 +1,6 @@
 allowBuilds:
-  esbuild: set this to true or false
-  sharp: set this to true or false
+  esbuild: true
+  sharp: true
 minimumReleaseAgeExclude:
   - '@astrojs/starlight@0.40.0'
   - '@expressive-code/core@0.43.1'
