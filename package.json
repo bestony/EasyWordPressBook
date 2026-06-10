@@ -7,15 +7,20 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "generate-types": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.7.0",
     "@astrojs/starlight": "^0.40.0",
     "astro": "^6.4.5",
     "sharp": "^0.34.5",
     "starlight-versions": "0.9.0"
   },
   "devDependencies": {
-    "wrangler": "^4.98.0"
+    "wrangler": "^4.99.0"
+  },
+  "overrides": {
+    "vite": "^7"
   }
 }
