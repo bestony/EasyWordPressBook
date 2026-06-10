@@ -3,8 +3,6 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightVersions from 'starlight-versions';
 
-import cloudflare from '@astrojs/cloudflare';
-
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -32,6 +30,4 @@ export default defineConfig({
           ],
       }),
 	],
-
-  adapter: cloudflare(),
 });

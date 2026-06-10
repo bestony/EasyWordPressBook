@@ -2,10 +2,8 @@
 	"compatibility_date": "2026-06-10",
 	"compatibility_flags": ["global_fetch_strictly_public"],
 	"name": "easywpbook",
-	"main": "@astrojs/cloudflare/entrypoints/server",
 	"assets": {
-		"directory": "./dist",
-		"binding": "ASSETS"
+		"directory": "./dist"
 	},
 	"observability": {
 		"enabled": true

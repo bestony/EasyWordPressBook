@@ -12,6 +12,5 @@ minimumReleaseAgeExclude:
   - astro@6.4.5
   - expressive-code@0.43.1
   - rehype-expressive-code@0.43.1
-  - '@astrojs/cloudflare@13.7.0'
   - miniflare@4.20260609.0
   - wrangler@4.99.0
