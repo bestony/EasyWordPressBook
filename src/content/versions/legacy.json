@@ -1,0 +1,220 @@
+{
+	"sidebar": [
+		{
+			"label": "开始",
+			"items": [
+				{
+					"label": "本书介绍",
+					"slug": "index"
+				},
+				{
+					"label": "更新记录",
+					"slug": "changelog"
+				},
+				{
+					"label": "导读",
+					"slug": "intro"
+				}
+			]
+		},
+		{
+			"label": "WordPress 部署",
+			"items": [
+				{
+					"label": "WordPress 的部署",
+					"slug": "development-env"
+				},
+				{
+					"label": "Windows 开发环境配置",
+					"slug": "deployment/windows-dev"
+				},
+				{
+					"label": "macOS 开发环境配置",
+					"slug": "deployment/mac-dev"
+				},
+				{
+					"label": "cPanel 生产环境配置",
+					"slug": "deployment/cpanel-production"
+				},
+				{
+					"label": "万网虚拟主机环境配置",
+					"slug": "deployment/wanwang-production"
+				},
+				{
+					"label": "宝塔 Linux 环境配置",
+					"slug": "deployment/bt-linux-production"
+				}
+			]
+		},
+		{
+			"label": "WordPress 使用",
+			"items": [
+				{
+					"label": "基本使用",
+					"slug": "basic-usage"
+				},
+				{
+					"label": "基本设置",
+					"slug": "basic-config"
+				},
+				{
+					"label": "常用插件使用说明（一）",
+					"slug": "basic-plugin-1"
+				},
+				{
+					"label": "常用插件使用说明（二）",
+					"slug": "basic-plugin-2"
+				},
+				{
+					"label": "相关资源站点",
+					"slug": "resources"
+				},
+				{
+					"label": "站点性能优化 （一）：动静分离",
+					"slug": "optimize-1"
+				},
+				{
+					"label": "站点性能优化 （二）：服务器优化",
+					"slug": "optimize-2"
+				},
+				{
+					"label": "站点性能优化 （三）：WordPress 缓存",
+					"slug": "optimize-3"
+				},
+				{
+					"label": "站点性能优化 （四）：程序优化",
+					"slug": "optimize-4"
+				},
+				{
+					"label": "安全固化",
+					"slug": "security"
+				}
+			]
+		},
+		{
+			"label": "WordPress 主题",
+			"items": [
+				{
+					"label": "WP 主题使用",
+					"slug": "theme/usage"
+				},
+				{
+					"label": "WP 主题开发：快速入门",
+					"slug": "theme/intro"
+				},
+				{
+					"label": "WP 主题开发：文件结构",
+					"slug": "theme/struct"
+				},
+				{
+					"label": "WP 主题开发：一些特殊的页面",
+					"slug": "theme/custom-page"
+				},
+				{
+					"label": "WP 主题开发: 条件语法",
+					"slug": "theme/is-function"
+				},
+				{
+					"label": "WP 主题开发：接入 Options Framework",
+					"slug": "theme/options-framework"
+				},
+				{
+					"label": "WP 主题开发：一些 WordPress 开发的小技巧",
+					"slug": "theme/tips"
+				},
+				{
+					"label": "WP 主题开发：提交主题到 WordPress 官方仓库",
+					"slug": "theme/uploads"
+				}
+			]
+		},
+		{
+			"label": "WordPress 插件",
+			"items": [
+				{
+					"label": "WP 插件使用",
+					"slug": "plugin/usage"
+				},
+				{
+					"label": "WP 插件的运行机制",
+					"slug": "plugin/run"
+				},
+				{
+					"label": "WP 插件的创建",
+					"slug": "plugin/create"
+				},
+				{
+					"label": "WP 插件后台设计与开发",
+					"slug": "plugin/admin"
+				},
+				{
+					"label": "开发一个 WordPress Widget",
+					"slug": "plugin/create-widget"
+				},
+				{
+					"label": "开发一个短代码插件",
+					"slug": "plugin/create-shortcode"
+				},
+				{
+					"label": "提交你的插件到 WordPress 官方仓库",
+					"slug": "plugin/uploads"
+				}
+			]
+		},
+		{
+			"label": "WordPress 多语言",
+			"items": [
+				{
+					"label": "WP 主题开发：为你的主题/插件实现国际化",
+					"slug": "i18n/theme"
+				},
+				{
+					"label": "使用 WPML 插件建设一个多语言站点",
+					"slug": "i18n/wpml"
+				},
+				{
+					"label": "使用 Polylang 插件建设一个多语言站点",
+					"slug": "i18n/polylang"
+				}
+			]
+		},
+		{
+			"label": "WordPress 实战",
+			"items": [
+				{
+					"label": "WordPress 数据库操作 WPDB 指南",
+					"slug": "opt/wpdb"
+				},
+				{
+					"label": "动手开发插件： Custom Author 插件开发实战",
+					"slug": "opt/custom-author"
+				},
+				{
+					"label": "轻松玩转 WP：如何使用 WordPress 的邮件发文功能",
+					"slug": "opt/sendmail"
+				}
+			]
+		},
+		{
+			"label": "答疑",
+			"items": [
+				{
+					"label": "答疑 20171130",
+					"slug": "qa/20171130"
+				},
+				{
+					"label": "答疑 20171201",
+					"slug": "qa/20171201"
+				},
+				{
+					"label": "答疑 20171206",
+					"slug": "qa/20171206"
+				},
+				{
+					"label": "答疑 20171216",
+					"slug": "qa/20171216"
+				}
+			]
+		}
+	]
+}
