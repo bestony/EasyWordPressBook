@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Starlight mascot with WordPress logo</title>
+  <desc id="desc">A Starlight-style smiling mascot with a WordPress-style W logo balanced on its head.</desc>
+  <defs>
+    <linearGradient id="frameGradient" x1="157" y1="226" x2="748" y2="679" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7c3cff"/>
+      <stop offset="0.5" stop-color="#3b82ff"/>
+      <stop offset="1" stop-color="#4de6c8"/>
+    </linearGradient>
+    <linearGradient id="faceGradient" x1="239" y1="295" x2="650" y2="646" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#141922"/>
+      <stop offset="0.6" stop-color="#10151d"/>
+      <stop offset="1" stop-color="#080b10"/>
+    </linearGradient>
+    <linearGradient id="wpBlue" x1="306" y1="44" x2="595" y2="317" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#45b8e8"/>
+      <stop offset="0.55" stop-color="#21759b"/>
+      <stop offset="1" stop-color="#145c7f"/>
+    </linearGradient>
+    <radialGradient id="logoHighlight" cx="36%" cy="27%" r="68%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.38"/>
+      <stop offset="0.42" stop-color="#ffffff" stop-opacity="0.09"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow" x="-26%" y="-26%" width="152%" height="152%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="18" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.29 0 0 0 0 0.31 0 0 0 0 1 0 0 0 0.34 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="dropShadow" x="-24%" y="-24%" width="148%" height="160%">
+      <feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#101827" flood-opacity="0.25"/>
+    </filter>
+    <filter id="logoShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="17" stdDeviation="13" flood-color="#0d1b2a" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="900" fill="none"/>
+
+  <g transform="rotate(4 450 445)" filter="url(#dropShadow)">
+    <path d="M154 283c7-69 41-102 110-98l410 23c69 4 100 42 94 111l-27 300c-6 70-43 102-112 98l-410-23c-69-4-101-41-94-111z" fill="url(#frameGradient)" filter="url(#softGlow)"/>
+    <path d="M188 305c5-55 32-81 87-78l382 22c55 3 80 33 75 88l-22 255c-5 56-35 82-90 79l-382-22c-56-3-81-34-76-90z" fill="url(#faceGradient)"/>
+    <path d="M197 308c5-50 30-74 80-71l376 21c50 3 73 31 69 81l-22 249c-5 51-32 75-82 72l-376-21c-51-3-74-31-70-82z" fill="#0b0f16" opacity="0.36"/>
+    <circle cx="300" cy="449" r="46" fill="#ffffff"/>
+    <circle cx="610" cy="449" r="46" fill="#ffffff"/>
+    <path d="M402 469c5 57 94 62 108 5" fill="none" stroke="#ffffff" stroke-width="24" stroke-linecap="round"/>
+    <path d="M193 619c107 40 288 72 514 44" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" opacity="0.03"/>
+  </g>
+
+  <g transform="rotate(4 450 201)" filter="url(#logoShadow)">
+    <ellipse cx="450" cy="343" rx="202" ry="32" fill="#05070c" opacity="0.34"/>
+    <circle cx="450" cy="196" r="152" fill="url(#wpBlue)"/>
+    <circle cx="450" cy="196" r="152" fill="url(#logoHighlight)"/>
+    <circle cx="450" cy="196" r="126" fill="none" stroke="#ffffff" stroke-width="17"/>
+    <circle cx="450" cy="196" r="152" fill="none" stroke="#0a4f70" stroke-width="7" opacity="0.42"/>
+    <text x="450" y="251" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="166" font-weight="700" letter-spacing="0" fill="#ffffff">W</text>
+    <path d="M350 132c22-35 53-58 94-70" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" opacity="0.46"/>
+  </g>
+</svg>
