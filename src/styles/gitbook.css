@@ -1,0 +1,626 @@
+@layer starlight.base, starlight.reset, starlight.core, starlight.content, starlight.components, starlight.utils, gitbook;
+
+@layer gitbook {
+  :root,
+  ::backdrop {
+    --sl-color-white: hsl(210, 20%, 96%);
+    --sl-color-gray-1: hsl(214, 16%, 86%);
+    --sl-color-gray-2: hsl(215, 12%, 72%);
+    --sl-color-gray-3: hsl(216, 10%, 56%);
+    --sl-color-gray-4: hsl(217, 10%, 38%);
+    --sl-color-gray-5: hsl(218, 12%, 24%);
+    --sl-color-gray-6: hsl(220, 13%, 16%);
+    --sl-color-gray-7: hsl(220, 14%, 12%);
+    --sl-color-black: hsl(220, 17%, 9%);
+
+    --sl-hue-blue: 214;
+    --sl-color-blue-low: hsl(214, 46%, 18%);
+    --sl-color-blue: hsl(214, 76%, 54%);
+    --sl-color-blue-high: hsl(214, 84%, 78%);
+
+    --sl-hue-orange: 36;
+    --sl-color-orange-low: hsl(36, 32%, 19%);
+    --sl-color-orange: hsl(36, 72%, 52%);
+    --sl-color-orange-high: hsl(36, 78%, 78%);
+    --sl-hue-green: 154;
+    --sl-color-green-low: hsl(154, 30%, 17%);
+    --sl-color-green: hsl(154, 54%, 43%);
+    --sl-color-green-high: hsl(154, 56%, 74%);
+    --sl-hue-purple: 268;
+    --sl-color-purple-low: hsl(268, 28%, 19%);
+    --sl-color-purple: hsl(268, 56%, 58%);
+    --sl-color-purple-high: hsl(268, 62%, 82%);
+    --sl-hue-red: 356;
+    --sl-color-red-low: hsl(356, 34%, 20%);
+    --sl-color-red: hsl(356, 68%, 58%);
+    --sl-color-red-high: hsl(356, 76%, 82%);
+
+    --sl-color-accent-low: hsl(214, 48%, 17%);
+    --sl-color-accent: hsl(214, 78%, 55%);
+    --sl-color-accent-high: hsl(214, 82%, 78%);
+
+    --sl-color-text: var(--sl-color-gray-1);
+    --sl-color-text-accent: var(--sl-color-accent-high);
+    --sl-color-text-invert: hsl(214, 100%, 97%);
+    --sl-color-bg: var(--sl-color-black);
+    --sl-color-bg-nav: hsl(220, 16%, 10%);
+    --sl-color-bg-sidebar: hsl(220, 15%, 11%);
+    --sl-color-bg-inline-code: hsl(220, 13%, 18%);
+    --sl-color-bg-accent: var(--sl-color-accent);
+    --sl-color-hairline-light: hsl(218, 12%, 22%);
+    --sl-color-hairline: hsl(218, 13%, 18%);
+    --sl-color-hairline-shade: hsl(220, 14%, 16%);
+    --sl-color-backdrop-overlay: hsla(220, 17%, 7%, 0.7);
+
+    --sl-shadow-sm: 0 1px 2px hsla(220, 18%, 5%, 0.18);
+    --sl-shadow-md: 0 8px 18px hsla(220, 18%, 5%, 0.22);
+    --sl-shadow-lg: 0 18px 42px hsla(220, 18%, 5%, 0.34);
+
+    --sl-text-h1: var(--sl-text-3xl);
+    --sl-text-h2: var(--sl-text-2xl);
+    --sl-text-h3: var(--sl-text-xl);
+    --sl-text-h4: var(--sl-text-lg);
+    --sl-text-h5: var(--sl-text-base);
+    --sl-line-height: 1.72;
+    --sl-line-height-headings: 1.28;
+
+    --sl-nav-height: 3.25rem;
+    --sl-nav-pad-x: 1rem;
+    --sl-nav-pad-y: 0.625rem;
+    --sl-mobile-toc-height: 2.75rem;
+    --sl-sidebar-width: 17.75rem;
+    --sl-sidebar-pad-x: 0.875rem;
+    --sl-content-width: 48rem;
+    --sl-content-gap-y: 0.875rem;
+    --sl-main-pad: 0 0 4rem 0;
+    --sl-menu-button-size: 2rem;
+    --sl-nav-gap: 1rem;
+  }
+
+  :root[data-theme='light'],
+  [data-theme='light'] ::backdrop {
+    --sl-color-white: hsl(220, 24%, 10%);
+    --sl-color-gray-1: hsl(219, 18%, 18%);
+    --sl-color-gray-2: hsl(218, 12%, 28%);
+    --sl-color-gray-3: hsl(218, 10%, 42%);
+    --sl-color-gray-4: hsl(218, 10%, 62%);
+    --sl-color-gray-5: hsl(218, 16%, 84%);
+    --sl-color-gray-6: hsl(220, 20%, 94%);
+    --sl-color-gray-7: hsl(220, 33%, 98%);
+    --sl-color-black: hsl(0, 0%, 100%);
+
+    --sl-color-blue-low: hsl(214, 100%, 96%);
+    --sl-color-blue: hsl(214, 76%, 50%);
+    --sl-color-blue-high: hsl(214, 74%, 34%);
+    --sl-color-orange-low: hsl(36, 94%, 95%);
+    --sl-color-orange: hsl(36, 74%, 50%);
+    --sl-color-orange-high: hsl(36, 78%, 30%);
+    --sl-color-green-low: hsl(154, 52%, 94%);
+    --sl-color-green: hsl(154, 52%, 38%);
+    --sl-color-green-high: hsl(154, 56%, 25%);
+    --sl-color-purple-low: hsl(268, 76%, 96%);
+    --sl-color-purple: hsl(268, 58%, 56%);
+    --sl-color-purple-high: hsl(268, 58%, 36%);
+    --sl-color-red-low: hsl(356, 84%, 96%);
+    --sl-color-red: hsl(356, 68%, 54%);
+    --sl-color-red-high: hsl(356, 68%, 36%);
+
+    --sl-color-accent-low: hsl(214, 100%, 96%);
+    --sl-color-accent: hsl(214, 76%, 50%);
+    --sl-color-accent-high: hsl(214, 74%, 34%);
+
+    --sl-color-text: var(--sl-color-gray-2);
+    --sl-color-text-accent: var(--sl-color-accent-high);
+    --sl-color-text-invert: hsl(0, 0%, 100%);
+    --sl-color-bg: var(--sl-color-black);
+    --sl-color-bg-nav: hsla(0, 0%, 100%, 0.94);
+    --sl-color-bg-sidebar: hsl(220, 33%, 98%);
+    --sl-color-bg-inline-code: hsl(220, 20%, 94%);
+    --sl-color-bg-accent: var(--sl-color-accent);
+    --sl-color-hairline-light: hsl(220, 18%, 90%);
+    --sl-color-hairline: hsl(220, 18%, 91%);
+    --sl-color-hairline-shade: hsl(220, 18%, 88%);
+    --sl-color-backdrop-overlay: hsla(220, 10%, 25%, 0.34);
+
+    --sl-shadow-sm: 0 1px 2px hsla(220, 14%, 8%, 0.05);
+    --sl-shadow-md: 0 8px 18px hsla(220, 14%, 8%, 0.08);
+    --sl-shadow-lg: 0 18px 42px hsla(220, 14%, 8%, 0.14);
+  }
+
+  @media (min-width: 50em) {
+    :root {
+      --sl-nav-height: 3.5rem;
+      --sl-nav-pad-x: 1.25rem;
+      --sl-text-h1: var(--sl-text-4xl);
+      --sl-text-h2: var(--sl-text-3xl);
+      --sl-text-h3: var(--sl-text-2xl);
+      --sl-text-h4: var(--sl-text-xl);
+    }
+  }
+}
+
+@layer gitbook {
+  html {
+    background: var(--sl-color-bg);
+  }
+
+  body {
+    letter-spacing: 0;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--sl-color-accent) 24%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
+  }
+
+  .header {
+    backdrop-filter: blur(10px);
+    box-shadow: none;
+  }
+
+  :root[data-theme='light'] .header {
+    backdrop-filter: blur(12px);
+  }
+
+  .site-title {
+    color: var(--sl-color-white);
+    font-size: var(--sl-text-base);
+    font-weight: 650;
+    gap: 0.625rem;
+  }
+
+  .site-title span {
+    text-overflow: ellipsis;
+  }
+
+  .right-group,
+  .social-icons {
+    gap: 0.625rem;
+  }
+
+  .social-icons::after {
+    height: 1.5rem;
+    border-color: var(--sl-color-hairline-shade);
+  }
+
+  .social-icons a {
+    color: var(--sl-color-gray-3);
+  }
+
+  .social-icons a:hover {
+    color: var(--sl-color-white);
+  }
+
+  button[data-open-modal] {
+    height: 2.25rem;
+    color: var(--sl-color-gray-2);
+  }
+
+  @media (min-width: 50rem) {
+    button[data-open-modal] {
+      border-color: var(--sl-color-hairline-shade);
+      border-radius: 0.375rem;
+      background-color: var(--sl-color-bg);
+      box-shadow: none;
+      color: var(--sl-color-gray-3);
+      max-width: 18rem;
+      padding-inline-start: 0.625rem;
+      padding-inline-end: 0.375rem;
+    }
+
+    button[data-open-modal]:hover {
+      border-color: var(--sl-color-gray-4);
+      color: var(--sl-color-white);
+    }
+  }
+
+  button > kbd {
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 0.25rem;
+    background-color: transparent;
+    color: var(--sl-color-gray-3);
+    line-height: 1.3;
+  }
+
+  label:has(select),
+  starlight-version-select label {
+    color: var(--sl-color-gray-3);
+  }
+
+  label:has(select):hover,
+  starlight-version-select label:hover {
+    color: var(--sl-color-white);
+  }
+
+  label:has(select) select,
+  starlight-version-select select {
+    min-height: 2.25rem;
+    padding-block: 0.5rem;
+    border-radius: 0.375rem;
+  }
+
+  label:has(select) select:focus-visible,
+  starlight-version-select select:focus-visible {
+    background-color: var(--sl-color-bg);
+  }
+
+  label:has(select) option,
+  starlight-version-select option {
+    background-color: var(--sl-color-bg-nav);
+    color: var(--sl-color-white);
+  }
+
+  starlight-version-select select {
+    width: 6.25rem;
+  }
+
+  .sidebar-pane {
+    background-color: var(--sl-color-bg-sidebar);
+  }
+
+  .sidebar-content {
+    gap: 0.75rem;
+    padding-block-start: 0.875rem;
+  }
+
+  .sidebar-content ul {
+    --sl-sidebar-item-padding-inline: 0.625rem;
+  }
+
+  .sidebar-content .top-level > li + li {
+    margin-top: 0.625rem;
+  }
+
+  .sidebar-content .large {
+    color: var(--sl-color-gray-1);
+    font-size: var(--sl-text-sm);
+    font-weight: 650;
+  }
+
+  .sidebar-content summary {
+    border-radius: 0.375rem;
+    color: var(--sl-color-gray-3);
+    padding-block: 0.25rem;
+  }
+
+  .sidebar-content summary:hover {
+    color: var(--sl-color-gray-1);
+    background-color: color-mix(in srgb, var(--sl-color-gray-6) 70%, transparent);
+  }
+
+  .sidebar-content summary .caret {
+    color: var(--sl-color-gray-4);
+  }
+
+  .sidebar-content ul ul li {
+    margin-inline-start: 0.625rem;
+    border-inline-start-color: var(--sl-color-hairline-light);
+    padding-inline-start: 0.625rem;
+  }
+
+  .sidebar-content a {
+    position: relative;
+    border-radius: 0.375rem;
+    color: var(--sl-color-gray-3);
+    font-size: var(--sl-text-sm);
+    line-height: 1.45;
+    padding-block: 0.32rem;
+    transition:
+      background-color 120ms ease,
+      color 120ms ease;
+  }
+
+  .sidebar-content a:hover,
+  .sidebar-content a:focus {
+    color: var(--sl-color-white);
+    background-color: color-mix(in srgb, var(--sl-color-gray-6) 70%, transparent);
+  }
+
+  .sidebar-content [aria-current='page'],
+  .sidebar-content [aria-current='page']:hover,
+  .sidebar-content [aria-current='page']:focus {
+    color: var(--sl-color-accent-high);
+    background-color: var(--sl-color-accent-low);
+    font-weight: 650;
+  }
+
+  .sidebar-content [aria-current='page']::before {
+    content: '';
+    position: absolute;
+    inset-block: 0.35rem;
+    inset-inline-start: 0;
+    width: 2px;
+    border-radius: 999px;
+    background-color: var(--sl-color-accent);
+  }
+
+  .main-frame {
+    background: var(--sl-color-bg);
+  }
+
+  .right-sidebar-panel {
+    padding-block-start: 1.25rem;
+  }
+
+  .right-sidebar-panel h2 {
+    color: var(--sl-color-gray-1);
+    font-size: var(--sl-text-xs);
+    font-weight: 650;
+    text-transform: uppercase;
+  }
+
+  .right-sidebar-panel :where(a) {
+    border-radius: 0.25rem;
+    color: var(--sl-color-gray-3);
+    padding: 0.22rem 0.5rem;
+  }
+
+  .right-sidebar-panel :where(a):hover {
+    color: var(--sl-color-white);
+    background-color: color-mix(in srgb, var(--sl-color-gray-6) 65%, transparent);
+  }
+
+  .right-sidebar-panel :where(a[aria-current='true']) {
+    color: var(--sl-color-accent-high);
+    background-color: color-mix(in srgb, var(--sl-color-accent-low) 70%, transparent);
+  }
+
+  mobile-starlight-toc nav {
+    border-top-color: var(--sl-color-hairline-shade);
+    background-color: var(--sl-color-bg-nav);
+  }
+
+  mobile-starlight-toc summary {
+    border-bottom-color: var(--sl-color-hairline-shade);
+    padding-inline: var(--sl-content-pad-x);
+  }
+
+  mobile-starlight-toc .toggle {
+    border-color: var(--sl-color-hairline-shade);
+    border-radius: 0.375rem;
+    background-color: var(--sl-color-bg);
+  }
+
+  mobile-starlight-toc .dropdown {
+    border-color: var(--sl-color-hairline-shade);
+    background-color: var(--sl-color-bg);
+    box-shadow: var(--sl-shadow-sm);
+  }
+
+  mobile-starlight-toc .display-current {
+    color: var(--sl-color-gray-2);
+  }
+
+  starlight-menu-button button {
+    border: 1px solid var(--sl-color-hairline-shade);
+    background-color: var(--sl-color-bg);
+    box-shadow: none;
+    color: var(--sl-color-white);
+  }
+
+  starlight-menu-button button:hover {
+    background-color: var(--sl-color-gray-6);
+  }
+
+  .pagination-links {
+    gap: 0.75rem;
+  }
+
+  .pagination-links a {
+    border-color: var(--sl-color-hairline-shade);
+    border-radius: 0.375rem;
+    box-shadow: none;
+    color: var(--sl-color-gray-3);
+    padding: 0.875rem;
+  }
+
+  .pagination-links a:hover {
+    border-color: var(--sl-color-gray-4);
+    background-color: color-mix(in srgb, var(--sl-color-gray-6) 50%, transparent);
+  }
+
+  .pagination-links .link-title {
+    color: var(--sl-color-white);
+    font-size: var(--sl-text-base);
+    font-weight: 650;
+  }
+
+  dialog {
+    border-color: var(--sl-color-hairline-shade);
+    background-color: var(--sl-color-bg-sidebar);
+    box-shadow: var(--sl-shadow-lg);
+  }
+
+  dialog::backdrop {
+    backdrop-filter: blur(2px);
+  }
+
+  #starlight__search {
+    --pagefind-ui-primary: var(--sl-color-white);
+    --pagefind-ui-text: var(--sl-color-text);
+    --pagefind-ui-background: var(--sl-color-bg);
+    --pagefind-ui-border: var(--sl-color-hairline-shade);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 6px;
+    --pagefind-ui-tag: var(--sl-color-bg-inline-code);
+  }
+
+  #starlight__search .pagefind-ui__search-input {
+    border-radius: 0.375rem;
+    color: var(--sl-color-white);
+  }
+
+  #starlight__search .pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)),
+  #starlight__search .pagefind-ui__result-nested,
+  #starlight__search .pagefind-ui__result-tags {
+    background-color: var(--sl-color-bg);
+  }
+
+  #starlight__search .pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)):hover,
+  #starlight__search .pagefind-ui__result-nested:hover {
+    outline-color: var(--sl-color-hairline-shade);
+  }
+
+  #starlight__search .pagefind-ui__result-link {
+    --pagefind-ui-text: var(--sl-color-white);
+  }
+
+  .starlight-versions-pagefind-notice,
+  .starlight-versions-version-notice,
+  .starlight-versions-version-banner {
+    border-color: var(--sl-color-hairline-shade);
+    border-radius: 0.375rem;
+    background-color: var(--sl-color-bg-inline-code);
+    color: var(--sl-color-text);
+  }
+}
+
+@layer gitbook {
+  .sl-markdown-content {
+    color: var(--sl-color-text);
+    font-size: var(--sl-text-body);
+  }
+
+  .sl-markdown-content :is(h1, h2, h3, h4, h5, h6):not(:where(.not-content *)) {
+    color: var(--sl-color-white);
+    font-weight: 650;
+    letter-spacing: 0;
+  }
+
+  .sl-markdown-content h1:not(:where(.not-content *)) {
+    font-size: var(--sl-text-h1);
+  }
+
+  .sl-markdown-content h2:not(:where(.not-content *)) {
+    font-size: var(--sl-text-h2);
+  }
+
+  .sl-markdown-content h3:not(:where(.not-content *)) {
+    font-size: var(--sl-text-h3);
+  }
+
+  .sl-markdown-content p:not(:where(.not-content *)),
+  .sl-markdown-content li:not(:where(.not-content *)) {
+    color: var(--sl-color-text);
+  }
+
+  .sl-markdown-content a:not(:where(.not-content *)) {
+    color: var(--sl-color-text-accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+  }
+
+  .sl-markdown-content a:hover:not(:where(.not-content *)) {
+    color: var(--sl-color-white);
+  }
+
+  .sl-markdown-content code:not(:where(.not-content *)) {
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 0.25rem;
+    background-color: var(--sl-color-bg-inline-code);
+    color: var(--sl-color-white);
+    padding: 0.08rem 0.32rem;
+  }
+
+  .sl-markdown-content pre:not(:where(.not-content *)) {
+    border-color: var(--sl-color-hairline-shade);
+    border-radius: 0.375rem;
+    background-color: var(--sl-color-bg-inline-code);
+    box-shadow: none;
+  }
+
+  .sl-markdown-content pre code:not(:where(.not-content *)) {
+    border: 0;
+    background: transparent;
+    color: inherit;
+  }
+
+  .sl-markdown-content blockquote:not(:where(.not-content *)) {
+    border-inline-start: 3px solid var(--sl-color-hairline-shade);
+    color: var(--sl-color-gray-2);
+  }
+
+  .sl-markdown-content table:not(:where(.not-content *)) {
+    border: 1px solid var(--sl-color-hairline-shade);
+    border-radius: 0.375rem;
+    background-color: var(--sl-color-bg);
+  }
+
+  .sl-markdown-content :is(th, td):not(:where(.not-content *)) {
+    border-bottom-color: var(--sl-color-hairline-shade);
+    padding: 0.55rem 0.75rem;
+  }
+
+  .sl-markdown-content th:not(:where(.not-content *)) {
+    background-color: var(--sl-color-bg-inline-code);
+    color: var(--sl-color-white);
+  }
+
+  .sl-markdown-content hr:not(:where(.not-content *)) {
+    border-bottom-color: var(--sl-color-hairline-shade);
+  }
+
+  .sl-markdown-content details:not(:where(.not-content *)) {
+    border-inline-start-color: var(--sl-color-hairline-shade);
+  }
+
+  .sl-markdown-content summary:not(:where(.not-content *)) {
+    color: var(--sl-color-white);
+  }
+
+  .starlight-aside {
+    border-inline-start-width: 3px;
+    border-radius: 0.375rem;
+    color: var(--sl-color-text);
+  }
+
+  .starlight-aside__title {
+    font-size: var(--sl-text-sm);
+  }
+
+  .starlight-aside--note,
+  .starlight-aside--tip,
+  .starlight-aside--caution,
+  .starlight-aside--danger {
+    background-color: color-mix(in srgb, var(--sl-color-asides-border) 10%, var(--sl-color-bg));
+  }
+
+  .sl-link-card {
+    border-color: var(--sl-color-hairline-shade);
+    border-radius: 0.375rem;
+    box-shadow: none;
+  }
+
+  .sl-link-card:hover {
+    border-color: var(--sl-color-gray-4);
+    background-color: color-mix(in srgb, var(--sl-color-gray-6) 55%, transparent);
+  }
+}
+
+main > .content-panel:first-of-type .sl-container > h1 + p:has(svg) {
+  display: flex;
+  width: max-content;
+  max-width: 100%;
+  align-items: center;
+  gap: 0.625rem;
+  border: 1px solid var(--sl-color-hairline-shade);
+  border-radius: 0.375rem;
+  background-color: var(--sl-color-bg-inline-code);
+  color: var(--sl-color-gray-2);
+  padding: 0.625rem 0.75rem;
+  font-size: var(--sl-text-sm);
+  line-height: var(--sl-line-height-headings);
+}
+
+main > .content-panel:first-of-type .sl-container > h1 + p:has(svg) :where(a) {
+  color: var(--sl-color-text-accent);
+}
+
+main > .content-panel:first-of-type .sl-container > h1 + p:has(svg) :where(svg) {
+  color: var(--sl-color-accent);
+  flex-shrink: 0;
+}
