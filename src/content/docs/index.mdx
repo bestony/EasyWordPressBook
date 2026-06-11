@@ -1,7 +1,24 @@
 ---
 title: 人人都能学会的 WordPress 实战课
 description: 一套面向开发者和独立站点维护者的 WordPress 使用、优化与扩展实践课程。
+template: splash
+hero:
+  title: 人人都能学会的 WordPress 实战课
+  tagline: 面向开发者和独立站点维护者的 WordPress 使用、优化与扩展实践课程。
+  image:
+    file: ../../assets/starlight-wordpress-mascot.svg
+    alt: WordPress logo with a Starlight-inspired mascot.
+  actions:
+    - text: 开始阅读
+      link: /legacy/
+      icon: right-arrow
+    - text: GitHub
+      link: https://github.com/bestony/EasyWordPressBook
+      icon: github
+      variant: secondary
 ---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
 
 ## 电子书介绍
 
@@ -17,16 +34,20 @@ WordPress 作为世界上使用最多的 CMS（内容管理系统），成为大
 
 ## 内容入口
 
-- [阅读 Legacy 版本](/legacy/)
-- [查看基础使用章节](/legacy/basic-usage/)
-- [查看当前版本示例 Guide](/guides/example/)
-
-## Todo
-
-- [ ] 自定义文章类型
-- [ ] API 实战
-- [ ] Loop
-- [ ] 古腾堡编辑器
+<CardGrid>
+  <Card title="Start reading" icon="right-arrow">
+    从 [Legacy 版本](/legacy/)进入完整课程目录，按章节学习 WordPress 实战内容。
+  </Card>
+  <Card title="WordPress basics" icon="open-book">
+    学习 [基础使用](/legacy/basic-usage/)与配置流程，完成站点搭建、后台管理和常用设置。
+  </Card>
+  <Card title="Optimization" icon="rocket">
+    阅读 [WordPress 优化](/legacy/optimize-1/)，了解缓存、数据库、安全与性能相关实践。
+  </Card>
+  <Card title="Theme & plugin development" icon="puzzle">
+    从 [主题开发](/legacy/theme/intro/)和 [插件开发](/legacy/plugin/create/)开始扩展 WordPress。
+  </Card>
+</CardGrid>
 
 ## 交流群
 
