@@ -1,13 +1,13 @@
 [
   {
     "text": "V2 首页",
-    "link": "/",
+    "link": "../",
     "activeMatch": "^/v2/"
   },
   {
     "text": "Legacy 版本",
-    "link": "../index.html",
-    "activeMatch": "^/(?!v2/)"
+    "link": "../legacy/",
+    "activeMatch": "^/legacy/"
   },
   {
     "text": "GitHub",

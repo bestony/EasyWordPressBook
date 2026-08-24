@@ -1,4 +1,4 @@
-import type { NavItemWithChildren } from '@rspress/core';
+import type { NavItem, NavItemWithChildren } from '@rspress/core';
 import type { PageData } from '@rspress/shared';
 import {
   addLeadingSlash,
@@ -38,6 +38,52 @@ import clsx from 'clsx';
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 import './index.css';
+
+const VERSION_LABELS: Record<string, string> = {
+  home: '首页',
+  legacy: 'Legacy',
+  v2: 'V2',
+};
+
+function getVersionLabel(version: string) {
+  return VERSION_LABELS[version] ?? version;
+}
+
+function getVersionActiveMatch(version: string, defaultVersion: string) {
+  if (version === defaultVersion) {
+    return '^/(?:index\\.html)?$';
+  }
+
+  const escapedVersion = version.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return `^/${escapedVersion}/`;
+}
+
+function normalizeNavLink(link: string) {
+  if (!link.startsWith('/') || link.startsWith('//')) {
+    return link;
+  }
+
+  try {
+    const url = new URL(link, 'https://rspress.local');
+    return `${url.pathname}${url.search}${url.hash}`;
+  } catch {
+    return link;
+  }
+}
+
+function normalizeNavItem(item: NavItem): NavItem {
+  const normalizedItem = { ...item } as NavItem;
+
+  if ('link' in normalizedItem && typeof normalizedItem.link === 'string') {
+    normalizedItem.link = normalizeNavLink(normalizedItem.link);
+  }
+
+  if ('items' in normalizedItem) {
+    normalizedItem.items = normalizedItem.items.map(normalizeNavItem);
+  }
+
+  return normalizedItem;
+}
 
 function getVersionHref(
   pathname: string,
@@ -123,9 +169,13 @@ function VersionHrefNormalizer() {
             '.rp-hover-group__item__link, a.rp-nav-screen-versions-group__item, a.rp-nav-screen-menu-item',
           )
           .forEach(link => {
-            const isHoverVersionLink = link.getAttribute('aria-label') === version;
+            const versionLabel = getVersionLabel(version);
+            const linkText = link.textContent?.trim();
+            const isHoverVersionLink =
+              link.getAttribute('aria-label') === version ||
+              link.getAttribute('aria-label') === versionLabel;
             const isScreenVersionLink =
-              link.textContent?.trim() === version &&
+              (linkText === version || linkText === versionLabel) &&
               (link.classList.contains('rp-nav-screen-versions-group__item') ||
                 link.classList.contains('rp-nav-screen-menu-item'));
             if (isHoverVersionLink || isScreenVersionLink) {
@@ -160,7 +210,8 @@ function FixedNavScreenVersions() {
   }
 
   const items: NavItemWithChildren['items'] = versions.map(version => ({
-    text: version,
+    text: getVersionLabel(version),
+    activeMatch: getVersionActiveMatch(version, defaultVersion),
     link: getVersionHref(
       pathname,
       currentVersion,
@@ -247,7 +298,7 @@ function FixedNavVersions() {
   }
 
   const items: NavItemWithChildren['items'] = versions.map(version => ({
-    text: version,
+    text: getVersionLabel(version),
     link: getVersionHref(
       pathname,
       currentVersion,
@@ -261,15 +312,15 @@ function FixedNavVersions() {
 
   return (
     <NavMenuItemWithChildren
-      menuItem={{ text: currentVersion, items }}
-      activeMatcher={item => item.text === currentVersion}
+      menuItem={{ text: getVersionLabel(currentVersion), items }}
+      activeMatcher={item => item.text === getVersionLabel(currentVersion)}
     />
   );
 }
 
 function Nav(props: NavProps) {
   const { beforeNavTitle, afterNavTitle, beforeNavMenu, afterNavMenu, navTitle } = props;
-  const navList = useNav();
+  const navList = useNav().map(normalizeNavItem);
   const { site } = useSite();
   const hasAppearanceSwitch = isDarkModeSwitchEnabled(site.themeConfig.darkMode);
 

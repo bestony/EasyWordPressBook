@@ -22,11 +22,11 @@ The generated static site is written to `doc_build/`.
 
 ## Documentation versions
 
-The `legacy` version contains the original mdBook content. It is the default version, so its routes keep the existing paths, including `.html` pages such as `/intro.html` and `/theme/intro.html`.
+The `home` version is the public homepage at `/`. The `legacy` version contains the original mdBook content under `/legacy/`, and the `v2` version is initialized at `/v2/` so it can evolve independently.
 
-The `v2` version is initialized at `/v2/` and can evolve independently. Rspress adds the version prefix automatically for version-specific navigation and search.
+Rspress adds the version prefix automatically for non-default versions. The old Legacy `.html` URLs, such as `/intro.html` and `/theme/intro.html`, are kept as HTTP 301 redirects to their `/legacy/` equivalents. The redirect configuration is included in the generated `doc_build/edgeone.json`, and the Docker Nginx configuration contains the same rules.
 
-The version configuration lives in `rspress.config.ts`, and versioned content is organized under `docs/legacy/` and `docs/v2/`.
+The version configuration lives in `rspress.config.ts`, and versioned content is organized under `docs/home/`, `docs/legacy/`, and `docs/v2/`.
 
 ## Deployment
 

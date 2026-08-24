@@ -1,0 +1,229 @@
+{
+  "redirects": [
+    {
+      "source": "/basic-config.html",
+      "destination": "/legacy/basic-config.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/basic-plugin-1.html",
+      "destination": "/legacy/basic-plugin-1.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/basic-plugin-2.html",
+      "destination": "/legacy/basic-plugin-2.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/basic-usage.html",
+      "destination": "/legacy/basic-usage.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/changelog.html",
+      "destination": "/legacy/changelog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/deployment/bt-linux-production.html",
+      "destination": "/legacy/deployment/bt-linux-production.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/deployment/cpanel-production.html",
+      "destination": "/legacy/deployment/cpanel-production.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/deployment/mac-dev.html",
+      "destination": "/legacy/deployment/mac-dev.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/deployment/wanwang-production.html",
+      "destination": "/legacy/deployment/wanwang-production.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/deployment/windows-dev.html",
+      "destination": "/legacy/deployment/windows-dev.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/development-env.html",
+      "destination": "/legacy/development-env.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/i18n/polylang.html",
+      "destination": "/legacy/i18n/polylang.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/i18n/theme.html",
+      "destination": "/legacy/i18n/theme.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/i18n/wpml.html",
+      "destination": "/legacy/i18n/wpml.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/index.html",
+      "destination": "/legacy/index.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/intro.html",
+      "destination": "/legacy/intro.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/opt/custom-author.html",
+      "destination": "/legacy/opt/custom-author.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/opt/sendmail.html",
+      "destination": "/legacy/opt/sendmail.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/opt/wpdb.html",
+      "destination": "/legacy/opt/wpdb.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/optimize-1.html",
+      "destination": "/legacy/optimize-1.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/optimize-2.html",
+      "destination": "/legacy/optimize-2.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/optimize-3.html",
+      "destination": "/legacy/optimize-3.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/optimize-4.html",
+      "destination": "/legacy/optimize-4.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/plugin/admin.html",
+      "destination": "/legacy/plugin/admin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/plugin/create-shortcode.html",
+      "destination": "/legacy/plugin/create-shortcode.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/plugin/create-widget.html",
+      "destination": "/legacy/plugin/create-widget.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/plugin/create.html",
+      "destination": "/legacy/plugin/create.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/plugin/run.html",
+      "destination": "/legacy/plugin/run.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/plugin/uploads.html",
+      "destination": "/legacy/plugin/uploads.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/plugin/usage.html",
+      "destination": "/legacy/plugin/usage.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/qa/20171130.html",
+      "destination": "/legacy/qa/20171130.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/qa/20171201.html",
+      "destination": "/legacy/qa/20171201.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/qa/20171206.html",
+      "destination": "/legacy/qa/20171206.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/qa/20171216.html",
+      "destination": "/legacy/qa/20171216.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/readme.html",
+      "destination": "/legacy/readme.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources.html",
+      "destination": "/legacy/resources.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/security.html",
+      "destination": "/legacy/security.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/theme/custom-page.html",
+      "destination": "/legacy/theme/custom-page.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/theme/intro.html",
+      "destination": "/legacy/theme/intro.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/theme/is-function.html",
+      "destination": "/legacy/theme/is-function.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/theme/options-framework.html",
+      "destination": "/legacy/theme/options-framework.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/theme/struct.html",
+      "destination": "/legacy/theme/struct.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/theme/tips.html",
+      "destination": "/legacy/theme/tips.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/theme/uploads.html",
+      "destination": "/legacy/theme/uploads.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/theme/usage.html",
+      "destination": "/legacy/theme/usage.html",
+      "statusCode": 301
+    }
+  ]
+}

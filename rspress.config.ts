@@ -8,8 +8,8 @@ export default defineConfig({
   description: '给普通人的 WordPress 实战课',
   siteOrigin: 'https://www.easywpbook.com',
   multiVersion: {
-    default: 'legacy',
-    versions: ['legacy', 'v2'],
+    default: 'home',
+    versions: ['home', 'legacy', 'v2'],
   },
   // Keep mdBook-compatible .html output paths for existing bookmarks and links.
   route: {
