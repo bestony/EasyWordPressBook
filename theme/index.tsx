@@ -65,7 +65,8 @@ function normalizeNavLink(link: string) {
 
   try {
     const url = new URL(link, 'https://rspress.local');
-    return `${url.pathname}${url.search}${url.hash}`;
+    const pathname = url.pathname === '/index.html' ? '/' : url.pathname;
+    return `${pathname}${url.search}${url.hash}`;
   } catch {
     return link;
   }
@@ -116,7 +117,12 @@ function getVersionHref(
     : parts.join('/');
   if (!route) route = '/';
 
-  const candidate = normalizeHrefInRuntime(addLeadingSlash(route));
+  const isDefaultVersionRoot =
+    targetVersion === defaultVersion &&
+    (route === '/' || route === 'index' || route === 'index.html');
+  const candidate = isDefaultVersionRoot
+    ? '/'
+    : normalizeHrefInRuntime(addLeadingSlash(route));
   if (
     pages &&
     !pages.some(
@@ -127,7 +133,7 @@ function getVersionHref(
     )
   ) {
     return targetVersion === defaultVersion
-      ? normalizeHrefInRuntime('/')
+      ? '/'
       : normalizeHrefInRuntime(`/${targetVersion}/`);
   }
 
