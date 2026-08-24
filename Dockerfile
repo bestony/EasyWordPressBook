@@ -1,3 +1,3 @@
 FROM nginx:alpine
 COPY docker/default.conf /etc/nginx/conf.d/default.conf
-COPY book/html/ /usr/share/nginx/html/
+COPY doc_build/ /usr/share/nginx/html/

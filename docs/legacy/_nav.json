@@ -1,0 +1,16 @@
+[
+  {
+    "text": "课程首页",
+    "link": "../",
+    "activeMatch": "^/$"
+  },
+  {
+    "text": "V2 版本",
+    "link": "../v2/",
+    "activeMatch": "^/v2/"
+  },
+  {
+    "text": "GitHub",
+    "link": "https://github.com/bestony/EasyWordPressBook"
+  }
+]
