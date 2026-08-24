@@ -1,0 +1,9 @@
+/* Keep the documentation theme close to the original site's restrained palette. */
+:root {
+  --rp-c-brand: #2563eb;
+  --rp-c-brand-dark: #1d4ed8;
+  --rp-c-brand-darker: #1e40af;
+  --rp-c-brand-light: #3b82f6;
+  --rp-c-brand-lighter: #60a5fa;
+  --rp-c-brand-tint: rgba(37, 99, 235, 0.08);
+}

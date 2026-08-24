@@ -1,0 +1,16 @@
+[
+  {
+    "text": "V2 首页",
+    "link": "/",
+    "activeMatch": "^/v2/"
+  },
+  {
+    "text": "Legacy 版本",
+    "link": "https://www.easywpbook.com/",
+    "activeMatch": "^/(?!v2/)"
+  },
+  {
+    "text": "GitHub",
+    "link": "https://github.com/bestony/EasyWordPressBook"
+  }
+]
