@@ -1,5 +1,52 @@
+import { readFileSync } from 'node:fs';
 import * as path from 'node:path';
 import { defineConfig } from '@rspress/core';
+
+type RedirectRule = {
+  source: string;
+  destination: string;
+  statusCode: number;
+};
+
+type RedirectConfig = {
+  redirects: RedirectRule[];
+};
+
+const redirectConfig = JSON.parse(
+  readFileSync(path.join(__dirname, 'docs/public/edgeone.json'), 'utf8'),
+) as RedirectConfig;
+
+const legacyRedirects = new Map(
+  redirectConfig.redirects.map(({ source, destination, statusCode }) => [
+    source,
+    { destination, statusCode },
+  ]),
+);
+
+const legacyRedirectMiddleware = (
+  request: { url?: string },
+  response: {
+    statusCode: number;
+    setHeader: (name: string, value: string) => void;
+    end: () => void;
+  },
+  next: () => void,
+) => {
+  const requestUrl = new URL(request.url ?? '/', 'http://localhost');
+  const redirect = legacyRedirects.get(requestUrl.pathname);
+
+  if (!redirect) {
+    next();
+    return;
+  }
+
+  response.statusCode = redirect.statusCode;
+  response.setHeader('Location', `${redirect.destination}${requestUrl.search}`);
+  response.end();
+  console.debug(
+    `[legacy-redirect] ${requestUrl.pathname} -> ${redirect.destination}${requestUrl.search}`,
+  );
+};
 
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
@@ -14,6 +61,13 @@ export default defineConfig({
   // Keep mdBook-compatible .html output paths for existing bookmarks and links.
   route: {
     cleanUrls: false,
+  },
+  builderConfig: {
+    server: {
+      setup({ server }) {
+        server.middlewares.use(legacyRedirectMiddleware);
+      },
+    },
   },
   search: {
     versioned: true,
