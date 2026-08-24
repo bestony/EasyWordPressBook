@@ -58,16 +58,19 @@ function getVersionHref(
     parts.shift();
   }
 
-  if (targetVersion !== defaultVersion) {
+  const isVersionRoot = parts.length === 0;
+  if (targetVersion !== defaultVersion && !isVersionRoot) {
     parts.unshift(targetVersion);
   }
 
-  let route = parts.join('/');
-  if (targetVersion !== defaultVersion && !route) {
-    route = cleanUrls ? 'index' : 'index.html';
-  }
+  let route = isVersionRoot && targetVersion !== defaultVersion
+    ? cleanUrls
+      ? `${targetVersion}/`
+      : `${targetVersion}/index.html`
+    : parts.join('/');
+  if (!route) route = '/';
 
-  const candidate = addLeadingSlash(route);
+  const candidate = normalizeHrefInRuntime(addLeadingSlash(route));
   if (
     pages &&
     !pages.some(
@@ -78,8 +81,8 @@ function getVersionHref(
     )
   ) {
     return targetVersion === defaultVersion
-      ? '/'
-      : `/${targetVersion}/${cleanUrls ? 'index' : 'index.html'}`;
+      ? normalizeHrefInRuntime('/')
+      : normalizeHrefInRuntime(`/${targetVersion}/`);
   }
 
   return candidate;
@@ -117,10 +120,17 @@ function VersionHrefNormalizer() {
         );
         document
           .querySelectorAll<HTMLAnchorElement>(
-            `.rp-hover-group__item__link[aria-label="${version}"]`,
+            '.rp-hover-group__item__link, a.rp-nav-screen-versions-group__item, a.rp-nav-screen-menu-item',
           )
           .forEach(link => {
-            link.href = href;
+            const isHoverVersionLink = link.getAttribute('aria-label') === version;
+            const isScreenVersionLink =
+              link.textContent?.trim() === version &&
+              (link.classList.contains('rp-nav-screen-versions-group__item') ||
+                link.classList.contains('rp-nav-screen-menu-item'));
+            if (isHoverVersionLink || isScreenVersionLink) {
+              link.href = href;
+            }
           });
       }
     };
