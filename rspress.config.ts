@@ -18,6 +18,18 @@ export default defineConfig({
   search: {
     versioned: true,
   },
+  markdown: {
+    shiki: {
+      // Preserve the legacy fence labels while mapping them to supported grammars.
+      langs: ['tsx', 'ts', 'js', 'php', 'javascript', 'html', 'css', 'sql', 'bash'],
+      langAlias: {
+        Php: 'php',
+        'php+HTML': 'php',
+        'php+html': 'php',
+        'javascript   ': 'javascript',
+      },
+    },
+  },
   themeConfig: {
     editLink: {
       docRepoBaseUrl:

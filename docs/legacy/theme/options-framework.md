@@ -134,13 +134,13 @@ if (!function_exists('optionsframework_init')){
 
 默认情况下，我们获取设置项的函数是`of_get_option`，使用如下代码，可以获取到我们的设置项的值：
 
-```php
+```Php
 <?php echo of_get_option("设置id");?>
 ```
 
 接下来，修改我们的 About 的输出，将其改为：
 
-```php
+```Php
 <?php echo of_get_option("user-name").",".of_get_option("user-email").",".of_get_option("user-url");?>
 ```
 

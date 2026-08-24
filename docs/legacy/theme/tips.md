@@ -87,7 +87,7 @@ INFO 则是你自己需要检查的。
 
 这里举一个例子：
 
-```php
+```Php
 function gitchat_theme_style() {
     wp_enqueue_style( 'gitchat_style', get_template_directory_uri() . '/style.css' ); 
 }
@@ -129,7 +129,7 @@ add_action( 'admin_menu', 'remove_menus' );
 
 如果只是想要屏蔽一些二级菜单，则可以参考下面的代码来修改：
 
-```php
+```Php
 function remove_submenu() {
     // 删除”外观”下面的子菜单”编辑”
     remove_submenu_page('themes.php', 'theme-editor.php');
@@ -169,7 +169,7 @@ add_action('wp_dashboard_setup', 'remove_dashboard_widget' );
 
 对于直接作为外包项目的 WordPress，我们希望让用户尽可能的少看到 WordPress 的相关信息，所以或许需要这段移除 WordPress logo 的代码：
 
-```php
+```Php
 function remove_admin_bar_logo() {
         global $wp_admin_bar;
         $wp_admin_bar->remove_menu('wp-logo');

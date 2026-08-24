@@ -39,7 +39,7 @@
 
 在插件中加入如下代码：
 
-```php
+```Php
 class gitchat_widget extends WP_Widget {
     
     public function __construct() {
@@ -143,7 +143,7 @@ $link  = ! empty( $instance['link'] ) ? $instance['link'] : "http://gitbook.cn/g
 
 下面的数据则是输出一个个表单，这里我取其中一个来说明
 
-```php
+```php+HTML
 <p>
 <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">标题</label> 
 <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">

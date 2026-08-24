@@ -6,7 +6,7 @@
   },
   {
     "text": "Legacy 版本",
-    "link": "https://www.easywpbook.com/",
+    "link": "../index.html",
     "activeMatch": "^/(?!v2/)"
   },
   {

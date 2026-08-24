@@ -137,7 +137,7 @@ add_action("Hook 名","函数名")
 
 我们可以看看这个函数的官方文档。
 
-```php
+```Php
 add_action( string $tag, callable $function_to_add, int $priority = 10, int $accepted_args = 1 )    
 ```
 

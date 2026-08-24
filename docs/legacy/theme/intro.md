@@ -352,7 +352,7 @@ endif;
 
 创建一个 *comments.php*, 这个文件将会存放评论模板。在 *comments.php* 中添加如下代码：
 
-```php
+```php+HTML
 
 <?php
 // part 1 

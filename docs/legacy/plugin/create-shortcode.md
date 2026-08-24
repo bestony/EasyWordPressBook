@@ -110,7 +110,7 @@ function gitchat_git_shortcode( $atts ) {
 
 再修改一下短代码函数：
 
-```php
+```Php
 function gitchat_git_shortcode( $atts , $content = null ) {
     $atts = shortcode_atts(
         array(
@@ -179,7 +179,7 @@ add_action( 'admin_print_footer_scripts', 'gitchat_git_qt' );
 
 将函数改为下面这样：
 
-```php
+```php+HTML
 function gitchat_git_qt() {
     if ( wp_script_is( 'quicktags' ) ) { // 判断是否正在加载 quicktags 
     ?> 
@@ -198,7 +198,7 @@ function gitchat_git_qt() {
 
 然后嵌入一段 JavaScript 代码。这个代码很简单，使用 *QTags* 的 *addButton* 方法，来加载一个新按钮，这个函数接受8个参数，不过定义时一般来说，可以不传入那么多。
 
-```javascript
+```javascript   
 QTags.addButton( id, display, arg1, arg2, access_key, title, priority, instance );
 ```
 

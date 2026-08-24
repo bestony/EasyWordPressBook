@@ -152,7 +152,7 @@ select * from wp_options where option_name = 'gitchat_copyright_code'
 
 将第24行的：
 
-```php
+```Php
 $content .= '<hr><p>这是一个来自 GitChat 达人课的插件</p><hr>';
 ```
 

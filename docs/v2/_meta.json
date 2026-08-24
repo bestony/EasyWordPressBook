@@ -1,25 +1,4 @@
 [
   { "type": "file", "name": "index", "label": "V2 首页" },
-  { "type": "file", "name": "migration", "label": "迁移说明" },
-  { "type": "file", "name": "readme", "label": "本书介绍" },
-  { "type": "file", "name": "changelog", "label": "更新记录" },
-  { "type": "file", "name": "intro", "label": "导读" },
-  { "type": "file", "name": "development-env", "label": "WordPress 的部署" },
-  { "type": "dir-section-header", "name": "deployment", "label": "部署环境" },
-  { "type": "section-header", "label": "WordPress 使用" },
-  "basic-usage",
-  "basic-config",
-  "basic-plugin-1",
-  "basic-plugin-2",
-  "resources",
-  "optimize-1",
-  "optimize-2",
-  "optimize-3",
-  "optimize-4",
-  "security",
-  { "type": "dir-section-header", "name": "theme", "label": "WordPress 主题" },
-  { "type": "dir-section-header", "name": "plugin", "label": "WordPress 插件" },
-  { "type": "dir-section-header", "name": "i18n", "label": "WordPress 多语言" },
-  { "type": "dir-section-header", "name": "opt", "label": "WordPress 实战" },
-  { "type": "dir-section-header", "name": "qa", "label": "答疑" }
+  { "type": "file", "name": "how-to-write", "label": "如何编写 V2 内容" }
 ]

@@ -118,7 +118,7 @@ get_header();
 
 首先，创建一个 *page-tagcloud.php* 文件，然后在其中加入如下代码：
 
-```php
+```php+html
 <?php
 /*
 Template Name: 标签云

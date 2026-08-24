@@ -282,7 +282,7 @@ WordPress 也提供了默认的表单样式，可以直接调用对应的样式�
 
 修改 `gitchat_custom_page` 函数内容如下：
 
-```php
+```php+HTML
 function gitchat_custom_page(){
   ?>
   <div class="wrap">
